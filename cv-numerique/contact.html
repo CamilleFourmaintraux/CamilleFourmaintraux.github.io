@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    	<meta charset="UTF-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    	<title>Camille Fourmaintraux - Contact</title>
+    	<link rel="stylesheet" href=".\res\css\style.css">
+    	<link rel="php" href=".\php\mail.php">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>CV de Camille FOURMAINTRAUX</h1>
+        <p>Étudiant en Informatique</p>
+	<img src=".\res\img\maPhoto.jpg" alt="Ma Photo" id="photoPresentation">
+    </header>
+    <nav>
+        <a href="accueil.html"><i class="fas fa-home"></i> Accueil </a>
+        <a href="cursus.html"><i class="fas fa-graduation-cap"></i> Cursus </a>
+        <a href="portfolio.html"><i class="fas fa-book"></i> Portfolio </a>
+	<a href="passions.html"><i class="fas fa-puzzle-piece"></i> Centres d'intérêt </a>
+        <a href="contact.html"><i class="fas fa-pen"></i> Contact </a>
+    </nav>
+
+
+<div class="container">
+        <h2>Contact</h2>
+	<p>Si mon profil vous intéresse, ou si vous voulez plus d'informations,
+	<br> vous pouvez me contacter ici ou avec le formulaire de contact.<br>
+        
+	<br>Mon mail :
+	<a  href="mailto:camille.fourmaintraux.etu@univ-lille.fr">
+	<i class="fas fa-envelope"></i>camille.fourmaintraux.etu@univ-lille.fr</a>
+	
+	<br> Mon Linkedin :
+	<a href="https://www.linkedin.com/in/camille-fourmaintraux-708b34275/
+	"target="_blank">
+	<i class="fab fa-linkedin">
+	</i>www.linkedin.com/in/camille-fourmaintraux-708b34275</a>
+	
+	<br> Mon gitHub :
+	<a href="https://github.com/CamilleFourmaintraux
+	"target="_blank">
+	<i class="fab fa-github">
+	</i>https://github.com/CamilleFourmaintraux</a><br>
+	
+	<br> La version pdf de mon CV ainsi que certains de mes contacts sont aussi disponible sous forme d'icône en bas de chacune des pages.</p>
+</div>
+
+
+<div class="container">
+    <h2>M'envoyer un message</h2>
+	<form method="post" action=".\res\php\mail.php">
+	<label for="nom">Nom</label>
+	<input id="nom" name="nom" type="text" placeholder="Votre nom...">
+	<label for="prenom">Prénom</label>
+	<input id="prenom" name="prenom" type="text" placeholder="Votre prénom...">
+	<label for="mail">E-Mail</label>
+	<input id="mail" name="mail" type="mail" placeholder="Votre mail...">
+	<label for="titre">Intitulé</label>
+	<input id="titre" name="titre" type="text" placeholder="Intitulé du message...">
+	<label for="Message">Message</label>
+	<textarea id="contenu" name="message" placeholder="Votre message..."></textarea>
+	<button type="submit"><i class="fas fa-paper-plane"></i> Envoyer</button>
+
+</div>
+
+<div class="container">
+<h2>Merci</h2>
+	<p>Merci d'avoir pris le temps de vous intéresser à mon profil !</p>
+</div>
+	<footer>
+	<a  href="./res/fich/cv.pdf" target="_blank" download>
+	<i class="fas fa-file"></i></a>
+	<a  href="mailto:camille.fourmaintraux.etu@univ-lille.fr">
+	<i class="fas fa-envelope"></i></a>
+	<a href="https://www.linkedin.com/in/camille-fourmaintraux-708b34275/
+	"target="_blank">
+	<i class="fab fa-linkedin">
+	</i></a>
+	</footer>
+</body>
+
+</html>
