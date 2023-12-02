@@ -28,6 +28,31 @@
 	<a href="#lab"><i class="fas fa-circle"></i> Générateur de labyrinthe </a>
 </nav>
 
+<!-- Bouton de retour en haut -->
+  <button onclick="topFunction()" id="back-to-top" title="Retour en haut">Haut</button>
+
+  <script>
+    // Fonction pour faire défiler vers le haut de la page
+    function topFunction() {
+      document.body.scrollTop = 0; // Pour les anciens navigateurs
+      document.documentElement.scrollTop = 0; // Pour les navigateurs modernes
+    }
+
+    // Afficher ou masquer le bouton en fonction de la position de défilement de la page
+    window.onscroll = function() {
+      scrollFunction();
+    };
+
+    function scrollFunction() {
+      var button = document.getElementById("back-to-top");
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        button.style.display = "block";
+      } else {
+        button.style.display = "none";
+      }
+    }
+  </script>
+
 <div class="container">
         <h2>Activités</h2>
         <ul>
