@@ -13,11 +13,21 @@ header {
 h1 {
     margin: 0;
 }
- nav {
+nav {
     text-align: center;
     background-color: #444;
     padding: 10px 0;
+    position: relative;
 }
+
+/* Styles pour le menu en position fixe */
+    nav.fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+
  nav a {
     text-decoration: none;
     color: #fff;

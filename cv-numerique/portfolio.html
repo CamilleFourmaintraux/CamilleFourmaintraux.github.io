@@ -14,48 +14,74 @@
         <p>Étudiant en BUT Informatique</p>
 	<img src=".\res\img\maPhoto.jpg" alt="Ma Photo" id="photoPresentation">
     </header>
-    <nav>
+    <nav id="navbar">
 	<a href="..\index.html"><i class="fas fa-arrow-left"></i> Retour </a>
         <a href="accueil.html"><i class="fas fa-home"></i> Accueil </a>
         <a href="cursus.html"><i class="fas fa-graduation-cap"></i> Cursus </a>
         <a href="portfolio.html" id="current"><i class="fas fa-book"></i> Portfolio </a>
 	<a href="passions.html"><i class="fas fa-puzzle-piece"></i> Centres d'intérêt </a>
         <a href="contact.html"><i class="fas fa-pen"></i> Contact </a>
-    </nav>
-<nav>
+	<br><br>
 	<a href="#sae207"><i class="fas fa-circle"></i> Base de données </a>
-       	<a href="#sae202"><i class="fas fa-circle"></i> Application avec JavaFx </a>
-	<a href="#sae105"><i class="fas fa-circle"></i> Site Web </a>
+       	<a href="#sae202"><i class="fas fa-circle"></i> Application JavaFx </a>
+	<a href="#sae105"><i class="fas fa-circle"></i> Site web </a>
 	<a href="#pagil"><i class="fas fa-circle"></i> Projet Agile </a>
-	<a href="#sae213"><i class="fas fa-circle"></i> Escape Game </a> 
-	<a href="#sae103"><i class="fas fa-circle"></i> Installation réseau </a> 
-	<a href="#sae302"><i class="fas fa-circle"></i> Jeu avec JavaFx </a>
-</nav>
+	<a href="#sae213"><i class="fas fa-circle"></i> Escape game </a>
+	<a href="#sae103"><i class="fas fa-circle"></i> Installation réseau </a>
+	<a href="#sae302"><i class="fas fa-circle"></i> Jeu JavaFx </a>
+    </nav>
+
+<!-- Script pour la navigation -->
 
 <!-- Bouton de retour en haut -->
   <button onclick="topFunction()" id="back-to-top" title="Retour en haut">Haut</button>
 
-  <script>
-    // Fonction pour faire défiler vers le haut de la page
-    function topFunction() {
-      document.body.scrollTop = 0; // Pour les anciens navigateurs
-      document.documentElement.scrollTop = 0; // Pour les navigateurs modernes
+<script>
+  window.addEventListener('scroll', function() {
+    var navbar = document.getElementById('navbar');
+    var threshold = 100; // Point où le menu devient fixe (en pixels)
+    var offset = navbar.offsetHeight; // Hauteur de la barre de navigation
+
+    if (window.pageYOffset > threshold) {
+      navbar.classList.add('fixed');
+    } else {
+      navbar.classList.remove('fixed');
     }
 
-    // Afficher ou masquer le bouton en fonction de la position de défilement de la page
-    window.onscroll = function() {
-      scrollFunction();
-    };
-
-    function scrollFunction() {
-      var button = document.getElementById("back-to-top");
-      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        button.style.display = "block";
-      } else {
-        button.style.display = "none";
-      }
+    var button = document.getElementById("back-to-top");
+    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+      button.style.display = "block";
+    } else {
+      button.style.display = "none";
     }
-  </script>
+  });
+
+  // Fonction pour faire défiler vers le haut de la page
+  function topFunction() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth' // Ajoute un défilement fluide
+    });
+  }
+
+  // Fonction pour ajuster la position lors du clic sur un lien du menu
+  var links = document.querySelectorAll('#navbar a[href^="#"]');
+  links.forEach(function(link) {
+    link.addEventListener('click', function(event) {
+      event.preventDefault();
+      var targetId = this.getAttribute('href').substring(1); // Récupère l'ID de la cible
+      var targetElement = document.getElementById(targetId); // Élément cible
+      var targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset; // Position de l'élément par rapport au haut de la page
+      var offset = 80; // Ajustement de l'offset
+      var newPosition = targetPosition - offset; // Nouvelle position ajustée
+
+      window.scrollTo({
+        top: newPosition,
+        behavior: 'smooth'
+      });
+    });
+  });
+</script>
 
 	<div class="container">
     <h2>Réalisations</h2>
