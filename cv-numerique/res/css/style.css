@@ -26,6 +26,11 @@ h1 {
 
  nav a:hover{
     color: #BBDDDD;
+    }
+
+#current{
+    color: #FF5858; /*#1BED69;*/
+
 }
 
 
