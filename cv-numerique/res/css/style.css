@@ -32,7 +32,6 @@ nav a:hover{
     color: #FF5858;
 }
 
-/* Styles pour le bouton */
 #back-to-top {
       display: none;
       position: fixed;
@@ -48,7 +47,6 @@ nav a:hover{
 #back-to-top:hover {
       background-color: #444;
 }
-
 
 h2 {
     margin-top: 0;
