@@ -24,14 +24,13 @@ h1 {
     margin: 0 10px;
 }
 
- nav a:hover{
+nav a:hover{
     color: #BBDDDD;
-    }
+}
 
 #current{
     color: #FF5858;
 }
-
 
 h2 {
     margin-top: 0;
