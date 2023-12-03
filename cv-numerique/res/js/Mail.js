@@ -60,5 +60,5 @@ function validateEmail(email) {
   setTimeout(function() {
     messageStatus.style.display = 'none';
     section_form.style.display = 'block';
-  }, 5000); // Masque le message après 5 secondes (5000 millisecondes)
+  }, 10000); // Masque le message après 10 secondes (10000 millisecondes)
 }
