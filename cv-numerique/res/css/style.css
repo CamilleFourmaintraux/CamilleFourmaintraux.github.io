@@ -29,10 +29,12 @@ nav {
       right: 0;
     }
 
+
  nav a {
     text-decoration: none;
     color: #fff;
     margin: 0 10px;
+    white-space: nowrap;
 }
 
 nav a:hover{
