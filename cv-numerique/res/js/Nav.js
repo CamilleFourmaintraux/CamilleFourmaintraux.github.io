@@ -1,6 +1,6 @@
 window.addEventListener('scroll', function() {
     var navbar = document.getElementById('navbar');
-    var threshold = 100; // Point où le menu devient fixe (en pixels)
+    var threshold = 220; // Point où le menu devient fixe (en pixels)
     var offset = navbar.offsetHeight; // Hauteur de la barre de navigation
 
     if (window.pageYOffset > threshold) {

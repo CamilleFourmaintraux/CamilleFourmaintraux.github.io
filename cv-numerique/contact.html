@@ -49,6 +49,31 @@
 </div>
 
 <div class="container">
+<h2>M'envoyer un message</h2>
+<section id="section_form">
+	<form id="contact-form">	 
+	<label for="name">Nom*</label>
+	<input id="name" name="name" type="text" placeholder="Votre nom..." required>
+	<label for="forename">Prénom</label>
+	<input id="forename" name="forename" type="text" placeholder="Votre prénom...">
+	<label for="mail">E-Mail*</label>
+	<input id="mail" name="mail" type="mail" placeholder="Votre mail..." required>
+	<label for="subject">Intitulé</label>
+	<input id="subject" name="subject" type="text" placeholder="Intitulé du message...">
+	<label for="message">Message*</label>
+	<textarea id="message" name="message" placeholder="Votre message..." required></textarea>
+	<button type="submit"><i class="fas fa-paper-plane"></i> Envoyer</button>
+</section>
+<section>
+	<div id="message-status" style="display: none;"></div>
+</section>
+  	<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+	<script src="./res/js/Mail.js"></script>
+</div>
+
+
+
+<div class="container">
 <h2>Merci</h2>
 	<p>Merci d'avoir pris le temps de vous intéresser à mon profil !</p>
 </div>
