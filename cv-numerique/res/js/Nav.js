@@ -33,7 +33,7 @@ window.addEventListener('scroll', function() {
       var targetId = this.getAttribute('href').substring(1); // Récupère l'ID de la cible
       var targetElement = document.getElementById(targetId); // Élément cible
       var targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset; // Position de l'élément par rapport au haut de la page
-      var offset = 80; // Ajustement de l'offset
+      var offset = 160; // Ajustement de l'offset
       var newPosition = targetPosition - offset; // Nouvelle position ajustée
 
       window.scrollTo({
