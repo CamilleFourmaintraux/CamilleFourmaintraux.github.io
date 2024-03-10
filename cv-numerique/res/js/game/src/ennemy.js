@@ -10,14 +10,12 @@ export class Ennemy extends Entity {
 	static height = 40;
 	static types = ['red', 'purple', 'orange', 'darkred'];
 	static bulletSpeed = Shot.defaultSpeed;
-	static soundShotPath = '../sounds/shotEnemy.mp3';
-
+	
 	//Paramétrage technique
 	static spawnOffset = 45; // pour éviter que les ennemis spawnent aux bords de l'écran et empietent sur le HUD.
 
 	constructor(posX, posY) {
 		super(posX, posY, Ennemy.width, Ennemy.height);
-		this.image = new Image();
 		this.index = -1;
 		this.isDead = false;
 		this.type = 'red';
@@ -27,7 +25,6 @@ export class Ennemy extends Entity {
 		this.shots = [];
 		this.shootTimer=100+60/WavesManager.difficulty | 0;
 		this.timeBeforeNextShoot = this.shootTimer;
-		this.soundShot = new Audio(Ennemy.soundShotPath);
 	}
 
 	//Afficher les tirs causés par un ennemi.
@@ -55,14 +52,7 @@ export class Ennemy extends Entity {
 			super.render(context);
 			context.beginPath();
 			context.fillStyle = this.type;
-			//context.fillRect(this.posX, this.posY, this.width, this.width);
-			context.drawImage(
-				this.image,
-				this.posX,
-				this.posY,
-				this.width,
-				this.height
-			);
+			context.fillRect(this.posX, this.posY, this.width, this.width);
 		}
 	}
 
@@ -153,7 +143,6 @@ export class Ennemy extends Entity {
 		this.height = Ennemy.height;
 		this.width = Ennemy.width;
 		this.lifes = 1;
-		this.image.src = '../images/ennemy.png';
 		switch (this.type) {
 			case 'red':
 				this.speedX = -getRandomIntWithMin(1, 2);
@@ -176,7 +165,6 @@ export class Ennemy extends Entity {
 				this.lifes = 3;
 				this.height = (Ennemy.height * (this.lifes / 1.3)) | 0;
 				this.width = (Ennemy.width * (this.lifes / 1.3)) | 0;
-				this.image.src = '../images/asteroid.png';
 				this.speedX = -1;
 				this.speedY = 0;
 				this.value=15;
@@ -185,7 +173,6 @@ export class Ennemy extends Entity {
 	}
 
 	shoot() {
-		this.soundShot.play();
 		this.shots.push(
 			new Shot(
 				this.posX,

@@ -16,26 +16,6 @@ const canvas = document.querySelector('.gameCanvas');
 const context = canvas.getContext('2d');
 export default canvas;
 
-const assets = [
-	'./game/images/btn1.png',
-	'./game/images/btn2.png',
-	'./game/images/ice.svg',
-	'./game/images/shield.svg',
-	'./game/images/shield2.svg',
-	'./game/images/monster.png',
-	'./game/images/spaceship.png',
-	'./game/images/asteroid.png',
-	'./game/images/bonusArrows.svg',
-	'./game/images/bonusLife.svg',
-	'./game/images/bonusShield.svg',
-];
-const sounds = [
-	'./game/sounds/shot.mp3',
-	'./game/sounds/shotEnemy.mp3',
-	'./game/sounds/dead.mp3',
-];
-
-
 //met à jour dynamiquement la taille du canvas
 const canvasResizeObserver = new ResizeObserver(() => resampleCanvas());
 canvasResizeObserver.observe(canvas);
@@ -49,11 +29,6 @@ function resampleCanvas() {
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-
-//Chargement des assets
-preloadAssets(assets, sounds, () => {
-	console.log('Assets loaded');
-});
 
 //création du joueur
 //Player.players.push(new Player(100, canvas.height / 2));

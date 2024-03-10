@@ -14,21 +14,6 @@ export class Power extends Entity {
 		this.speedY = 0;
 		this.active = true;
         this.type=type;
-		this.image = new Image();
-        switch(this.type){
-            case('invincible'):
-                this.image.src = '../images/bonusShield.svg';
-            break;
-            case('life'):
-                this.image.src = '../images/bonusLife.svg';
-            break;
-            case('ScoreMultiplierBonus'):
-                this.image.src = '../images/bonusArrows.svg';
-            break;
-            case('ice'):
-                this.image.src = '../images/ice.svg';
-            break;
-        }
 	}
 	
 	render() {
@@ -39,13 +24,6 @@ export class Power extends Entity {
             context.strokeStyle = 'purple';
             context.arc(this.posX+Power.radius/2, this.posY+Power.radius/2, Power.radius/2, 0, 2 * Math.PI);
             context.stroke();
-            context.drawImage(
-				this.image,
-				this.posX,
-				this.posY,
-				this.width,
-				this.height
-			);
         }
 	}
     

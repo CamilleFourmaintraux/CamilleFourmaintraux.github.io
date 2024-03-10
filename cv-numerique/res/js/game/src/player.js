@@ -9,10 +9,6 @@ export class Player extends Entity {
 	static width = 50;
 	static height = 50;
 
-	//Sound
-	static soundDeadPath = '../sounds/dead.mp3';
-	static soundShotPath = '../sounds/shot.mp3';
-
 	static defaultNumberOfLife = 4;
 	static playerSpeed = 3;
 	static bulletSpeed = Shot.defaultSpeed;
@@ -56,16 +52,6 @@ export class Player extends Entity {
 		//Graphic
 		this.invincibleAnimation = (20 / this.animationSpeed) | 0;
 		this.animationSpeed = 0.6; //Vitesse 0,25x 0,5x 0,75x 1x 2x 3x etc (du plus lent au plus rapide) Max 10 car après c'est tellemnt rapide c'est imperceptible.
-		this.image = new Image();
-		this.image.src = '../images/spaceship.png';
-		this.imageShield = new Image();
-		this.imageShield.src = '../images/shield.svg';
-		this.imageShield2 = new Image();
-		this.imageShield2.src = '../images/shield2.svg';
-
-		//Sounds
-		this.soundShot = new Audio(Player.soundShotPath);
-		this.soundDead = new Audio(Player.soundDeadPath);
 
 		//Movement
 		this.accelerationX = 0;
@@ -74,7 +60,6 @@ export class Player extends Entity {
 
 	//Tue le joueur, initialise le timer avant sa réapparition
 	die() {
-		this.soundDead.play();
 		this.alive = false;
 		this.maxTimeBeforeRespawn =
 			(this.maxTimeBeforeRespawn *
@@ -131,34 +116,19 @@ export class Player extends Entity {
 		this.renderShots(context);
 		if (this.alive) {
 			super.render(context);
-			context.drawImage(
-				this.image,
-				this.posX,
-				this.posY,
-				this.width,
-				this.height
-			);
+			context.fillStyle = 'blue';
+			context.fillRect(this.posX+3, this.posY+3, this.width-3, this.width-3);
 			if (this.invincible) {
 				this.invincibleAnimation--;
 				if ((this.invincibleAnimation < 10 / this.animationSpeed) | 0) {
-					context.drawImage(
-						this.imageShield,
-						this.posX-(this.width*1.5)/5 | 0,
-						this.posY-(this.height*1.5)/5 | 0,
-						this.width*1.5 | 0,
-						this.height*1.5 | 0
-					);
+					context.strokeStyle = 'purple';
+					context.rect(this.posX+2, this.posY+2, this.width-2, this.width-2);
 					if (this.invincibleAnimation < 0) {
 						this.invincibleAnimation = (20 / this.animationSpeed) | 0;
 					}
 				}else{
-					context.drawImage(
-						this.imageShield2,
-						this.posX-(this.width*1.5)/5 | 0,
-						this.posY-(this.height*1.5)/5 | 0,
-						this.width*1.5 | 0,
-						this.height*1.5 | 0
-					);
+					context.strokeStyle = 'pink';
+					context.rect(this.posX+2, this.posY+2, this.width-2, this.width-2);
 				}
 				
 			}
@@ -266,8 +236,7 @@ export class Player extends Entity {
 	}
 
 	//Fais tirer au joueur un projectile.
-	shoot() { 
-		this.soundShot.cloneNode(true).play();
+	shoot() {
 		this.shots.push(
 			new Shot(
 				this.posX + this.width,
