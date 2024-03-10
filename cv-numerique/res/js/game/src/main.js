@@ -35,6 +35,7 @@ const sounds = [
 	'./game/sounds/dead.mp3',
 ];
 
+
 //met à jour dynamiquement la taille du canvas
 const canvasResizeObserver = new ResizeObserver(() => resampleCanvas());
 canvasResizeObserver.observe(canvas);
