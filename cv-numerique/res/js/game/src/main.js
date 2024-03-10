@@ -135,7 +135,7 @@ document.querySelector('#checkmouse').addEventListener('click', () => {
 	} else {
 		keysPressed.MouseMode = true;
 	}
-});
+}); 
 
 function getDifficultyValue() {
 	let select = document.getElementById('difficulty');
