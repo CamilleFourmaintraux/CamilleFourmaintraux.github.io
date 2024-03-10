@@ -17,22 +17,22 @@ const context = canvas.getContext('2d');
 export default canvas;
 
 const assets = [
-	'./images/btn1.png',
-	'./images/btn2.png',
-	'./images/ice.svg',
-	'./images/shield.svg',
-	'./images/shield2.svg',
-	'./images/monster.png',
-	'./images/spaceship.png',
-	'./images/asteroid.png',
-	'./images/bonusArrows.svg',
-	'./images/bonusLife.svg',
-	'./images/bonusShield.svg',
+	'./game/images/btn1.png',
+	'./game/images/btn2.png',
+	'./game/images/ice.svg',
+	'./game/images/shield.svg',
+	'./game/images/shield2.svg',
+	'./game/images/monster.png',
+	'./game/images/spaceship.png',
+	'./game/images/asteroid.png',
+	'./game/images/bonusArrows.svg',
+	'./game/images/bonusLife.svg',
+	'./game/images/bonusShield.svg',
 ];
 const sounds = [
-	'./sounds/shot.mp3',
-	'./sounds/shotEnemy.mp3',
-	'./sounds/dead.mp3',
+	'./game/sounds/shot.mp3',
+	'./game/sounds/shotEnemy.mp3',
+	'./game/sounds/dead.mp3',
 ];
 
 //met à jour dynamiquement la taille du canvas
