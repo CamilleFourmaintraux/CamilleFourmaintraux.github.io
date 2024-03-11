@@ -3,7 +3,6 @@ import { Player } from './player.js';
 import HomePage from './homePage.js';
 import GameOver from './gameOver.js';
 import ScoreBoard from './scoreBoard.js';
-import preloadAssets from './preLoadAsset.js';
 import keysPressed from './keysListener.js';
 import { Entity } from './entity.js';
 import { Particules } from './particules.js';
