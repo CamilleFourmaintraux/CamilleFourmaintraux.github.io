@@ -270,10 +270,6 @@ export class Player extends Entity {
 		);
 	}
 
-	canvas.addEventListener("touchstart",function(){
-		this.shootWithRecharge();
-	});
-
 	//Ajoute des points au joueur pour chaque kill d'ennemis
 	addScorePointOnEnemyKill(ennemy) {
 		this.score +=
