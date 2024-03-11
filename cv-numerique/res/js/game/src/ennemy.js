@@ -3,6 +3,8 @@ import { Shot } from './shot.js';
 import { getRandomInt, getRandomIntWithMin } from './utils.js';
 import canvas from './main.js';
 import { WavesManager } from './wavesManager.js';
+import { imageEnnemy, imageAsteroid } from './imageLoader.js';
+
 
 export class Ennemy extends Entity {
 	//Les variables de gameplay
@@ -51,8 +53,26 @@ export class Ennemy extends Entity {
 		if (!this.isDead) {
 			super.render(context);
 			context.beginPath();
-			context.fillStyle = this.type;
-			context.fillRect(this.posX, this.posY, this.width, this.width);
+			//context.fillStyle = this.type;
+			//context.fillRect(this.posX, this.posY, this.width, this.width);
+			
+			if(this.type == 'darkred'){
+				context.drawImage(
+				imageEnnemy,
+				this.posX,
+				this.posY,
+				this.width,
+				this.height
+				);
+			}else{
+				context.drawImage(
+					imageAsteroid,
+					this.posX,
+					this.posY,
+					this.width,
+					this.height
+					);
+			}
 		}
 	}
 

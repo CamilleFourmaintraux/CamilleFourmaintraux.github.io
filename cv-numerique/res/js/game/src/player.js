@@ -3,7 +3,7 @@ import { Shot } from './shot.js';
 import canvas from './main.js';
 import { WavesManager } from './wavesManager.js';
 import { getRandomInt } from './utils.js';
-import { imageSpaceShip } from './imageLoader.js';
+import { imageShield1, imageShield2, imageSpaceShip } from './imageLoader.js';
 
 export class Player extends Entity {
 	//Les variables de gameplay
@@ -129,14 +129,28 @@ export class Player extends Entity {
 			if (this.invincible) {
 				this.invincibleAnimation--;
 				if ((this.invincibleAnimation < 10 / this.animationSpeed) | 0) {
-					context.strokeStyle = 'purple';
-					context.rect(this.posX+2, this.posY+2, this.width-2, this.width-2);
+					//context.strokeStyle = 'purple';
+					//context.rect(this.posX+2, this.posY+2, this.width-2, this.width-2);
+					context.drawImage(
+						imageShield1,
+						this.posX,
+						this.posY,
+						this.width,
+						this.height
+					);
 					if (this.invincibleAnimation < 0) {
 						this.invincibleAnimation = (20 / this.animationSpeed) | 0;
 					}
 				}else{
-					context.strokeStyle = 'pink';
-					context.rect(this.posX+2, this.posY+2, this.width-2, this.width-2);
+					//context.strokeStyle = 'pink';
+					//context.rect(this.posX+2, this.posY+2, this.width-2, this.width-2);
+					context.drawImage(
+						imageShield2,
+						this.posX,
+						this.posY,
+						this.width,
+						this.height
+					);
 				}
 				
 			}

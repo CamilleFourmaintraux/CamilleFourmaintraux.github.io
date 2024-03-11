@@ -3,6 +3,10 @@ import { getRandomInt } from './utils.js';
 import { Player } from './player.js';
 import canvas from './main.js';
 import { WavesManager } from './wavesManager.js';
+import { imageBonusArrows, imageBonusLife, imageBonusShield, imageIce} from './imageLoader.js';
+
+
+
 export class Power extends Entity {
 	static radius = 30;
     static speed = 6;
@@ -20,10 +24,48 @@ export class Power extends Entity {
         if(this.active){
             const context = canvas.getContext('2d');
             context.beginPath();
-            context.lineWidth = 3;
+            /*context.lineWidth = 3;
             context.strokeStyle = 'purple';
             context.arc(this.posX+Power.radius/2, this.posY+Power.radius/2, Power.radius/2, 0, 2 * Math.PI);
-            context.stroke();
+            context.stroke();*/
+            switch(this.type){
+                case('invincible'):
+                    context.drawImage(
+                        imageBonusShield,
+                        this.posX,
+                        this.posY,
+                        this.width,
+                        this.height
+                    );
+                break;
+                case('life'):
+                    context.drawImage(
+                        imageBonusLife,
+                        this.posX,
+                        this.posY,
+                        this.width,
+                        this.height
+                    );
+                break;
+                case('ScoreMultiplierBonus'):
+                    context.drawImage(
+                        imageBonusArrows,
+                        this.posX,
+                        this.posY,
+                        this.width,
+                        this.height
+                    );
+                break;
+                case('ice'):
+                        context.drawImage(
+                        imageIce,
+                        this.posX,
+                        this.posY,
+                        this.width,
+                        this.height
+                    );
+                break;
+            }
         }
 	}
     
