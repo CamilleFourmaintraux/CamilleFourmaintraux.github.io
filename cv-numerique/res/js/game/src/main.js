@@ -2,6 +2,9 @@
 import { Player } from './player.js';
 import HomePage from './homePage.js';
 import GameOver from './gameOver.js';
+
+//Vide
+
 import ScoreBoard from './scoreBoard.js';
 import keysPressed from './keysListener.js';
 import { Entity } from './entity.js';
