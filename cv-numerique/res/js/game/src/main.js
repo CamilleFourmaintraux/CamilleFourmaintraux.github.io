@@ -52,7 +52,7 @@ const gameOver = new GameOver();
 const scoreBoard = new ScoreBoard();
 Particules.init();
 
-document
+/*document
 	.querySelector('.scoreboardButton')
 	.addEventListener('click', async () => {
 		gameOver.hide();
@@ -60,7 +60,7 @@ document
 		const data = await scoreBoard.getData();
 		scoreBoard.updateScore(data);
 	});
-
+*/
 const wavesManager = new WavesManager();
 
 //Gêre l'affichage du jeu
