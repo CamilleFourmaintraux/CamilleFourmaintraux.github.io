@@ -10,6 +10,7 @@ import { Power } from './power.js';
 import { WavesManager } from './wavesManager.js';
 import { getRandomInt } from './utils.js';
 
+
 //Canvas
 const canvas = document.querySelector('.gameCanvas');
 const context = canvas.getContext('2d');
