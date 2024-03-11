@@ -28,6 +28,7 @@ export class Power extends Entity {
             context.strokeStyle = 'purple';
             context.arc(this.posX+Power.radius/2, this.posY+Power.radius/2, Power.radius/2, 0, 2 * Math.PI);
             context.stroke();
+            /*
             switch(this.type){
                 case('invincible'):
                     context.drawImage(
@@ -66,6 +67,7 @@ export class Power extends Entity {
                     );
                 break;
             }
+            */
         }
 	}
     

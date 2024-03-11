@@ -55,7 +55,7 @@ export class Ennemy extends Entity {
 			context.beginPath();
 			context.fillStyle = this.type;
 			context.fillRect(this.posX, this.posY, this.width, this.width);
-			if(this.type == 'darkred'){
+			/*if(this.type == 'darkred'){
 				context.drawImage(
 					imageAsteroid,
 					this.posX,
@@ -71,7 +71,7 @@ export class Ennemy extends Entity {
 					this.width,
 					this.height
 				);
-			}
+			}*/
 		}
 	}
 
