@@ -269,6 +269,7 @@ export class Player extends Entity {
 			)
 		);
 	}
+	
 
 	//Ajoute des points au joueur pour chaque kill d'ennemis
 	addScorePointOnEnemyKill(ennemy) {
