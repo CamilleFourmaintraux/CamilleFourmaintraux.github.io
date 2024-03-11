@@ -37,6 +37,11 @@ canvas.height = window.innerHeight;
 //Player.players.push(new Player(100, canvas.height / 2));
 const player = new Player(100, window.innerHeight / 2);
 
+canvas.addEventListener("touchstart",function(e){
+	e.preventDefault();
+	player.shootWithRecharge();
+});
+
 //Impossible de mettre ces fonctions dans KeysListener
 canvas.addEventListener('mousedown', function () {
 	keysPressed.MouseDown = true;
