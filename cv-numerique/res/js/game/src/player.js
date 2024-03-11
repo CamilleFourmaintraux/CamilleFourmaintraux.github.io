@@ -129,8 +129,8 @@ export class Player extends Entity {
 			if (this.invincible) {
 				this.invincibleAnimation--;
 				if ((this.invincibleAnimation < 10 / this.animationSpeed) | 0) {
-					//context.strokeStyle = 'purple';
-					//context.rect(this.posX+2, this.posY+2, this.width-2, this.width-2);
+					context.strokeStyle = 'purple';
+					context.rect(this.posX+2, this.posY+2, this.width-2, this.width-2);
 					context.drawImage(
 						imageShield1,
 						this.posX,
@@ -142,7 +142,7 @@ export class Player extends Entity {
 						this.invincibleAnimation = (20 / this.animationSpeed) | 0;
 					}
 				}else{
-					//context.strokeStyle = 'pink';
+					context.strokeStyle = 'pink';
 					//context.rect(this.posX+2, this.posY+2, this.width-2, this.width-2);
 					context.drawImage(
 						imageShield2,

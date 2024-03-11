@@ -53,9 +53,8 @@ export class Ennemy extends Entity {
 		if (!this.isDead) {
 			super.render(context);
 			context.beginPath();
-			//context.fillStyle = this.type;
-			//context.fillRect(this.posX, this.posY, this.width, this.width);
-			
+			context.fillStyle = this.type;
+			context.fillRect(this.posX, this.posY, this.width, this.width);
 			if(this.type == 'darkred'){
 				context.drawImage(
 					imageAsteroid,

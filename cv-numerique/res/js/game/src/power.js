@@ -24,10 +24,10 @@ export class Power extends Entity {
         if(this.active){
             const context = canvas.getContext('2d');
             context.beginPath();
-            /*context.lineWidth = 3;
+            context.lineWidth = 3;
             context.strokeStyle = 'purple';
             context.arc(this.posX+Power.radius/2, this.posY+Power.radius/2, Power.radius/2, 0, 2 * Math.PI);
-            context.stroke();*/
+            context.stroke();
             switch(this.type){
                 case('invincible'):
                     context.drawImage(
