@@ -3,6 +3,7 @@ import { Shot } from './shot.js';
 import canvas from './main.js';
 import { WavesManager } from './wavesManager.js';
 import { getRandomInt } from './utils.js';
+import { imageSpaceShip } from './imageLoader.js';
 
 export class Player extends Entity {
 	//Les variables de gameplay
@@ -116,8 +117,15 @@ export class Player extends Entity {
 		this.renderShots(context);
 		if (this.alive) {
 			super.render(context);
-			context.fillStyle = 'blue';
-			context.fillRect(this.posX+3, this.posY+3, this.width-3, this.width-3);
+			//context.fillStyle = 'blue';
+			//context.fillRect(this.posX+3, this.posY+3, this.width-3, this.width-3);
+			context.drawImage(
+				this.imageSpaceShip,
+				this.posX,
+				this.posY,
+				this.width,
+				this.height
+			);
 			if (this.invincible) {
 				this.invincibleAnimation--;
 				if ((this.invincibleAnimation < 10 / this.animationSpeed) | 0) {
