@@ -120,7 +120,7 @@ export class Player extends Entity {
 			//context.fillStyle = 'blue';
 			//context.fillRect(this.posX+3, this.posY+3, this.width-3, this.width-3);
 			context.drawImage(
-				this.imageSpaceShip,
+				imageSpaceShip,
 				this.posX,
 				this.posY,
 				this.width,
