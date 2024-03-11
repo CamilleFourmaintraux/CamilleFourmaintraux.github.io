@@ -8,10 +8,10 @@ const imageAsteroid = new Image();
 imageEnnemy.src='./images/asteroid.png';
 
 const imageShield1 = new Image();
-imageEnnemy.src='./images/shield.png';
+imageEnnemy.src='./images/shield.svg';
 
 const imageShield2 = new Image();
-imageEnnemy.src='./images/shield2.png';
+imageEnnemy.src='./images/shield2.svg';
 
 const imageBonusLife = new Image();
 imageEnnemy.src='./images/bonusLife.svg';

@@ -58,20 +58,20 @@ export class Ennemy extends Entity {
 			
 			if(this.type == 'darkred'){
 				context.drawImage(
-				imageEnnemy,
-				this.posX,
-				this.posY,
-				this.width,
-				this.height
-				);
-			}else{
-				context.drawImage(
 					imageAsteroid,
 					this.posX,
 					this.posY,
 					this.width,
 					this.height
-					);
+				);
+			}else{
+				context.drawImage(
+					imageEnnemy,
+					this.posX,
+					this.posY,
+					this.width,
+					this.height
+				);
 			}
 		}
 	}
