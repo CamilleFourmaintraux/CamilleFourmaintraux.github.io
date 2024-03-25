@@ -23,7 +23,7 @@ export class Player extends Entity {
 	//Movement
 	static accelerationMultiplier = 1.2;
 	static inertiaMultiplier = 1.5; //Lié à l'accéleration : si inertia==accelration alors c'est comme si on désactivait l'accélération et qu'on revenait au déplacement d'avant
-	static maxAcceleration = 16;
+	static maxAcceleration = 12;
 
 	//declarations
 	static teamLifes; //vies de départ : default 4-WavesManager.difficulty dans main.js
@@ -444,7 +444,7 @@ export class Player extends Entity {
 	gyroscopeMovement(keysPressed) {
   if(keysPressed.beta != null && keysPressed.gamma != null){
 		  this.accelerationY=keysPressed.beta;
-    this.accelerationX=keysPressed.gamma+15;
+    this.accelerationX=keysPressed.gamma+10;
   }
 	}
 
