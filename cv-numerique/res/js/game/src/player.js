@@ -159,7 +159,6 @@ export class Player extends Entity {
 			context.font = '16px Minecraft Regular';
 			context.imageSmoothingEnabled = false;
 			context.fillStyle = 'white';
-			//VIDE
 			context.fillText(this.pseudo, this.posX, this.posY - 10);
 		}
 	}
