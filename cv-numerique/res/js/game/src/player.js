@@ -340,7 +340,8 @@ export class Player extends Entity {
 
 	acceleration(keysPressed) {
 		if (keysPressed.MouseMode) {
-			this.mouseMovement();
+   this.gyroscopeMovement(keysPressed);
+			/*this.mouseMovement();*/
 		} else {
 			this.keyBoardMovement(keysPressed);
 		}
