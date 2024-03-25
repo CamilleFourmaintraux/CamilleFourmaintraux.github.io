@@ -86,7 +86,7 @@ function render() {
 	Power.renderAll();
 	wavesManager.wavesRender();
 	context.lineWidth = 1;
-	context.font = '16px Minecraft Regular';
+	context.font = '32px Minecraft Regular';
 	context.imageSmoothingEnabled = false;
 	context.fillStyle = 'white';
 	context.fillText("alpha : "+Math.round(keysPressed.alpha*10)/10, 10, canvas.height-100);
