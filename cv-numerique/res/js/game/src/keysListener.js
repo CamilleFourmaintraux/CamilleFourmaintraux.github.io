@@ -2,6 +2,7 @@ import { Entity } from "./entity.js";
 import {isInGame} from './main.js';
 
 const keysPressed = {
+ onPhone:false,
 	MouseMode:false,
 	ArrowUp: false,
 	ArrowDown: false,
