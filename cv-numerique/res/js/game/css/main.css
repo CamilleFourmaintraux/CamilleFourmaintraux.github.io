@@ -200,10 +200,19 @@ div{
     border-radius: 3px;
 }
 
-
-.switch {
+@media screen and (min-width: 400px){
+ .switch {
     margin: 10px;
+    display: block;
+ }
 }
+
+@media screen and (max-width: 400px){
+ .switch {
+    display: none;
+ }
+}
+
 
 /*  
   .switch input {
