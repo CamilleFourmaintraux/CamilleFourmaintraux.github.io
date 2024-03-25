@@ -23,7 +23,7 @@ export class Player extends Entity {
 	//Movement
 	static accelerationMultiplier = 1.2;
 	static inertiaMultiplier = 1.5; //Lié à l'accéleration : si inertia==accelration alors c'est comme si on désactivait l'accélération et qu'on revenait au déplacement d'avant
-	static maxAcceleration = 8;
+	static maxAcceleration = 16;
 
 	//declarations
 	static teamLifes; //vies de départ : default 4-WavesManager.difficulty dans main.js
