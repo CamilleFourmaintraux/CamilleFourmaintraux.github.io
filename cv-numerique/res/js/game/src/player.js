@@ -1,4 +1,4 @@
-6import { Entity } from './entity.js';
+import { Entity } from './entity.js';
 import { Shot } from './shot.js';
 import canvas from './main.js';
 import { WavesManager } from './wavesManager.js';
