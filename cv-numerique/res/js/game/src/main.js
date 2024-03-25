@@ -14,6 +14,14 @@ import { WavesManager } from './wavesManager.js';
 import { getRandomInt } from './utils.js';
 
 
+if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+  // true for mobile device
+  alert("mobile device");
+}else{
+  // false for not mobile device
+  alert("not mobile device");
+}
+
 //Canvas
 const canvas = document.querySelector('.gameCanvas');
 const context = canvas.getContext('2d');
