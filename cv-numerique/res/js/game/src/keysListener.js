@@ -9,6 +9,9 @@ const keysPressed = {
 	ArrowRight: false,
 	Space: false,
 	MouseDown:false,
+	alpha: 0,
+	beta: 0,
+	gamma: 0,
 };
 
 window.addEventListener('keydown', event => {

@@ -47,10 +47,9 @@ canvas.addEventListener("touchstart",function(e){
 });
 window.addEventListener('deviceorientation', handleOrientation);
 function handleOrientation(event) {
-	const alpha = event.alpha;
-	const beta = event.beta;
-	const gamma = event.gamma;
-	
+	keysPressed.alpha = event.alpha;
+	keysPressed.beta = event.beta;
+	keysPressed.gamma = event.gamma;
 }
 
 //Impossible de mettre ces fonctions dans KeysListener
@@ -86,6 +85,13 @@ function render() {
 	player.render();
 	Power.renderAll();
 	wavesManager.wavesRender();
+	context.lineWidth = 1;
+	context.font = '16px Minecraft Regular';
+	context.imageSmoothingEnabled = false;
+	context.fillStyle = 'white';
+	context.fillText("alpha : "+keysPressed.alpha, canvas.height-100, 10);
+	context.fillText("beta : "+keysPressed.beta, canvas.height-80, 10);
+	context.fillText("gamma : "+keysPressed.gamma, canvas.height-60, 10);
 	requestAnimationFrame(render);
 }
 
