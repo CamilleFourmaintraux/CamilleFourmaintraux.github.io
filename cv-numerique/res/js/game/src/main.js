@@ -14,13 +14,18 @@ import { WavesManager } from './wavesManager.js';
 import { getRandomInt } from './utils.js';
 
 
+
+
+const screen = window.screen;
+
 if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
   // true for mobile device
-  alert("mobile device");
+  keysPressed.onPhone=true;
+  screen.lock("landscape")
 }else{
   // false for not mobile device
-  alert("not mobile device");
-}
+  keysPressed.onPhone=false;
+ }
 
 //Canvas
 const canvas = document.querySelector('.gameCanvas');
