@@ -21,7 +21,7 @@ const screen = window.screen;
 if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
   // true for mobile device
   keysPressed.onPhone=true;
-  screen.lock("landscape")
+  screen.orientation.lock("landscape")
 }else{
   // false for not mobile device
   keysPressed.onPhone=false;
