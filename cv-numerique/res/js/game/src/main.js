@@ -39,12 +39,19 @@ const player = new Player(100, window.innerHeight / 2);
 
 canvas.addEventListener("touchstart",function(e){
 	e.preventDefault();
-	player.shootWithRecharge();
-	const touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
-    let x = touch.pageX;
-    let y = touch.pageY;
-	player.tactileMovement(x,y);
+	if(keys.keysPressed.MouseDown){
+		keys.keysPressed.MouseDown=false;
+	}else{
+		keys.keysPressed.MouseDown=true;
+	}
 });
+window.addEventListener('deviceorientation', handleOrientation);
+function handleOrientation(event) {
+	const alpha = event.alpha;
+	const beta = event.beta;
+	const gamma = event.gamma;
+	
+}
 
 //Impossible de mettre ces fonctions dans KeysListener
 canvas.addEventListener('mousedown', function () {
