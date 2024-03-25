@@ -85,6 +85,13 @@ function render() {
 	player.render();
 	Power.renderAll();
 	wavesManager.wavesRender();
+	context.lineWidth = 1;
+	context.font = '16px Minecraft Regular';
+	context.imageSmoothingEnabled = false;
+	context.fillStyle = 'white';
+	context.fillText("alpha : "+keysPressed.alpha, 10, canvas.height-100);
+	context.fillText("beta : "+keysPressed.beta, 10, canvas.height-80);
+	context.fillText("gamma : "+keysPressed.gamma, 10, canvas.height-60);
 	requestAnimationFrame(render);
 }
 
