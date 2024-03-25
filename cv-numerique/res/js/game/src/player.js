@@ -1,4 +1,4 @@
-import { Entity } from './entity.js';
+6import { Entity } from './entity.js';
 import { Shot } from './shot.js';
 import canvas from './main.js';
 import { WavesManager } from './wavesManager.js';
@@ -441,8 +441,10 @@ export class Player extends Entity {
 	}
 
 	gyroscopeMovement(keysPressed) {
-		this.accelerationY=keysPressed.beta;
-  this.accelerationX=keysPressed.gamma;
+  if(keysPressed.beta != null && keysPressed.gamma != null){
+		  this.accelerationY=keysPressed.beta;
+    this.accelerationX=keysPressed.gamma;
+  }
 	}
 
 	
