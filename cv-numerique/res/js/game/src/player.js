@@ -440,42 +440,9 @@ export class Player extends Entity {
 		}
 	}
 
-	tactileMovement(newX, newY) {
-		const vaguely = 10;
-		const distanceX = Math.round(Math.abs(newX - this.posX)) / 2000;
-		const distanceY = Math.round(Math.abs(newY - this.posY)) / 2000;
-
-		if (
-			!(
-				this.posX + this.width / 2 > newX - vaguely &&
-				this.posX + this.width / 2 < newX + vaguely
-			)
-		) {
-			if (this.posX + this.width / 2 > newX) {
-				this.speedX = -Player.playerSpeed;
-				this.accelerationX = this.accelerateLeft(this.accelerationX, distanceX);
-			} else {
-				this.speedX = Player.playerSpeed;
-				this.accelerationX = this.accelerateRight(
-					this.accelerationX,
-					distanceX
-				);
-			}
-		}
-		if (
-			!(
-				this.posY + this.height / 2 < newY + vaguely &&
-				this.posY + this.height / 2 > newY- vaguely
-			)
-		) {
-			if (this.posY + this.height / 2 > newY) {
-				this.speedY = -Player.playerSpeed;
-				this.accelerationY = this.accelerateUp(this.accelerationY, distanceY);
-			} else {
-				this.speedY = Player.playerSpeed;
-				this.accelerationY = this.accelerateDown(this.accelerationY, distanceY);
-			}
-		}
+	gyroscopeMovement(keysPressed) {
+		this.accelerationY=keysPressed.beta;
+  this.accelerationX=keysPressed.gamma;
 	}
 
 	
