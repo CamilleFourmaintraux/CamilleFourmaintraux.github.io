@@ -39,10 +39,10 @@ const player = new Player(100, window.innerHeight / 2);
 
 canvas.addEventListener("touchstart",function(e){
 	e.preventDefault();
-	if(keys.keysPressed.MouseDown){
-		keys.keysPressed.MouseDown=false;
+	if(keysPressed.MouseDown){
+		keysPressed.MouseDown=false;
 	}else{
-		keys.keysPressed.MouseDown=true;
+		keysPressed.MouseDown=true;
 	}
 });
 window.addEventListener('deviceorientation', handleOrientation);
