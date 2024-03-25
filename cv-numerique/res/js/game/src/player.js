@@ -444,7 +444,7 @@ export class Player extends Entity {
 	gyroscopeMovement(keysPressed) {
   if(keysPressed.beta != null && keysPressed.gamma != null){
 		  this.accelerationY=keysPressed.beta;
-    this.accelerationX=keysPressed.gamma+10;
+    this.accelerationX=keysPressed.gamma/2;
   }
 	}
 
