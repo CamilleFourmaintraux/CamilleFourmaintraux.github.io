@@ -89,9 +89,9 @@ function render() {
 	context.font = '16px Minecraft Regular';
 	context.imageSmoothingEnabled = false;
 	context.fillStyle = 'white';
-	context.fillText("alpha : "+keysPressed.alpha | 0, 10, canvas.height-100);
-	context.fillText("beta : "+keysPressed.beta | 0, 10, canvas.height-80);
-	context.fillText("gamma : "+keysPressed.gamma | 0, 10, canvas.height-60);
+	context.fillText("alpha : "+Math.round(keysPressed.alpha*10)/10, 10, canvas.height-100);
+	context.fillText("beta : "+Math.round(keysPressed.beta*10)/10, 10, canvas.height-80);
+	context.fillText("gamma : "+Math.round(keysPressed.gamma*10)/10, 10, canvas.height-60);
 	requestAnimationFrame(render);
 }
 
