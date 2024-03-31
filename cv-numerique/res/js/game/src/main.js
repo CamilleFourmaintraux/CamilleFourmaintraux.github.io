@@ -21,7 +21,7 @@ import { imageSpaceShip,
     imageBonusShield,
     imageBonusLife,
     imageBonusArrows,
-    imageIce } from './imageLoader';
+    imageIce } from './imageLoader.js';
 
 
 const screen = window.screen;
