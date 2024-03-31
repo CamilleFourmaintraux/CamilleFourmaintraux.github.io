@@ -13,7 +13,15 @@ import { Power } from './power.js';
 import { WavesManager } from './wavesManager.js';
 import { getRandomInt } from './utils.js';
 
-
+import { imageSpaceShip,
+    imageEnnemy,
+    imageAsteroid,
+    imageShield1,
+    imageShield2,
+    imageBonusShield,
+    imageBonusLife,
+    imageBonusArrows,
+    imageIce } from './imageLoader';
 
 
 const screen = window.screen;
