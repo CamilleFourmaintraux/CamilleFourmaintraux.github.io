@@ -1,15 +1,15 @@
 window.addEventListener('scroll', function() {
-    var navbar = document.getElementById('navbar');
-    var threshold = 220; // Point où le menu devient fixe (en pixels)
-    var offset = navbar.offsetHeight; // Hauteur de la barre de navigation
+    const navbar = document.getElementById('navbar');
+    const threshold = 220; // Point où le menu devient fixe (en pixels)
+    //const offset = navbar.offsetHeight; // Hauteur de la barre de navigation
 
-    if (window.pageYOffset > threshold) {
+    if (window.scrollY > threshold) {
       navbar.classList.add('fixed');
     } else {
       navbar.classList.remove('fixed');
     }
 
-    var button = document.getElementById("back-to-top");
+    const button = document.getElementById("back-to-top");
     if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
       button.style.display = "block";
     } else {
@@ -17,28 +17,28 @@ window.addEventListener('scroll', function() {
     }
   });
 
-  // Fonction pour faire défiler vers le haut de la page
-  function topFunction() {
+  function smoothScrollTo(newPosition){
     window.scrollTo({
-      top: 0,
-      behavior: 'smooth' // Ajoute un défilement fluide
+      top: newPosition,
+      behavior: 'smooth'
     });
   }
 
+  // Fonction pour faire défiler vers le haut de la page
+  function scrollToTop() {
+    smoothScrollTo(0);
+  }
+
   // Fonction pour ajuster la position lors du clic sur un lien du menu
-  var links = document.querySelectorAll('#navbar a[href^="#"]');
+  const links = document.querySelectorAll('#navbar a[href^="#"]');
   links.forEach(function(link) {
     link.addEventListener('click', function(event) {
       event.preventDefault();
-      var targetId = this.getAttribute('href').substring(1); // Récupère l'ID de la cible
-      var targetElement = document.getElementById(targetId); // Élément cible
-      var targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset; // Position de l'élément par rapport au haut de la page
-      var offset = 160; // Ajustement de l'offset
-      var newPosition = targetPosition - offset; // Nouvelle position ajustée
-
-      window.scrollTo({
-        top: newPosition,
-        behavior: 'smooth'
-      });
+      const targetId = this.getAttribute('href').substring(1); // Récupère l'ID de la cible
+      const targetElement = document.getElementById(targetId); // Élément cible
+      const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY; // Position de l'élément par rapport au haut de la page
+      const offset = 160; // Ajustement de l'offset
+      const newPosition = targetPosition - offset; // Nouvelle position ajustée
+      smoothScrollTo(newPosition);
     });
   });
