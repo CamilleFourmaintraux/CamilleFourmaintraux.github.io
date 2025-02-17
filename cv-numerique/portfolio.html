@@ -41,238 +41,316 @@
 <div class="container">
     <h2>Réalisations</h2>
 
-<div class="subcontainer" id="stage2024portfolio">
-    <br><h3>Stage intégrateur SOA webMethods avril/juin 2024 chez E-Mothep</h3>
-    <br>
-    <p>Voir mes réalisation durant le <a href="cursus.html#stage2024container"> stage </a></p>
-</div>    
-    
-    <div class="subcontainer" id="sae207">
-        <br><h3>1. Saé 2.07 Création d'une Base de Données - Ventilation de Données</h3>
-<ul>
-        <li><h4>Volume de données, création d’une base de données</h4></li>
-<p>Nous devions extraire un ensemble volumineux de données d'un fichier en une table, puis ventiler ces données.</p>
-      <img src=".\res\img\portfolio\donnes.png" alt="photo fichier de donnees">
-<li><h4>Utilisation de PostgreSQL et Access pour stocker et interroger les données</h4></li>
-   <p>Nous avons utilisé Postgresql et Access pour créer les tables et formuler les requêtes afin de pouvoir répondre aux interrogations du "client" sur les données.</p>
-   <img src=".\res\img\portfolio\scriptSQL.png" alt="photo fichier de script SQL">
-        <li><h4>Compétences et savoir-faire accquis</h4></li>
-            <ul>
-            <li>SQl, Postgresql, Access, WordPress</li>
-            <li>Ventiler des données, gérer un grand ensemble de données</li>
-            <li>Formuler des requêtes, analyser les données</li>    
-            </ul>
-<!--<p> Voir le <a href=""> dépôt GitHub (pas encore ajouté)</a></p>-->
-        </div>
-</ul>
-       
-<div class="subcontainer"id="sae202">
-        <br><h3>2. Saé 2.02 Création d'une Application d'Échanges Scolaires en Java et JavaFX</h3>
+    <div class="subcontainer" id="stage2024portfolio">
+        <br><h3>Stage intégrateur SOA webMethods avril/juin 2024 chez E-Mothep</h3>
+        <br>
+        <p>Voir mes réalisation durant le <a href="cursus.html#stage2024container"> stage </a></p>
+    </div>
+
+    <div class="subcontainer" id="sae509">
+        <br><h3>1. Saé 5.09 : WEB BACK </h3>
         <ul>
-            <li><h4>Développement d’une application interactive en java</h4></li>
-<p>L'application consistait à permettre des échanges scolaires entre pays. Ainsi, nous devions y inclure une base de données d'étudiants en fonction de pays, puis calculer les affinités en fonction de certains paramètres pour choisir les binômes d'étudiants les plus compatibles, grâce à des algorithmes de graphes, notamment Dijkstra.</p>
-<img src=".\res\img\portfolio\sae_IHM_code.png" alt="photo du code">
-            <li><h4>Utilisation de JavaFX pour l’Interface Homme-Machine</h4></li>
-<p>Cette application était à réaliser, dans un premier temps, entièrement au format texte dans la console du terminal. Pour le rendu final par contre, nous devions créer une application en JavaFx afin de donner un interface graphique à notre programme, rendant notre application plus ergonomique et accessible d'utilisation.</p>
-<img src=".\res\img\portfolio\saeIHM.png" alt="photo de l'IHM">
-        <h4>Compétences et savoir-faire accquis</h4>
+            <li><h4>Le projet</h4></li>
+            <p>
+                A la manière de prendreunrendezvous, de Doctolib ou de nombreux sites de prise de rendez-vous mis
+                en place durant la crise COVID-19, l’objectif de ce projet consiste à réaliser un site internet de gestion de
+                rendez-vous multi-utilisateurs. Le site permet d’une part de montrer aux utilisateurs les créneaux libres,
+                d’autre part de permettre aux utilisateurs de saisir et gérer leurs rendez-vous, et évidemment de n’autoriser
+                des rendez-vous que s’ils respectent les contraintes souhaitées.
+                Le site s'appuie donc sur de nombreux paramètres permettant l’expression de
+                contraintes afin de pouvoir être adapté à toutes les situations. Par exemple le planning de réservation des
+                créneaux de piscine (avec la contrainte “pas plus de 30 personnes par heure”) ou le planning de réservation
+                de créneaux chez le médecin (avec la contrainte “pas plus d’1 personne toutes les 15mn”).
+            </p>
+            <img src=".\res\img\portfolio\saeProfile.png" alt="placeholder">
+            <li><h4>Spring Framework</h4></li>
+            <p>
+                Spring est un framework open source pour construire et définir l'infrastructure d'une application Java, dont il facilite le développement et les tests.
+                Spring Boot est un framework Java open source utilisé pour programmer des applications Spring autonomes de qualité production avec un ensemble de bibliothèques qui facilitent le démarrage et la gestion des projets.
+                Grâce a ce projet, nous avons appris à utiliser le framework java back-end Spring, ainsi que Spring Security.
+                Spring Security est un framework Java/Java EE qui fournit des fonctionnalités d'authentification,
+                d'autorisation et d'autres fonctionnalités de sécurité pour les applications d'entreprise.
+                Notre projet ne contenat que deux rôle : User et Admin. Un admin peut faire tout ce qu'un utilisateur connecté (User) peut faire,
+                mais aussi accéder et modifier les rendez-vous des autres utilisateurs.
+            </p>
+            <img src=".\res\img\portfolio\saeCalendrier.png" alt="placeholder">
+            <h4>Compétences et savoir-faire acquis</h4>
+            <ul>
+                <li>Framework Spring</li>
+                <li>JPA</li>
+                <li>Spring Security</li>
+                <li>Lombok</li>
+            </ul>
+        </ul>
+    </div>
+
+    <div class="subcontainer" id="sae501">
+        <br><h3>2. Saé 5.01 : Emulateur RiscV</h3>
+        <ul>
+            <li><h4>Introduction à Rust</h4></li>
+            <p>
+                Dans le cadre de cette SAÉ, nous avons été confrontés au développement d’un logiciel qui sort du périmètre dans lequel nous avions l’habitude d’évoluer.
+                Nous avons développer un logiciel permettant d’émuler un ordinateur basé sur un processeur RISC-V, en utilisant le langage de programmation de notre choix.
+                En raison des contraintes de performance liée au développement d’un émulateur, il était préférable de choisir un langage qui se compile vers du code natif, par exemple C, C++, Rust ou encore Go.
+                Après avoir regardé ces différents lanaguages, particulièrement le RUST, nous avons décidé de coder l'émulateur en C.
+            </p>
+            <img src=".\res\img\portfolio\riscV_encodage.png" alt="riscV_encodage">
+            <li><h4>Programmation en C</h4></li>
+            <p>
+                L’émulation est le fait de simuler le fonctionnement d’une architecture matérielle à l’aide d’un programme informatique.
+                Le programme est en charge de modéliser et de faire évoluer l’état « virtuel » de l’architecture matérielle.
+                Le logiciel d’émulation doit donc proposer une structure de données qui représente le matériel que l’on cherche à simuler
+                et faire évoluer ces données au fur-et-à-mesure de l’avancée de la simulation.
+                Les registres sont les plus petites unités de stockage du processeur.
+                Ils sont intégrés à celui-ci et n’ont pas d’adresse car il ne sont pas en mémoire.
+                Il sont directement utilisables dans les instructions machine et servent de stockage de traitement.
+                L’unité arithmétique et logique travaille exclusivement avec eux sur la plupart des architectures.
+            </p>
+            <img src=".\res\img\portfolio\riscV_codeExample.png" alt="riscV_codeExample">
+            <h4>Compétences et savoir-faire acquis</h4>
+            <ul>
+                <li>Programmation en C</li>
+                <li>Apprendre un nouveau language</li>
+                <li>Découvrir le fonctionnement d'un processeur</li>
+                <li>Écrire un programme respectant une spécification stricte</li>
+            </ul>  
+        </ul>
+    </div>
+
+    
+
+    <div class="subcontainer" id="sae402">
+        <br><h3>3. SAÉ 4.A.02.2 : Développement d'une application complexe</h3>
+        <ul>
+            <li><h4>Idées de gameplay</h4></li>
+            <p>Nous avons reçu un cahier des charges,
+                avec toutes les fonctionnalités minimales que devrais avoir l'application finale.
+                Notre première mission était donc de réfléchir à des éléments de gameplay ainsi qu'à un thème permettant de répondre aux consignes.
+                Nous nous sommes d'abord concentré sur les éléments de gameplay, en fournissant deux versions prototypes sans aucun thèmes ou élément audio visuel, uniquement une base de gameplay et des formes géométriques pour répresenter les élements du jeu.</p>
+            <img src=".\res\img\portfolio\versionBasique.gif" alt="capture du jeu">
+            <li><h4>Multijoueurs avec node.js et socket.io</h4></li>
+            <p>C'était la première fois que nous devions développer un jeu multijoueur, ce fut un défi très intéressant et cela nous à fait réfléchir et comprendre à comment fonctionnent les jeux multijoueurs en général. Grâce à cette saé, nous avons appris à utiliser socket.iio pour connecter le server et les clients entre eux, et permettre la création de différentes parties indépendantes sur le même serveur grâce aux rooms.</p>
+            <img src=".\res\img\portfolio\versionFinale.gif" alt="capture des tests">
+            <h4>Compétences et savoir-faire acquis</h4>
+                <ul>
+                    <li><b>JavaScript ES6</b> : Nous n'avions jamais codé en javascript avant ce projet. Ce fut l'occasion d'apprendre et de mettre en pratique ces nouvelles compétences.</li>
+                    <li><b> Nodes.js, socket.io</b> : Grâce à socket.io, nous avons pu créer un jeu multijoueur où plusieurs parties peuvent se dérouler en même temps.</li>
+                    <li><b> Babel, Prettier</b> : gérer des dépendances (package.json) dans un projet js.</li>
+                    <li><b> Canvas</b> : dessiner des formes, des images dans un canvas</li>
+                </ul>
+            <h4>Savoir-êtres acquis</h4>
+                <ul>
+                    <li><b> Travail d'équipe</b> : Nous avons réalisé ce projet en binôme, qui était prévu d'être fait en trinôme, ce qui nous à mis à l'épreuve pour finir dans les temps avec un tiers de notre force de travail.</li>
+                    <li><b> Collaboration</b> : Afin de pouvoir finir dans les temps, une bonne répartition du travail était essentielle. Nous avons relevé ce défi haut la main, en respectant le cahier des charges et en ayant même des fonctionnalités suplémentaires.</li>
+                    <li><b> Qualité des dépôts git (Commits,Milestones)</b> : le professeur avait particulièrement insisté sur la qualité de notre dépôt git et sur la gestion des tâches, nous avons donc appris à mieux utiliser les outils collaboratif de GitLab.</li>
+                </ul>
+            <!--<p> Voir le <a href="https://github.com/CamilleFourmaintraux/"> dépôt GitHub </a> (pas encore disponible)</p>--> 
+            <!--<h2> <i class="fas fa-puzzle-piece"></i>  Le Jeu  </h2>
+            <p>
+                
+                Version finale : <a href="https://js-em-up-15d394d3335f.herokuapp.com/"> Jouer</a>! </p>-->
+        </ul>
+    </div>
+
+    <div class="subcontainer" id="sae401">
+        <br><h3>4. SAÉ 4.A.02.1 : Développement d'un site web REST</h3>
+        <ul>
+            <li><h4>Structuration</h4></li>
+            <p>Cette saé portait sur réaliser un site web d'une pizzeria <em>'Pizzeria Mazzorello'</em> respectant l'architecture REST.
+                Il devait donc y'avoir plusieurs end-points afin de permettre à des utilisateurs externes de récupérer les données et de les modifier dans la base de données.
+                Les end-points étaient les suivants :
+                <ul>
+                    <li><b>Ingrédients</b> : id, nom, prix</li>
+                    <li><b>Pizzas</b> : id, nom, type de pâte, ingrédient, prix de base </li>
+                    <li><b>Commandes</b> : id, client, date, </li>
+                </ul>
+            </p>
+            <img src="./res/img/portfolio/siteWebRestRequests.png" alt="requetesRest">
+        
+            <li><h4>Sécurité</h4></li>
+            <p> Mise en place de différents système d'authentification notamment API Token et JWT token.</p>
+            <img src="./res/img/portfolio/jwt-primer-token.png" alt="authentificationRest">
+        
+            <h4>Compétences et savoir-faire acquis</h4>
+                <ul>
+                    <li><b>Architecture REST</b> : Nous ne connaisions pas les architectures REST, ce projet nous à permis de les comprendre et d'apprendre à créer des site la respectant.</li>
+                    <li><b> Postgresql </b> : Pour ce projet, l'utilisation d'une base de données était nécessaire. </li>
+                </ul>
+            <h4>Savoir-êtres acquis</h4>
+                <ul>
+                    <li><b> Autonomie </b> : Ce projet est le seul que nous avons eu à réaliser entièrement seul mais étant très autonome, cela ne m'a pas posé de problèmes.</li>
+                    <li><b> Respect des délais </b> : Les délais pour ce projet étaient assez court, ce fut un bon exercice pour bien faire attention à rendre dans les temps tout en respectant le cachier des charges</li>
+                </ul>
+            <!-- <p> Voir le <a href="https://github.com/CamilleFourmaintraux/"> dépôt GitHub </a> (pas encore disponible)</p> -->      
+        </ul>
+    </div>
+
+    
+    <div class="subcontainer" id="sae302">
+        <br><h3>5. Saé 3.02 : Création d'un jeu avec JavaFX</h3>
+        <ul>
+            <li><h4>Concevoir MonsterHunt</h4></li>
+            <p>
+                On nous avait simplement donné des instructions de gameplay et quelques interfaces et nous devions, à partir de cela, concevoir tout le jeu. Ce jeu se joue à deux joueurs, un monstre et un chasseur. Le monstre gagne s'il arrive à s'enfuir et le chasseur gagne s'il arrive à tirer sur le monstre avant que celui-ci arrive à s'enfuir. Pas de version textuelle, cettte application était à réaliser entièrement en javaFx dès le début.
+            </p>
+            <img src=".\res\img\portfolio\monsterhunt.png" alt="capture du jeu">
+            <li><h4>Tests et documentations</h4></li>
+            <p>Durant cette saé, les professeurs ont particulièrement insisté sur la pertinence des tests et de la documentation que nous devons fournir. Ce projet fut donc l'occasion de nous apprendre à faire des tests corrects, pertinent mais aussi à nous introduire aux outils d'analyses de code tel que CodeSonar.</p>
+            <img src=".\res\img\portfolio\monsterhunt_tests.png" alt="capture des tests">
+            <h4>Compétences et savoir-faire acquis</h4>
             <ul>
                 <li>Java, JavaFx</li>
-                <li>Trouver des appairements à l'aide d'algorithmes</li>
-                <li>Concevoir une interface ergonomique</li>
+                <li>Implémanter des mécaniques de gameplay</li>
+                <li>Tests, Documentation </li>
+                <li>Patrons de conceptions</li>
             </ul>
-<p> Voir le <a href="https://github.com/CamilleFourmaintraux/sae2.01-2.02"> dépôt GitHub </a></p>
+            <p> Voir le <a href="https://github.com/CamilleFourmaintraux/SaeMonsterHunt"> dépôt GitHub </a></p>    
         </ul>
-        </div>
+    </div>
+
+    
 
        
-<div class="subcontainer" id="sae105">
-        <br><h3>3. Saés 1.05/1.6 : Conception et développement d'un site web pour présenter une entreprise</h3>
-        <ul>
-            <li><h4>Utilisation de HTML et de CSS pour la création de la structure et du design</h4></li>
-<p>Ce projet consistait à analyser les besoins d’un entreprise voulant créer une plateforme en ligne pour mettre en place du covoiturage entre leurs employés pour répondre à des problèmes de trafics et de pollutions. A partir de cette analyse, il fallait concevoir une maquette puis leur créer un site répondant à ces besoins.</p>
-<img src=".\res\img\portfolio\siteWeb.png" alt="photo site web">
-<li><h4>Utilisation de HTML et de CSS pour la création de la structure et du design</h4></li>
-<p> Nous avions commencé par faire une maquette WordPress pour proposer un début de design et de solutions aux besoins, et une fois celle-ci validée, nous sommes passés à la conception directement en HTML et en CSS. L’objectif principal était de nous apprendre à coder avec ces langages dans des conditions semblables à un réel projet ainsi qu’à nous faire respecter une charte graphique particulière, le tout se devait d’être cohérent et appréciable à regarder.</p>
-        <li><h4>Compétences et savoir-faire accquis</h4></li>
-            <ul>
-                <li>HTML, CSS</li>
-                <li>Respecter une charte graphique</li>
-                <li>Analyser un problème, proposer des solutions</li>
-            </ul>
-<p> Voir le <a href="https://github.com/CamilleFourmaintraux/plateforme_covoiturage"> dépôt GitHub </a></p>
-        </ul>
-        </div>
-
-       
-<div class="subcontainer" id="pagil">
-        <br><h3>4. Projet Agile : Création d'un Jeu dans le Terminal avec Méthodologie Agile SCRUM</h3>
+    <div class="subcontainer" id="pagil">
+        <br><h3>6. Projet Agile : Création d'un Jeu dans le Terminal avec Méthodologie Agile SCRUM</h3>
         <ul>
             <li><h4>Développement d'un jeu en mode console<h4></li>
-<p>Nous n'avions que quelques jours pour créer un jeu, en suivant la méthode agile Scrum. Les équipes étaient formées aléatoirement entre tous les membres de la promotion. Cela nous a permis de faire équipe avec des personnes que l'on ne connaissait pas et d'apprendre à collaborer et communiquer malgré cela.</p>
-<img src=".\res\img\portfolio\dino.png" alt="photo dino">
+            <p>Nous n'avions que quelques jours pour créer un jeu, en suivant la méthode agile Scrum. Les équipes étaient formées aléatoirement entre tous les membres de la promotion. Cela nous a permis de faire équipe avec des personnes que l'on ne connaissait pas et d'apprendre à collaborer et communiquer malgré cela.</p>
+            <img src=".\res\img\portfolio\dino.png" alt="photo dino">
             <li><h4>Rôle de ScrumMaster, gestion des User Stories et suivi du projet selon la méthodologie agile SCRUM</li>
-<p>Durant ce projet, chaque membre de l'équipe avait un rôle, on m'a attribué celui de Scrum Master. J'avais la responsabilité de mettre à jour le tableau d'avancement, et de réaliser les graphes burn-Up et burn-Down pour montrer l'avancement de notre projet.</p>
-<img src=".\res\img\portfolio\tab_scrum.jpg" alt="photo Scrum">
-        <li><h4>Compétences et savoir-faire accquis</h4></li>
+            <p>Durant ce projet, chaque membre de l'équipe avait un rôle, on m'a attribué celui de Scrum Master. J'avais la responsabilité de mettre à jour le tableau d'avancement, et de réaliser les graphes burn-Up et burn-Down pour montrer l'avancement de notre projet.</p>
+            <img src=".\res\img\portfolio\tab_scrum.jpg" alt="photo Scrum">
+            <li><h4>Compétences et savoir-faire accquis</h4></li>
             <ul>
                 <li>SCRUM, méthodes agiles</li>
                 <li>intégrer une équipe</li>
                 <li>Communiquer et collaborer en équipe</li>
             </ul>
-    <p> Voir le <a href="https://github.com/CamilleFourmaintraux/projet-agile"> dépôt GitHub </a></p>
+            <p> Voir le <a href="https://github.com/CamilleFourmaintraux/projet-agile"> dépôt GitHub </a></p>
         </ul>
-        </div>
+    </div>
 
        
-<div class="subcontainer" id="sae213">
-        <br><h3>5. Saé 2.13 : Escape Game</h3>
-            <ul>
-                <li><h4>Développement d'un escape game</h4></li>
-                <p>Cette Saé avait pour but de nous faire travailler en équipe, de nous apprendre le travail d’équipe. L’utilisation de Genially et de Trello qui sont des logiciels collaboratifs nous ont permis de mieux voir l’importance de la collaboration, encore plus que dans les autres Saé en groupe.
-Nous étions responsables de la promotion du projet fini, par la réalisation d’une affiche et d’un teaser promotionnels pour mettre en avant notre escape game.
-</p>
-<img src=".\res\img\portfolio\trello.png" alt="photo trello">
-<p>
-Nous devions régulièrement organiser des réunions entre tous les membres de l’équipe, ces réunions permettaient de faire le point sur l’avancement du projet, sur les difficultés qu’un membre pouvait rencontrer, d’apporter de l’aide à ceux qui en aurait besoin et de permettre l’apparition de nouvelles idées à travers les échanges. Nous devions aussi documenter tous les progrès du projet et rédiger les comptes-rendus des réunions.
-                </p>
-                <img src=".\res\img\portfolio\escapeGame.png" alt="photo escapeGame">
-<p>On nous a fait installer et configurer Gitea pour nous faire configurer un réseau collaboratif et nous apprendre à l’utiliser.
-Enfin, il fallait rédiger un rapport pour garder trace et expliquer tout ce qu’on a fait. Ces rapports devaient être rédigés en balisage léger comme Markdom ou Ascii Doctor ce qui nous a permis d’obtenir les compétences nécessaires pour utiliser des langages de Balisages léger.</p>
-                <li><h4>Compétences et savoir-faire accquis</h4></li>
-                <ul>
-                    <li>Collaboration, travail en équipe</li>
-                    <li>Outils de collaboration (Git, Trello)</li>
-                    <li>Créativité, conception d'énigmes (sur Genially)</li>
-                </ul>
-        <p> Tester <a href="https://view.genial.ly/63fcd8e96301550018245567/interactive-content-mysteres-et-disparitions-a-la-rentree-de-liut-avec-meilleur-timer"> l'escape game </a></p>
-            </ul>
-        </div>
-       
-       
-<div class="subcontainer" id="sae103">
-        <br><h3>6. Saé 1.03/2.03 : Installation de service réseau</h3>
-            <ul>
-            <li><h4>Installation d'un poste de travail</h4></li>
-   <p>L’objectif principal de la saé 1.03 était de nous introduire à la configuration réseau, celui de la saé 2.03 était de nous introduire à la configuration d’un réseau pour une entreprise ainsi qu’à nous apprendre à utiliser Markdom ou Ascii Doctor pour rédiger des rapports et de la documentation.
-            </p>
-<img src=".\res\img\portfolio\reseau.png" alt="photo machine virtuelle">
-<p>On nous a fait installer une machine virtuelle, de deux manières, une manuelle et une avec un fichier préconfiguré, afin de nous apprendre à installer des OS sur des machines. Cette Saé nous a fait beaucoup explorer les fichiers et les manuels afin que l’on développe la compétence se chercher et de se renseigner pour trouver ce que l’on cherche.</p>
-
-             <li><h4>Compétences et savoir-faire acquis</h4></li>
-                <ul>
-                    <li>Manier des machines virtuelles</li>
-                    <li>Configurer un poste et un réseau collaboratif</li>
-                    <li>Chercher dans la documentation</li>
-                    <li>Utiliser des langages de balisages léger (markdom, asciiDoctor)</li>
-                </ul>
-    <p> Voir le <a href="https://github.com/CamilleFourmaintraux/sae1.3-2.3"> dépôt GitHub </a></p>
-            </ul>
-        </div>
- 
-<div class="subcontainer" id="sae302">
-        <br><h3>7. Saé 3.02 : Création d'un jeu avec JavaFX</h3>
+    <div class="subcontainer" id="sae213">
+        <br><h3>7. Saé 2.13 : Escape Game</h3>
         <ul>
-            <li><h4>Concevoir MonsterHunt</h4></li>
-<p>On nous avait simplement donné des instructions de gameplay et quelques interfaces et nous devions, à partir de cela, concevoir tout le jeu. Ce jeu se joue à deux joueurs, un monstre et un chasseur. Le monstre gagne s'il arrive à s'enfuir et le chasseur gagne s'il arrive à tirer sur le monstre avant que celui-ci arrive à s'enfuir. Pas de version textuelle, cettte application était à réaliser entièrement en javaFx dès le début.</p>
-<img src=".\res\img\portfolio\monsterhunt.png" alt="capture du jeu">
-            <li><h4>Tests et documentations</h4></li>
-<p>Durant cette saé, les professeurs ont particulièrement insisté sur la pertinence des tests et de la documentation que nous devons fournir. Ce projet fut donc l'occasion de nous apprendre à faire des tests corrects, pertinent mais aussi à nous introduire aux outils d'analyses de code tel que CodeSonar.</p>
-<img src=".\res\img\portfolio\monsterhunt_tests.png" alt="capture des tests">
-        <h4>Compétences et savoir-faire acquis</h4>
+             <li><h4>Développement d'un escape game</h4></li>
+            <p>
+                Cette Saé avait pour but de nous faire travailler en équipe, de nous apprendre le travail d’équipe. L’utilisation de Genially et de Trello qui sont des logiciels collaboratifs nous ont permis de mieux voir l’importance de la collaboration, encore plus que dans les autres Saé en groupe.
+                Nous étions responsables de la promotion du projet fini, par la réalisation d’une affiche et d’un teaser promotionnels pour mettre en avant notre escape game.
+            </p>
+            <img src=".\res\img\portfolio\trello.png" alt="photo trello">
+            <p>
+                Nous devions régulièrement organiser des réunions entre tous les membres de l’équipe, ces réunions permettaient de faire le point sur l’avancement du projet, sur les difficultés qu’un membre pouvait rencontrer, d’apporter de l’aide à ceux qui en aurait besoin et de permettre l’apparition de nouvelles idées à travers les échanges. Nous devions aussi documenter tous les progrès du projet et rédiger les comptes-rendus des réunions.
+            </p>
+            <img src=".\res\img\portfolio\escapeGame.png" alt="photo escapeGame">
+            <p>
+                On nous a fait installer et configurer Gitea pour nous faire configurer un réseau collaboratif et nous apprendre à l’utiliser.
+                Enfin, il fallait rédiger un rapport pour garder trace et expliquer tout ce qu’on a fait. Ces rapports devaient être rédigés en balisage léger comme Markdom ou Ascii Doctor ce qui nous a permis d’obtenir les compétences nécessaires pour utiliser des langages de Balisages léger.</p>
+            <li><h4>Compétences et savoir-faire accquis</h4></li>
+            <ul>
+                <li>Collaboration, travail en équipe</li>
+                <li>Outils de collaboration (Git, Trello)</li>
+                <li>Créativité, conception d'énigmes (sur Genially)</li>
+            </ul>
+            <p> Tester <a href="https://view.genial.ly/63fcd8e96301550018245567/interactive-content-mysteres-et-disparitions-a-la-rentree-de-liut-avec-meilleur-timer"> l'escape game </a></p>
+         </ul>
+    </div>
+    
+    <div class="subcontainer" id="sae207">
+        <br><h3>8. Saé 2.07 Création d'une Base de Données - Ventilation de Données</h3>
+        <ul>
+            <li><h4>Volume de données, création d’une base de données</h4></li>
+            <p>Nous devions extraire un ensemble volumineux de données d'un fichier en une table, puis ventiler ces données.</p>
+            <img src=".\res\img\portfolio\donnes.png" alt="photo fichier de donnees">
+            <li><h4>Utilisation de PostgreSQL et Access pour stocker et interroger les données</h4></li>
+            <p>Nous avons utilisé Postgresql et Access pour créer les tables et formuler les requêtes afin de pouvoir répondre aux interrogations du "client" sur les données.</p>
+            <img src=".\res\img\portfolio\scriptSQL.png" alt="photo fichier de script SQL">
+            <li><h4>Compétences et savoir-faire accquis</h4></li>
+            <ul>
+                <li>SQl, Postgresql, Access, WordPress</li>
+                <li>Ventiler des données, gérer un grand ensemble de données</li>
+                <li>Formuler des requêtes, analyser les données</li>    
+            </ul>
+            <!--<p> Voir le <a href=""> dépôt GitHub (pas encore ajouté)</a></p>-->
+        </ul>
+    </div>
+       
+    <div class="subcontainer"id="sae202">
+        <br><h3>2. Saé 2.02 Création d'une Application d'Échanges Scolaires en Java et JavaFX</h3>
+        <ul>
+            <li><h4>Développement d’une application interactive en java</h4></li>
+            <p>L'application consistait à permettre des échanges scolaires entre pays. Ainsi, nous devions y inclure une base de données d'étudiants en fonction de pays, puis calculer les affinités en fonction de certains paramètres pour choisir les binômes d'étudiants les plus compatibles, grâce à des algorithmes de graphes, notamment Dijkstra.</p>
+            <img src=".\res\img\portfolio\sae_IHM_code.png" alt="photo du code">
+            <li><h4>Utilisation de JavaFX pour l’Interface Homme-Machine</h4></li>
+            <p>Cette application était à réaliser, dans un premier temps, entièrement au format texte dans la console du terminal. Pour le rendu final par contre, nous devions créer une application en JavaFx afin de donner un interface graphique à notre programme, rendant notre application plus ergonomique et accessible d'utilisation.</p>
+            <img src=".\res\img\portfolio\saeIHM.png" alt="photo de l'IHM">
+            <h4>Compétences et savoir-faire accquis</h4>
             <ul>
                 <li>Java, JavaFx</li>
-<li>Implémanter des mécaniques de gameplay</li>
-<li>Tests, Documentation </li>
-                <li>Patrons de conceptions</li>
+                <li>Trouver des appairements à l'aide d'algorithmes</li>
+                <li>Concevoir une interface ergonomique</li>
             </ul>
-            <p> Voir le <a href="https://github.com/CamilleFourmaintraux/SaeMonsterHunt"> dépôt GitHub </a></p>    
+            <p> Voir le <a href="https://github.com/CamilleFourmaintraux/sae2.01-2.02"> dépôt GitHub </a></p>
         </ul>
-</div>
+    </div>
 
-
-
-<div class="subcontainer" id="sae401">
-    <br><h3>8. SAÉ 4.A.02.1 : Développement d'un site web REST</h3>
-    <ul>
-        <li><h4>Structuration</h4></li>
-        <p>Cette saé portait sur réaliser un site web d'une pizzeria <em>'Pizzeria Mazzorello'</em> respectant l'architecture REST.
-            Il devait donc y'avoir plusieurs end-points afin de permettre à des utilisateurs externes de récupérer les données et de les modifier dans la base de données.
-            Les end-points étaient les suivants :
-            <ul>
-                <li><b>Ingrédients</b> : id, nom, prix</li>
-                <li><b>Pizzas</b> : id, nom, type de pâte, ingrédient, prix de base </li>
-                <li><b>Commandes</b> : id, client, date, </li>
-            </ul>
-        </p>
-        <img src="./res/img/portfolio/siteWebRestRequests.png" alt="requetesRest">
        
-        <li><h4>Sécurité</h4></li>
-        <p> Mise en place de différents système d'authentification notamment API Token et JWT token.</p>
-        <img src="./res/img/portfolio/jwt-primer-token.png" alt="authentificationRest">
+    <div class="subcontainer" id="sae105">
+        <br><h3>9. Saés 1.05/1.6 : Conception et développement d'un site web pour présenter une entreprise</h3>
+        <ul>
+            <li><h4>Utilisation de HTML et de CSS pour la création de la structure et du design</h4></li>
+            <p>Ce projet consistait à analyser les besoins d’un entreprise voulant créer une plateforme en ligne pour mettre en place du covoiturage entre leurs employés pour répondre à des problèmes de trafics et de pollutions. A partir de cette analyse, il fallait concevoir une maquette puis leur créer un site répondant à ces besoins.</p>
+            <img src=".\res\img\portfolio\siteWeb.png" alt="photo site web">
+            <li><h4>Utilisation de HTML et de CSS pour la création de la structure et du design</h4></li>
+            <p> Nous avions commencé par faire une maquette WordPress pour proposer un début de design et de solutions aux besoins, et une fois celle-ci validée, nous sommes passés à la conception directement en HTML et en CSS. L’objectif principal était de nous apprendre à coder avec ces langages dans des conditions semblables à un réel projet ainsi qu’à nous faire respecter une charte graphique particulière, le tout se devait d’être cohérent et appréciable à regarder.</p>
+            <li><h4>Compétences et savoir-faire accquis</h4></li>
+            <ul>
+                <li>HTML, CSS</li>
+                <li>Respecter une charte graphique</li>
+                <li>Analyser un problème, proposer des solutions</li>
+            </ul>
+            <p> Voir le <a href="https://github.com/CamilleFourmaintraux/plateforme_covoiturage"> dépôt GitHub </a></p>
+        </ul>
+    </div>
        
-        <h4>Compétences et savoir-faire acquis</h4>
+       
+    <div class="subcontainer" id="sae103">
+        <br><h3>6. Saé 1.03/2.03 : Installation de service réseau</h3>
+        <ul>
+            <li><h4>Installation d'un poste de travail</h4></li>
+            <p>
+                L’objectif principal de la saé 1.03 était de nous introduire à la configuration réseau, celui de la saé 2.03 était de nous introduire à la configuration d’un réseau pour une entreprise ainsi qu’à nous apprendre à utiliser Markdom ou Ascii Doctor pour rédiger des rapports et de la documentation.
+            </p>
+            <img src=".\res\img\portfolio\reseau.png" alt="photo machine virtuelle">
+            <p>
+                On nous a fait installer une machine virtuelle, de deux manières, une manuelle et une avec un fichier préconfiguré, afin de nous apprendre à installer des OS sur des machines. Cette Saé nous a fait beaucoup explorer les fichiers et les manuels afin que l’on développe la compétence se chercher et de se renseigner pour trouver ce que l’on cherche.</p>
+            <li><h4>Compétences et savoir-faire acquis</h4></li>
             <ul>
-                <li><b>Architecture REST</b> : Nous ne connaisions pas les architectures REST, ce projet nous à permis de les comprendre et d'apprendre à créer des site la respectant.</li>
-                <li><b> Postgresql </b> : Pour ce projet, l'utilisation d'une base de données était nécessaire. </li>
+                <li>Manier des machines virtuelles</li>
+                <li>Configurer un poste et un réseau collaboratif</li>
+                <li>Chercher dans la documentation</li>
+                <li>Utiliser des langages de balisages léger (markdom, asciiDoctor)</li>
             </ul>
-        <h4>Savoir-êtres acquis</h4>
-            <ul>
-                <li><b> Autonomie </b> : Ce projet est le seul que nous avons eu à réaliser entièrement seul mais étant très autonome, cela ne m'a pas posé de problèmes.</li>
-                <li><b> Respect des délais </b> : Les délais pour ce projet étaient assez court, ce fut un bon exercice pour bien faire attention à rendre dans les temps tout en respectant le cachier des charges</li>
-            </ul>
-        <!-- <p> Voir le <a href="https://github.com/CamilleFourmaintraux/"> dépôt GitHub </a> (pas encore disponible)</p> -->      
-    </ul>
-</div>
+            <p> Voir le <a href="https://github.com/CamilleFourmaintraux/sae1.3-2.3"> dépôt GitHub </a></p>
+        </ul>
+    </div>
 
+    <br><p>Chacun de ces projets a été réalisé en équipe, impliquant 2 à 6 personnes.
+    <br>Ces projets m'ont permis d'apprendre à travailler en collaboration, à communiquer efficacement, à résoudre des problèmes et à respecter les délais imposés.</p>
 
-<div class="subcontainer" id="sae402">
-    <br><h3>9. SAÉ 4.A.02.2 : Développement d'une application complexe</h3>
-    <ul>
-        <li><h4>Idées de gameplay</h4></li>
-        <p>Nous avons reçu un cahier des charges,
-             avec toutes les fonctionnalités minimales que devrais avoir l'application finale.
-             Notre première mission était donc de réfléchir à des éléments de gameplay ainsi qu'à un thème permettant de répondre aux consignes.
-             Nous nous sommes d'abord concentré sur les éléments de gameplay, en fournissant deux versions prototypes sans aucun thèmes ou élément audio visuel, uniquement une base de gameplay et des formes géométriques pour répresenter les élements du jeu.</p>
-        <img src=".\res\img\portfolio\versionBasique.gif" alt="capture du jeu">
-        <li><h4>Multijoueurs avec node.js et socket.io</h4></li>
-        <p>C'était la première fois que nous devions développer un jeu multijoueur, ce fut un défi très intéressant et cela nous à fait réfléchir et comprendre à comment fonctionnent les jeux multijoueurs en général. Grâce à cette saé, nous avons appris à utiliser socket.iio pour connecter le server et les clients entre eux, et permettre la création de différentes parties indépendantes sur le même serveur grâce aux rooms.</p>
-        <img src=".\res\img\portfolio\versionFinale.gif" alt="capture des tests">
-        <h4>Compétences et savoir-faire acquis</h4>
-            <ul>
-                <li><b>JavaScript ES6</b> : Nous n'avions jamais codé en javascript avant ce projet. Ce fut l'occasion d'apprendre et de mettre en pratique ces nouvelles compétences.</li>
-                <li><b> Nodes.js, socket.io</b> : Grâce à socket.io, nous avons pu créer un jeu multijoueur où plusieurs parties peuvent se dérouler en même temps.</li>
-                <li><b> Babel, Prettier</b> : gérer des dépendances (package.json) dans un projet js.</li>
-                <li><b> Canvas</b> : dessiner des formes, des images dans un canvas</li>
-            </ul>
-        <h4>Savoir-êtres acquis</h4>
-            <ul>
-                <li><b> Travail d'équipe</b> : Nous avons réalisé ce projet en binôme, qui était prévu d'être fait en trinôme, ce qui nous à mis à l'épreuve pour finir dans les temps avec un tiers de notre force de travail.</li>
-                <li><b> Collaboration</b> : Afin de pouvoir finir dans les temps, une bonne répartition du travail était essentielle. Nous avons relevé ce défi haut la main, en respectant le cahier des charges et en ayant même des fonctionnalités suplémentaires.</li>
-                <li><b> Qualité des dépôts git (Commits,Milestones)</b> : le professeur avait particulièrement insisté sur la qualité de notre dépôt git et sur la gestion des tâches, nous avons donc appris à mieux utiliser les outils collaboratif de GitLab.</li>
-            </ul>
-        <!--<p> Voir le <a href="https://github.com/CamilleFourmaintraux/"> dépôt GitHub </a> (pas encore disponible)</p>--> 
-        <!--<h2> <i class="fas fa-puzzle-piece"></i>  Le Jeu  </h2>
-        <p>
-            
-            Version finale : <a href="https://js-em-up-15d394d3335f.herokuapp.com/"> Jouer</a>! </p>-->
-    </ul>
-</div>
-
-<br><p>Chacun de ces projets a été réalisé en équipe, impliquant 2 à 6 personnes.
-<br>Ces projets m'ont permis d'apprendre à travailler en collaboration, à communiquer efficacement, à résoudre des problèmes et à respecter les délais imposés.</p>
 </div>
 
 <footer>
-<a  href="./res/fich/cv.pdf" target="_blank" download> Cv
-<i class="fas fa-file"></i></a>
-<a  href="mailto:fourmaintrauxcamille2004@gmail.com"> Mail
-<i class="fas fa-envelope"></i></a>
-<a href="https://www.linkedin.com/in/camille-fourmaintraux-708b34275/"target="_blank"> Linkedin
-<i class="fab fa-linkedin"></i></a>
-<a href="https://github.com/CamilleFourmaintraux"target="_blank"> GitHub
-<i class="fab fa-github"></i></a>
+    <a  href="./res/fich/cv.pdf" target="_blank" download> Cv
+    <i class="fas fa-file"></i></a>
+    <a  href="mailto:fourmaintrauxcamille2004@gmail.com"> Mail
+    <i class="fas fa-envelope"></i></a>
+    <a href="https://www.linkedin.com/in/camille-fourmaintraux-708b34275/"target="_blank"> Linkedin
+    <i class="fab fa-linkedin"></i></a>
+    <a href="https://github.com/CamilleFourmaintraux"target="_blank"> GitHub
+    <i class="fab fa-github"></i></a>
 </footer>
-</body>
 
+</body>
 </html>
