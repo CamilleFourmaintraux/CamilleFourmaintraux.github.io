@@ -15,22 +15,22 @@ window.addEventListener('scroll', function() {
     } else {
       button.style.display = "none";
     }
-  });
+});
 
-  function smoothScrollTo(newPosition){
+function smoothScrollTo(newPosition){
     window.scrollTo({
       top: newPosition,
       behavior: 'smooth'
     });
-  }
+}
 
   // Fonction pour faire défiler vers le haut de la page
-  function scrollToTop() {
+function scrollToTop() {
     smoothScrollTo(0);
-  }
+}
 
   // Fonction pour ajuster la position lors du clic sur un lien du menu
-  const links = document.querySelectorAll('#navbar a[href^="#"]');
+const links = document.querySelectorAll('#navbar a[href^="#"]');
   links.forEach(function(link) {
     link.addEventListener('click', function(event) {
       event.preventDefault();
@@ -41,4 +41,4 @@ window.addEventListener('scroll', function() {
       const newPosition = targetPosition - offset; // Nouvelle position ajustée
       smoothScrollTo(newPosition);
     });
-  });
+});
