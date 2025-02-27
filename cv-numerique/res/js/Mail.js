@@ -43,16 +43,16 @@ function validateEmail(email) {
 }
 
  // Fonction pour afficher les messages
- function displayMessage(message, type) {
+ function displayMessage(message, isSuccess) {
   const messageStatus = document.getElementById('message-status');
   const section_form = document.getElementById('section_form');
   messageStatus.textContent = message;
   messageStatus.style.display = 'block';
 
-  if (type === 'success') {
+  if (isSuccess == true) {
     section_form.style.display = 'none';
     messageStatus.style.color = 'green';
-  } else if (type === 'error') {
+  } else if (isSuccess == false) {
     messageStatus.style.color = 'red';
   }
 
