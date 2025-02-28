@@ -3,7 +3,7 @@ const cardContainer = document.querySelector('.card-container');
 
 const carousel = document.querySelector('.carousel');
 
-var currentCard;
+//var currentCard;
 
 const popup = document.getElementById('popup');
 const popupTitle = document.getElementById('popupTitle');
@@ -11,13 +11,13 @@ const popupDescription = document.getElementById('popupDescription');
 
 listOfCardElements.forEach((cardElement, index) => {
   cardElement.addEventListener('click', () => {
-    console.log(`Card ${index} selected.`);
-    if (currentCard!=null) currentCard.classList.remove("selected");
-    cardElement.classList.add("selected");
-    currentCard=cardElement;
-    //const scrollLeft = index * listOfCardElements[0].offsetWidth +100;
-    cardContainer.scrollTo({ left: calculateCenterPosition(cardElement), behavior: 'smooth' });
-    popup.style.display = 'flex';
+    //console.log(`Card ${index} selected.`);
+    //if (currentCard!=null) currentCard.classList.remove("selected");
+    //cardElement.classList.add("selected");
+    //currentCard=cardElement;
+    //const scrollLeft = index * listOfCardElements[0].offsetWidth +100; //Déplace la carte selectionné à gauche de l'écran
+    cardContainer.scrollTo({ left: calculateCenterPosition(cardElement), behavior: 'smooth' }); //Déplace la carte sélectionné au centre de l'écran.
+    popup.style.display = 'flex'; 
     popupTitle.innerHTML=tabTextPopup[index].title;
     popupDescription.innerHTML=tabTextPopup[index].description;
   });

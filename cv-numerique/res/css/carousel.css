@@ -16,7 +16,7 @@
 }
 
 /* CSS only for phones */
-@media all and (max-width: 600px)
+@media all and (max-width: 899px)
 {
     .card-container::-webkit-scrollbar {
         display: none; /* Hide scrollbar in Chrome, Safari and Opera */
@@ -27,7 +27,7 @@
 }
 
 /* CSS only for PC */
-@media all and (min-width: 600px)
+@media all and (min-width: 900px)
 {
     .selected {
         background: #FF5858; /* Set background color when selected */
@@ -41,15 +41,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background:#fff;
     border: 1px solid #4F5873;
     color: #4a544c;
     border-radius: 8px;
 }
-.card img{
-    width: 100%;
-}
 .card:hover {
     background: #BBDDDD; /* Set background color when hover */
+}
+
+.cardPicture{
+    max-width : 90%;
+    height : auto;
+    margin : 10px;
 }
 
