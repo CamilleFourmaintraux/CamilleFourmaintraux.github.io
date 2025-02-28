@@ -41,10 +41,10 @@ function calculateCenterPosition(card) {
 const tabTextPopup = [
   {title:"Spring-Boot",description:"Une pop up à propos de Sping-Boot."},
   {title:"React",description:"Pop-up à propos de React."},
-  {title:"MongoDB, Redis, Cassandra",description:"Une pop up."},
-  {title:"CI/DC",description:"Une pop up."},
-  {title:"Postman, Bruno",description:"Une pop up."},
-  {title:"Outils Collaboratifs",description:"Une pop up."},
-  {title:"Software AG Designer",description:"Une pop up."},
-  {title:"Certification Toeic",description:"La der pop up."},
+  {title:"MongoDB, Redis, Cassandra",description:"Une pop up à propos de NoSQL."},
+  {title:"CI/DC",description:"Une pop up sur CICD."},
+  {title:"Postman, Bruno",description:"Une pop up sur les outils pour tester requêtes sur des APIS."},
+  {title:"Outils Collaboratifs",description:"Une pop up pour parler des outils collaboratifs comme GitLab, GitHub, Trello, Mantis, etc..."},
+  {title:"Software AG Designer",description:"Une pop up pour parler de l'urbanisation de systèmes d'informations d'entreprise."},
+  {title:"Certification Toeic",description:"Une pop up pour parler de ma certification au Toeic de niveau C1, ainsi que de mon séjour d'un mois en Angleterre."}
 ]
