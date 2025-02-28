@@ -55,17 +55,18 @@
 <h2><i class="fas fa-pen"></i> M'envoyer un message </h2>
 <section id="section_form">
 	<form id="contact-form">	 
-	<label for="name">Nom*</label>
+	<label for="name">Nom</label>
 	<input id="name" name="name" type="text" placeholder="Votre nom..." required>
 	<label for="forename">Prénom</label>
-	<input id="forename" name="forename" type="text" placeholder="Votre prénom...">
-	<label for="mail">E-Mail*</label>
+	<input id="forename" name="forename" type="text" placeholder="Votre prénom..." required>
+	<label for="mail">E-Mail</label>
 	<input id="mail" name="mail" type="mail" placeholder="Votre mail..." required>
 	<label for="subject">Intitulé</label>
-	<input id="subject" name="subject" type="text" placeholder="Intitulé du message...">
-	<label for="message">Message*</label>
+	<input id="subject" name="subject" type="text" placeholder="Intitulé du message..." required>
+	<label for="message">Message</label>
 	<textarea id="message" name="message" placeholder="Votre message..." required></textarea>
 	<button type="submit"><i class="fas fa-paper-plane"></i> Envoyer</button>
+	</form>
 </section>
 <section>
 	<div id="message-status" style="display: none;"></div>
