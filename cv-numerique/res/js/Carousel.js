@@ -38,16 +38,13 @@ function calculateCenterPosition(card) {
   return cardOffset - (carouselWidth/2) + (cardWidth / 2);
 }
 
-//Ordre : Spring-Boot, React, MongoDB, CI-DC, ...
 const tabTextPopup = [
   {title:"Spring-Boot",description:"Une pop up à propos de Sping-Boot."},
   {title:"React",description:"Pop-up à propos de React."},
-  {title:"MongoDB",description:"Une pop up."},
+  {title:"MongoDB, Redis, Cassandra",description:"Une pop up."},
   {title:"CI/DC",description:"Une pop up."},
-  {title:"Pop-Up",description:"Une pop up."},
-  {title:"Pop-Up",description:"Une pop up."},
-  {title:"Pop-Up",description:"Une pop up."},
-  {title:"Pop-Up",description:"Une pop up."},
-  {title:"Pop-Up",description:"Une pop up."},
-  {title:"Pop-Up",description:"La der pop up."},
+  {title:"Postman, Bruno",description:"Une pop up."},
+  {title:"Outils Collaboratifs",description:"Une pop up."},
+  {title:"Software AG Designer",description:"Une pop up."},
+  {title:"Certification Toeic",description:"La der pop up."},
 ]
