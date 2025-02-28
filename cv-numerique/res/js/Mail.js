@@ -1,5 +1,5 @@
 (function(){
-    emailjs.init("Xmg7VBMr1uTpxpnUl"); // Remplacez YOUR_USER_ID par votre User ID d'EmailJS
+    emailjs.init("3B_hn1nnz15LtDfl4"); // Remplacez YOUR_USER_ID par votre User ID d'EmailJS
 
     document.getElementById('contact-form').addEventListener('submit', function(event) {
       event.preventDefault();
