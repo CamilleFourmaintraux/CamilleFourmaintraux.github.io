@@ -36,7 +36,7 @@
   
 .card {
     min-width: 250px; /* Set min width of card */
-    height: 90%; /* Set height of card */
+    height: 86%; /* Set height of card */
     scroll-snap-align: start; /* Set the element focus position in scroll container */
     display: flex;
     justify-content: center;
