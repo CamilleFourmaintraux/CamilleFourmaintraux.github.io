@@ -6,6 +6,8 @@
     	<title>Camille Fourmaintraux - Cursus</title>
     	<link rel="stylesheet" href="../res/css/style.css">
 	<link rel="stylesheet" href="../res/css/cursus.css">
+	<link rel="stylesheet" href="../res/css/popup.css">
+	<link rel="stylesheet" href="../res/css/carousel.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 	<link rel="icon" type="image/vnd.icon" href="../res/img/favicon.ico">
@@ -35,7 +37,7 @@
   <button onclick="scrollToTop()" id="back-to-top" title="Retour en haut">Haut</button>
 
   <script src="../res/js/Nav.js" defer> </script>
-  <script src="../res/js/PopUp.js" defer> </script>
+  <script src="../res/js/Carousel.js" defer> </script>
 
 
 <div class="container" id="formation">
@@ -84,6 +86,48 @@
 		<li><strong>Formations sur la qualité du code:</strong> <span title="Formation sur la programmation fonctionnelle, les arbres de décisions, les design Patterns, les optimisations">Qualité de développement, Qualité algorithmique, Aide à la décision <i class="fas fa-star"></i></span></li>
 		<li><strong>Divers:</strong> Modélisation Mathématiques, Programmation multimédia</li>
 	</ul>
+
+	<div class="carousel">
+		<div class="card-container">
+		  	<div class="card">
+            	<img src="../res/img/cursus/competences/spring-boot.png" alt="logo spring boot">
+			</div>
+			<div class="card">
+				<img src="../res/img/cursus/competences/react.png" alt="logo react">
+			</div>
+		  	<div class="card">
+				<img src="../res/img/cursus/competences/mongo-db.png" alt="logo mongoDB">
+		  	</div>
+		  	<div class="card">
+				<img src="../res/img/cursus/competences/cicd.png" alt="logo ci cd">
+		  	</div>
+		  	<div class="card">
+				<img src="../res/img/cursus/competences/spring-boot.png" alt="logo spring boot">
+		  	</div>
+		  	<div class="card">
+				<img src="../res/img/cursus/competences/spring-boot.png" alt="logo spring boot">
+		  	</div>
+		  	<div class="card">
+				<img src="../res/img/cursus/competences/spring-boot.png" alt="logo spring boot">
+		  	</div>
+		  	<div class="card">
+				<img src="../res/img/cursus/competences/spring-boot.png" alt="logo spring boot">
+		  	</div>
+		  	<div class="card">
+				<img src="../res/img/cursus/competences/spring-boot.png" alt="logo spring boot">
+		  	</div>
+		  	<div class="card">
+				<img src="../res/img/cursus/competences/spring-boot.png" alt="logo spring boot">
+		  	</div>
+		</div>
+	  </div>
+		
+	<div id="popup" class="popup">
+		<div class="popup-content">
+			<h2 id="popupTitle">Erreur</h2>
+			<p id="popupDescription">Vous n'êtes pas censé lire ce texte !</p>
+		</div>
+	</div>
 	
 </div>
 <div class="container" id="qualites">
@@ -145,11 +189,6 @@
 				</li>
 			</ul>
             <a href="../res/fich/RapportDeStage2024.pdf" target="_blank" download>Lire mon rapport de stage complet</a>
-			<!--
-			<button onclick="displayResumeStage()" id="boutonResumeStage" title="Stage Resume">Lire le résumé de mon stage</button>
-			<form action="../res/fich/RapportDeStage2024.pdf">
-				<input type="submit" value="Lire mon rapport de stage complet" />
-			</form>-->
 			
 		</div>
 		<div class="subcontainer" id="carrefour">

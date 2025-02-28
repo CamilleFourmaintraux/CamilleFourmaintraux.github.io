@@ -1,0 +1,47 @@
+.carousel {
+    width: 100%; /* Width of carousel */
+    height: 166px; /* Height of carousel */
+}
+
+.card-container {
+    /*width: 100%; /* Width of card container */
+    display: flex; /* Set inline elements */
+    overflow-x: auto; /* Set overflow in horizontal scroll */
+    overflow-y: hidden; /* Hidden overflow in vertical scroll */
+    /*scroll-snap-type: x mandatory; /* Force the scroll to snap to the start of a scroll-snap area */
+    gap: 8px; /* Set gap between cards */
+    width: calc(100% - 16px);
+    height: 150px;
+    margin: 8px;
+    flex: 0 0 calc(100% - 16px); /* Set width of card container */
+}
+
+@media all and (max-width: 600px)
+{
+    .card-container::-webkit-scrollbar {
+        display: none; /* Hide scrollbar in Chrome, Safari and Opera */
+    }
+}
+  
+.card {
+    min-width: 250px; /* Set min width of card */
+    height: 90%; /* Set height of card */
+    scroll-snap-align: start; /* Set the element focus position in scroll container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:#fff;
+    border: 1px solid #4F5873;
+    color: #4a544c;
+    border-radius: 8px;
+}
+.card img{
+    width: 100%;
+}
+.card:hover {
+    background: #BBDDDD; /* Set background color when hover */
+}
+
+.selected {
+    background: #FF5858; /* Set background color when selected */
+}

@@ -13,6 +13,4 @@
 loadHTML("", "../parts/header.html");
 loadHTML("navigation", "../parts/navbar.html");
 loadHTML("footer", "../parts/footer.html");
-
-
 console.log("TEST HTMLLoader ");*/
