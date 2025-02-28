@@ -8,7 +8,6 @@
     display: flex; /* Set inline elements */
     overflow-x: auto; /* Set overflow in horizontal scroll */
     overflow-y: hidden; /* Hidden overflow in vertical scroll */
-    /*scroll-snap-type: x mandatory; /* Force the scroll to snap to the start of a scroll-snap area */
     gap: 8px; /* Set gap between cards */
     width: calc(100% - 16px);
     height: 150px;
@@ -16,10 +15,22 @@
     flex: 0 0 calc(100% - 16px); /* Set width of card container */
 }
 
+/* CSS only for phones */
 @media all and (max-width: 600px)
 {
     .card-container::-webkit-scrollbar {
         display: none; /* Hide scrollbar in Chrome, Safari and Opera */
+    }
+    .card-container {
+        scroll-snap-type: x mandatory;
+    }
+}
+
+/* CSS only for PC */
+@media all and (min-width: 600px)
+{
+    .selected {
+        background: #FF5858; /* Set background color when selected */
     }
 }
   
@@ -42,6 +53,3 @@
     background: #BBDDDD; /* Set background color when hover */
 }
 
-.selected {
-    background: #FF5858; /* Set background color when selected */
-}
