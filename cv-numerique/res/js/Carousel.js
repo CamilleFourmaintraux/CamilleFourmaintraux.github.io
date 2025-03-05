@@ -44,7 +44,7 @@ const tabTextPopup = [
   {title:"MongoDB, Redis, Cassandra",description:"Formation sur les Base de Données NoSQl. Introduction à MongoDb, Redis et à Cassandra pour la distribution de données : scalabilité horizontale."},
   {title:"React",description:"Formation et projet pour développer un front-end en React. Utilisation d'API, appels AJAX, Formulaires, Components, Refs, Redux."},
   {title:"Qualité de code",description:"Formation sur la qualité de développement, qualité algorithmique et aide à la décision. Algorithmes glouton, Apprentissage supervisé/K-NN, Classification Bayesienne et arbre de décisions."},
-  {title:"CI/DC",description:"L’objectif de cette ressource est de concrétiser la chaîne de production d’une application afin de développer les aptitudes nécessaires pour travailler efficacement dans une équipe informatique."},
+  {title:"CI/CD",description:"L’objectif de cette ressource est de concrétiser la chaîne de production d’une application afin de développer les aptitudes nécessaires pour travailler efficacement dans une équipe informatique."},
   {title:"Postman, Bruno",description:"Utilisation de Postman et de Bruno pour émettre des requêtes afin de tester des APIS."},
   {title:"Programmationn multimédia",description:"Sensibilisation à la programmation multimédia. Manipulation d'images 2D, Historigrammes, Convolution et filtrage spatiale et Détections de contours. L'objectif de cette formation était de nous familiariser avec des méthodes classiques d’analyse et de traitement d’images."},
   {title:"Outils Collaboratifs",description:"Utilisation régulière d'outils de collaborations tels que Gitlab, GitHub, Trello, Mantis, Microsoft Teams."},
