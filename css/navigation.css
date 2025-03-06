@@ -1,0 +1,113 @@
+nav {
+    text-align: center;
+    background-color: #444;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1px;
+    width: 100%;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    margin: 5px;
+    white-space: nowrap;
+}
+
+nav a:hover{
+    color: #BBDDDD;
+}
+
+nav a.current:hover{
+    color: #FF5151;
+}
+
+nav a.current{
+    color: #FF5858;
+}
+  
+/* Si la navigation devient fixe */
+#navbar.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+}
+
+/*
+nav {
+    text-align: center;
+    background-color: #444;
+    padding: 10px 0;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+nav.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+
+#sub-navbar {
+    width: 100%;
+    background-color: #555;
+    padding: 5px;
+    display: flex;
+    gap: 10px;
+    position: fixed;
+    top: 50px;
+    left: 0;
+    z-index: 999;
+  }
+
+#sub-navbar.fixed {
+    position: fixed;
+    top: 50;
+    left: 0;
+    right: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    margin: 0 10px;
+    white-space: nowrap;
+}
+
+nav a:hover{
+    color: #BBDDDD;
+}
+
+nav a.current:hover{
+    color: #FF5151;
+}
+
+.current{
+    color: #FF5858;
+}
+
+#back-to-top {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+}
+
+#back-to-top:hover {
+      background-color: #444;
+}*/
