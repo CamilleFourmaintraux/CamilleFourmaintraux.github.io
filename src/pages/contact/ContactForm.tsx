@@ -71,7 +71,7 @@ export default function ContactForm() {
 
     return (
         <div className="container">
-            <h2><i className="fas fa-pen"></i> M'envoyer un message</h2>
+            <h2><i className="fas fa-pen"></i> M'envoyer un message (ça me fera plaisir)</h2>
             
             <section id="section_form">
                 <form id="contact-form" onSubmit={handleSubmit}>
