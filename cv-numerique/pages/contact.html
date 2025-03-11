@@ -1,96 +1,161 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    	<meta charset="UTF-8">
-    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    	<title>Camille Fourmaintraux - Contact</title>
-    	<link rel="stylesheet" href="../res/css/style.css">
-    	<link rel="php" href="./php/mail.php">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-	<link rel="icon" type="image/vnd.icon" href="../res/img/favicon.ico">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Camille Fourmaintraux - Contact</title>
+    <link rel="stylesheet" href="../res/css/style.css" />
+    <link rel="php" href="./php/mail.php" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/vnd.icon" href="../res/img/favicon.ico" />
+  </head>
+  <body>
     <header>
-        <h1>Camille FOURMAINTRAUX</h1>
-        <p>Étudiant en BUT Informatique</p>
-	<img src="../res/img/maPhoto.jpg" alt="Ma Photo" id="photoPresentation">
+      <h1>Camille FOURMAINTRAUX</h1>
+      <p>Étudiant en BUT Informatique</p>
+      <img src="../res/img/maPhoto.jpg" alt="Ma Photo" id="photoPresentation" />
     </header>
     <nav id="navbar">
-        <a href="../../index.html"><i class="fas fa-home"></i> Accueil </a>
-        <a href="./cursus.html"><i class="fas fa-graduation-cap"></i> Cursus </a>
-        <a href="./portfolio.html"><i class="fas fa-book"></i> Portfolio </a>
-	<a href="./passions.html"><i class="fas fa-puzzle-piece"></i> Centres d'intérêt </a>
-        <a href="./contact.html" id="current"><i class="fas fa-comment"></i> Contact </a>
+      <a href="../../index.html"><i class="fas fa-home"></i> Accueil </a>
+      <a href="./cursus.html"><i class="fas fa-graduation-cap"></i> Cursus </a>
+      <a href="./portfolio.html"><i class="fas fa-book"></i> Portfolio </a>
+      <a href="./passions.html"
+        ><i class="fas fa-puzzle-piece"></i> Centres d'intérêt
+      </a>
+      <a href="./contact.html" id="current"
+        ><i class="fas fa-comment"></i> Contact
+      </a>
     </nav>
 
-<button onclick="scrollToTop()" id="back-to-top" title="Retour en haut">Haut</button>
-<script src="../res/js/Nav.js" defer> </script>
+    <button onclick="scrollToTop()" id="back-to-top" title="Retour en haut">
+      Haut
+    </button>
+    <script src="../res/js/Nav.js" defer></script>
 
-<div class="container">
-        <h2><i class="fas fa-comment"></i> Contact </h2>
-	<p>Si mon profil vous intéresse, ou si vous voulez plus d'informations,
-	<br> vous pouvez me contacter grâce au formulaire de contact, ou avec l'un des services suivants :<br>
-        
-	<br>Mon mail :
-	<a  href="mailto:fourmaintrauxcamille2004@gmail.com">
-	<i class="fas fa-envelope"></i>fourmaintrauxcamille2004@gmail.com</a>
-	
-	<br> Mon Linkedin :
-	<a href="https://www.linkedin.com/in/camille-fourmaintraux-708b34275/
-	"target="_blank">
-	<i class="fab fa-linkedin">
-	</i>www.linkedin.com/in/camille-fourmaintraux-708b34275</a>
-	
-	<br> Mon gitHub :
-	<a href="https://github.com/CamilleFourmaintraux
-	"target="_blank">
-	<i class="fab fa-github">
-	</i>https://github.com/CamilleFourmaintraux</a><br>
-	
-	<br> La version pdf de mon CV, ainsi que mes réseaux sont aussi disponibles en bas de chacune des pages.</p>
-</div>
+    <div class="container">
+      <h2><i class="fas fa-comment"></i> Contact</h2>
+      <p>
+        Si mon profil vous intéresse, ou si vous voulez plus d'informations,
+        <br />
+        vous pouvez me contacter grâce au formulaire de contact, ou avec l'un
+        des services suivants :<br />
 
-<div class="container">
-<h2><i class="fas fa-pen"></i> M'envoyer un message </h2>
-<section id="section_form">
-	<form id="contact-form">	 
-	<label for="name">Nom</label>
-	<input id="name" name="name" type="text" placeholder="Votre nom..." required>
-	<label for="forename">Prénom</label>
-	<input id="forename" name="forename" type="text" placeholder="Votre prénom..." required>
-	<label for="mail">E-Mail</label>
-	<input id="mail" name="mail" type="mail" placeholder="Votre mail..." required>
-	<label for="subject">Intitulé</label>
-	<input id="subject" name="subject" type="text" placeholder="Intitulé du message..." required>
-	<label for="message">Message</label>
-	<textarea id="message" name="message" placeholder="Votre message..." required></textarea>
-	<button type="submit"><i class="fas fa-paper-plane"></i> Envoyer</button>
-	</form>
-</section>
-<section>
-	<div id="message-status" style="display: none;"></div>
-</section>
-  	<script src="https://cdn.emailjs.com/dist/email.min.js" defer></script>
-	<script src="../res/js/Mail.js" defer></script>
-</div>
+        <br />Mon mail :
+        <a href="mailto:fourmaintrauxcamille2004@gmail.com">
+          <i class="fas fa-envelope"></i>fourmaintrauxcamille2004@gmail.com</a
+        >
 
-<div class="container">
-<h2><i class="fas fa-heart"></i> Merci </h2>
-	<p>Merci d'avoir pris le temps de vous intéresser à mon profil !</p>
-</div>
-	<footer>
-	<a  href="../res/fich/cv.pdf" target="_blank" download> Cv 
-	<i class="fas fa-file"></i></a>
-	<a  href="mailto:fourmaintrauxcamille2004@gmail.com"> Mail
-	<i class="fas fa-envelope"></i></a>
-	<a href="https://www.linkedin.com/in/camille-fourmaintraux-708b34275/"target="_blank"> Linkedin
-	<i class="fab fa-linkedin"></i></a>
-	<a href="https://github.com/CamilleFourmaintraux"target="_blank"> GitHub
-	<i class="fab fa-github"></i></a>
-    <a href="./documents.html"> Documents
-    <i class="fas fa-folder"></i></a>
-	</footer>
-</body>
+        <br />
+        Mon Linkedin :
+        <a
+          href="https://www.linkedin.com/in/camille-fourmaintraux-708b34275/
+	"
+          target="_blank"
+        >
+          <i class="fab fa-linkedin"> </i
+          >www.linkedin.com/in/camille-fourmaintraux-708b34275</a
+        >
 
+        <br />
+        Mon gitHub :
+        <a
+          href="https://github.com/CamilleFourmaintraux
+	"
+          target="_blank"
+        >
+          <i class="fab fa-github"> </i
+          >https://github.com/CamilleFourmaintraux</a
+        ><br />
+
+        <br />
+        La version pdf de mon CV, ainsi que mes réseaux sont aussi disponibles
+        en bas de chacune des pages.
+      </p>
+    </div>
+
+    <div class="container">
+      <h2><i class="fas fa-pen"></i> M'envoyer un message</h2>
+      <section id="section_form">
+        <form id="contact-form">
+          <label for="name">Nom</label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            placeholder="Votre nom..."
+            required
+          />
+          <label for="forename">Prénom</label>
+          <input
+            id="forename"
+            name="forename"
+            type="text"
+            placeholder="Votre prénom..."
+            required
+          />
+          <label for="mail">E-Mail</label>
+          <input
+            id="mail"
+            name="mail"
+            type="mail"
+            placeholder="Votre mail..."
+            required
+          />
+          <label for="subject">Intitulé</label>
+          <input
+            id="subject"
+            name="subject"
+            type="text"
+            placeholder="Intitulé du message..."
+            required
+          />
+          <label for="message">Message</label>
+          <textarea
+            id="message"
+            name="message"
+            placeholder="Votre message..."
+            required
+          ></textarea>
+          <button type="submit">
+            <i class="fas fa-paper-plane"></i> Envoyer
+          </button>
+        </form>
+      </section>
+      <section>
+        <div id="message-status" style="display: none"></div>
+      </section>
+      <script src="https://cdn.emailjs.com/dist/email.min.js" defer></script>
+      <script src="../res/js/Mail.js" defer></script>
+    </div>
+
+    <div class="container">
+      <h2><i class="fas fa-heart"></i> Merci</h2>
+      <p>Merci d'avoir pris le temps de vous intéresser à mon profil !</p>
+    </div>
+    <footer>
+      <a href="../res/fich/cv.pdf" target="_blank" download>
+        Cv <i class="fas fa-file"></i
+      ></a>
+      <a href="mailto:fourmaintrauxcamille2004@gmail.com">
+        Mail <i class="fas fa-envelope"></i
+      ></a>
+      <a
+        href="https://www.linkedin.com/in/camille-fourmaintraux-708b34275/"
+        target="_blank"
+      >
+        Linkedin <i class="fab fa-linkedin"></i
+      ></a>
+      <a href="https://github.com/CamilleFourmaintraux" target="_blank">
+        GitHub <i class="fab fa-github"></i
+      ></a>
+      <a href="./documents.html"> Documents <i class="fas fa-folder"></i></a>
+    </footer>
+  </body>
 </html>
