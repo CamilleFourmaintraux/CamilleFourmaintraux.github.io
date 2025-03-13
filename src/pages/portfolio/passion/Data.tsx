@@ -1,6 +1,6 @@
 import { RealisationProps } from "../Realisation";
 import Tags from "./Tags";
-import FirstGameJam from "./projects/firstGameJam";
+import FirstGameJam from "./projects/FirstGameJam";
 import First3DPlatformer from "./projects/First3DPlatformer";
 import MazeGenerator from "./projects/MazeGenerator";
 import MiniGames from "./projects/MiniGames";
