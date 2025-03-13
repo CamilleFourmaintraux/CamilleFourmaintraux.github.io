@@ -1,0 +1,70 @@
+/* Boutons de tags */
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 10px 0;
+}
+
+.tag {
+  background: #fff;
+  color: #333;
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: default;
+}
+
+.tags-container button {
+  background: #fff;
+  color: #333;
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 14px;
+  transition: all 0.2s ease-in-out;
+}
+
+.tags-container button:hover {
+  background: #bbdddd;
+}
+
+.tags-container button.active {
+  background: #0123ff;
+  color: #fff;
+  border-color: #0012ff;
+  cursor: default;
+}
+
+.tags-container span.active {
+  background: #01234f;
+  color: #fff;
+  border-color: #00123f;
+  cursor: default;
+}
+
+.searchbar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 97%;
+}
+
+#portfolioContainer {
+  text-align: left;
+}
+#advancedSearchButtonContainer {
+  text-align: center;
+}
+
+#advancedSearchButton {
+  width: 225px;
+}
+
+.timeperiod {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 10px 0;
+}
