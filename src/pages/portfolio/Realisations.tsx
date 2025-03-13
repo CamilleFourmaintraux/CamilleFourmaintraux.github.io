@@ -68,7 +68,7 @@ const Realisations: React.FC<RealisationsProps> = ({
           <AnimatePresence>
             {showAdvancedSearch && (
               <motion.div
-                className="container advancedSearch"
+                className="advancedSearch"
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
@@ -153,7 +153,9 @@ const Realisations: React.FC<RealisationsProps> = ({
                 >
                   <Realisation
                     idRealisation={idRealisation}
-                    title={`${index + 1}. ${transformSaeID(idRealisation)} ${title}`}
+                    title={`${index + 1}. ${transformSaeID(
+                      idRealisation
+                    )} ${title}`}
                     tags={tags}
                     date={date}
                     dateEnd={dateEnd}

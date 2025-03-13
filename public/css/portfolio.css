@@ -68,3 +68,13 @@
   gap: 5px;
   margin: 10px 0;
 }
+
+.advancedSearch {
+  max-width: 1200px;
+  margin: 10px auto;
+  background-color: #bbcfce;
+  padding: 10px;
+  padding-bottom: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
