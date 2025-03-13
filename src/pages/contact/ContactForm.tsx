@@ -71,17 +71,22 @@ export default function ContactForm() {
 
     return (
         <div className="container">
-            <h2><i className="fas fa-pen"></i> M'envoyer un message (ça me fera plaisir)</h2>
+            <h2><i className="fas fa-pen"></i> M'envoyer un message</h2>
             
             <section id="section_form">
                 <form id="contact-form" onSubmit={handleSubmit}>
-                    <label htmlFor="name">Nom</label>
-                    <input id="name" name="name" type="text" placeholder="Votre nom..." required ref={lastnameRef} />
+                    <div className='next-to-each-other'>
+                        <div className='form-name'>
+                            <label htmlFor="name">Nom</label>
+                            <input id="name" name="name" type="text" placeholder="Votre nom..." required ref={lastnameRef} />
+                        </div>
+                        <div className='form-name'>
+                            <label htmlFor="forename">Prénom</label>
+                            <input id="forename" name="forename" type="text" placeholder="Votre prénom..." required ref={firstnameRef} />
+                        </div>
+                    </div>
 
-                    <label htmlFor="forename">Prénom</label>
-                    <input id="forename" name="forename" type="text" placeholder="Votre prénom..." required ref={firstnameRef} />
-
-                    <label htmlFor="mail">E-Mail</label>
+                    <label htmlFor="mail" className='protected'>E-Mail</label>
                     <input id="mail" name="mail" type="email" placeholder="Votre mail..." required ref={emailRef} />
 
                     <label htmlFor="subject">Intitulé</label>
