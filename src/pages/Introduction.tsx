@@ -8,7 +8,7 @@ export default function IntroductionPage() {
           <i className="fas fa-user"></i> Présentation
         </h2>
         <p>
-          Bonjour/Bonsoir !<br />
+          Bonjour !<br />
           Je suis étudiant en troisième année de BUT Informatique à l'IUT de
           Lille.
           <br />
