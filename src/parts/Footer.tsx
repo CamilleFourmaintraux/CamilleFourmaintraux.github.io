@@ -6,11 +6,11 @@ export default function Footer() {
         <>
         <span id="findepage"></span>
         <footer>
-        <a href="/files/resume.pdf"> Cv <i className="fas fa-file-pdf"></i></a>
-        <NavLink to="contact"> Mail <i className="fas fa-envelope"></i></NavLink>
-        <a href="https://www.linkedin.com/in/camille-fourmaintraux-708b34275/"target="_blank"> Linkedin <i className="fab fa-linkedin"></i></a>
-        <a href="https://github.com/CamilleFourmaintraux"target="_blank"> GitHub <i className="fab fa-github"></i></a>
-        <NavLink to="documents" className={({ isActive }) => isActive ? "current" : ""}> Documents <Icon/></NavLink>
+        <a href="/files/resume.pdf" className="navlink"> Cv <i className="fas fa-file-pdf"></i></a>
+        <NavLink to="contact" className="navlink"> Mail <i className="fas fa-envelope"></i></NavLink>
+        <a href="https://www.linkedin.com/in/camille-fourmaintraux-708b34275/"target="_blank" className="navlink"> Linkedin <i className="fab fa-linkedin"></i></a>
+        <a href="https://github.com/CamilleFourmaintraux"target="_blank" className="navlink"> GitHub <i className="fab fa-github"></i></a>
+        <NavLink to="documents" className={({ isActive }) => isActive ? "current navlink" : "navlink"}> Documents <Icon/></NavLink>
         </footer>
         </>
     );
