@@ -26,23 +26,11 @@ p {
     line-height: 1.6;
 }
 
-
-
-@media screen and (max-width: 899x) {
-img {
-    max-width : 80%;
-    height : auto;
-    margin : 10px;
-}
-}
-
-@media screen and (min-width: 900px) {
 img {
     max-width : 60%;
     height : auto;
     margin : 10px;
     margin-left:20%;
-}
 }
 
 .container {
@@ -69,4 +57,28 @@ img {
 .subcontainer h3{
     margin:auto;
     padding:auto;
+}
+
+
+.next-to-each-other {
+    align-items: center;
+    width:97%;
+}
+
+.next-to-each-other div {
+    align-items: center;/* Espacement entre les éléments */
+    width:100%;
+}
+  
+.next-to-each-other label {
+    margin: 0; /* Évite l'espacement par défaut autour des labels */
+    width:min-content;
+}
+
+@media all and (min-width: 430px)
+{
+    .next-to-each-other {
+        display: flex;
+        gap: 20px; /* Espacement entre les éléments */
+    }
 }

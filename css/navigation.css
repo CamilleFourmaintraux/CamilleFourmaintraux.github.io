@@ -1,40 +1,82 @@
 nav {
-    text-align: center;
-    background-color: #444;
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1px;
-    width: 100%;
+  text-align: center;
+  background-color: #444;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1px;
+  width: 100%;
 }
 
-nav a {
-    text-decoration: none;
-    color: #fff;
-    margin: 5px;
-    white-space: nowrap;
+.navlink {
+  text-decoration: none;
+  color: #fff;
+  margin: 5px;
+  white-space: nowrap;
 }
 
-nav a:hover{
-    color: #BBDDDD;
+.navlink:link {
+  color: #fff;
+  background-color: transparent;
+  text-decoration: none;
 }
 
-nav a.current:hover{
-    color: #FF5151;
+.navlink:visited {
+  color: #fff;
+  background-color: transparent;
+  text-decoration: none;
 }
 
-nav a.current{
-    color: #FF5858;
+.navlink:active {
+  color: #fff;
+  background-color: transparent;
+  text-decoration: none;
 }
-  
+
+.navlink:hover {
+  color: #bbdddd;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.navlink.current {
+  color: #00aaff;
+  cursor: default;
+}
+
+a:link {
+  color: #123456;
+  background-color: transparent;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  color: #00aaff; /*#abcdef;*/
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+a:visited {
+  color: #002c69;
+  background-color: transparent;
+  text-decoration: line-through;
+}
+
+a:active {
+  color: #002c00;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
 /* Si la navigation devient fixe */
 #navbar.fixed {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 999;
-    width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
 }
 
 /*
