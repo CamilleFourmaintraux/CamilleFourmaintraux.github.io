@@ -1,3 +1,4 @@
+import EMothep from "../parts/E-Mothep";
 
 export default function IntroductionPage() {
     return (
@@ -8,10 +9,10 @@ export default function IntroductionPage() {
             Bonjour !<br/>
             Je suis étudiant en troisième année de BUT Informatique à l'IUT de Lille.
             <br/><br/>
-            J'ai récemment obtenu un stage de 16 semaines au sein d'une équipe de développement chez <strong className="protected">E-Mothep</strong> du 10 mars jusqu'au 27 juin 2025.<br/>
+            J'ai récemment obtenu un stage de 16 semaines au sein d'une équipe de développement chez <EMothep/> du 10 mars jusqu'au 27 juin 2025.<br/>
             J'avais déjà réalisé mon précédent stage dans cette entreprise, qui avait été très satisfait de mon travail et a donc décidé de me reprendre.
             <br/>
-            <a href="https://e-mothep.fr/" className="protected"> E-Mothep</a> est une société de conseil et d'intégration de solutions avec plus de 20 ans d'expériences.
+            <EMothep/> est une société de conseil et d'intégration de solutions avec plus de 20 ans d'expériences.
             L'entreprise accompagne ses clients dans leurs démarches d'urbanisation de leurs systèmes d'informations, afin de les rendre plus efficace et évolutif.
             <br/><br/>
             Mon parcours académique et ma passion pour l'informatique me motivent à m'engager pleinement dans ce domaine en constante évolution.
