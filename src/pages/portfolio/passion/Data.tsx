@@ -44,7 +44,7 @@ const realisations: RealisationProps[] = [
     idRealisation: "miscellaneous",
     title: "Autres jeux en développement",
     date: new Date(2004, 0, 15),
-    dateEnd: new Date(2073, 0, 15),
+    dateEnd: new Date(2073, 3, 21),
     tags: [],
     children: <Miscellaneous />,
   },
