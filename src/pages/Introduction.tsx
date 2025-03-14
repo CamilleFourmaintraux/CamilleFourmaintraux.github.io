@@ -53,7 +53,7 @@ export default function IntroductionPage() {
           <i className="fas fa-download"></i> Mon CV{" "}
         </h2>
         <p>
-          Vous pouvez télécharger mon CV en pdf en cliquant{" "}
+          Vous pouvez directement télécharger mon CV en pdf en cliquant{" "}
           <a href="/files/resume.pdf" target="_blank" download>
             {" "}
             ici
@@ -70,6 +70,14 @@ export default function IntroductionPage() {
           nouveaux ajouts, des modifications (et des bugs).{" "}
           <i className="fas fa-bug"></i>
         </p>
+      </div>
+      <div className="container">
+        <h2>
+          <i className="fa-solid fa-clover"></i> Prochaines fonctionnalités
+        </h2>
+        <ul>
+          <li>Traductions Anglais-Français</li>
+        </ul>
       </div>
     </>
   );
