@@ -59,7 +59,6 @@ img {
 }
 
 .next-to-each-other {
-  align-items: center;
   align-items: stretch;
   width: 100%;
 }

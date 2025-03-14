@@ -121,7 +121,7 @@ const Realisations: React.FC<RealisationsProps> = ({
                   <button onClick={() => setOnlyInProgress(!onlyInProgress)}>
                     {onlyInProgress ? (
                       <i className="fa-solid fa-table-list">
-                        {"‎ ‎ ‎ ‎ ‎ ‎ ‎ "}
+                        {"‎ ‎ ‎ ‎ ‎ ‎ ‎  ‎ ‎ "}
                       </i>
                     ) : (
                       <i className="fa-solid fa-bars-progress" />
