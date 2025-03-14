@@ -53,6 +53,12 @@ button:hover {
   background: #1234ff;
 }
 
+@media all and (min-width: 500px) {
+  #forename {
+    width: 90%;
+  }
+}
+
 /*
 button[type=submit] {
     background-color: #1255a2;

@@ -79,6 +79,23 @@ a:active {
   width: 100%;
 }
 
+#back-to-top {
+  display: block;
+  position: fixed;
+  bottom: 50px;
+  right: 20px;
+  z-index: 999;
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#back-to-top:hover {
+  background-color: #444;
+}
+
 /*
 nav {
     text-align: center;
@@ -136,20 +153,4 @@ nav a.current:hover{
 .current{
     color: #FF5858;
 }
-
-#back-to-top {
-      display: none;
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 999;
-      background-color: #333;
-      color: #fff;
-      padding: 10px;
-      border-radius: 5px;
-      cursor: pointer;
-}
-
-#back-to-top:hover {
-      background-color: #444;
-}*/
+*/

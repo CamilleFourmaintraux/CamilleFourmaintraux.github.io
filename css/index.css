@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+/*@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");*/
 body {
   background-color: #f4f4f4;
   margin: 0;
@@ -45,8 +45,8 @@ img {
   max-width: 1200px;
   margin: 10px auto;
   background-color: #d9eeed;
-  padding: 10px;
-  padding-bottom: 20px;
+  padding: 20px;
+  padding-right: 50px;
   border-radius: 5px;
 }
 .subcontainer h4 {
@@ -60,7 +60,8 @@ img {
 
 .next-to-each-other {
   align-items: center;
-  width: 97%;
+  align-items: stretch;
+  width: 100%;
 }
 
 .next-to-each-other div {
@@ -68,12 +69,18 @@ img {
   width: 100%;
 }
 
+.next-to-each-other button {
+  flex: 1; /* Permet aux boutons de prendre la même largeur */
+  width: 100%;
+  align-items: center;
+}
+
 .next-to-each-other label {
   margin: 0; /* Évite l'espacement par défaut autour des labels */
   width: min-content;
 }
 
-@media all and (min-width: 430px) {
+@media all and (min-width: 500px) {
   .next-to-each-other {
     display: flex;
     gap: 20px; /* Espacement entre les éléments */
