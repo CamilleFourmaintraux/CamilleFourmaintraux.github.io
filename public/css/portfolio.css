@@ -48,7 +48,7 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  width: 97%;
+  width: 100%;
 }
 
 #portfolioContainer {
@@ -73,7 +73,7 @@
   max-width: 1200px;
   margin: 10px auto;
   background-color: #bbcfce;
-  padding: 10px;
+  padding: 20px;
   padding-bottom: 20px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);

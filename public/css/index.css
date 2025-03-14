@@ -60,7 +60,8 @@ img {
 
 .next-to-each-other {
   align-items: center;
-  width: 97%;
+  align-items: stretch;
+  width: 100%;
 }
 
 .next-to-each-other div {
@@ -68,12 +69,18 @@ img {
   width: 100%;
 }
 
+.next-to-each-other button {
+  flex: 1; /* Permet aux boutons de prendre la même largeur */
+  width: 100%;
+  align-items: center;
+}
+
 .next-to-each-other label {
   margin: 0; /* Évite l'espacement par défaut autour des labels */
   width: min-content;
 }
 
-@media all and (min-width: 430px) {
+@media all and (min-width: 500px) {
   .next-to-each-other {
     display: flex;
     gap: 20px; /* Espacement entre les éléments */
