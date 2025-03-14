@@ -46,28 +46,16 @@ nav {
 }
 
 a:link {
-  color: #123456;
+  color: #12345f;
   background-color: transparent;
-  text-decoration: none;
+  text-decoration: underline;
   font-weight: bold;
 }
 
 a:hover {
-  color: #00aaff; /*#abcdef;*/
+  color: #1234ff; /*#abcdef;*/
   background-color: transparent;
-  text-decoration: underline;
-}
-
-a:visited {
-  color: #002c69;
-  background-color: transparent;
-  text-decoration: line-through;
-}
-
-a:active {
-  color: #002c00;
-  background-color: transparent;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 /* Si la navigation devient fixe */
