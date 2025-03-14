@@ -8,13 +8,13 @@ export default function Education() {
             <strong>2025</strong>
             <ul>
               <li>
-                <a href="/img/placeholder.png" target="_blank">
+                <a href="/files/StudiesNotice.pdf" target="_blank">
                   Avis de poursuite d'étude très favorable
                 </a>
               </li>
               <li>
                 Obtention de ma certification du{" "}
-                <a href="/img/placeholder.png" target="_blank">
+                <a href="/files/ToeicCertification.pdf" target="_blank">
                   TOEIC Niveau C1
                 </a>{" "}
                 - IUT de Lille Villeneuve d'Ascq
