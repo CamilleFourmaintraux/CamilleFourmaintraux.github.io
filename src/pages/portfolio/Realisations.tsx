@@ -183,6 +183,8 @@ const Realisations: React.FC<RealisationsProps> = ({
                     date={date}
                     dateEnd={dateEnd}
                     current={selectedTag}
+                    isInPeriod={startDate != "" && endDate != ""}
+                    isInProgress={onlyInProgress}
                   >
                     {children}
                   </Realisation>

@@ -82,3 +82,10 @@
 .date-filters {
   align-items: center;
 }
+
+.timeperiod span.active {
+  background: #01234f;
+  color: #fff;
+  border-color: #00123f;
+  cursor: default;
+}

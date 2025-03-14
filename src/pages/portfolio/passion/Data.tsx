@@ -14,6 +14,9 @@ const realisations: RealisationProps[] = [
     dateEnd: new Date(2024, 9, 11),
     tags: [Tags.VIDEOGAME, Tags.WEB, Tags.TWODIMENSIONAL, Tags.SHOOTER],
     children: <FirstGameJam />,
+    current: "",
+    isInPeriod: false,
+    isInProgress: false,
   },
   {
     idRealisation: "first3Dplatformer",
@@ -22,6 +25,9 @@ const realisations: RealisationProps[] = [
     dateEnd: new Date(2024, 7, 14),
     tags: [Tags.VIDEOGAME, Tags.PLATFORMER, Tags.THREEDIMENSIONAL],
     children: <First3DPlatformer />,
+    current: "",
+    isInPeriod: false,
+    isInProgress: false,
   },
   {
     idRealisation: "mazegenerator",
@@ -30,15 +36,20 @@ const realisations: RealisationProps[] = [
     dateEnd: new Date(2023, 8, 28),
     tags: [Tags.JAVA, Tags.TWODIMENSIONAL, Tags.MAZES],
     children: <MazeGenerator />,
+    current: "",
+    isInPeriod: false,
+    isInProgress: false,
   },
   {
     idRealisation: "minigames",
     title: "Création d'un Pong et d'un casse-brique",
     date: new Date(2023, 8, 3),
     dateEnd: new Date(2023, 11, 27),
-
     tags: [Tags.VIDEOGAME, Tags.JAVA, Tags.TWODIMENSIONAL, Tags.ARCADE],
     children: <MiniGames />,
+    current: "",
+    isInPeriod: false,
+    isInProgress: false,
   },
   {
     idRealisation: "miscellaneous",
@@ -47,6 +58,9 @@ const realisations: RealisationProps[] = [
     dateEnd: new Date(2073, 3, 21),
     tags: [],
     children: <Miscellaneous />,
+    current: "",
+    isInPeriod: false,
+    isInProgress: false,
   },
 ];
 export default realisations;

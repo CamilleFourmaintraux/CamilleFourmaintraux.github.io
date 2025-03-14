@@ -7,7 +7,9 @@ export interface RealisationProps {
   date: Date;
   dateEnd: Date;
   children: React.ReactNode;
-  current?: string;
+  current: string;
+  isInPeriod: boolean;
+  isInProgress: boolean;
 }
 
 export const Realisation: React.FC<RealisationProps> = ({
@@ -18,12 +20,20 @@ export const Realisation: React.FC<RealisationProps> = ({
   dateEnd,
   children,
   current,
+  isInPeriod,
+  isInProgress,
 }) => {
-  function Status({ dateEnd }: { dateEnd: Date }) {
+  function Status({
+    dateEnd,
+    isInProgress,
+  }: {
+    dateEnd: Date;
+    isInProgress: boolean;
+  }) {
     const today = new Date();
 
     return dateEnd > today ? (
-      <span className="tag">En cours</span>
+      <span className={isInProgress ? "tag active" : "tag"}>En cours</span>
     ) : (
       <span></span>
     );
@@ -33,10 +43,10 @@ export const Realisation: React.FC<RealisationProps> = ({
     <div className="realisation subcontainer" id={idRealisation}>
       <h2>{title}</h2>
       <div className="timeperiod">
-        <span className="tag">
+        <span className={isInPeriod ? "tag active" : "tag"}>
           Période : {formatDate(date)} - {formatDate(dateEnd)}
         </span>
-        <Status dateEnd={dateEnd} />
+        <Status dateEnd={dateEnd} isInProgress={isInProgress} />
       </div>
       <div className="realisation-content">{children}</div>
 

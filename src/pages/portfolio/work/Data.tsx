@@ -12,8 +12,9 @@ import Sae105 from "./saes/Sae105";
 import Sae103 from "./saes/Sae103";
 import Pagil2 from "./saes/Pagil2";
 import Tags from "./Tags";
+import { RealisationProps } from "../Realisation";
 
-export default [
+const realisations: RealisationProps[] = [
   {
     idRealisation: "pagil2",
     title: "Création d'un BACK-END et d'un FRONT-END pour un site web",
@@ -32,6 +33,9 @@ export default [
       Tags.JAVA,
     ],
     children: <Pagil2 />,
+    current: "",
+    isInPeriod: false,
+    isInProgress: false,
   },
   {
     idRealisation: "stage2025portfolio",
@@ -47,6 +51,9 @@ export default [
         .
       </p>
     ),
+    current: "",
+    isInPeriod: false,
+    isInProgress: false,
   },
   {
     idRealisation: "stage2024portfolio",
@@ -62,6 +69,9 @@ export default [
         .
       </p>
     ),
+    current: "",
+    isInPeriod: false,
+    isInProgress: false,
   },
   {
     idRealisation: "sae509",
@@ -80,6 +90,9 @@ export default [
       Tags.JSP,
     ],
     children: <Sae509 />,
+    current: "",
+    isInPeriod: false,
+    isInProgress: false,
   },
   {
     idRealisation: "sae501",
@@ -88,6 +101,9 @@ export default [
     dateEnd: new Date(2025, 1, 9),
     tags: [Tags.SYSTEMS, Tags.C],
     children: <Sae501 />,
+    current: "",
+    isInPeriod: false,
+    isInProgress: false,
   },
   {
     idRealisation: "sae402",
@@ -96,6 +112,9 @@ export default [
     dateEnd: new Date(2024, 2, 22),
     tags: [Tags.VIDEOGAME, Tags.JSTS],
     children: <Sae402 />,
+    current: "",
+    isInPeriod: false,
+    isInProgress: false,
   },
   {
     idRealisation: "sae401",
@@ -111,6 +130,9 @@ export default [
       Tags.JSP,
     ],
     children: <Sae401 />,
+    current: "",
+    isInPeriod: false,
+    isInProgress: false,
   },
   {
     idRealisation: "sae302",
@@ -119,6 +141,9 @@ export default [
     dateEnd: new Date(2023, 11, 4),
     tags: [Tags.VIDEOGAME, Tags.JAVA],
     children: <Sae302 />,
+    current: "",
+    isInPeriod: false,
+    isInProgress: false,
   },
   {
     idRealisation: "pagil1",
@@ -127,6 +152,9 @@ export default [
     dateEnd: new Date(2023, 8, 5),
     tags: [Tags.SCRUM, Tags.VIDEOGAME, Tags.JAVA],
     children: <Pagil1 />,
+    current: "",
+    isInPeriod: false,
+    isInProgress: false,
   },
   {
     idRealisation: "sae213",
@@ -135,6 +163,9 @@ export default [
     dateEnd: new Date(2023, 5, 19),
     tags: [Tags.SCRUM, Tags.VIDEOGAME],
     children: <Sae213 />,
+    current: "",
+    isInPeriod: false,
+    isInProgress: false,
   },
   {
     idRealisation: "sae207",
@@ -143,6 +174,9 @@ export default [
     dateEnd: new Date(2023, 3, 24),
     tags: [Tags.DB],
     children: <Sae207 />,
+    current: "",
+    isInPeriod: false,
+    isInProgress: false,
   },
   {
     idRealisation: "sae202",
@@ -151,6 +185,9 @@ export default [
     dateEnd: new Date(2023, 2, 31),
     tags: [Tags.JAVA],
     children: <Sae202 />,
+    current: "",
+    isInPeriod: false,
+    isInProgress: false,
   },
   {
     idRealisation: "sae105",
@@ -160,6 +197,9 @@ export default [
     dateEnd: new Date(2022, 11, 9),
     tags: [Tags.WEB],
     children: <Sae105 />,
+    current: "",
+    isInPeriod: false,
+    isInProgress: false,
   },
   {
     idRealisation: "sae103",
@@ -168,5 +208,10 @@ export default [
     dateEnd: new Date(2022, 9, 21),
     tags: [Tags.SYSTEMS, Tags.C],
     children: <Sae103 />,
+    current: "",
+    isInPeriod: false,
+    isInProgress: false,
   },
 ];
+
+export default realisations;
