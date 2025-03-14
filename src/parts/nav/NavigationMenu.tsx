@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router";
 import MainNav from "./MainNav";
 import SubNav from "./SubNav";
+import BackToTopButton from "./BackToTopButton";
 
 export interface subNavLink {
   href: string;
@@ -32,6 +33,7 @@ const NavigationMenu: React.FC<subNavLinks> = ({ subNavLinks }) => {
     <div id="navbar" className={isFixed ? "fixed" : ""}>
       <MainNav />
       {subNavLinks.length > 0 && <SubNav links={subNavLinks} />}
+      {isFixed && <BackToTopButton />}
       <Outlet />
     </div>
   );
