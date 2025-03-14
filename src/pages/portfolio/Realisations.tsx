@@ -82,7 +82,7 @@ const Realisations: React.FC<RealisationsProps> = ({
                   <input
                     type="text"
                     className="searchInput"
-                    placeholder="Rechercher une réalisation..."
+                    placeholder="Rechercher un projet..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                   />
