@@ -22,6 +22,7 @@ const Realisations: React.FC<RealisationsProps> = ({
 
   const [showAdvancedSearch, setShowAdvancedSearch] = useState(false);
   const [orderAsc, setOrderAsc] = useState(true);
+  const [onlyInProgress, setOnlyInProgress] = useState(false);
   const [selectedTag, setSelectedTag] = useState<string>("");
   const [searchQuery, setSearchQuery] = useState("");
   const [startDate, setStartDate] = useState("");
@@ -42,7 +43,8 @@ const Realisations: React.FC<RealisationsProps> = ({
       : true;
     const matchesDate =
       (!startDate || r.date >= new Date(startDate)) &&
-      (!endDate || r.dateEnd <= new Date(endDate));
+      (!endDate || r.dateEnd <= new Date(endDate)) &&
+      (!onlyInProgress || r.dateEnd >= new Date());
 
     return matchesTag && matchesSearch && matchesDate;
   });
@@ -102,13 +104,34 @@ const Realisations: React.FC<RealisationsProps> = ({
                   />
                 </div>
 
-                {/* Boutons de tri */}
-                <button onClick={() => setOrderAsc(!orderAsc)}>
-                  Trier par date :{" "}
-                  {orderAsc
-                    ? "Du plus ancien au plus récent"
-                    : "Du plus récent au plus ancien"}
-                </button>
+                <div className="next-to-each-other">
+                  {/* Boutons de tri */}
+                  <button onClick={() => setOrderAsc(!orderAsc)}>
+                    {orderAsc ? (
+                      <i className="fa-solid fa-arrow-down" />
+                    ) : (
+                      <i className="fa-solid fa-arrow-up" />
+                    )}{" "}
+                    Trier{" "}
+                    {orderAsc
+                      ? "du plus ancien au plus récent"
+                      : "du plus récent au plus ancien"}
+                  </button>
+                  {/* Boutons de tri */}
+                  <button onClick={() => setOnlyInProgress(!onlyInProgress)}>
+                    {onlyInProgress ? (
+                      <i className="fa-solid fa-table-list">
+                        {"‎ ‎ ‎ ‎ ‎ ‎ ‎ "}
+                      </i>
+                    ) : (
+                      <i className="fa-solid fa-bars-progress" />
+                    )}{" "}
+                    Afficher{" "}
+                    {onlyInProgress
+                      ? "tous les projets"
+                      : "les projets en cours"}
+                  </button>
+                </div>
 
                 {/* Filtres par tags */}
                 <div className="tags-container">
