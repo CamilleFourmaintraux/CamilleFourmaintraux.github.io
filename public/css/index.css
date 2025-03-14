@@ -45,8 +45,8 @@ img {
   max-width: 1200px;
   margin: 10px auto;
   background-color: #d9eeed;
-  padding: 10px;
-  padding-bottom: 20px;
+  padding: 20px;
+  padding-right: 50px;
   border-radius: 5px;
 }
 .subcontainer h4 {
