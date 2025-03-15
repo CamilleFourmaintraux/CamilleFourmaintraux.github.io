@@ -1,5 +1,13 @@
+:root[data-theme="light"] {
+  --bg-footer-color: #444;
+}
+
+:root[data-theme="dark"] {
+  --bg-footer-color: #111;
+}
+
 footer {
-  background-color: #333;
+  background-color: var(--bg-footer-color);
   color: #fff;
   text-align: center;
   padding: 10px 0;
@@ -25,4 +33,39 @@ footer a:hover {
 
 #findepage {
   padding: 24px;
+}
+
+#themeSwitcher {
+  position: fixed;
+  right: 20px;
+  height: 51px;
+  width: 51px;
+}
+
+#back-to-top {
+  display: block;
+  position: fixed;
+  height: 51px;
+  right: 80px;
+  z-index: 999;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@media all and (max-width: 390px) {
+  #themeSwitcher {
+    bottom: 80px;
+  }
+  #back-to-top {
+    bottom: 80px;
+  }
+}
+@media all and (min-width: 390px) {
+  #themeSwitcher {
+    bottom: 50px;
+  }
+  #back-to-top {
+    bottom: 50px;
+  }
 }

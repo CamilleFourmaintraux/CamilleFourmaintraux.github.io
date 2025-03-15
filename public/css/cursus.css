@@ -2,3 +2,10 @@ li {
   padding: 20px auto;
   margin: 16px auto;
 }
+
+#emothepLogo {
+  margin: 30px;
+  width: 35%;
+  max-width: 150px;
+  height: auto;
+}

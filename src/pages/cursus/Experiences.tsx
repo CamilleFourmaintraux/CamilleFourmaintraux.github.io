@@ -39,8 +39,10 @@ export default function Experiences() {
               src="/img/cursus/emothep_logo.png"
               alt="logo E-Mothep"
               style={{ float: "right" }}
+              id="emothepLogo"
             />
           </div>
+          <br></br>
           <p>
             <EMothep /> est une entreprise spécialisée dans le développement de
             solutions logicielles.
@@ -79,8 +81,7 @@ export default function Experiences() {
 
             <li>
               <strong>
-                Développement sun un projet interne de base de connaissances
-                :{" "}
+                Développement sun un projet interne de base de connaissances :{" "}
               </strong>
               <p>
                 Dans ce projet, la gestion des erreurs est incomplète. Une

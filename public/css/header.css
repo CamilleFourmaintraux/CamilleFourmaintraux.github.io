@@ -5,6 +5,13 @@ header {
   padding: 10px 0;
 }
 
+#header {
+  background-image: url("/img/matrix2.gif");
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
+}
+
 #photoPresentation {
   border-radius: 50%;
   width: 100px;

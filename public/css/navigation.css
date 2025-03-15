@@ -1,6 +1,26 @@
+/*Colors both mode*/
+:root {
+  --bg-navLink-color: white;
+  --bg-navLink-current-color: #00aaff;
+}
+
+/*Colors light mode*/
+:root[data-theme="light"] {
+  --bg-navbar-color: #444;
+  --bg-link-color: #1234a5;
+  --bg-visitedLink-color: purple;
+}
+
+/*Colors dark mode*/
+:root[data-theme="dark"] {
+  --bg-navbar-color: #111;
+  --bg-link-color: #308aff;
+  --bg-visitedLink-color: pink;
+}
+
 nav {
   text-align: center;
-  background-color: #444;
+  background-color: var(--bg-navbar-color);
   position: relative;
   display: flex;
   flex-wrap: wrap;
@@ -11,25 +31,25 @@ nav {
 
 .navlink {
   text-decoration: none;
-  color: #fff;
+  color: var(--bg-navLink-color);
   margin: 5px;
   white-space: nowrap;
 }
 
 .navlink:link {
-  color: #fff;
+  color: var(--bg-navLink-color);
   background-color: transparent;
   text-decoration: none;
 }
 
 .navlink:visited {
-  color: #fff;
+  color: var(--bg-navLink-color);
   background-color: transparent;
   text-decoration: none;
 }
 
 .navlink:active {
-  color: #fff;
+  color: var(--bg-navLink-current-color);
   background-color: transparent;
   text-decoration: none;
 }
@@ -41,12 +61,12 @@ nav {
 }
 
 .navlink.current {
-  color: #00aaff;
+  color: var(--bg-navLink-current-color);
   cursor: default;
 }
 
 a:link {
-  color: #12345f;
+  color: var(--bg-link-color);
   background-color: transparent;
   text-decoration: underline;
   font-weight: bold;
@@ -58,6 +78,12 @@ a:hover {
   text-decoration: none;
 }
 
+a:visited {
+  color: var(--bg-visitedLink-color); /*#abcdef;*/
+  background-color: transparent;
+  text-decoration: none;
+}
+
 /* Si la navigation devient fixe */
 #navbar.fixed {
   position: fixed;
@@ -65,28 +91,6 @@ a:hover {
   left: 0;
   z-index: 999;
   width: 100%;
-}
-
-#back-to-top {
-  display: block;
-  position: fixed;
-  right: 20px;
-  z-index: 999;
-  color: #fff;
-  padding: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-@media all and (max-width: 390px) {
-  #back-to-top {
-    bottom: 80px;
-  }
-}
-@media all and (min-width: 390px) {
-  #back-to-top {
-    bottom: 50px;
-  }
 }
 
 /*
