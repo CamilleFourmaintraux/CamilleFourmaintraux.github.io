@@ -76,6 +76,7 @@ export default function IntroductionPage() {
           <i className="fa-solid fa-clover"></i> Prochaines fonctionnalités
         </h2>
         <ul>
+          <li>Sous-menu dynamique pour le portfolio</li>
           <li>Traductions Anglais-Français</li>
         </ul>
       </div>
