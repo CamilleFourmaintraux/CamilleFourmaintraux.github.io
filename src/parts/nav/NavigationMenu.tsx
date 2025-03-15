@@ -3,6 +3,7 @@ import { Outlet } from "react-router";
 import MainNav from "./MainNav";
 import SubNav from "./SubNav";
 import BackToTopButton from "./BackToTopButton";
+import ThemeSwitcher from "../ThemeSwitcher";
 
 export interface subNavLink {
   href: string;
@@ -34,6 +35,7 @@ const NavigationMenu: React.FC<subNavLinks> = ({ subNavLinks }) => {
       <MainNav />
       {subNavLinks.length > 0 && <SubNav links={subNavLinks} />}
       {isFixed && <BackToTopButton />}
+      <ThemeSwitcher />
       <Outlet />
     </div>
   );
