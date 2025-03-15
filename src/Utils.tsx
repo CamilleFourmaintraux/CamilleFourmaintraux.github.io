@@ -25,7 +25,9 @@ export function transformSaeID(saeID: string) {
     /^\d{3}$/.test(saeID.slice(3))
   ) {
     // Remplace le "e" par "é", ajoute un espace entre "sae" et les chiffres, et ajoute un espace et un ":" à la fin
-    return `${saeID.slice(0, 3).replace("e", "é").toUpperCase()} ${saeID.slice(3)} :`;
+    return `${saeID.slice(0, 3).replace("e", "é").toUpperCase()} ${saeID.slice(
+      3
+    )} :`;
   }
   // Si les conditions ne sont pas remplies, la fonction ne renvoie rien
   return "";
@@ -43,3 +45,8 @@ export const TagsList = ({ tags, current }) => {
     </div>
   );
 };
+
+export function getRandomInt(max: number) {
+  // si max=3, résultats possible : 0, 1, 2
+  return Math.floor(Math.random() * max);
+}

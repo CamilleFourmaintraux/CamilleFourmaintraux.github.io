@@ -6,10 +6,22 @@ header {
 }
 
 #header {
-  background-image: url("/img/matrix2.gif");
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover;
+}
+
+.img_bg_1 {
+  background-image: url("/img/matrix1.gif");
+}
+.img_bg_2 {
+  background-image: url("/img/matrix2.gif");
+}
+.img_bg_3 {
+  background-image: url("/img/matrix3.gif");
+}
+.img_bg_4 {
+  background-image: url("/img/matrix4.gif");
 }
 
 #photoPresentation {
