@@ -21,7 +21,7 @@ export default function IntroductionPage() {
           reprendre.
           <br />
           <EMothep /> est une société de conseil et d'intégration de solutions
-          avec plus de 20 ans d'expériences. L'entreprise accompagne ses clients
+          avec plus de 20 ans d'expérience. L'entreprise accompagne ses clients
           dans leurs démarches d'urbanisation de leurs systèmes d'informations,
           afin de les rendre plus efficace et évolutif.
           <br />
@@ -43,9 +43,9 @@ export default function IntroductionPage() {
           développement logiciel et back-end.
           <br />
           Poursuivre un niveau d'étude Bac+5 me permettra d'approfondir mes
-          compétences et mes connaisances et de me spécialiser dans ces
+          compétences et mes connaissances et de me spécialiser dans ces
           domaines, ce qui me permettra de m'intégrer pleinement dans une équipe
-          de développement logiciel
+          de développement logiciel.
         </p>
       </div>
       <div className="container">
