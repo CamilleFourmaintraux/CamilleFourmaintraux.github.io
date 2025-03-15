@@ -4,13 +4,13 @@ import { HashRouter } from "react-router-dom";
 import Navigator from "./Navigator.tsx";
 import Header from "./parts/Header.tsx";
 import Footer from "./parts/Footer.tsx";
-import ScrollToTop from "./parts/nav/ResetScroll.ts";
+import ResetScroll from "./parts/nav/ResetScroll.ts";
 import Main from "./Main.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <HashRouter>
-      <ScrollToTop />
+      <ResetScroll />
       <Header />
       <Main />
       <Navigator />
