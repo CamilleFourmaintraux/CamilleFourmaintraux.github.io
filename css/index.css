@@ -1,9 +1,37 @@
+/*@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: black;
+    --bg-container-color: #012345;
+    --text-color: white;
+  }
+}*/
+
+:root[data-theme="light"] {
+  --bg-color: white;
+  --bg-container-color: white;
+  --bg-subcontainer-color: #d9eeed;
+  --text-color: black;
+}
+
+:root[data-theme="dark"] {
+  --bg-color: black;
+  --bg-container-color: #001234;
+  --bg-subcontainer-color: #012345;
+  --text-color: white;
+}
+
 /*@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");*/
 body {
-  background-color: #f4f4f4;
   margin: 0;
   padding: 0;
   font-family: "Roboto", "sans-serif";
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+html {
+  scrollbar-color: rgba(0, 0, 0, 0.69) rgba(125, 125, 125, 0.51);
+  scrollbar-width: thin;
 }
 
 .protected {
@@ -44,7 +72,7 @@ p {
 .container {
   max-width: 1250px;
   margin: 20px auto;
-  background-color: #fff;
+  background-color: var(--bg-container-color);
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -53,7 +81,7 @@ p {
 .subcontainer {
   max-width: 1200px;
   margin: 10px auto;
-  background-color: #d9eeed;
+  background-color: var(--bg-subcontainer-color);
   padding: 20px;
   padding-right: 50px;
   border-radius: 5px;

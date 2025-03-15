@@ -1,6 +1,20 @@
+:root {
+  --bg-cardhover-color: #bbdddd;
+}
+
+:root[data-theme="light"] {
+  --bg-card-color: #fff;
+}
+
+:root[data-theme="dark"] {
+  --bg-card-color: #eee;
+}
+
 .carousel {
   width: 100%; /* Width of carousel */
   height: 166px; /* Height of carousel */
+  scrollbar-color: rgba(38, 38, 126, 0.69) rgba(255, 255, 255, 0);
+  scrollbar-width: thin;
 }
 
 .card-container {
@@ -25,7 +39,7 @@
   }
 }
 
-/* CSS only for PC */
+/* CSS only for PC */ /*Depreciated*/
 @media all and (min-width: 500px) {
   .selected {
     background: #ff5858; /* Set background color when selected */
@@ -41,10 +55,11 @@
   align-items: center;
   border: 1px solid #4f5873;
   color: #4a544c;
+  background-color: var(--bg-card-color);
   border-radius: 8px;
 }
 .card:hover {
-  background: #bbdddd; /* Set background color when hover */
+  background: var(--bg-cardhover-color); /* Set background color when hover */
 }
 
 .cardPicture {
