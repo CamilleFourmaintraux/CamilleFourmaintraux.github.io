@@ -25,11 +25,20 @@ p {
   line-height: 1.6;
 }
 
-img {
-  max-width: 60%;
-  height: auto;
-  margin: 10px;
-  margin-left: 20%;
+@media all and (max-width: 900px) {
+  img {
+    max-width: 90%;
+    height: auto;
+    margin: 10px;
+  }
+}
+@media all and (min-width: 900px) {
+  img {
+    max-width: 60%;
+    height: auto;
+    margin: 10px;
+    margin-left: 20%;
+  }
 }
 
 .container {
