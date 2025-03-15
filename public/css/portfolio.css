@@ -54,9 +54,9 @@
 }
 
 .tags-container span.active {
-  background: #01234f;
+  background: #0018b6;
   color: #fff;
-  border-color: #00123f;
+  background: #0018bb;
   cursor: default;
 }
 
