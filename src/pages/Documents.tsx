@@ -22,78 +22,84 @@ export default function DocumentsPage() {
           téléchargeabe
         </h2>
         <table>
-          <tr>
-            <td>
-              <strong>CV</strong>
-            </td>
-            <td>
-              <a href="/fich/cv.pdf" target="_blank" download>
-                Télécharger
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Attestation DUT</strong>
-            </td>
-            <td>
-              <a href="/fich/28_DUT_RACDV.pdf" target="_blank" download>
-                Télécharger
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Rapport de stage 2024</strong>
-            </td>
-            <td>
-              <a href="/fich/RapportDeStage2024.pdf" target="_blank" download>
-                Télécharger
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <strong>
-                Attestation <i>Kaplan International London School</i>
-              </strong>
-            </td>
-            <td>
-              <a href="/fich/kaplancertificate.pdf" target="_blank" download>
-                Télécharger
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Attestation PIX</strong>
-            </td>
-            <td>
-              <a href="/fich/pix.pdf" target="_blank" download>
-                Télécharger
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Avis de poursuite d'étude</strong>
-            </td>
-            <td>
-              <a href="/files/StudiesNotice.pdf" target="_blank" download>
-                Télécharger
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Certification du Toeic</strong>
-            </td>
-            <td>
-              <a href="/files/ToeicCertification.pdf" target="_blank" download>
-                Télécharger
-              </a>
-            </td>
-          </tr>
+          <tbody>
+            <tr>
+              <td>
+                <strong>CV</strong>
+              </td>
+              <td>
+                <a href="/fich/cv.pdf" target="_blank" download>
+                  Télécharger
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Attestation DUT</strong>
+              </td>
+              <td>
+                <a href="/fich/28_DUT_RACDV.pdf" target="_blank" download>
+                  Télécharger
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Rapport de stage 2024</strong>
+              </td>
+              <td>
+                <a href="/fich/RapportDeStage2024.pdf" target="_blank" download>
+                  Télécharger
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>
+                  Attestation <i>Kaplan International London School</i>
+                </strong>
+              </td>
+              <td>
+                <a href="/fich/kaplancertificate.pdf" target="_blank" download>
+                  Télécharger
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Attestation PIX</strong>
+              </td>
+              <td>
+                <a href="/fich/pix.pdf" target="_blank" download>
+                  Télécharger
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Avis de poursuite d'étude</strong>
+              </td>
+              <td>
+                <a href="/files/StudiesNotice.pdf" target="_blank" download>
+                  Télécharger
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Certification du Toeic</strong>
+              </td>
+              <td>
+                <a
+                  href="/files/ToeicCertification.pdf"
+                  target="_blank"
+                  download
+                >
+                  Télécharger
+                </a>
+              </td>
+            </tr>
+          </tbody>
         </table>
       </div>
 
