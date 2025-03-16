@@ -1,39 +1,40 @@
 import EMothep from "../../parts/E-Mothep";
-
+import { useTranslation } from "react-i18next";
 export default function Experiences() {
+  const { t } = useTranslation();
   return (
     <>
       <div className="container" id="experiences">
-        <h2>Expériences professionnelle</h2>
+        <h2>{t("experience.title")}</h2>
         <div className="subcontainer" id="stage2025container">
           <div>
             <h3 id="stage2025" style={{ float: "left" }}>
-              Stage intégrateur SOA webMethods pendant 16 semaines de mars à
-              juin 2025 chez <EMothep /> [Lille]
+              {t("experience.stage2025.title")} <EMothep /> [Lille]
             </h3>
           </div>
-          <p id="stage2025">Stage en cours...</p>
+          <p id="stage2025">{t("experience.stage2025.in_progress")}</p>
           <a
             href="/files/InternshipReportEmothep2024.pdf"
             target="_blank"
             id="stage2024rapport"
           >
-            Lire mon rapport de stage de l'année dernière
+            {t("experience.stage2025.link_previous")}
           </a>
         </div>
+
         <div className="subcontainer" id="tutorat">
-          <h3>Tuteur pour l'université de Lille de octobre 2024 à mars 2025</h3>
+          <h3>{t("experience.tutor.title")}</h3>
           <ul>
-            <li>Cours de soutien à des élèves en difficutés</li>
-            <li>Gérer un groupe d'élèves</li>
-            <li>Responsabilités</li>
+            <li>{t("experience.tutor.support")}</li>
+            <li>{t("experience.tutor.group")}</li>
+            <li>{t("experience.tutor.responsibilities")}</li>
           </ul>
         </div>
+
         <div className="subcontainer" id="stage2024container">
           <div>
             <h3 id="stage2024" style={{ float: "left" }}>
-              Stage intégrateur SOA webMethods pendant 10 semaines d'avril à
-              juin 2024 chez <EMothep /> [Lille]
+              {t("experience.stage2024.title")} <EMothep /> [Lille]
             </h3>
             <img
               src="/img/cursus/emothep_logo.png"
@@ -42,76 +43,40 @@ export default function Experiences() {
               id="emothepLogo"
             />
           </div>
-          <br></br>
+          <br />
           <p>
-            <EMothep /> est une entreprise spécialisée dans le développement de
-            solutions logicielles.
+            <EMothep /> {t("experience.stage2024.company_desc")}
           </p>
-
           <ul>
             <li>
-              <strong>Projet principal : </strong>
-              <p>
-                Maintenance d'AMAT (Automated Monitoring & Analysing Tool) par
-                l'intégration de nouvelles fonctionnalités et correction de
-                bugs. Certains services avaient des comportements inatendu et je
-                devais les analyser, les comprendre, puis les corriger.{" "}
-              </p>
+              <strong>{t("experience.stage2024.main_project.title")}</strong>
+              <p>{t("experience.stage2024.main_project.desc")}</p>
             </li>
-
             <li>
-              <strong>Développement d'une API : </strong>
-              <p>
-                {" "}
-                Pour la mise à jour automatique des référentiels, optimisant les
-                processus et réduisant les erreurs.
-              </p>
+              <strong>{t("experience.stage2024.api.title")}</strong>
+              <p>{t("experience.stage2024.api.desc")}</p>
             </li>
-
             <li>
-              <strong>Rétrodocumentation : </strong>
-              <p>
-                Pour réaliser la mission concernant la rédaction de
-                rétro-documentation sur l'un des projets internes de
-                l'entreprise, j’ai scruté le code sur le GitHub du projet et
-                j’ai noté dans un document les interactions avec la base de
-                données FireBase ainsi que le code source de ce projet.
-              </p>
+              <strong>{t("experience.stage2024.documentation.title")}</strong>
+              <p>{t("experience.stage2024.documentation.desc")}</p>
             </li>
-
             <li>
               <strong>
-                Développement sun un projet interne de base de connaissances :{" "}
+                {t("experience.stage2024.internal_project.title")}
               </strong>
-              <p>
-                Dans ce projet, la gestion des erreurs est incomplète. Une
-                gestion des erreurs plus intéressante et modulable a été faite
-                pour un autre projet. Je devais récupérer cette gestion d’erreur
-                et l’implémenter dans ce projet-là. Je devais ensuite utiliser
-                POSTMAN pour accéder à l’URL de l’API et tester si ça renvoyait
-                les bons messages d’erreurs.
-              </p>
+              <p>{t("experience.stage2024.internal_project.desc")}</p>
             </li>
             <li>
-              <strong>Expérience en gestion de projet : </strong>
-              <p>
-                Priorisation des tâches, Travail au sein d'une équipe et
-                résolution de problèmes.
-              </p>
+              <strong>{t("experience.stage2024.pm.title")}</strong>
+              <p>{t("experience.stage2024.pm.desc")}</p>
             </li>
             <li>
-              <strong>Compétences technique acquises : </strong>
-              <p>
-                Gestion des bases de données, développement d'API,
-                documentation, gestion de projet, travail en équipe.
-              </p>
+              <strong>{t("experience.stage2024.skills.title")}</strong>
+              <p>{t("experience.stage2024.skills.desc")}</p>
             </li>
             <li>
-              <strong>Outils & langages de programmation employés : </strong>
-              <p>
-                DBeaver, Software AG Designer, Postman, MANTIS, WinSCP, GitHub,
-                Firebase, Angular, TypeScript.
-              </p>
+              <strong>{t("experience.stage2024.tools.title")}</strong>
+              <p>{t("experience.stage2024.tools.desc")}</p>
             </li>
           </ul>
           <a
@@ -119,19 +84,16 @@ export default function Experiences() {
             target="_blank"
             id="stage2024rapport"
           >
-            Lire mon rapport de stage complet
+            {t("experience.stage2024.full_report")}
           </a>
         </div>
 
         <div className="subcontainer" id="carrefour">
-          <h3>
-            Employé Polyvalent dans le Carrefour Contact de Ressons sur Matz de
-            Juillet à Août 2022.
-          </h3>
+          <h3>{t("experience.carrefour.title")}</h3>
           <ul>
-            <li>Intégration d’une équipe</li>
-            <li>Travail en autonomie</li>
-            <li>Prise d’initiatives</li>
+            <li>{t("experience.carrefour.team")}</li>
+            <li>{t("experience.carrefour.autonomy")}</li>
+            <li>{t("experience.carrefour.initiative")}</li>
           </ul>
         </div>
       </div>

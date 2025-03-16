@@ -93,6 +93,35 @@ a:visited {
   width: 100%;
 }
 
+.configButtons {
+  position: fixed;
+  right: 10px;
+}
+
+.configButtons button {
+  height: 42px;
+  width: 42px;
+  padding: 3px;
+  margin: 3px;
+}
+
+.configButtons #back-to-top {
+  height: 42px;
+  width: auto;
+  padding: 10px;
+}
+
+@media all and (max-width: 412px) {
+  .configButtons {
+    bottom: 80px;
+  }
+}
+@media all and (min-width: 412px) {
+  .configButtons {
+    bottom: 50px;
+  }
+}
+
 /*
 nav {
     text-align: center;

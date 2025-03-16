@@ -6,8 +6,10 @@ import {
   emailjs_user,
   validateEmail,
 } from "./MailUtils";
+import { useTranslation } from "react-i18next";
 
 export default function ContactForm() {
+  const { t } = useTranslation();
   // Références pour les champs du formulaire
   const lastnameRef = useRef<HTMLInputElement>(null);
   const firstnameRef = useRef<HTMLInputElement>(null);
@@ -40,21 +42,19 @@ export default function ContactForm() {
         message: message,
       })
       .then(() => {
-        setStatusMessage("Message envoyé avec succès.");
+        setStatusMessage(t("form.msg-success"));
         setIsSuccess(true);
         resetForm();
       })
       .catch(() => {
-        setStatusMessage(
-          "Désolé, une erreur est survenue durant l'envoi de votre message."
-        );
+        setStatusMessage(t("form.msg-error"));
         setIsSuccess(false);
       });
 
     // Masquer le message après quelques secondes
     setTimeout(() => {
       setStatusMessage(null);
-    }, 10000);
+    }, 8000);
   };
 
   // Fonction pour vider les champs du formulaire
@@ -78,95 +78,95 @@ export default function ContactForm() {
     if (validateEmail(email)) {
       sendMail(lastname, firstname, email, subject, message);
     } else {
-      setStatusMessage("Veuillez entrer une adresse e-mail valide.");
       setIsSuccess(false);
+      setStatusMessage(t("form.msg-invalidEmail"));
+      setTimeout(() => {
+        setStatusMessage(null);
+      }, 8000);
     }
   };
 
   return (
-    <div className="container">
-      <h2>
-        <i className="fas fa-pen"></i> M'envoyer un message
-      </h2>
-
-      <section id="section_form">
-        <form id="contact-form" onSubmit={handleSubmit}>
-          <div className="next-to-each-other">
-            <div className="form-name">
-              <label htmlFor="name">Nom</label>
-              <input
-                id="name"
-                name="name"
-                type="text"
-                placeholder="Votre nom..."
-                required
-                ref={lastnameRef}
-                autoComplete="family-name"
-              />
+    <>
+      <div className="container">
+        <h2>
+          <i className="fas fa-pen"></i> {t("form.title")}
+        </h2>
+        <section id="section_form">
+          <form id="contact-form" onSubmit={handleSubmit}>
+            <div className="next-to-each-other">
+              <div className="form-name">
+                <label htmlFor="name">{t("form.name")}</label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  placeholder={t("form.name_placeholder")}
+                  required
+                  ref={lastnameRef}
+                />
+              </div>
+              <div className="form-name">
+                <label htmlFor="forename">{t("form.forename")}</label>
+                <input
+                  id="forename"
+                  name="forename"
+                  type="text"
+                  placeholder={t("form.forename_placeholder")}
+                  required
+                  ref={firstnameRef}
+                />
+              </div>
             </div>
-            <div className="form-name">
-              <label htmlFor="forename">Prénom</label>
-              <input
-                id="forename"
-                name="forename"
-                type="text"
-                placeholder="Votre prénom..."
-                required
-                ref={firstnameRef}
-                autoComplete="given-name"
-              />
-            </div>
-          </div>
 
-          <label htmlFor="mail" className="protected">
-            E-Mail
-          </label>
-          <input
-            id="mail"
-            name="mail"
-            type="email"
-            placeholder="Votre mail..."
-            required
-            ref={emailRef}
-            autoComplete="email"
-          />
+            <label htmlFor="mail" className="protected">
+              {t("form.email")}
+            </label>
+            <input
+              id="mail"
+              name="mail"
+              type="email"
+              placeholder={t("form.email_placeholder")}
+              required
+              ref={emailRef}
+            />
 
-          <label htmlFor="subject">Intitulé</label>
-          <input
-            id="subject"
-            name="subject"
-            type="text"
-            placeholder="Intitulé du message..."
-            required
-            ref={subjectRef}
-          />
+            <label htmlFor="subject">{t("form.subject")}</label>
+            <input
+              id="subject"
+              name="subject"
+              type="text"
+              placeholder={t("form.subject_placeholder")}
+              required
+              ref={subjectRef}
+            />
 
-          <label htmlFor="message">Message</label>
-          <textarea
-            id="message"
-            name="message"
-            placeholder="Votre message..."
-            required
-            ref={messageRef}
-          />
+            <label htmlFor="message">{t("form.message")}</label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder={t("form.message_placeholder")}
+              required
+              ref={messageRef}
+            />
 
-          <button type="submit">
-            <i className="fas fa-paper-plane"></i> Envoyer
-          </button>
-        </form>
-      </section>
-
-      {/* Affichage du message de statut */}
-      {statusMessage && (
-        <section>
-          <div
-            id="message-status"
-            style={{ color: isSuccess ? "green" : "red", display: "block" }}
-          >
-            {statusMessage}
-          </div>
+            <button type="submit">
+              <i className="fas fa-paper-plane"></i> {t("form.send")}
+            </button>
+          </form>
         </section>
-      )}
-    </div>
+
+        {statusMessage && (
+          <section>
+            <div
+              id="message-status"
+              style={{ color: isSuccess ? "green" : "red", display: "block" }}
+            >
+              {statusMessage}
+            </div>
+          </section>
+        )}
+      </div>
+    </>
   );
 }

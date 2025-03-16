@@ -1,23 +1,25 @@
+import { useTranslation } from "react-i18next";
 export default function Education() {
+  const { t } = useTranslation();
   return (
     <>
       <div className="container" id="formation">
-        <h2>Formation</h2>
+        <h2>{t("formation.title")}</h2>
         <ul>
           <li>
             <strong>2025</strong>
             <ul>
               <li>
                 <a href="/files/StudiesNotice.pdf" target="_blank">
-                  Avis de poursuite d'étude très favorable
+                  {t("formation.2025.notice")}
                 </a>
               </li>
               <li>
-                Obtention de ma certification du{" "}
+                {t("formation.2025.toeic")}{" "}
                 <a href="/files/ToeicCertification.pdf" target="_blank">
-                  TOEIC Niveau C1
+                  TOEIC {t("formation.2025.toeic_level")}
                 </a>{" "}
-                - IUT de Lille Villeneuve d'Ascq
+                - {t("formation.iut")}
               </li>
             </ul>
           </li>
@@ -26,15 +28,15 @@ export default function Education() {
             <ul>
               <li>
                 <a href="/files/kaplanCertificate.pdf" target="_blank">
-                  Séjour d'un mois en Angleterre dans une école spécialisée
+                  {t("formation.2024.kaplan")}
                 </a>{" "}
-                pour renforcer mes compétences en anglais.
+                {t("formation.2024.kaplan_desc")}
               </li>
               <li>
                 <a href="/files/DutCertificate.pdf" target="_blank">
-                  Obtention de mon DUT
+                  {t("formation.2024.dut")}
                 </a>{" "}
-                - IUT de Lille Villeneuve d'Ascq
+                - {t("formation.iut")}
               </li>
               <img src="/img/cursus/iut.jpg" alt="photo IUT" />
             </ul>
@@ -42,18 +44,15 @@ export default function Education() {
           <li>
             <strong>2022</strong>
             <ul>
-              <li>
-                Baccalauréat général Mention Bien - Lycée Pierre D'Ailly
-                Compiègne
-              </li>
+              <li>{t("formation.2022.bac")}</li>
               <img src="/img/cursus/lycee.png" alt="photo lycée" />
               <li>
                 <a href="/files/pixCertificate.pdf" target="_blank">
-                  Certification PIX 635pix
+                  {t("formation.2022.pix")}
                 </a>{" "}
-                - Lycée Pierre D'Ailly Compiègne
+                - {t("formation.lycee")}
               </li>
-              <li>Permis B</li>
+              <li>{t("formation.2022.driving")}</li>
             </ul>
           </li>
         </ul>

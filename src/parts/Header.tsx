@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { getRandomInt } from "../Utils";
+import { useTranslation } from "react-i18next";
 
 export default function Header() {
+  const { t } = useTranslation();
   const [backgroundImage, setBackgroundImage] = useState("");
 
   useEffect(() => {
-    setBackgroundImage(`/img/matrix${getRandomInt(4) + 1}.gif`);
+    setBackgroundImage(`/img/header/matrix${getRandomInt(4) + 1}.gif`);
   }, []);
   return (
     <header
@@ -15,8 +17,13 @@ export default function Header() {
       }}
     >
       <h1>Camille FOURMAINTRAUX</h1>
-      <p>Étudiant en BUT Informatique</p>
-      <img src="/img/me_blue.png" alt="Ma Photo" id="photoPresentation"></img>
+      <p>{t("subtitleSentence")}</p>
+
+      <img
+        src="/img/header/me_blue.png"
+        alt="Ma Photo"
+        id="photoPresentation"
+      ></img>
     </header>
   );
 }

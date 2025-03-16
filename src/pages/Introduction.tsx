@@ -1,84 +1,57 @@
+import { useTranslation } from "react-i18next";
 import EMothep from "../parts/E-Mothep";
 
 export default function IntroductionPage() {
+  const { t } = useTranslation();
   return (
     <>
       <div className="container">
         <h2>
-          <i className="fas fa-user"></i> Présentation
+          <i className="fas fa-user"></i> {t("presentation.title")}
         </h2>
         <p>
-          Bonjour !<br />
-          Je suis étudiant en troisième année de BUT Informatique à l'IUT de
-          Lille.
+          {t("presentation.greeting")}
+          <br />
+          {t("presentation.intro")}
           <br />
           <br />
-          J'ai récemment obtenu un stage de 16 semaines au sein d'une équipe de
-          développement chez <EMothep /> du 10 mars jusqu'au 27 juin 2025.
+          {t("presentation.internship")} <EMothep />{" "}
+          {t("presentation.internship_dates")}
           <br />
-          J'avais déjà réalisé mon précédent stage dans cette entreprise, qui
-          avait été très satisfait de mon travail et a donc décidé de me
-          reprendre.
+          {t("presentation.previous_internship")}
           <br />
-          <EMothep /> est une société de conseil et d'intégration de solutions
-          avec plus de 20 ans d'expérience. L'entreprise accompagne ses clients
-          dans leurs démarches d'urbanisation de leurs systèmes d'informations,
-          afin de les rendre plus efficace et évolutif.
+          <EMothep /> {t("presentation.company_description")}
           <br />
           <br />
-          Mon parcours académique et ma passion pour l'informatique me motivent
-          à m'engager pleinement dans ce domaine en constante évolution. Je suis
-          déterminé à contribuer de manière significative et à apporter une
-          valeur ajoutée à l'entreprise qui me fera confiance.
+          {t("presentation.motivation")}
           <br />
         </p>
       </div>
       <div className="container">
         <h2>
-          <i className="fas fa-bullseye"></i> Mes objectifs{" "}
+          <i className="fas fa-bullseye"></i> {t("goals.title")}
         </h2>
-        <p>
-          Une fois mon BUT obtenu, je souhaite poursuivre mes études en école
-          d'ingénieur ou en Master, et suivre une formation spécialisée dans le
-          développement logiciel et back-end.
-          <br />
-          Poursuivre un niveau d'étude Bac+5 me permettra d'approfondir mes
-          compétences et mes connaissances et de me spécialiser dans ces
-          domaines, ce qui me permettra de m'intégrer pleinement dans une équipe
-          de développement logiciel.
-        </p>
+        <p>{t("goals.text")}</p>
       </div>
       <div className="container">
         <h2>
-          <i className="fas fa-download"></i> Mon CV{" "}
+          <i className="fas fa-download"></i> {t("cv.title")}
         </h2>
         <p>
-          Vous pouvez directement télécharger mon CV en pdf en cliquant{" "}
+          {t("cv.download")}{" "}
           <a href="/files/resume.pdf" target="_blank" download>
-            {" "}
-            ici
+            {t("cv.here")}
           </a>
           .<br />
         </p>
       </div>
       <div className="container">
         <h2>
-          <i className="fas fa-circle-exclamation"></i> En développement
+          <i className="fas fa-circle-exclamation"></i> {t("dev.title")}
         </h2>
         <p>
-          Mon site est encore en développement, il pourrait encore y avoir de
-          nouveaux ajouts, des modifications (et des bugs).{" "}
-          <i className="fas fa-bug"></i>
+          {t("dev.text")} <i className="fas fa-bug"></i>
         </p>
-      </div>
-      <div className="container">
-        <h2>
-          <i className="fa-solid fa-clover"></i> Prochaines fonctionnalités
-        </h2>
-        <ul>
-          <li>Sous-menu dynamique pour le portfolio</li>
-          <li>Traductions Anglais-Français</li>
-        </ul>
       </div>
     </>
   );

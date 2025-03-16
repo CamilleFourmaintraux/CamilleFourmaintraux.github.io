@@ -50,3 +50,12 @@ export function getRandomInt(max: number) {
   // si max=3, résultats possible : 0, 1, 2
   return Math.floor(Math.random() * max);
 }
+
+export function normalizeString(input: string) {
+  return input
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "") // Supprime les accents
+    .toLowerCase() // Met en minuscule
+    .replace(/\s+/g, "-") // Remplace les espaces par des tirets
+    .replace(/[^a-z0-9\-_.]/g, ""); // Supprime les caractères non autorisés
+}

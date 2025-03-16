@@ -1,0 +1,265 @@
+{
+  "subtitleSentence": "Étudiant en BUT Informatique",
+  "mainnav": {
+    "home": "Accueil",
+    "career": "Cursus",
+    "portfolio": "Portfolio",
+    "interests": "Centres d'intérêt",
+    "contact": "Contact"
+  },
+  "subnav": {
+    "education": "Formation",
+    "skills": "Compétences",
+    "softskills": "Qualités",
+    "experience": "Expérience"
+  },
+  "topOfPage": "Haut de page",
+  "presentation": {
+    "title": "Présentation",
+    "greeting": "Bonjour !",
+    "intro": "Je suis étudiant en troisième année de BUT Informatique à l'IUT de Lille.",
+    "internship": "J'ai récemment obtenu un stage de 16 semaines au sein d'une équipe de développement chez",
+    "internship_dates": "du 10 mars jusqu'au 27 juin 2025.",
+    "previous_internship": "J'avais déjà réalisé mon précédent stage dans cette entreprise, qui avait été très satisfaite de mon travail et a donc décidé de me reprendre.",
+    "company_description": "est une société de conseil et d'intégration de solutions avec plus de 20 ans d'expériences. L'entreprise accompagne ses clients dans leurs démarches d'urbanisation de leurs systèmes d'informations, afin de les rendre plus efficaces et évolutifs.",
+    "motivation": "Mon parcours académique et ma passion pour l'informatique me motivent à m'engager pleinement dans ce domaine en constante évolution. Je suis déterminé à contribuer de manière significative et à apporter une valeur ajoutée à l'entreprise qui me fera confiance."
+  },
+  "goals": {
+    "title": "Mes objectifs",
+    "text": "Une fois mon BUT obtenu, je souhaite poursuivre mes études en école d'ingénieur ou en Master, et suivre une formation spécialisée dans le développement logiciel et back-end. Poursuivre un niveau d'étude Bac+5 me permettra d'approfondir mes compétences et mes connaissances et de me spécialiser dans ces domaines, ce qui me permettra de m'intégrer pleinement dans une équipe de développement logiciel."
+  },
+  "cv": {
+    "title": "Mon CV",
+    "download": "Vous pouvez télécharger mon CV en pdf en cliquant",
+    "here": "ici"
+  },
+  "dev": {
+    "title": "En développement",
+    "text": "Mon site est encore en développement, il pourrait encore y avoir de nouveaux ajouts, des modifications (et des bugs)."
+  },
+  "secret": {
+    "title": "Page secrète ?",
+    "description": "Cette page regroupe tous les documents téléchargeables du site en un seul endroit. Étant donné que les liens de téléchargement des fichiers sont dispersés à travers le site, chaque fichier étant associé à la section qui lui correspond, j'ai créé cette page pour faciliter l'accès à l'ensemble des documents."
+  },
+  "documents": {
+    "title": "Liste de tous les documents pdf téléchargeables",
+    "cv": "CV",
+    "attestation_dut": "Attestation DUT",
+    "rapport_stage": "Rapport de stage 2024",
+    "kaplan": "Attestation Kaplan International London School",
+    "pix": "Attestation PIX",
+    "studies_notice": "Avis de poursuite d'étude",
+    "toeic": "Certification du Toeic",
+    "download": "Télécharger"
+  },
+  "pending": {
+    "title": "Documents en attente",
+    "description": "Il se peut que certains documents affichent la mention « Bientôt » au lieu de « Télécharger ». J'attends encore la réception de certains documents et les mettrai à disposition sur le site dès que possible."
+  },
+
+  "contact": {
+    "title": "Contact",
+    "intro": "Si mon profil vous intéresse, ou si vous voulez plus d'informations, vous pouvez me contacter grâce au formulaire de contact, ou avec l'un des services suivants :",
+    "mail": "Mon mail :",
+    "linkedin": "Mon Linkedin :",
+    "github": "Mon GitHub :",
+    "footer": "La version pdf de mon CV, ainsi que mes réseaux sont aussi disponibles en bas de chacune des pages."
+  },
+  "form": {
+    "title": "M'envoyer un message",
+    "name": "Nom",
+    "name_placeholder": "Votre nom...",
+    "forename": "Prénom",
+    "forename_placeholder": "Votre prénom...",
+    "email": "E-Mail",
+    "email_placeholder": "Votre mail...",
+    "subject": "Intitulé",
+    "subject_placeholder": "Intitulé du message...",
+    "message": "Message",
+    "message_placeholder": "Votre message...",
+    "send": "Envoyer",
+    "msg-success": "Votre message a bien été envoyé.",
+    "msg-error": "Désolé, une erreur est survenue durant l'envoi de votre message.",
+    "msg-invalidEmail": "Veuillez entrer une e-mail valide."
+  },
+  "thanks": {
+    "title": "Merci",
+    "message": "Merci d'avoir pris le temps de vous intéresser à mon profil !"
+  },
+  "formation": {
+    "title": "Formation",
+    "2025": {
+      "notice": "Avis de poursuite d'étude très favorable",
+      "toeic": "Obtention de ma certification du",
+      "toeic_level": "Niveau C1"
+    },
+    "2024": {
+      "kaplan": "Séjour d'un mois en Angleterre dans une école spécialisée",
+      "kaplan_desc": "pour renforcer mes compétences en anglais.",
+      "dut": "Obtention de mon DUT"
+    },
+    "2022": {
+      "bac": "Baccalauréat général Mention Bien - Lycée Pierre D'Ailly Compiègne",
+      "pix": "Certification PIX 635pix",
+      "driving": "Permis B"
+    },
+    "iut": "IUT de Lille Villeneuve d'Ascq",
+    "lycee": "Lycée Pierre D'Ailly Compiègne"
+  },
+  "experience": {
+    "title": "Expériences professionnelle",
+    "stage2025": {
+      "title": "Stage intégrateur SOA webMethods pendant 16 semaines de mars à juin 2025 chez",
+      "in_progress": "Stage en cours...",
+      "link_previous": "Lire mon rapport de stage de l'année dernière"
+    },
+    "tutor": {
+      "title": "Tuteur pour l'université de Lille de octobre 2024 à mars 2025",
+      "support": "Cours de soutien à des élèves en difficultés",
+      "group": "Gérer un groupe d'élèves",
+      "responsibilities": "Responsabilités"
+    },
+    "stage2024": {
+      "title": "Stage intégrateur SOA webMethods pendant 10 semaines d'avril à juin 2024 chez",
+      "company_desc": "est une entreprise spécialisée dans le développement de solutions logicielles.",
+      "main_project": {
+        "title": "Projet principal :",
+        "desc": "Maintenance d'AMAT (Automated Monitoring & Analysing Tool) par l'intégration de nouvelles fonctionnalités et correction de bugs. Certains services avaient des comportements inattendus que j'ai dû analyser, comprendre et corriger."
+      },
+      "api": {
+        "title": "Développement d'une API :",
+        "desc": "Pour la mise à jour automatique des référentiels, optimisant les processus et réduisant les erreurs."
+      },
+      "documentation": {
+        "title": "Rétrodocumentation :",
+        "desc": "Rédaction de rétro-documentation sur un projet interne via l'analyse du code et des interactions avec la base de données Firebase."
+      },
+      "internal_project": {
+        "title": "Développement sur un projet interne de base de connaissances :",
+        "desc": "Refactorisation de la gestion des erreurs à partir d'un autre projet et tests via Postman pour valider les retours d'erreurs."
+      },
+      "pm": {
+        "title": "Expérience en gestion de projet :",
+        "desc": "Priorisation des tâches, travail en équipe et résolution de problèmes."
+      },
+      "skills": {
+        "title": "Compétences techniques acquises :",
+        "desc": "Gestion des bases de données, développement d'API, documentation, gestion de projet, travail en équipe."
+      },
+      "tools": {
+        "title": "Outils & langages de programmation employés :",
+        "desc": "DBeaver, Software AG Designer, Postman, MANTIS, WinSCP, GitHub, Firebase, Angular, TypeScript."
+      },
+      "full_report": "Lire mon rapport de stage complet"
+    },
+    "carrefour": {
+      "title": "Employé Polyvalent dans le Carrefour Contact de Ressons sur Matz de Juillet à Août 2022.",
+      "team": "Intégration d’une équipe",
+      "autonomy": "Travail en autonomie",
+      "initiative": "Prise d’initiatives"
+    }
+  },
+  "skills": {
+    "qualities": {
+      "title": "Qualités/Savoir-être",
+      "organized": "Organisé",
+      "attentive": "Attentif",
+      "curious": "Curieux",
+      "autonomous": "Autonome"
+    },
+    "title": "Compétences / Savoir-faire",
+    "language": "Langue :",
+    "language_value": "Anglais",
+    "programming": "Langages de programmation :",
+    "programming_value": "Java, JavaScript, TypeScript, Python, C",
+    "tools": "Outils de développement (IDE) :",
+    "tools_value": "Software AG Designer, Eclipse, IntelliJ, VSCode",
+    "web": "Développement web :",
+    "web_value": "HTML, CSS, JavaEE, React, Angular, Spring-Boot",
+    "sql": "Gestion de bases de données SQL :",
+    "sql_value": "PostgreSQL, DBeaver, H2",
+    "nosql": "Gestion de bases de données NoSQL :",
+    "nosql_value": "MongoDB, Redis, Cassandra",
+    "api": "Gestion d'API :",
+    "api_value": "Bruno, Postman",
+    "collab": "Outils collaboratifs :",
+    "collab_value": "Git, GitLab, GitHub, Trello, Mantis",
+    "scrum": "Scrum :",
+    "scrum_value": "Fut Scrum Master lors d'un projet agile.",
+    "ci": "CI/CD :",
+    "ci_value": "Automatisation, intégration et déploiement continus",
+    "quality": "Qualité du code :",
+    "quality_value": "Qualité de développement et algorithmique",
+    "math": "Modélisation Mathématiques :",
+    "math_value": "Graphes, imagerie, IA, visualisation",
+    "media": "Programmation multimédia :",
+    "media_value": "Manipulation d'images 2D, filtrage spatial"
+  },
+  "courses": {
+    "springboot_title": "Spring-Boot",
+    "springboot_desc": "Formation et projet sur Spring-Boot et Spring security pour la conception du back-end d'un site de prise de rendez-vous.",
+
+    "math_title": "Modélisation Mathématique",
+    "math_desc": "L’objectif de cette ressource était d’approfondir plusieurs domaines d’applications en donnant des éléments de formalisation, de connaissances et d’usages spécifiques à ces domaines, en particulier dans le domaine des mathématiques et de l’algorithmique sous-jacentes.",
+
+    "nosql_title": "MongoDB, Redis, Cassandra",
+    "nosql_desc": "Formation sur les Base de Données NoSQl. Introduction à MongoDb, Redis et à Cassandra pour la distribution de données : scalabilité horizontale.",
+
+    "react_title": "React",
+    "react_desc": "Formation et projet pour développer un front-end en React. Utilisation d'API, appels AJAX, Formulaires, Components, Refs, Redux.",
+
+    "quality_title": "Qualité de code",
+    "quality_desc": "Formation sur la qualité de développement, qualité algorithmique et aide à la décision. Algorithmes glouton, Apprentissage supervisé/K-NN, Classification Bayesienne et arbre de décisions.",
+
+    "ci_title": "CI/CD",
+    "ci_desc": "L’objectif de cette ressource est de concrétiser la chaîne de production d’une application afin de développer les aptitudes nécessaires pour travailler efficacement dans une équipe informatique.",
+
+    "postman_title": "Postman, Bruno",
+    "postman_desc": "Utilisation de Postman et de Bruno pour émettre des requêtes afin de tester des APIS.",
+
+    "multimedia_title": "Programmation multimédia",
+    "multimedia_desc": "Sensibilisation à la programmation multimédia. Manipulation d'images 2D, Historigrammes, Convolution et filtrage spatiale et Détections de contours. L'objectif de cette formation était de nous familiariser avec des méthodes classiques d’analyse et de traitement d’images.",
+
+    "tools_title": "Outils Collaboratifs",
+    "tools_desc": "Utilisation régulière d'outils de collaborations tels que Gitlab, GitHub, Trello, Mantis, Microsoft Teams.",
+
+    "softwareag_title": "Software AG Designer",
+    "softwareag_desc": "WebMethods était une société de logiciels d’entreprise qui se concentrait sur l’intégration d’applications, l’intégration de processus commerciaux et également l’intégration de partenaires B2B. En 2007, WebMethods a été rachetée par Software AG est devenue une filiale de cette entreprise. Software AG a conservé le nom WebMethods. Elle l’utilise pour identifier une suite logicielle englobant l’amélioration des processus, la mise en place d’une SOA, la modernisation informatique ainsi que l’intégration des entreprises.",
+
+    "toeic_title": "Certification Toeic",
+    "toeic_desc": "Certification au Toeic de niveau C1, correspondant à un utilisateur expérimenté, c'est-à-dire : Capable de comprendre des textes longs, de saisir des significations implicite, ainsi que de s'exprimer spontanément et couramment sans trop devoir chercher ses mots."
+  },
+  "portfolio": {
+    "advancedsearch": {
+      "toggle_show": "Afficher la recherche 🔽",
+      "toggle_hide": "Masquer la recherche 🔼",
+      "search_placeholder": "Rechercher un projet...",
+      "filter_from": "Du :",
+      "filter_to": "Au :",
+      "sort_button": "Trier",
+      "sort_asc": "du plus ancien au plus récent",
+      "sort_desc": "du plus récent au plus ancien",
+      "filter_all": "Afficher tous les projets",
+      "filter_inprogress": "les projets en cours",
+      "tag_all": "Tous",
+      "result_count": "{{count}} résultat(s) trouvé(s)",
+      "no_results": "Aucune réalisation ne correspond aux critères."
+    },
+    "work": {
+      "page_title": "Mes travaux",
+      "page_subtitle": "Mes réalisations professionnelles",
+      "page_description": "Cette page regroupe tous les projets auxquels j'ai participé dans un cadre professionnel.",
+      "saes": {
+        "sae": "sae"
+      }
+    },
+    "passion": {
+      "page_title": "Ma passion",
+      "page_subtitle": "Mes réalisations personnelles",
+      "page_description": "Ma plus grande passion reste avant tout la programmation. Je m'amuse donc à essayer de réaliser quelques projets (souvent des jeux) sur mon temps libre.",
+      "projects": {
+        "project": "project"
+      }
+    }
+  }
+}

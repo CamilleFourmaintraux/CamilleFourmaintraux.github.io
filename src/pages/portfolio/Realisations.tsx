@@ -3,6 +3,7 @@ import { Realisation, RealisationProps } from "./Realisation";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { transformSaeID } from "../../Utils";
+import { useTranslation } from "react-i18next";
 
 interface RealisationsProps {
   data: RealisationProps[]; // Corrigé ici
@@ -17,6 +18,7 @@ const Realisations: React.FC<RealisationsProps> = ({
   pageSubtitle,
   pageDescription,
 }) => {
+  const { t } = useTranslation();
   // Extraire tous les tags uniques
   const allTags: string[] = Array.from(new Set(data.flatMap((r) => r.tags)));
 
@@ -51,22 +53,22 @@ const Realisations: React.FC<RealisationsProps> = ({
 
   return (
     <>
-      {/* Bouton Toggle */}
       <div id="portfolioContainer">
         <div className="container">
-          <h2> {pageTitle} </h2>
+          <h2>{pageTitle}</h2>
           <p>{pageDescription}</p>
+
           <div id="advancedSearchButtonContainer">
             <button
               id="advancedSearchButton"
               onClick={() => setShowAdvancedSearch(!showAdvancedSearch)}
             >
               {showAdvancedSearch
-                ? "Masquer la recherche 🔼"
-                : "Afficher la recherche 🔽"}
+                ? t("portfolio.advancedsearch.toggle_hide")
+                : t("portfolio.advancedsearch.toggle_show")}
             </button>
           </div>
-          {/* Menu de recherche avec animation */}
+
           <AnimatePresence>
             {showAdvancedSearch && (
               <motion.div
@@ -82,7 +84,9 @@ const Realisations: React.FC<RealisationsProps> = ({
                   <input
                     type="text"
                     className="searchInput"
-                    placeholder="Rechercher un projet..."
+                    placeholder={t(
+                      "portfolio.advancedsearch.search_placeholder"
+                    )}
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                   />
@@ -90,13 +94,17 @@ const Realisations: React.FC<RealisationsProps> = ({
 
                 {/* Filtres par date */}
                 <div className="date-filters next-to-each-other">
-                  <label className="protected">Du :</label>
+                  <label className="protected">
+                    {t("portfolio.advancedsearch.filter_from")}
+                  </label>
                   <input
                     type="date"
                     value={startDate}
                     onChange={(e) => setStartDate(e.target.value)}
                   />
-                  <label className="protected">Au :</label>
+                  <label className="protected">
+                    {t("portfolio.advancedsearch.filter_to")}
+                  </label>
                   <input
                     type="date"
                     value={endDate}
@@ -112,12 +120,13 @@ const Realisations: React.FC<RealisationsProps> = ({
                     ) : (
                       <i className="fa-solid fa-arrow-up" />
                     )}{" "}
-                    Trier{" "}
+                    {t("portfolio.advancedsearch.sort_button")}{" "}
                     {orderAsc
-                      ? "du plus ancien au plus récent"
-                      : "du plus récent au plus ancien"}
+                      ? t("portfolio.advancedsearch.sort_asc")
+                      : t("portfolio.advancedsearch.sort_desc")}
                   </button>
-                  {/* Boutons de tri */}
+
+                  {/* Bouton projets en cours */}
                   <button onClick={() => setOnlyInProgress(!onlyInProgress)}>
                     {onlyInProgress ? (
                       <i className="fa-solid fa-table-list">
@@ -126,10 +135,10 @@ const Realisations: React.FC<RealisationsProps> = ({
                     ) : (
                       <i className="fa-solid fa-bars-progress" />
                     )}{" "}
-                    Afficher{" "}
+                    {t("portfolio.advancedsearch.filter_all")}{" "}
                     {onlyInProgress
-                      ? "tous les projets"
-                      : "les projets en cours"}
+                      ? t("portfolio.advancedsearch.filter_all")
+                      : t("portfolio.advancedsearch.filter_inprogress")}
                   </button>
                 </div>
 
@@ -139,7 +148,7 @@ const Realisations: React.FC<RealisationsProps> = ({
                     onClick={() => setSelectedTag("")}
                     className={selectedTag === "" ? "active" : ""}
                   >
-                    Tous
+                    {t("portfolio.advancedsearch.tag_all")}
                   </button>
                   {allTags.map((tag) => (
                     <button
@@ -158,9 +167,12 @@ const Realisations: React.FC<RealisationsProps> = ({
 
         <div className="container">
           <h2>{pageSubtitle}</h2>
-          <p>{filteredRealisations.length} résultat(s) trouvé(s)</p>
+          <p>
+            {t("portfolio.advancedsearch.result_count", {
+              count: filteredRealisations.length,
+            })}
+          </p>
 
-          {/* Affichage des réalisations filtrées avec animation */}
           <AnimatePresence>
             {filteredRealisations.map(
               (
@@ -183,7 +195,7 @@ const Realisations: React.FC<RealisationsProps> = ({
                     date={date}
                     dateEnd={dateEnd}
                     current={selectedTag}
-                    isInPeriod={startDate != "" && endDate != ""}
+                    isInPeriod={startDate !== "" && endDate !== ""}
                     isInProgress={onlyInProgress}
                   >
                     {children}
@@ -194,7 +206,7 @@ const Realisations: React.FC<RealisationsProps> = ({
           </AnimatePresence>
 
           {filteredRealisations.length === 0 && (
-            <p>Aucune réalisation ne correspond aux critères.</p>
+            <p>{t("portfolio.advancedsearch.no_results")}</p>
           )}
         </div>
       </div>

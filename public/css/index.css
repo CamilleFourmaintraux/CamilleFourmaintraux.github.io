@@ -8,14 +8,14 @@
 
 :root[data-theme="light"] {
   --bg-color: white;
-  --bg-container-color: white;
+  --bg-container-color: #eee;
   --bg-subcontainer-color: #d9eeed;
   --text-color: black;
 }
 
 :root[data-theme="dark"] {
   --bg-color: black;
-  --bg-container-color: #001234;
+  --bg-container-color: #012;
   --bg-subcontainer-color: #012345;
   --text-color: white;
 }
@@ -32,6 +32,7 @@ body {
 html {
   scrollbar-color: rgba(0, 0, 0, 0.69) rgba(125, 125, 125, 0.51);
   scrollbar-width: thin;
+  min-height: 1000px;
 }
 
 .protected {

@@ -1,16 +1,16 @@
+import { useTranslation } from "react-i18next";
 import Realisations from "../Realisations";
 import Data from "./Data";
 
 export default function Passions() {
+  const { t } = useTranslation();
   return (
     <>
       <Realisations
         data={Data}
-        pageTitle="Ma passion"
-        pageSubtitle="Mes réalisations personnelles"
-        pageDescription="Ma plus grande passion reste avant tout la programmation.
-        Je m'amuse donc à essayer de réaliser quelques projets (souvent des
-        jeux) sur mon temps libre."
+        pageTitle={t("portfolio.passion.page_title")}
+        pageSubtitle={t("portfolio.passion.page_subtitle")}
+        pageDescription={t("portfolio.passion.page_description")}
       />
     </>
   );

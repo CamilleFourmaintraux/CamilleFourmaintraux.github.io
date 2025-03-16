@@ -1,13 +1,15 @@
+import { useTranslation } from "react-i18next";
 import Realisations from "../Realisations";
 import Data from "./Data";
 
 export default function Work() {
+  const { t } = useTranslation();
   return (
     <Realisations
       data={Data}
-      pageTitle="Mes travaux"
-      pageSubtitle="Mes réalisations professionnelles"
-      pageDescription="Cette page regroupe tous les projets auxquels j'ai participé dans un cadre professionnel."
+      pageTitle={t("portfolio.work.page_title")}
+      pageSubtitle={t("portfolio.work.page_subtitle")}
+      pageDescription={t("portfolio.work.page_description")}
     />
   );
 }

@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 export function smoothScrollTo(newPosition: number) {
   window.scrollTo({
     top: newPosition,
@@ -11,9 +13,10 @@ export function scrollToTop() {
 }
 
 export default function BackToTopButton() {
+  const { t } = useTranslation();
   return (
     <button id="back-to-top" onClick={scrollToTop}>
-      <i className="fa-solid fa-arrows-up-to-line" /> Haut de page
+      <i className="fa-solid fa-arrows-up-to-line" /> {t("topOfPage")}
     </button>
   );
 }

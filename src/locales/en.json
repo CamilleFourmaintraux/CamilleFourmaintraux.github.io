@@ -1,0 +1,265 @@
+{
+  "subtitleSentence": "Student in Computer Science BUT",
+  "mainnav": {
+    "home": "Home",
+    "career": "Career",
+    "portfolio": "Portfolio",
+    "interests": "Interests",
+    "contact": "Contact"
+  },
+  "subnav": {
+    "education": "Education",
+    "skills": "Skills",
+    "softskills": "Soft Skills",
+    "experience": "Experience"
+  },
+  "topOfPage": "Back to top",
+  "presentation": {
+    "title": "About Me",
+    "greeting": "Hello!",
+    "intro": "I am a third-year Computer Science student at IUT of Lille.",
+    "internship": "I recently secured a 16-week internship within a development team at",
+    "internship_dates": "from March 10th to June 27th, 2025.",
+    "previous_internship": "I previously completed my last internship at this company, which was very satisfied with my work and decided to take me back.",
+    "company_description": "is a consulting and solution integration company with over 20 years of experience. The company helps its clients with the urbanization of their information systems to make them more efficient and scalable.",
+    "motivation": "My academic background and passion for IT motivate me to fully commit to this constantly evolving field. I am determined to make a significant contribution and bring added value to the company that trusts me."
+  },
+  "goals": {
+    "title": "My Goals",
+    "text": "Once I obtain my degree, I would like to continue my studies in an engineering school or a Master's program, specializing in software and back-end development. A Master's degree (Bac+5) will allow me to deepen my skills and knowledge and to specialize in these areas, enabling me to fully integrate into a software development team."
+  },
+  "cv": {
+    "title": "My Resume",
+    "download": "You can download my resume in PDF by clicking",
+    "here": "here"
+  },
+  "dev": {
+    "title": "In Progress",
+    "text": "My website is still under development, there may still be new features, modifications (and bugs)."
+  },
+  "secret": {
+    "title": "Secret page?",
+    "description": "This page brings together all the downloadable documents from the site in one place. Since the download links are scattered across the site, with each file linked to its corresponding section, I created this page to make it easier to access all documents."
+  },
+  "documents": {
+    "title": "List of all downloadable PDF documents",
+    "cv": "Resume",
+    "attestation_dut": "DUT Certificate",
+    "rapport_stage": "2024 Internship Report",
+    "kaplan": "Kaplan International London School Certificate",
+    "pix": "PIX Certificate",
+    "studies_notice": "Studies Notice",
+    "toeic": "TOEIC Certification",
+    "download": "Download"
+  },
+  "pending": {
+    "title": "Pending documents",
+    "description": "Some documents may show 'Coming Soon' instead of 'Download'. I'm still waiting to receive some documents and will upload them to the site as soon as possible."
+  },
+
+  "contact": {
+    "title": "Contact",
+    "intro": "If you are interested in my profile or would like more information, you can contact me via the contact form or using one of the following services:",
+    "mail": "My email:",
+    "linkedin": "My LinkedIn:",
+    "github": "My GitHub:",
+    "footer": "The PDF version of my resume and my social links are also available at the bottom of each page."
+  },
+  "form": {
+    "title": "Send me a message",
+    "name": "Last Name",
+    "name_placeholder": "Your last name...",
+    "forename": "First Name",
+    "forename_placeholder": "Your first name...",
+    "email": "E-Mail",
+    "email_placeholder": "Your email...",
+    "subject": "Subject",
+    "subject_placeholder": "Message subject...",
+    "message": "Message",
+    "message_placeholder": "Your message...",
+    "send": "Send",
+    "msg-success": "Your message was successfully sent.",
+    "msg-error": "Sorry, an error happened while sending your message.",
+    "msg-invalidEmail": "Please enter a valid e-mail."
+  },
+  "thanks": {
+    "title": "Thank you",
+    "message": "Thank you for taking the time to check out my profile!"
+  },
+  "formation": {
+    "title": "Education",
+    "2025": {
+      "notice": "Highly favorable notice for further studies",
+      "toeic": "Obtained my",
+      "toeic_level": "TOEIC Level C1"
+    },
+    "2024": {
+      "kaplan": "One-month stay in England at a specialized school",
+      "kaplan_desc": "to improve my English skills.",
+      "dut": "Obtained my DUT degree"
+    },
+    "2022": {
+      "bac": "High School Diploma with Honors - Lycée Pierre D'Ailly Compiègne",
+      "pix": "PIX Certification 635pix",
+      "driving": "Driver's license (B)"
+    },
+    "iut": "IUT of Lille Villeneuve d'Ascq",
+    "lycee": "Lycée Pierre D'Ailly Compiègne"
+  },
+  "experience": {
+    "title": "Professional Experiences",
+    "stage2025": {
+      "title": "SOA webMethods integrator internship for 16 weeks from March to June 2025 at",
+      "in_progress": "Internship in progress...",
+      "link_previous": "Read my previous year's internship report"
+    },
+    "tutor": {
+      "title": "Tutor at the University of Lille from October 2024 to March 2025",
+      "support": "Tutoring for students in difficulty",
+      "group": "Managing a group of students",
+      "responsibilities": "Responsibilities"
+    },
+    "stage2024": {
+      "title": "SOA webMethods integrator internship for 10 weeks from April to June 2024 at",
+      "company_desc": "is a company specialized in software solutions development.",
+      "main_project": {
+        "title": "Main project:",
+        "desc": "Maintenance of AMAT (Automated Monitoring & Analysing Tool) by integrating new features and fixing bugs. Some services had unexpected behaviors which I analyzed, understood, and corrected."
+      },
+      "api": {
+        "title": "API development:",
+        "desc": "For automatic updating of repositories, optimizing processes and reducing errors."
+      },
+      "documentation": {
+        "title": "Reverse documentation:",
+        "desc": "Wrote reverse documentation on an internal project by reviewing its code and database interactions with Firebase."
+      },
+      "internal_project": {
+        "title": "Internal knowledge base project development:",
+        "desc": "Refactored the error handling logic based on another project and tested API responses using Postman."
+      },
+      "pm": {
+        "title": "Project management experience:",
+        "desc": "Task prioritization, teamwork, and problem-solving."
+      },
+      "skills": {
+        "title": "Technical skills acquired:",
+        "desc": "Database management, API development, documentation, project management, teamwork."
+      },
+      "tools": {
+        "title": "Tools & programming languages used:",
+        "desc": "DBeaver, Software AG Designer, Postman, MANTIS, WinSCP, GitHub, Firebase, Angular, TypeScript."
+      },
+      "full_report": "Read my full internship report"
+    },
+    "carrefour": {
+      "title": "Multi-skilled Employee at Carrefour Contact in Ressons sur Matz from July to August 2022.",
+      "team": "Team integration",
+      "autonomy": "Work autonomously",
+      "initiative": "Taking initiatives"
+    }
+  },
+  "skills": {
+    "qualities": {
+      "title": "Soft Skills",
+      "organized": "Organized",
+      "attentive": "Attentive",
+      "curious": "Curious",
+      "autonomous": "Autonomous"
+    },
+    "title": "Skills",
+    "language": "Language:",
+    "language_value": "English",
+    "programming": "Programming languages:",
+    "programming_value": "Java, JavaScript, TypeScript, Python, C",
+    "tools": "Development tools (IDE):",
+    "tools_value": "Software AG Designer, Eclipse, IntelliJ, VSCode",
+    "web": "Web development:",
+    "web_value": "HTML, CSS, JavaEE, React, Angular, Spring-Boot",
+    "sql": "SQL database management:",
+    "sql_value": "PostgreSQL, DBeaver, H2",
+    "nosql": "NoSQL database management:",
+    "nosql_value": "MongoDB, Redis, Cassandra",
+    "api": "API management:",
+    "api_value": "Bruno, Postman",
+    "collab": "Collaborative tools:",
+    "collab_value": "Git, GitLab, GitHub, Trello, Mantis",
+    "scrum": "Scrum:",
+    "scrum_value": "Was Scrum Master during an agile project.",
+    "ci": "CI/CD:",
+    "ci_value": "Automation, continuous integration and deployment",
+    "quality": "Code quality:",
+    "quality_value": "Development quality and algorithms",
+    "math": "Mathematical modeling:",
+    "math_value": "Graphs, imaging, AI, visualization",
+    "media": "Multimedia programming:",
+    "media_value": "2D image manipulation, spatial filtering"
+  },
+  "courses": {
+    "springboot_title": "Spring-Boot",
+    "springboot_desc": "Training and project on Spring-Boot and Spring Security for designing the backend of an appointment booking website.",
+
+    "math_title": "Mathematical Modeling",
+    "math_desc": "The objective of this course was to deepen several application domains by providing formalization elements, knowledge, and specific uses, particularly in mathematics and underlying algorithms.",
+
+    "nosql_title": "MongoDB, Redis, Cassandra",
+    "nosql_desc": "Training on NoSQL databases. Introduction to MongoDB, Redis, and Cassandra for distributed data: horizontal scalability.",
+
+    "react_title": "React",
+    "react_desc": "Training and project to develop a React front-end. Using APIs, AJAX calls, Forms, Components, Refs, Redux.",
+
+    "quality_title": "Code Quality",
+    "quality_desc": "Training on development quality, algorithmic quality, and decision support. Greedy algorithms, Supervised learning/K-NN, Bayesian classification, and decision trees.",
+
+    "ci_title": "CI/CD",
+    "ci_desc": "The objective of this course is to implement the production chain of an application in order to develop the skills necessary to work efficiently in an IT team.",
+
+    "postman_title": "Postman, Bruno",
+    "postman_desc": "Using Postman and Bruno to send requests to test APIs.",
+
+    "multimedia_title": "Multimedia Programming",
+    "multimedia_desc": "Introduction to multimedia programming. 2D image manipulation, histograms, convolution and spatial filtering, edge detection. The goal of this training was to familiarize ourselves with classic methods of image analysis and processing.",
+
+    "tools_title": "Collaborative Tools",
+    "tools_desc": "Regular use of collaborative tools such as Gitlab, GitHub, Trello, Mantis, Microsoft Teams.",
+
+    "softwareag_title": "Software AG Designer",
+    "softwareag_desc": "WebMethods was an enterprise software company focusing on application integration, business process integration, and B2B partner integration. In 2007, WebMethods was acquired by Software AG and became a subsidiary. Software AG retained the WebMethods name, using it to identify a software suite covering process improvement, SOA implementation, IT modernization, and enterprise integration.",
+
+    "toeic_title": "Toeic Certification",
+    "toeic_desc": "Toeic certification at C1 level, corresponding to an experienced user, meaning: Able to understand long texts, grasp implicit meanings, and express oneself fluently and spontaneously without much obvious searching for expressions."
+  },
+  "portfolio": {
+    "advancedsearch": {
+      "toggle_show": "Show search 🔽",
+      "toggle_hide": "Hide search 🔼",
+      "search_placeholder": "Search for a project...",
+      "filter_from": "From:",
+      "filter_to": "To:",
+      "sort_button": "Sort",
+      "sort_asc": "from oldest to newest",
+      "sort_desc": "from newest to oldest",
+      "filter_all": "show all projects",
+      "filter_inprogress": "in progress projects",
+      "tag_all": "All",
+      "result_count": "{{count}} result(s) found",
+      "no_results": "No project matches your criteria."
+    },
+    "work": {
+      "page_title": "My work",
+      "page_subtitle": "My professionnel achiements",
+      "page_description": "This page brings together all the projects in which I have participated in a professional context.",
+      "saes": {
+        "sae": "sae"
+      }
+    },
+    "passion": {
+      "page_title": "My passion",
+      "page_subtitle": "My personnal achievements",
+      "page_description": "My greatest passion remains programming, so I enjoy trying to make a few projects (often games) in my free time.",
+      "projects": {
+        "project": "project"
+      }
+    }
+  }
+}
