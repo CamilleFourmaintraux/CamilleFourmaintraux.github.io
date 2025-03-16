@@ -12,7 +12,7 @@ export default function Footer() {
         </a>
         <NavLink to="contact" className="navlink">
           {" "}
-          EMail <i className="fas fa-envelope"></i>
+          E-Mail <i className="fas fa-envelope"></i>
         </NavLink>
         <a
           href="https://www.linkedin.com/in/camille-fourmaintraux-708b34275/"
