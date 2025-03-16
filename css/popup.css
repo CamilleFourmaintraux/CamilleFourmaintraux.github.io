@@ -1,4 +1,11 @@
 /* styles.css */
+:root[data-theme="light"] {
+  --bg-popup-color: white;
+}
+
+:root[data-theme="dark"] {
+  --bg-popup-color: black;
+}
 
 .popup {
   display: none; /* Le pop-up est caché au début */
@@ -14,7 +21,7 @@
 }
 
 .popup-content {
-  background-color: white;
+  background-color: var(--bg-popup-color);
   padding: 20px;
   border-radius: 8px;
   width: 300px;
