@@ -4,7 +4,7 @@ import MainNav from "./MainNav";
 import SubNav from "./SubNav";
 import BackToTopButton from "./BackToTopButton";
 import ThemeSwitcher from "./ThemeSwitcher";
-import LanguageSwitcher from "./LanguageSwitcher";
+//import LanguageSwitcher from "./LanguageSwitcher";
 
 export interface subNavLink {
   href: string;
