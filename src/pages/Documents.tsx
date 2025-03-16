@@ -21,7 +21,7 @@ export default function DocumentsPage() {
               <strong>{t("documents.cv")}</strong>
             </td>
             <td>
-              <a href="/fich/cv.pdf" target="_blank" download>
+              <a href="/files/resume.pdf" target="_blank" download>
                 {t("documents.download")}
               </a>
             </td>
@@ -31,7 +31,7 @@ export default function DocumentsPage() {
               <strong>{t("documents.attestation_dut")}</strong>
             </td>
             <td>
-              <a href="/fich/28_DUT_RACDV.pdf" target="_blank" download>
+              <a href="/files/DutCertificate.pdf" target="_blank" download>
                 {t("documents.download")}
               </a>
             </td>
@@ -41,7 +41,11 @@ export default function DocumentsPage() {
               <strong>{t("documents.rapport_stage")}</strong>
             </td>
             <td>
-              <a href="/fich/RapportDeStage2024.pdf" target="_blank" download>
+              <a
+                href="/files/InternshipReportEmothep2024.pdf"
+                target="_blank"
+                download
+              >
                 {t("documents.download")}
               </a>
             </td>
@@ -51,7 +55,7 @@ export default function DocumentsPage() {
               <strong>{t("documents.kaplan")}</strong>
             </td>
             <td>
-              <a href="/fich/kaplancertificate.pdf" target="_blank" download>
+              <a href="/files/kaplanCertificate.pdf" target="_blank" download>
                 {t("documents.download")}
               </a>
             </td>
@@ -61,7 +65,7 @@ export default function DocumentsPage() {
               <strong>{t("documents.pix")}</strong>
             </td>
             <td>
-              <a href="/fich/pix.pdf" target="_blank" download>
+              <a href="/files/pixCertificate.pdf" target="_blank" download>
                 {t("documents.download")}
               </a>
             </td>
