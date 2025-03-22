@@ -451,6 +451,7 @@
       },
       "projects": {
         "first3dplatformer": {
+          "title": "Creating a game of my first 3D game: a platformer!",
           "learn_godot_title": "Learning Godot",
           "learn_godot_text": "I started working on this game because I wanted to learn how to use Godot and create a 3D game. My first goal was to create a player with basic movement in a simple 3D environment. Then, step by step, I decided to continue with this simple gameplay mechanic and make a platformer game.",
           "gameplay_elements_title": "Gameplay Elements",
@@ -465,6 +466,7 @@
           "img_alt": "3D platformer screenshot"
         },
         "firstgamejam": {
+          "title": "My first game jam!",
           "title1": "Post my first game on Itch.io",
           "text1": "While browsing Itch.io, I saw the gamejam section and it made me want to participate. I chose the first gamejam that was about to start: <strong>1-BIT JAM #4</strong>, and I started coding. I finished 114th out of 338 participants.",
           "alt1": "first gamejam photo",
@@ -481,6 +483,7 @@
           }
         },
         "mazegenerator": {
+          "title": "Creating a maze generator.",
           "title1": "Algorithms",
           "text1": "I wanted to learn how to generate mazes. So I studied several algorithms that could do this, and then I tried to implement them.",
           "alt1": "maze generator photo",
@@ -493,6 +496,7 @@
           }
         },
         "minigames": {
+          "title": "Creation of a Pong and a brick breaker.",
           "title1": "Pong",
           "text1": "I wanted to try creating a bunch of classic games, so after cloning Flappy Bird, I tried making a Pong and a Breakout clone. For each game I added a simple menu as well as a score and high score system.",
           "alt1": "pong photo",
@@ -506,6 +510,7 @@
           }
         },
         "miscellaneous": {
+          "title": "Other games in development.",
           "list": [
             "Flappy Bird Clone",
             "Wolfenstein Clone",

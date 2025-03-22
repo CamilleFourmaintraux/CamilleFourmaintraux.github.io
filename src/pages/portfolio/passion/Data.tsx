@@ -7,12 +7,14 @@ import Miscellaneous from "./projects/Miscellaneous";
 import { Tags } from "./Tags";
 
 export const tagsPassionPath = `portfolio.passion.tags`;
+const projectsWorkPath = `portfolio.passion.projects`;
+const projectTitlePath = `title`;
 
 const realisations: RealisationProps[] = [
   //const Tags = genTags();
   {
     idRealisation: "firstgamejam",
-    title: "Ma première gamejam !",
+    title: `${projectsWorkPath}.firstgamejam.${projectTitlePath}`,
     date: new Date(2024, 7, 26),
     dateEnd: new Date(2024, 9, 11),
     tags: [Tags.VIDEOGAME, Tags.WEB, Tags.TWODIMENSIONAL, Tags.SHOOTER],
@@ -23,8 +25,8 @@ const realisations: RealisationProps[] = [
     isInProgress: false,
   },
   {
-    idRealisation: "first3Dplatformer",
-    title: "Création d'un jeu de mon premier jeu en 3D : un platformer !",
+    idRealisation: "first3dplatformer",
+    title: `${projectsWorkPath}.first3dplatformer.${projectTitlePath}`,
     date: new Date(2024, 7, 6),
     dateEnd: new Date(2024, 7, 14),
     tags: [Tags.VIDEOGAME, Tags.PLATFORMER, Tags.THREEDIMENSIONAL],
@@ -36,7 +38,7 @@ const realisations: RealisationProps[] = [
   },
   {
     idRealisation: "mazegenerator",
-    title: "Création d'un générateur de labyrinthe.",
+    title: `${projectsWorkPath}.mazegenerator.${projectTitlePath}`,
     date: new Date(2023, 8, 24),
     dateEnd: new Date(2023, 8, 28),
     tags: [Tags.JAVA, Tags.TWODIMENSIONAL, Tags.MAZES],
@@ -48,7 +50,7 @@ const realisations: RealisationProps[] = [
   },
   {
     idRealisation: "minigames",
-    title: "Création d'un Pong et d'un casse-brique",
+    title: `${projectsWorkPath}.minigames.${projectTitlePath}`,
     date: new Date(2023, 8, 3),
     dateEnd: new Date(2023, 11, 27),
     tags: [Tags.VIDEOGAME, Tags.JAVA, Tags.TWODIMENSIONAL, Tags.ARCADE],
@@ -60,7 +62,7 @@ const realisations: RealisationProps[] = [
   },
   {
     idRealisation: "miscellaneous",
-    title: "Autres jeux en développement",
+    title: `${projectsWorkPath}.miscellaneous.${projectTitlePath}`,
     date: new Date(2004, 0, 15),
     dateEnd: new Date(2073, 3, 21),
     tags: [],

@@ -10,6 +10,7 @@ interface RealisationsProps {
   pageTitle: string;
   pageSubtitle: string;
   pageDescription: string;
+  tagsButtonsPath: string;
   children: React.ReactNode;
 }
 
@@ -18,6 +19,7 @@ const Realisations: React.FC<RealisationsProps> = ({
   pageTitle,
   pageSubtitle,
   pageDescription,
+  tagsButtonsPath,
   children,
 }) => {
   const { t } = useTranslation();
@@ -158,7 +160,7 @@ const Realisations: React.FC<RealisationsProps> = ({
                       onClick={() => setSelectedTag(tag)}
                       className={selectedTag === tag ? "active" : ""}
                     >
-                      {tag}
+                      {t(`${tagsButtonsPath}.${tag}`)}
                     </button>
                   ))}
                 </div>
