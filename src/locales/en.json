@@ -245,12 +245,34 @@
       "result_count": "{{count}} result(s) found",
       "no_results": "No project matches your criteria."
     },
+    "period": "Period: ",
+    "in_progress": "In progress",
     "work": {
       "page_title": "My work",
-      "page_subtitle": "My professionnel achiements",
+      "page_subtitle": "My professionnal achiements",
       "page_description": "This page brings together all the projects in which I have participated in a professional context.",
       "saes": {
         "sae": "sae"
+      },
+      "tags": {
+        "SCRUM": "Scrum",
+        "WEB": "Web",
+        "REACT": "React",
+        "FRONTEND": "Front-End",
+        "BACKEND": "Back-End",
+        "DB": "Database",
+        "SPRING": "Spring",
+        "APIREST": "REST API",
+        "INTERNSHIP": "Internship",
+        "INTEGRATION": "Integration",
+        "JSP": "JSP",
+        "SYSTEMS": "Embedded Systems",
+        "C": "C",
+        "RUST": "Rust",
+        "PYTHON": "Python",
+        "JAVA": "Java",
+        "JSTS": "JS/TS",
+        "VIDEOGAME": "Video Game"
       }
     },
     "passion": {
@@ -259,6 +281,23 @@
       "page_description": "My greatest passion remains programming, so I enjoy trying to make a few projects (often games) in my free time.",
       "projects": {
         "project": "project"
+      },
+      "tags": {
+        "WEB": "Web",
+        "SOFTWARE": "Software",
+        "C": "C",
+        "PYTHON": "Python",
+        "JAVA": "Java",
+        "JSTS": "JS/TS",
+        "VIDEOGAME": "Video Game",
+        "MULTIPLAYER": "Multiplayer",
+        "THREEDIMENSIONAL": "3D",
+        "TWODIMENSIONAL": "2D",
+        "RPG": "RPG",
+        "SHOOTER": "Shooter",
+        "ARCADE": "Arcade",
+        "PLATFORMER": "Platformer",
+        "MAZES": "Mazes"
       }
     }
   }

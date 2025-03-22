@@ -176,7 +176,15 @@ const Realisations: React.FC<RealisationsProps> = ({
           <AnimatePresence>
             {filteredRealisations.map(
               (
-                { idRealisation, title, date, dateEnd, tags, children },
+                {
+                  idRealisation,
+                  title,
+                  date,
+                  dateEnd,
+                  tags,
+                  tagsPath,
+                  children,
+                },
                 index
               ) => (
                 <motion.div
@@ -194,6 +202,7 @@ const Realisations: React.FC<RealisationsProps> = ({
                     tags={tags}
                     date={date}
                     dateEnd={dateEnd}
+                    tagsPath={tagsPath}
                     current={selectedTag}
                     isInPeriod={startDate !== "" && endDate !== ""}
                     isInProgress={onlyInProgress}

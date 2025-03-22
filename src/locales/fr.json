@@ -245,12 +245,34 @@
       "result_count": "{{count}} résultat(s) trouvé(s)",
       "no_results": "Aucune réalisation ne correspond aux critères."
     },
+    "period": "Période : ",
+    "in_progress": "En cours",
     "work": {
       "page_title": "Mes travaux",
       "page_subtitle": "Mes réalisations professionnelles",
       "page_description": "Cette page regroupe tous les projets auxquels j'ai participé dans un cadre professionnel.",
       "saes": {
         "sae": "sae"
+      },
+      "tags": {
+        "SCRUM": "Scrum",
+        "WEB": "Web",
+        "REACT": "React",
+        "FRONTEND": "Front-End",
+        "BACKEND": "Back-End",
+        "DB": "BDD",
+        "SPRING": "Spring",
+        "APIREST": "Api-Rest",
+        "INTERNSHIP": "Stage",
+        "INTEGRATION": "Intégration",
+        "JSP": "JSP",
+        "SYSTEMS": "Systèmes embarqués",
+        "C": "C",
+        "RUST": "Rust",
+        "PYTHON": "Python",
+        "JAVA": "Java",
+        "JSTS": "JSTS",
+        "VIDEOGAME": "Jeu-Vidéo"
       }
     },
     "passion": {
@@ -259,6 +281,23 @@
       "page_description": "Ma plus grande passion reste avant tout la programmation. Je m'amuse donc à essayer de réaliser quelques projets (souvent des jeux) sur mon temps libre.",
       "projects": {
         "project": "project"
+      },
+      "tags": {
+        "WEB": "Web",
+        "SOFTWARE": "Logiciel",
+        "C": "C",
+        "Python": "Python",
+        "Java": "Java",
+        "JSTS": "JS/TS",
+        "VIDEOGAME": "Jeu-Vidéo",
+        "MULTIPLAYER": "Multijoueur",
+        "THREEDIMENSIONAL": "3D",
+        "TWODIMENSIONAL": "2D",
+        "RPG": "RPG",
+        "SHOOTER": "Tirs",
+        "ARCADE": "Arcade",
+        "PLATFORMER": "Platformes",
+        "MAZES": "Labyrinthes"
       }
     }
   }

@@ -33,19 +33,6 @@ export function transformSaeID(saeID: string) {
   return "";
 }
 
-//@ts-ignore
-export const TagsList = ({ tags, current }) => {
-  return (
-    <div className="tags-container">
-      {tags.map((tag: string, index: number) => (
-        <span key={index} className={`tag ${current == tag ? "active" : ""}`}>
-          {tag}
-        </span>
-      ))}
-    </div>
-  );
-};
-
 export function getRandomInt(max: number) {
   // si max=3, résultats possible : 0, 1, 2
   return Math.floor(Math.random() * max);
