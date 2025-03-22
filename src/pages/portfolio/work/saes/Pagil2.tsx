@@ -19,12 +19,12 @@ export default function Pagil2() {
         <p>{t(`${translationsPath}.roleDescription`)}</p>
         <img src="/img/portfolio/tabScrum2.jpg" alt="photo Scrum" />
         <li>
-          <h4>{t(`${projectsWorkPath}.knowHow`)}</h4>
+          <h4>{t(`${projectsWorkPath}.know_how`)}</h4>
         </li>
         <ul>
-          <li>{t(`${translationsPath}.knowHow1`)}</li>
-          <li>{t(`${translationsPath}.knowHow2`)}</li>
-          <li>{t(`${translationsPath}.knowHow3`)}</li>
+          <li>{t(`${translationsPath}.know_how1`)}</li>
+          <li>{t(`${translationsPath}.know_how2`)}</li>
+          <li>{t(`${translationsPath}.know_how3`)}</li>
         </ul>
         <p>
           {t(`${projectsWorkPath}.linkText`)}{" "}

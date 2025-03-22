@@ -255,8 +255,8 @@
       "saes": {
         "linkText": "See the",
         "link": "GitHub repository",
-        "skills": "Skills and expertise gained",
-        "knowHow": "Know-how acquired",
+        "skills": "Skills gained",
+        "know_how": "Soft-Skills acquired",
         "pagil1": {
           "title": "Creating a Game in the Terminal with Agile SCRUM Methodology",
           "title1": "Development of a console game",
@@ -265,9 +265,9 @@
           "title2": "Role of ScrumMaster, managing User Stories and tracking the project using the agile SCRUM methodology",
           "text2": "During this project, each team member had a role, and I was assigned the role of Scrum Master. I was responsible for updating the progress board and creating burn-up and burn-down charts to show our project's progress.",
           "alt2": "Scrum photo",
-          "knowHow1": "SCRUM, agile methods",
-          "knowHow2": "join a team",
-          "knowHow3": "communicate and collaborate in a team"
+          "know_how1": "SCRUM, agile methods",
+          "know_how2": "join a team",
+          "know_how3": "communicate and collaborate in a team"
         },
         "pagil2": {
           "title": "Creation of a BACK-END and a FRONT-END for a website",
@@ -275,9 +275,9 @@
           "presentationDescription": "We only had a few days to create a website following the agile Scrum methodology. CodeSwipe is a parody application of Tinder where we replaced people with code snippets. Users swipe right if they think it's good code, or swipe left otherwise.",
           "role": "Role of ScrumMaster, managing user stories and tracking the project using agile SCRUM methodology",
           "roleDescription": "During this project, the role of ScrumMaster had to change every day. Therefore, I was responsible for updating the progress board and creating the burn-up chart. We paid more attention to managing tickets and Git branches during this project.",
-          "knowHow1": "SCRUM, agile methods",
-          "knowHow2": "Join a team",
-          "knowHow3": "Communicate and collaborate in a team"
+          "know_how1": "SCRUM, agile methods",
+          "know_how2": "Join a team",
+          "know_how3": "Communicate and collaborate in a team"
         },
         "internship1": {
           "title": "SOA webMethods integrator internship at EMothep",
@@ -291,7 +291,8 @@
           "title": "Network Service Installation",
           "presentation": "Setting up a workstation",
           "presentationDescription": "The primary goal of SAE 1.03 was to introduce us to network configuration, and SAE 2.03 aimed to teach us how to set up a network for a company and use Markdom or Ascii Doctor to write reports and documentation.",
-          "machineInstall": "We were instructed to install a virtual machine in two ways, one manually and one using a preconfigured file, to learn how to install operating systems on machines. This SAE required us to explore files and manuals to develop the skill of self-researching and finding the information we needed.",
+          "machine_install": "Research in autonomy",
+          "machine_install_text": "We were instructed to install a virtual machine in two ways, one manually and one using a preconfigured file, to learn how to install operating systems on machines. This SAE required us to explore files and manuals to develop the skill of self-researching and finding the information we needed.",
           "skill1": "Handling virtual machines",
           "skill2": "Configuring a workstation and collaborative network",
           "skill3": "Researching in documentation",
@@ -301,6 +302,8 @@
           "title": "Design and development of a website to present a company",
           "presentation": "Using HTML and CSS to create structure and design",
           "presentationDescription": "This project was about analyzing the needs of a company wanting to create an online platform for carpooling among their employees to address traffic and pollution issues. Based on this analysis, we had to design a mockup and then create a website that met these needs.",
+          "wordpress": "WordPress Mockup",
+          "wordpress_text": "We started by making a WordPress mockup to propose a beginning of design and solutions to the needs, and once it was validated, we moved on to the design directly in HTML and CSS. The main objective was to teach us how to code with these languages ​​in conditions similar to a real project as well as to make us respect a particular graphic charter, everything had to be coherent and enjoyable to look at.",
           "skill1": "HTML, CSS",
           "skill2": "Respecting a design guideline",
           "skill3": "Analyzing a problem, proposing solutions"
@@ -310,7 +313,7 @@
           "presentation": "Development of an interactive application in Java",
           "presentationDescription": "The application was designed to allow student exchanges between countries. We needed to include a database of students based on countries and then calculate affinities based on specific parameters to match students with the most compatible partners, using graph algorithms like Dijkstra.",
           "interface": "Using JavaFX for the Human-Machine Interface",
-          "interfaceDescription": "This application was initially developed in a text format using the terminal. For the final version, we had to create a JavaFX application to give our program a graphical interface, making it more user-friendly and accessible.",
+          "interface_description": "This application was initially developed in a text format using the terminal. For the final version, we had to create a JavaFX application to give our program a graphical interface, making it more user-friendly and accessible.",
           "skill1": "Java, JavaFX",
           "skill2": "Finding pairings using algorithms",
           "skill3": "Designing an ergonomic interface"
@@ -319,6 +322,8 @@
           "title": "Creating a Database - Data Breakdown",
           "presentation": "Data Volume, Creating a Database",
           "presentationDescription": "We had to extract a large dataset from a file into a table and then process these data.",
+          "postgresql": "Using PostgreSQL and Access to store and query data",
+          "postgresql_text": "We used Postgresql and Access to create the tables and formulate the queries to be able to answer the 'client's' questions about the data.",
           "skill1": "SQL, PostgreSQL, Access, WordPress",
           "skill2": "Handling large data sets",
           "skill3": "Formulating queries, analyzing data"
@@ -327,9 +332,12 @@
           "title": "Escape Game",
           "presentation": "Developing an Escape Game",
           "presentationDescription": "This SAE aimed to teach us teamwork and collaboration. Using Genially and Trello, which are collaborative tools, allowed us to better understand the importance of collaboration, even more so than in other group projects.",
+          "text1": "We had to regularly organize meetings between all the team members. These meetings allowed us to take stock of the progress of the project, of the difficulties that a member might encounter, to provide help to those who needed it and to allow the emergence of new ideas through exchanges. We also had to document all the progress of the project and write the minutes of the meetings.",
+          "text2": "We were asked to install and configure Gitea to set up a collaborative network and learn how to use it. Finally, we had to write a report to keep track of and explain everything we did. These reports had to be written in lightweight markup like Markdom or Ascii Doctor, which allowed us to gain the necessary skills to use lightweight markup languages.",
           "skill1": "Collaboration, teamwork",
           "skill2": "Collaborative tools (Git, Trello)",
-          "skill3": "Creativity, designing puzzles (using Genially)"
+          "skill3": "Creativity, designing puzzles (using Genially)",
+          "escapeGameLink": "Try the escape game !"
         },
         "sae302": {
           "title": "Creating a Game with JavaFX",
@@ -346,24 +354,43 @@
           "title": "Developing a REST API",
           "presentation": "Structuring",
           "presentationDescription": "This SAE focused on building a website for a pizzeria called 'Pizzeria Mazzorello' following the REST architecture.",
-          "skill1": "REST architecture",
-          "skill2": "PostgreSQL",
-          "knowHow1": "Autonomy",
-          "knowHow2": "Respecting deadlines"
+          "ingredients_table": "Ingredients: ",
+          "ingredients_table_values": "id, name, price",
+          "pizza_table": "Pizzas: ",
+          "pizza_table_value": "id, name, paste_type, ingredients, base_price",
+          "orders_table": "Orders: ",
+          "orders_table_value": " id, customer, date",
+          "security": "Security",
+          "security_description": "Implementation of different authentication systems including API Token and JWT token.",
+          "skill1": "REST architecture:",
+          "skill1_text": "We were not familiar with REST architectures, this project allowed us to understand them and learn how to create sites that respect them.",
+          "skill2": "PostgreSQL:",
+          "skill2_text": "For this project, the use of a database was necessary.",
+          "know_how1": "Autonomy:",
+          "know_how1_text": "This project is the only one we had to do entirely alone, but being very independent, it didn't pose any problems for me.",
+          "know_how2": "Respecting deadlines:",
+          "know_how2_text": "The deadlines for this project were quite short, it was a good exercise to be careful to deliver on time while respecting the specifications."
         },
         "sae402": {
           "title": "Development of a complex application",
           "presentation": "Gameplay Ideas",
           "presentationDescription": "We received a project brief with all the minimum features that the final application should include. Our first task was to come up with gameplay elements and a theme to match the given requirements.",
           "multiplayer": "Multiplayer with node.js and socket.io",
-          "multiplayerDescription": "It was our first time developing a multiplayer game, which was a very interesting challenge and helped us understand how multiplayer games generally work.",
-          "skill1": "JavaScript ES6",
-          "skill2": "Node.js, socket.io",
-          "skill3": "Babel, Prettier",
-          "skill4": "Canvas",
-          "knowHow1": "Teamwork",
-          "knowHow2": "Collaboration",
-          "knowHow3": "Quality git repositories (Commits, Milestones)"
+          "multiplayer_description": "This was the first time we had to develop a multiplayer game. It was a very interesting challenge and made us think and understand how multiplayer games work in general. Through this session, we learned how to use socket.iio to connect the server and clients, and to enable the creation of different independent games on the same server using rooms.",
+          "skill1": "JavaScript ES6: ",
+          "skill1_text": "We had never coded in JavaScript before this project. It was an opportunity to learn and practice these new skills.",
+          "skill2": "Nodes.js, socket.io: ",
+          "skill2_text": "Using socket.io, we were able to create a multiplayer game where multiple games can take place at the same time.",
+          "skill3": "Babel, Prettier: ",
+          "skill3_text": "Manage dependencies (package.json) in a js project.",
+          "skill4": "Canvas: ",
+          "skill4_text": "Draw shapes, images on a canvas.",
+          "know_how1": "Teamwork:",
+          "know_how1_text": "We completed this project in pairs, which was originally planned to be done in threes, which put us to the test to finish on time with a third of our workforce.",
+          "know_how2": "Collaboration:",
+          "know_how2_text": "To complete the project on time, a good distribution of work was essential. We successfully met this challenge, meeting the specifications and even adding additional features.",
+          "know_how3": "Quality git repositories (Commits, Milestones):",
+          "know_how3_text": "The professor had particularly insisted on the quality of our git repository and on task management, so we learned to better use GitLab's collaborative tools."
         },
         "sae501": {
           "title": "RiscV Emulator",
@@ -382,9 +409,10 @@
           "presentationDescription": "The objective of this project was to create an appointment management website for multiple users.",
           "spring_framework": "Spring Framework",
           "spring_description": "Spring is an open-source framework for building and defining the infrastructure of a Java application, facilitating its development and testing. Spring Boot is an open-source Java framework used to program standalone, production-quality Spring applications with a set of libraries that make it easier to start and manage projects. Through this project, we learned how to use the back-end Java framework Spring, as well as Spring Security. Spring Security is a Java/Java EE framework that provides authentication, authorization, and other security features for enterprise applications. Our project contains only two roles: User and Admin. An Admin can do everything a logged-in user can do, as well as access and modify other users' appointments.",
-          "skill1": "azer",
-          "skill2": "azer",
-          "skill3": "azer"
+          "skill1": "Framework Spring",
+          "skill2": "JPA",
+          "skill3": "Spring Security",
+          "skill4": "Lombok"
         }
       },
       "tags": {

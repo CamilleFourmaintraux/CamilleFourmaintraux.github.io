@@ -4,7 +4,7 @@ export default function Sae202() {
   const { t } = useTranslation();
 
   const projectsWorkPath = "portfolio.work.saes";
-  const translationsPath = `${projectsWorkPath}.pagil2`;
+  const translationsPath = `${projectsWorkPath}.sae202`;
   return (
     <>
       <ul>
@@ -14,15 +14,9 @@ export default function Sae202() {
         <p>{t(`${translationsPath}.presentationDescription`)}</p>
         <img src="/img/portfolio/sae_IHM_code.png" alt="photo du code" />
         <li>
-          <h4>Utilisation de JavaFX pour l’Interface Homme-Machine</h4>
+          <h4>{t(`${translationsPath}.interface`)}</h4>
         </li>
-        <p>
-          Cette application était à réaliser, dans un premier temps, entièrement
-          au format texte dans la console du terminal. Pour le rendu final par
-          contre, nous devions créer une application en JavaFx afin de donner un
-          interface graphique à notre programme, rendant notre application plus
-          ergonomique et accessible d'utilisation.
-        </p>
+        <p>{t(`${translationsPath}.interface_description`)}</p>
         <img src="/img/portfolio/saeIHM.png" alt="photo de l'IHM" />
         <li>
           <h4>{t(`${projectsWorkPath}.skills`)}</h4>

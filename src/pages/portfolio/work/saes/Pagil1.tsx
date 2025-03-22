@@ -26,12 +26,12 @@ export default function Pagil1() {
           alt={t(`${translationsPath}.alt2`)}
         />
         <li>
-          <h4>{t(`${translationsPath}.title3`)}</h4>
+          <h4>{t(`${projectsWorkPath}.know_how`)}</h4>
         </li>
         <ul>
-          <li>{t(`${translationsPath}.skill1`)}</li>
-          <li>{t(`${translationsPath}.skill2`)}</li>
-          <li>{t(`${translationsPath}.skill3`)}</li>
+          <li>{t(`${translationsPath}.know_how1`)}</li>
+          <li>{t(`${translationsPath}.know_how2`)}</li>
+          <li>{t(`${translationsPath}.know_how3`)}</li>
         </ul>
         <p>
           {t(`${projectsWorkPath}.linkText`)}{" "}

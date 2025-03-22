@@ -4,7 +4,7 @@ export default function Sae207() {
   const { t } = useTranslation();
 
   const projectsWorkPath = "portfolio.work.saes";
-  const translationsPath = `${projectsWorkPath}.pagil2`;
+  const translationsPath = `${projectsWorkPath}.sae207`;
   return (
     <>
       <ul>
@@ -14,16 +14,9 @@ export default function Sae207() {
         <p>{t(`${translationsPath}.presentationDescription`)}</p>
         <img src="/img/portfolio/donnes.png" alt="photo fichier de donnees" />
         <li>
-          <h4>
-            Utilisation de PostgreSQL et Access pour stocker et interroger les
-            données
-          </h4>
+          <h4>{t(`${translationsPath}.postgresql`)}</h4>
         </li>
-        <p>
-          Nous avons utilisé Postgresql et Access pour créer les tables et
-          formuler les requêtes afin de pouvoir répondre aux interrogations du
-          "client" sur les données.
-        </p>
+        <p>{t(`${translationsPath}.postgresql_text`)}</p>
         <img
           src="/img/portfolio/scriptSQL.png"
           alt="photo fichier de script SQL"

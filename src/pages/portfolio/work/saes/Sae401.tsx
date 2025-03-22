@@ -4,7 +4,7 @@ export default function Sae401() {
   const { t } = useTranslation();
 
   const projectsWorkPath = "portfolio.work.saes";
-  const translationsPath = `${projectsWorkPath}.pagil2`;
+  const translationsPath = `${projectsWorkPath}.sae401`;
   return (
     <>
       <ul>
@@ -15,26 +15,25 @@ export default function Sae401() {
           <p>{t(`${translationsPath}.presentationDescription`)}</p>
           <ul>
             <li>
-              <b>Ingrédients</b> : id, nom, prix
+              <b>{t(`${translationsPath}.ingredients_table`)}</b>
+              {t(`${translationsPath}.ingredients_table_values`)}
             </li>
             <li>
-              <b>Pizzas</b> : id, nom, type de pâte, ingrédient, prix de base{" "}
+              <b>{t(`${translationsPath}.pizza_table`)}</b>
+              {t(`${translationsPath}.pizza_table_value`)}
             </li>
             <li>
-              <b>Commandes</b> : id, client, date,{" "}
+              <b>{t(`${translationsPath}.orders_table`)}</b>
+              {t(`${translationsPath}.orders_table_value`)}
             </li>
           </ul>
         </div>
         <img src="/img/portfolio/siteWebRestRequests.png" alt="requetesRest" />
 
         <li>
-          <h4>Sécurité</h4>
+          <h4>{t(`${translationsPath}.security`)}</h4>
         </li>
-        <p>
-          {" "}
-          Mise en place de différents système d'authentification notamment API
-          Token et JWT token.
-        </p>
+        <p>{t(`${translationsPath}.security_description`)}</p>
         <img
           src="/img/portfolio/jwt-primer-token.png"
           alt="authentificationRest"
@@ -43,27 +42,23 @@ export default function Sae401() {
         <h4>{t(`${projectsWorkPath}.skills`)}</h4>
         <ul>
           <li>
-            <b> {t(`${translationsPath}.skill1`)} </b> : Nous ne connaisions pas
-            les architectures REST, ce projet nous à permis de les comprendre et
-            d'apprendre à créer des site la respectant.
+            <b> {t(`${translationsPath}.skill1`)} </b>
+            {t(`${translationsPath}.skill1_text`)}
           </li>
           <li>
-            <b> {t(`${translationsPath}.skill2`)} </b> : Pour ce projet,
-            l'utilisation d'une base de données était nécessaire.{" "}
+            <b> {t(`${translationsPath}.skill2`)} </b>
+            {t(`${translationsPath}.skill2_text`)}
           </li>
         </ul>
-        <h4>{t(`${translationsPath}.knowHow`)}</h4>
+        <h4>{t(`${projectsWorkPath}.know_how`)}</h4>
         <ul>
           <li>
-            <b> {t(`${translationsPath}.knowHow1`)} </b> : Ce projet est le seul
-            que nous avons eu à réaliser entièrement seul mais étant très
-            autonome, cela ne m'a pas posé de problèmes.
+            <b> {t(`${translationsPath}.know_how1`)} </b>{" "}
+            {t(`${translationsPath}.know_how1_text`)}
           </li>
           <li>
-            <b> {t(`${translationsPath}.knowHow2`)} </b> : Les délais pour ce
-            projet étaient assez court, ce fut un bon exercice pour bien faire
-            attention à rendre dans les temps tout en respectant le cachier des
-            charges
+            <b> {t(`${translationsPath}.know_how2`)} </b>{" "}
+            {t(`${translationsPath}.know_how2_text`)}
           </li>
         </ul>
       </ul>

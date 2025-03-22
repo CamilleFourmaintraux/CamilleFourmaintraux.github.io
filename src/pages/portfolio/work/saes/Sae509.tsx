@@ -27,6 +27,7 @@ export default function Sae509() {
           <li>{t(`${translationsPath}.skill1`)}</li>
           <li>{t(`${translationsPath}.skill2`)}</li>
           <li>{t(`${translationsPath}.skill3`)}</li>
+          <li>{t(`${translationsPath}.skill4`)}</li>
         </ul>
         <p>
           {t(`${projectsWorkPath}.linkText`)}{" "}

@@ -15,10 +15,9 @@ export default function Sae103() {
         <img src="/img/portfolio/reseau.png" alt="photo machine virtuelle" />
 
         <li>
-          <h4>{t(`${translationsPath}.role`)}</h4>
+          <h4>{t(`${translationsPath}.machine_install`)}</h4>
         </li>
-        <p>{t(`${translationsPath}.machineInstall`)}</p>
-        <img src="/img/portfolio/tabScrum2.jpg" alt="photo Scrum" />
+        <p>{t(`${translationsPath}.machine_install_text`)}</p>
         <li>
           <h4>{t(`${projectsWorkPath}.skills`)}</h4>
         </li>

@@ -4,7 +4,7 @@ export default function Sae501() {
   const { t } = useTranslation();
 
   const projectsWorkPath = "portfolio.work.saes";
-  const translationsPath = `${projectsWorkPath}.pagil2`;
+  const translationsPath = `${projectsWorkPath}.sae501`;
   return (
     <>
       <ul>

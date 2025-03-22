@@ -255,8 +255,8 @@
       "saes": {
         "linkText": "Voir le",
         "link": "dépôt GitHub",
-        "skills": "Compétences et savoir-faire accquis",
-        "knowHow": "Savoir-êtres acquis",
+        "skills": "Savoir-faires acquis",
+        "know_how": "Savoir-êtres acquis",
         "pagil1": {
           "title": "Création d'un Jeu dans le Terminal avec Méthodologie Agile SCRUM",
           "title1": "Développement d'un jeu en mode console",
@@ -265,9 +265,9 @@
           "title2": "Rôle de ScrumMaster, gestion des User Stories et suivi du projet selon la méthodologie agile SCRUM",
           "text2": "Durant ce projet, chaque membre de l'équipe avait un rôle, on m'a attribué celui de Scrum Master. J'avais la responsabilité de mettre à jour le tableau d'avancement, et de réaliser les graphes burn-Up et burn-Down pour montrer l'avancement de notre projet.",
           "alt2": "photo Scrum",
-          "knowHow1": "SCRUM, méthodes agiles",
-          "knowHow2": "intégrer une équipe",
-          "knowHow3": "Communiquer et collaborer en équipe"
+          "know_how1": "SCRUM, méthodes agiles",
+          "know_how2": "intégrer une équipe",
+          "know_how3": "Communiquer et collaborer en équipe"
         },
         "pagil2": {
           "title": "Création d'un BACK-END et d'un FRONT-END pour un site web",
@@ -275,9 +275,9 @@
           "presentationDescription": "Nous n'avions que quelques jours pour créer un site web en suivant la méthode agile Scrum. CodeSwipe est une application parodique de Tinder où on a remplacé les gens par du morceaux de codes. Les utilisateurs swipent à droite s'ils pensent que c'est un bon code, ou swipent gauche dans le cas contraire.",
           "role": "Rôle de ScrumMaster, gestion des User Stories et suivi du projet selon la méthodologie agile SCRUM",
           "roleDescription": "Durant ce projet, le rôle de ScrumMaster devait changer chaque jour. J'ai donc eu la responsabilité de mettre à jour le tableau d'avancement, et de réaliser le graphe burn-Up. Durant ce projet, nous avons fait bien plus attention à la gestion des tickets et des branches sur Git.",
-          "knowHow1": "SCRUM, méthodes agiles",
-          "knowHow2": "intégrer une équipe",
-          "knowHow3": "Communiquer et collaborer en équipe"
+          "know_how1": "SCRUM, méthodes agiles",
+          "know_how2": "intégrer une équipe",
+          "know_how3": "Communiquer et collaborer en équipe"
         },
         "internship1": {
           "title": "Stage intégrateur SOA webMethods chez EMothep",
@@ -291,7 +291,8 @@
           "title": "Installation de service réseau",
           "presentation": "Installation d'un poste de travail",
           "presentationDescription": "L’objectif principal de la saé 1.03 était de nous introduire à la configuration réseau, celui de la saé 2.03 était de nous introduire à la configuration d’un réseau pour une entreprise ainsi qu’à nous apprendre à utiliser Markdom ou Ascii Doctor pour rédiger des rapports et de la documentation.",
-          "machineInstall": "On nous a fait installer une machine virtuelle, de deux manières, une manuelle et une avec un fichier préconfiguré, afin de nous apprendre à installer des OS sur des machines. Cette Saé nous a fait beaucoup explorer les fichiers et les manuels afin que l’on développe la compétence se chercher et de se renseigner pour trouver ce que l’on cherche.",
+          "machine_install": "Recherches en autonomies",
+          "machine_install_text": "On nous a fait installer une machine virtuelle, de deux manières, une manuelle et une avec un fichier préconfiguré, afin de nous apprendre à installer des OS sur des machines. Cette Saé nous a fait beaucoup explorer les fichiers et les manuels afin que l’on développe la compétence se chercher et de se renseigner pour trouver ce que l’on cherche.",
           "skill1": "Manier des machines virtuelles",
           "skill2": "Configurer un poste et un réseau collaboratif",
           "skill3": "Chercher dans la documentation",
@@ -301,6 +302,8 @@
           "title": "Conception et développement d'un site web pour présenter une entreprise",
           "presentation": "Utilisation de HTML et de CSS pour la création de la structure et du design",
           "presentationDescription": "Ce projet consistait à analyser les besoins d’un entreprise voulant créer une plateforme en ligne pour mettre en place du covoiturage entre leurs employés pour répondre à des problèmes de trafics et de pollutions. A partir de cette analyse, il fallait concevoir une maquette puis leur créer un site répondant à ces besoins.",
+          "wordpress": "Maquette WordPress",
+          "wordpress_text": "Nous avions commencé par faire une maquette WordPress pour proposer un début de design et de solutions aux besoins, et une fois celle-ci validée, nous sommes passés à la conception directement en HTML et en CSS. L’objectif principal était de nous apprendre à coder avec ces langages dans des conditions semblables à un réel projet ainsi qu’à nous faire respecter une charte graphique particulière, le tout se devait d’être cohérent et appréciable à regarder.",
           "skill1": "HTML, CSS",
           "skill2": "Respecter une charte graphique",
           "skill3": "Analyser un problème, proposer des solutions"
@@ -310,7 +313,7 @@
           "presentation": "Développement d’une application interactive en java",
           "presentationDescription": "L'application consistait à permettre des échanges scolaires entre pays. Ainsi, nous devions y inclure une base de données d'étudiants en fonction de pays, puis calculer les affinités en fonction de certains paramètres pour choisir les binômes d'étudiants les plus compatibles, grâce à des algorithmes de graphes, notamment Dijkstra.",
           "interface": "Utilisation de JavaFX pour l’Interface Homme-Machine",
-          "interfaceDescription": "Cette application était à réaliser, dans un premier temps, entièrement au format texte dans la console du terminal. Pour le rendu final par contre, nous devions créer une application en JavaFx afin de donner un interface graphique à notre programme, rendant notre application plus ergonomique et accessible d'utilisation.",
+          "interface_description": "Cette application était à réaliser, dans un premier temps, entièrement au format texte dans la console du terminal. Pour le rendu final par contre, nous devions créer une application en JavaFx afin de donner un interface graphique à notre programme, rendant notre application plus ergonomique et accessible d'utilisation.",
           "skill1": "Java, JavaFx",
           "skill2": "Trouver des appairements à l'aide d'algorithmes",
           "skill3": "Concevoir une interface ergonomique"
@@ -319,6 +322,8 @@
           "title": "Création d'une Base de Données - Ventilation de Données",
           "presentation": "Volume de données, création d’une base de données",
           "presentationDescription": "Nous devions extraire un ensemble volumineux de données d'un fichier en une table, puis ventiler ces données.",
+          "postgresql": "Utilisation de PostgreSQL et Access pour stocker et interroger les données",
+          "postgresql_text": "Nous avons utilisé Postgresql et Access pour créer les tables et formuler les requêtes afin de pouvoir répondre aux interrogations du 'client' sur les données.",
           "skill1": "SQL, Postgresql, Access, WordPress",
           "skill2": "Ventiler des données, gérer un grand ensemble de données",
           "skill3": "Formuler des requêtes, analyser les données"
@@ -327,6 +332,8 @@
           "title": "Escape Game",
           "presentation": "Développement d'un escape game",
           "presentationDescription": "Cette Saé avait pour but de nous faire travailler en équipe, de nous apprendre le travail d’équipe. L’utilisation de Genially et de Trello qui sont des logiciels collaboratifs nous ont permis de mieux voir l’importance de la collaboration, encore plus que dans les autres Saé en groupe.",
+          "text1": "Nous devions régulièrement organiser des réunions entre tous les membres de l’équipe, ces réunions permettaient de faire le point sur l’avancement du projet, sur les difficultés qu’un membre pouvait rencontrer, d’apporter de l’aide à ceux qui en aurait besoin et de permettre l’apparition de nouvelles idées à travers les échanges. Nous devions aussi documenter tous les progrès du projet et rédiger les comptes-rendus des réunions.",
+          "text2": "On nous a fait installer et configurer Gitea pour nous faire configurer un réseau collaboratif et nous apprendre à l’utiliser. Enfin, il fallait rédiger un rapport pour garder trace et expliquer tout ce qu’on a fait. Ces rapports devaient être rédigés en balisage léger comme Markdom ou Ascii Doctor ce qui nous a permis d’obtenir les compétences nécessaires pour utiliser des langages de Balisages léger.",
           "skill1": "Collaboration, travail en équipe",
           "skill2": "Outils de collaboration (Git, Trello)",
           "skill3": "Créativité, conception d'énigmes (sur Genially)",
@@ -347,24 +354,43 @@
           "title": "Développement d'une API REST",
           "presentation": "Structuration",
           "presentationDescription": "Cette saé portait sur réaliser un site web d'une pizzeria 'Pizzeria Mazzorello' respectant l'architecture REST.",
-          "skill1": "Architecture REST",
-          "skill2": "Postgresql",
-          "knowHow1": "Autonomie",
-          "knowHow2": "Respect des délais"
+          "ingredients_table": "Ingrédients : ",
+          "ingredients_table_values": "id, nom, prix",
+          "pizza_table": "Pizzas : ",
+          "pizza_table_value": "id, nom, type de pâte, ingrédient, prix de base",
+          "orders_table": "Commandes : ",
+          "orders_table_value": " id, client, date",
+          "security": "Sécurité",
+          "security_description": "Mise en place de différents système d'authentification notamment API Token et JWT token.",
+          "skill1": "Architecture REST : ",
+          "skill1_text": "Nous ne connaisions pas les architectures REST, ce projet nous à permis de les comprendre et d'apprendre à créer des site la respectant.",
+          "skill2": "Postgresql : ",
+          "skill2_text": "Pour ce projet, l'utilisation d'une base de données était nécessaire.",
+          "know_how1": "Autonomie : ",
+          "know_how1_text": "Ce projet est le seul que nous avons eu à réaliser entièrement seul mais étant très autonome, cela ne m'a pas posé de problèmes.",
+          "know_how2": "Respect des délais : ",
+          "know_how2_text": "Les délais pour ce projet étaient assez court, ce fut un bon exercice pour bien faire attention à rendre dans les temps tout en respectant le cachier des charges."
         },
         "sae402": {
           "title": "Développement d'une application complexe",
           "presentation": "Idées de gameplay",
           "presentationDescription": "Nous avons reçu un cahier des charges, avec toutes les fonctionnalités minimales que devrais avoir l'application finale. Notre première mission était donc de réfléchir à des éléments de gameplay ainsi qu'à un thème permettant de répondre aux consignes.",
           "multiplayer": "Multijoueurs avec node.js et socket.io",
-          "multiplayerDescription": "C'était la première fois que nous devions développer un jeu multijoueur, ce fut un défi très intéressant et cela nous à fait réfléchir et comprendre à comment fonctionnent les jeux multijoueurs en général.",
-          "skill1": "JavaScript ES6",
-          "skill2": "Nodes.js, socket.io",
-          "skill3": "Babel, Prettier",
-          "skill4": "Canvas",
-          "knowHow1": "Travail d'équipe",
-          "knowHow2": "Collaboration",
-          "knowHow3": "Qualité des dépôts git (Commits, Milestones)"
+          "multiplayer_description": "C'était la première fois que nous devions développer un jeu multijoueur, ce fut un défi très intéressant et cela nous à fait réfléchir et comprendre à comment fonctionnent les jeux multijoueurs en général. Grâce à cette saé, nous avons appris à utiliser socket.iio pour connecter le server et les clients entre eux, et permettre la création de différentes parties indépendantes sur le même serveur grâce aux rooms.",
+          "skill1": "JavaScript ES6 : ",
+          "skill1_text": "Nous n'avions jamais codé en javascript avant ce projet. Ce fut l'occasion d'apprendre et de mettre en pratique ces nouvelles compétences.",
+          "skill2": "Nodes.js, socket.io : ",
+          "skill2_text": "Grâce à socket.io, nous avons pu créer un jeu multijoueur où plusieurs parties peuvent se dérouler en même temps.",
+          "skill3": "Babel, Prettier : ",
+          "skill3_text": "Gérer des dépendances (package.json) dans un projet js.",
+          "skill4": "Canvas : ",
+          "skill4_text": "Dessiner des formes, des images dans un canvas",
+          "know_how1": "Travail d'équipe : ",
+          "know_how1_text": "Nous avons réalisé ce projet en binôme, qui était prévu d'être fait en trinôme, ce qui nous à mis à l'épreuve pour finir dans les temps avec un tiers de notre force de travail.",
+          "know_how2": "Collaboration : ",
+          "know_how2_text": "Afin de pouvoir finir dans les temps, une bonne répartition du travail était essentielle. Nous avons relevé ce défi haut la main, en respectant le cahier des charges et en ayant même des fonctionnalités suplémentaires.",
+          "know_how3": "Qualité des dépôts git (Commits, Milestones) : ",
+          "know_how3_text": "Le professeur avait particulièrement insisté sur la qualité de notre dépôt git et sur la gestion des tâches, nous avons donc appris à mieux utiliser les outils collaboratif de GitLab."
         },
         "sae501": {
           "title": "Emulateur RiscV",
@@ -383,9 +409,10 @@
           "presentationDescription": "L’objectif de ce projet consiste à réaliser un site internet de gestion de rendez-vous multi-utilisateurs.",
           "spring_framework": "Spring Framework",
           "spring_description": "Spring est un framework open source pour construire et définir l'infrastructure d'une application Java, dont il facilite le développement et les tests. Spring Boot est un framework Java open source utilisé pour programmer des applications Spring autonomes de qualité production avec un ensemble de bibliothèques qui facilitent le démarrage et la gestion des projets. Grâce a ce projet, nous avons appris à utiliser le framework java back-end Spring, ainsi que Spring Security. Spring Security est un framework Java/Java EE qui fournit des fonctionnalités d'authentification, d'autorisation et d'autres fonctionnalités de sécurité pour les applications d'entreprise. Notre projet ne contenat que deux rôle : User et Admin. Un admin peut faire tout ce qu'un utilisateur connecté (User) peut faire, mais aussi accéder et modifier les rendez-vous des autres utilisateurs.",
-          "skill1": "azer",
-          "skill2": "azer",
-          "skill3": "azer"
+          "skill1": "Framework Spring",
+          "skill2": "JPA",
+          "skill3": "Spring Security",
+          "skill4": "Lombok"
         }
       },
       "tags": {
