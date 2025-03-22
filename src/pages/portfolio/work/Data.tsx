@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import Sae509 from "./saes/Sae509";
 import Sae501 from "./saes/Sae501";
 import Sae402 from "./saes/Sae402";
@@ -13,13 +12,16 @@ import Sae103 from "./saes/Sae103";
 import Pagil2 from "./saes/Pagil2";
 import { Tags } from "./Tags";
 import { RealisationProps } from "../Realisation";
+import Internship from "./saes/Internship";
 
-const tagsWorkPath = "portfolio.work.tags";
+export const tagsWorkPath = `portfolio.work.tags`;
+const projectsWorkPath = `portfolio.work.saes`;
+const saesTitlePath = `title`;
 
 const realisations: RealisationProps[] = [
   {
     idRealisation: "pagil2",
-    title: "Création d'un BACK-END et d'un FRONT-END pour un site web",
+    title: `${projectsWorkPath}.pagil2.${saesTitlePath}`,
     date: new Date(2025, 2, 3),
     dateEnd: new Date(2025, 2, 7),
     tags: [
@@ -42,18 +44,11 @@ const realisations: RealisationProps[] = [
   },
   {
     idRealisation: "stage2025portfolio",
-    title: "Stage intégrateur SOA webMethods chez EMothep",
+    title: `${projectsWorkPath}.internship2.${saesTitlePath}`,
     date: new Date(2025, 2, 10),
     dateEnd: new Date(2025, 5, 27),
     tags: [Tags.INTERNSHIP, Tags.BACKEND, Tags.INTEGRATION, Tags.DB],
-    children: (
-      <p>
-        <Link to="/cursus#experiences">
-          Voir mes réalisations durant le stage
-        </Link>
-        .
-      </p>
-    ),
+    children: <Internship />,
     tagsPath: tagsWorkPath,
     current: "",
     isInPeriod: false,
@@ -61,18 +56,11 @@ const realisations: RealisationProps[] = [
   },
   {
     idRealisation: "stage2024portfolio",
-    title: "Stage intégrateur SOA webMethods chez EMothep",
+    title: `${projectsWorkPath}.internship1.${saesTitlePath}`,
     date: new Date(2024, 3, 15),
     dateEnd: new Date(2024, 5, 21),
     tags: [Tags.INTERNSHIP, Tags.BACKEND, Tags.INTEGRATION, Tags.DB],
-    children: (
-      <p>
-        <Link to="/cursus#stage2024container">
-          Voir mes réalisations durant le stage
-        </Link>
-        .
-      </p>
-    ),
+    children: <Internship />,
     tagsPath: tagsWorkPath,
     current: "",
     isInPeriod: false,
@@ -80,7 +68,7 @@ const realisations: RealisationProps[] = [
   },
   {
     idRealisation: "sae509",
-    title: "WEB BACK",
+    title: `${projectsWorkPath}.sae509.${saesTitlePath}`,
     date: new Date(2024, 8, 19),
     dateEnd: new Date(2025, 1, 24),
 
@@ -102,7 +90,7 @@ const realisations: RealisationProps[] = [
   },
   {
     idRealisation: "sae501",
-    title: "Emulateur RiscV",
+    title: `${projectsWorkPath}.sae501.${saesTitlePath}`,
     date: new Date(2024, 8, 17),
     dateEnd: new Date(2025, 1, 9),
     tags: [Tags.SYSTEMS, Tags.C],
@@ -114,7 +102,7 @@ const realisations: RealisationProps[] = [
   },
   {
     idRealisation: "sae402",
-    title: "Développement d'une application complexe",
+    title: `${projectsWorkPath}.sae402.${saesTitlePath}`,
     date: new Date(2024, 1, 19),
     dateEnd: new Date(2024, 2, 22),
     tags: [Tags.VIDEOGAME, Tags.JSTS],
@@ -126,7 +114,7 @@ const realisations: RealisationProps[] = [
   },
   {
     idRealisation: "sae401",
-    title: "Développement d'une API REST",
+    title: `${projectsWorkPath}.sae401.${saesTitlePath}`,
     date: new Date(2024, 1, 5),
     dateEnd: new Date(2024, 2, 18),
     tags: [
@@ -145,7 +133,7 @@ const realisations: RealisationProps[] = [
   },
   {
     idRealisation: "sae302",
-    title: "Création d'un jeu avec JavaFX",
+    title: `${projectsWorkPath}.sae302.${saesTitlePath}`,
     date: new Date(2023, 9, 2),
     dateEnd: new Date(2023, 11, 4),
     tags: [Tags.VIDEOGAME, Tags.JAVA],
@@ -157,7 +145,7 @@ const realisations: RealisationProps[] = [
   },
   {
     idRealisation: "pagil1",
-    title: "Création d'un Jeu dans le Terminal avec Méthodologie Agile SCRUM",
+    title: `${projectsWorkPath}.pagil1.${saesTitlePath}`,
     date: new Date(2023, 8, 1),
     dateEnd: new Date(2023, 8, 5),
     tags: [Tags.SCRUM, Tags.VIDEOGAME, Tags.JAVA],
@@ -169,7 +157,7 @@ const realisations: RealisationProps[] = [
   },
   {
     idRealisation: "sae213",
-    title: "Escape Game",
+    title: `${projectsWorkPath}.sae213.${saesTitlePath}`,
     date: new Date(2023, 3, 24),
     dateEnd: new Date(2023, 5, 19),
     tags: [Tags.SCRUM, Tags.VIDEOGAME],
@@ -181,7 +169,7 @@ const realisations: RealisationProps[] = [
   },
   {
     idRealisation: "sae207",
-    title: "Création d'une Base de Données - Ventilation de Données",
+    title: `${projectsWorkPath}.sae207.${saesTitlePath}`,
     date: new Date(2023, 1, 28),
     dateEnd: new Date(2023, 3, 24),
     tags: [Tags.DB],
@@ -193,7 +181,7 @@ const realisations: RealisationProps[] = [
   },
   {
     idRealisation: "sae202",
-    title: "Création d'une Application d'Échanges Scolaires en Java et JavaFX",
+    title: `${projectsWorkPath}.sae202.${saesTitlePath}`,
     date: new Date(2023, 0, 30),
     dateEnd: new Date(2023, 2, 31),
     tags: [Tags.JAVA],
@@ -205,8 +193,7 @@ const realisations: RealisationProps[] = [
   },
   {
     idRealisation: "sae105",
-    title:
-      "Conception et développement d'un site web pour présenter une entreprise",
+    title: `${projectsWorkPath}.sae105.${saesTitlePath}`,
     date: new Date(2022, 8, 24),
     dateEnd: new Date(2022, 11, 9),
     tags: [Tags.WEB],
@@ -218,7 +205,7 @@ const realisations: RealisationProps[] = [
   },
   {
     idRealisation: "sae103",
-    title: "Installation de service réseau",
+    title: `${projectsWorkPath}.sae103.${saesTitlePath}`,
     date: new Date(2022, 8, 12),
     dateEnd: new Date(2022, 9, 21),
     tags: [Tags.SYSTEMS, Tags.C],

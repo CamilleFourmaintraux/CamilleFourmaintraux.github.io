@@ -6,10 +6,11 @@ import { transformSaeID } from "../../Utils";
 import { useTranslation } from "react-i18next";
 
 interface RealisationsProps {
-  data: RealisationProps[]; // Corrigé ici
+  data: RealisationProps[];
   pageTitle: string;
   pageSubtitle: string;
   pageDescription: string;
+  children: React.ReactNode;
 }
 
 const Realisations: React.FC<RealisationsProps> = ({
@@ -17,6 +18,7 @@ const Realisations: React.FC<RealisationsProps> = ({
   pageTitle,
   pageSubtitle,
   pageDescription,
+  children,
 }) => {
   const { t } = useTranslation();
   // Extraire tous les tags uniques
@@ -57,7 +59,7 @@ const Realisations: React.FC<RealisationsProps> = ({
         <div className="container">
           <h2>{pageTitle}</h2>
           <p>{pageDescription}</p>
-
+          <div className="title-content">{children}</div>
           <div id="advancedSearchButtonContainer">
             <button
               id="advancedSearchButton"
@@ -196,9 +198,9 @@ const Realisations: React.FC<RealisationsProps> = ({
                 >
                   <Realisation
                     idRealisation={idRealisation}
-                    title={`${index + 1}. ${transformSaeID(
-                      idRealisation
-                    )} ${title}`}
+                    title={`${index + 1}. ${transformSaeID(idRealisation)} ${t(
+                      title
+                    )}`}
                     tags={tags}
                     date={date}
                     dateEnd={dateEnd}

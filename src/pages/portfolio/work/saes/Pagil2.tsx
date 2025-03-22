@@ -1,46 +1,35 @@
+import { useTranslation } from "react-i18next";
+
 export default function Pagil2() {
+  const { t } = useTranslation();
+
+  const projectsWorkPath = "portfolio.work.saes";
+  const translationsPath = `${projectsWorkPath}.pagil2`;
   return (
     <>
       <ul>
         <li>
-          <h4>Développement de CODE SWIPE</h4>
+          <h4>{t(`${translationsPath}.presentation`)}</h4>
         </li>
-        <p>
-          Nous n'avions que quelques jours pour créer un site web en suivant la
-          méthode agile Scrum. CodeSwipe est une application parodique de Tinder
-          où on a remplacé les gens par du morceaux de codes. Les utilisateurs
-          swipent à droite s'ils pensent que c'est un bon code, ou swipent
-          gauche dans le cas contraire.
-        </p>
+        <p>{t(`${translationsPath}.presentationDescription`)}</p>
         <img src="/img/portfolio/codeSwipe.gif" alt="codeSwipe" />
         <li>
-          <h4>
-            Rôle de ScrumMaster, gestion des User Stories et suivi du projet
-            selon la méthodologie agile SCRUM
-          </h4>
+          <h4>{t(`${translationsPath}.role`)}</h4>
         </li>
-        <p>
-          Durant ce projet, le rôle de ScrumMaster devait changer chaque jour.
-          J'ai donc eu la responsabilité de mettre à jour le tableau
-          d'avancement, et de réaliser le graphe burn-Up. Durant ce projet, nous
-          avons fait bien plus attention à la gestion des tickets et des
-          branches sur Git.
-        </p>
+        <p>{t(`${translationsPath}.roleDescription`)}</p>
         <img src="/img/portfolio/tabScrum2.jpg" alt="photo Scrum" />
         <li>
-          <h4>Compétences et savoir-faire accquis</h4>
+          <h4>{t(`${projectsWorkPath}.knowHow`)}</h4>
         </li>
         <ul>
-          <li>SCRUM, méthodes agiles</li>
-          <li>intégrer une équipe</li>
-          <li>Communiquer et collaborer en équipe</li>
+          <li>{t(`${translationsPath}.knowHow1`)}</li>
+          <li>{t(`${translationsPath}.knowHow2`)}</li>
+          <li>{t(`${translationsPath}.knowHow3`)}</li>
         </ul>
         <p>
-          {" "}
-          Voir le{" "}
+          {t(`${projectsWorkPath}.linkText`)}{" "}
           <a href="https://github.com/CamilleFourmaintraux/projet-agile">
-            {" "}
-            dépôt GitHub{" "}
+            {t(`${projectsWorkPath}.link`)}
           </a>
         </p>
       </ul>

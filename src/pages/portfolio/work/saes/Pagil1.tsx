@@ -1,45 +1,42 @@
+import { useTranslation } from "react-i18next";
+
 export default function Pagil1() {
+  const { t } = useTranslation();
+
+  const projectsWorkPath = "portfolio.work.saes";
+  const translationsPath = `${projectsWorkPath}.pagil1`;
+
   return (
     <>
       <ul>
         <li>
-          <h4>Développement d'un jeu en mode console</h4>
+          <h4>{t(`${translationsPath}.title1`)}</h4>
         </li>
-        <p>
-          Nous n'avions que quelques jours pour créer un jeu, en suivant la
-          méthode agile Scrum. Les équipes étaient formées aléatoirement entre
-          tous les membres de la promotion. Cela nous a permis de faire équipe
-          avec des personnes que l'on ne connaissait pas et d'apprendre à
-          collaborer et communiquer malgré cela.
-        </p>
-        <img src="/img/portfolio/dino.png" alt="photo dino" />
+        <p>{t(`${translationsPath}.text1`)}</p>
+        <img
+          src="/img/portfolio/dino.png"
+          alt={t(`${translationsPath}.alt1`)}
+        />
         <li>
-          <h4>
-            Rôle de ScrumMaster, gestion des User Stories et suivi du projet
-            selon la méthodologie agile SCRUM
-          </h4>
+          <h4>{t(`${translationsPath}.title2`)}</h4>
         </li>
-        <p>
-          Durant ce projet, chaque membre de l'équipe avait un rôle, on m'a
-          attribué celui de Scrum Master. J'avais la responsabilité de mettre à
-          jour le tableau d'avancement, et de réaliser les graphes burn-Up et
-          burn-Down pour montrer l'avancement de notre projet.
-        </p>
-        <img src="/img/portfolio/tabScrum.jpg" alt="photo Scrum" />
+        <p>{t(`${translationsPath}.text2`)}</p>
+        <img
+          src="/img/portfolio/tabScrum.jpg"
+          alt={t(`${translationsPath}.alt2`)}
+        />
         <li>
-          <h4>Compétences et savoir-faire accquis</h4>
+          <h4>{t(`${translationsPath}.title3`)}</h4>
         </li>
         <ul>
-          <li>SCRUM, méthodes agiles</li>
-          <li>intégrer une équipe</li>
-          <li>Communiquer et collaborer en équipe</li>
+          <li>{t(`${translationsPath}.skill1`)}</li>
+          <li>{t(`${translationsPath}.skill2`)}</li>
+          <li>{t(`${translationsPath}.skill3`)}</li>
         </ul>
         <p>
-          {" "}
-          Voir le{" "}
+          {t(`${projectsWorkPath}.linkText`)}{" "}
           <a href="https://github.com/CamilleFourmaintraux/projet-agile">
-            {" "}
-            dépôt GitHub{" "}
+            {t(`${projectsWorkPath}.link`)}
           </a>
         </p>
       </ul>

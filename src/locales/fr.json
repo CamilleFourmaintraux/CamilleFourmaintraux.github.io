@@ -251,8 +251,142 @@
       "page_title": "Mes travaux",
       "page_subtitle": "Mes réalisations professionnelles",
       "page_description": "Cette page regroupe tous les projets auxquels j'ai participé dans un cadre professionnel.",
+      "sae_explanation": "Une SAÉ (Situation d'Apprentissage et d'Évaluation) est une activité d'apprentissage et d'évaluation par projet nécessaire au développement de compétences professionnelles clés au sein du système d'enseignement supérieur français.",
       "saes": {
-        "sae": "sae"
+        "linkText": "Voir le",
+        "link": "dépôt GitHub",
+        "skills": "Compétences et savoir-faire accquis",
+        "knowHow": "Savoir-êtres acquis",
+        "pagil1": {
+          "title": "Création d'un Jeu dans le Terminal avec Méthodologie Agile SCRUM",
+          "title1": "Développement d'un jeu en mode console",
+          "text1": "Nous n'avions que quelques jours pour créer un jeu, en suivant la méthode agile Scrum. Les équipes étaient formées aléatoirement entre tous les membres de la promotion. Cela nous a permis de faire équipe avec des personnes que l'on ne connaissait pas et d'apprendre à collaborer et communiquer malgré cela.",
+          "alt1": "photo dino",
+          "title2": "Rôle de ScrumMaster, gestion des User Stories et suivi du projet selon la méthodologie agile SCRUM",
+          "text2": "Durant ce projet, chaque membre de l'équipe avait un rôle, on m'a attribué celui de Scrum Master. J'avais la responsabilité de mettre à jour le tableau d'avancement, et de réaliser les graphes burn-Up et burn-Down pour montrer l'avancement de notre projet.",
+          "alt2": "photo Scrum",
+          "knowHow1": "SCRUM, méthodes agiles",
+          "knowHow2": "intégrer une équipe",
+          "knowHow3": "Communiquer et collaborer en équipe"
+        },
+        "pagil2": {
+          "title": "Création d'un BACK-END et d'un FRONT-END pour un site web",
+          "presentation": "Développement de CODE SWIPE",
+          "presentationDescription": "Nous n'avions que quelques jours pour créer un site web en suivant la méthode agile Scrum. CodeSwipe est une application parodique de Tinder où on a remplacé les gens par du morceaux de codes. Les utilisateurs swipent à droite s'ils pensent que c'est un bon code, ou swipent gauche dans le cas contraire.",
+          "role": "Rôle de ScrumMaster, gestion des User Stories et suivi du projet selon la méthodologie agile SCRUM",
+          "roleDescription": "Durant ce projet, le rôle de ScrumMaster devait changer chaque jour. J'ai donc eu la responsabilité de mettre à jour le tableau d'avancement, et de réaliser le graphe burn-Up. Durant ce projet, nous avons fait bien plus attention à la gestion des tickets et des branches sur Git.",
+          "knowHow1": "SCRUM, méthodes agiles",
+          "knowHow2": "intégrer une équipe",
+          "knowHow3": "Communiquer et collaborer en équipe"
+        },
+        "internship1": {
+          "title": "Stage intégrateur SOA webMethods chez EMothep",
+          "text": "Voir mes réalisations durant le stage"
+        },
+        "internship2": {
+          "title": "Stage intégrateur SOA webMethods chez EMothep",
+          "text": "Voir mes réalisations durant le stage"
+        },
+        "sae103": {
+          "title": "Installation de service réseau",
+          "presentation": "Installation d'un poste de travail",
+          "presentationDescription": "L’objectif principal de la saé 1.03 était de nous introduire à la configuration réseau, celui de la saé 2.03 était de nous introduire à la configuration d’un réseau pour une entreprise ainsi qu’à nous apprendre à utiliser Markdom ou Ascii Doctor pour rédiger des rapports et de la documentation.",
+          "machineInstall": "On nous a fait installer une machine virtuelle, de deux manières, une manuelle et une avec un fichier préconfiguré, afin de nous apprendre à installer des OS sur des machines. Cette Saé nous a fait beaucoup explorer les fichiers et les manuels afin que l’on développe la compétence se chercher et de se renseigner pour trouver ce que l’on cherche.",
+          "skill1": "Manier des machines virtuelles",
+          "skill2": "Configurer un poste et un réseau collaboratif",
+          "skill3": "Chercher dans la documentation",
+          "skill4": "Utiliser des langages de balisages léger (markdom, asciiDoctor)"
+        },
+        "sae105": {
+          "title": "Conception et développement d'un site web pour présenter une entreprise",
+          "presentation": "Utilisation de HTML et de CSS pour la création de la structure et du design",
+          "presentationDescription": "Ce projet consistait à analyser les besoins d’un entreprise voulant créer une plateforme en ligne pour mettre en place du covoiturage entre leurs employés pour répondre à des problèmes de trafics et de pollutions. A partir de cette analyse, il fallait concevoir une maquette puis leur créer un site répondant à ces besoins.",
+          "skill1": "HTML, CSS",
+          "skill2": "Respecter une charte graphique",
+          "skill3": "Analyser un problème, proposer des solutions"
+        },
+        "sae202": {
+          "title": "Création d'une Application d'Échanges Scolaires en Java et JavaFX",
+          "presentation": "Développement d’une application interactive en java",
+          "presentationDescription": "L'application consistait à permettre des échanges scolaires entre pays. Ainsi, nous devions y inclure une base de données d'étudiants en fonction de pays, puis calculer les affinités en fonction de certains paramètres pour choisir les binômes d'étudiants les plus compatibles, grâce à des algorithmes de graphes, notamment Dijkstra.",
+          "interface": "Utilisation de JavaFX pour l’Interface Homme-Machine",
+          "interfaceDescription": "Cette application était à réaliser, dans un premier temps, entièrement au format texte dans la console du terminal. Pour le rendu final par contre, nous devions créer une application en JavaFx afin de donner un interface graphique à notre programme, rendant notre application plus ergonomique et accessible d'utilisation.",
+          "skill1": "Java, JavaFx",
+          "skill2": "Trouver des appairements à l'aide d'algorithmes",
+          "skill3": "Concevoir une interface ergonomique"
+        },
+        "sae207": {
+          "title": "Création d'une Base de Données - Ventilation de Données",
+          "presentation": "Volume de données, création d’une base de données",
+          "presentationDescription": "Nous devions extraire un ensemble volumineux de données d'un fichier en une table, puis ventiler ces données.",
+          "skill1": "SQL, Postgresql, Access, WordPress",
+          "skill2": "Ventiler des données, gérer un grand ensemble de données",
+          "skill3": "Formuler des requêtes, analyser les données"
+        },
+        "sae213": {
+          "title": "Escape Game",
+          "presentation": "Développement d'un escape game",
+          "presentationDescription": "Cette Saé avait pour but de nous faire travailler en équipe, de nous apprendre le travail d’équipe. L’utilisation de Genially et de Trello qui sont des logiciels collaboratifs nous ont permis de mieux voir l’importance de la collaboration, encore plus que dans les autres Saé en groupe.",
+          "skill1": "Collaboration, travail en équipe",
+          "skill2": "Outils de collaboration (Git, Trello)",
+          "skill3": "Créativité, conception d'énigmes (sur Genially)",
+          "escapeGameLink": "Tester l'escape game !"
+        },
+        "sae302": {
+          "title": "Création d'un jeu avec JavaFX",
+          "presentation": "Concevoir MonsterHunt",
+          "presentationDescription": "On nous avait simplement donné des instructions de gameplay et quelques interfaces et nous devions, à partir de cela, concevoir tout le jeu. Ce jeu se joue à deux joueurs, un monstre et un chasseur.",
+          "testing": "Tests et documentations",
+          "testingDescription": "Durant cette saé, les professeurs ont particulièrement insisté sur la pertinence des tests et de la documentation que nous devons fournir.",
+          "skill1": "Java, JavaFx",
+          "skill2": "Implémanter des mécaniques de gameplay",
+          "skill3": "Tests, Documentation",
+          "skill4": "Patrons de conceptions"
+        },
+        "sae401": {
+          "title": "Développement d'une API REST",
+          "presentation": "Structuration",
+          "presentationDescription": "Cette saé portait sur réaliser un site web d'une pizzeria 'Pizzeria Mazzorello' respectant l'architecture REST.",
+          "skill1": "Architecture REST",
+          "skill2": "Postgresql",
+          "knowHow1": "Autonomie",
+          "knowHow2": "Respect des délais"
+        },
+        "sae402": {
+          "title": "Développement d'une application complexe",
+          "presentation": "Idées de gameplay",
+          "presentationDescription": "Nous avons reçu un cahier des charges, avec toutes les fonctionnalités minimales que devrais avoir l'application finale. Notre première mission était donc de réfléchir à des éléments de gameplay ainsi qu'à un thème permettant de répondre aux consignes.",
+          "multiplayer": "Multijoueurs avec node.js et socket.io",
+          "multiplayerDescription": "C'était la première fois que nous devions développer un jeu multijoueur, ce fut un défi très intéressant et cela nous à fait réfléchir et comprendre à comment fonctionnent les jeux multijoueurs en général.",
+          "skill1": "JavaScript ES6",
+          "skill2": "Nodes.js, socket.io",
+          "skill3": "Babel, Prettier",
+          "skill4": "Canvas",
+          "knowHow1": "Travail d'équipe",
+          "knowHow2": "Collaboration",
+          "knowHow3": "Qualité des dépôts git (Commits, Milestones)"
+        },
+        "sae501": {
+          "title": "Emulateur RiscV",
+          "presentation": "Langages de bas-niveaux",
+          "presentationDescription": "Dans le cadre de cette SAÉ, nous avons été confrontés au développement d’un logiciel qui sort du périmètre dans lequel nous avions l’habitude d’évoluer. Nous avons développer un logiciel permettant d’émuler un ordinateur basé sur un processeur RISC-V.",
+          "programming": "Programmation dans un langage de bas-niveau",
+          "programmingDescription": "L’émulation est le fait de simuler le fonctionnement d’une architecture matérielle à l’aide d’un programme informatique. Le programme est en charge de modéliser et de faire évoluer l’état « virtuel » de l’architecture matérielle. Le logiciel d’émulation doit donc proposer une structure de données qui représente le matériel que l’on cherche à simuler et faire évoluer ces données au fur-et-à-mesure de l’avancée de la simulation. Les registres sont les plus petites unités de stockage du processeur. Ils sont intégrés à celui-ci et n’ont pas d’adresse car il ne sont pas en mémoire. Il sont directement utilisables dans les instructions machine et servent de stockage de traitement. L’unité arithmétique et logique travaille exclusivement avec eux sur la plupart des architectures.",
+          "skill1": "Programmation en C",
+          "skill2": "Apprendre un nouveau langage",
+          "skill3": "Découvrir le fonctionnement d'un processeur",
+          "skill4": "Écrire un programme respectant une spécification stricte"
+        },
+        "sae509": {
+          "title": "WEB BACK",
+          "presentation": "Le projet",
+          "presentationDescription": "L’objectif de ce projet consiste à réaliser un site internet de gestion de rendez-vous multi-utilisateurs.",
+          "spring_framework": "Spring Framework",
+          "spring_description": "Spring est un framework open source pour construire et définir l'infrastructure d'une application Java, dont il facilite le développement et les tests. Spring Boot est un framework Java open source utilisé pour programmer des applications Spring autonomes de qualité production avec un ensemble de bibliothèques qui facilitent le démarrage et la gestion des projets. Grâce a ce projet, nous avons appris à utiliser le framework java back-end Spring, ainsi que Spring Security. Spring Security est un framework Java/Java EE qui fournit des fonctionnalités d'authentification, d'autorisation et d'autres fonctionnalités de sécurité pour les applications d'entreprise. Notre projet ne contenat que deux rôle : User et Admin. Un admin peut faire tout ce qu'un utilisateur connecté (User) peut faire, mais aussi accéder et modifier les rendez-vous des autres utilisateurs.",
+          "skill1": "azer",
+          "skill2": "azer",
+          "skill3": "azer"
+        }
       },
       "tags": {
         "SCRUM": "Scrum",
@@ -271,7 +405,7 @@
         "RUST": "Rust",
         "PYTHON": "Python",
         "JAVA": "Java",
-        "JSTS": "JSTS",
+        "JSTS": "JS/TS",
         "VIDEOGAME": "Jeu-Vidéo"
       }
     },
@@ -279,8 +413,84 @@
       "page_title": "Ma passion",
       "page_subtitle": "Mes réalisations personnelles",
       "page_description": "Ma plus grande passion reste avant tout la programmation. Je m'amuse donc à essayer de réaliser quelques projets (souvent des jeux) sur mon temps libre.",
+      "other_activities": {
+        "title": "Autre activités",
+        "programming": "Programmation",
+        "member_of_board_game_club": "Membre d’un club de jeux de plateau et de société",
+        "solving_riddles": "Résolution de casse-têtes, d'énigmes",
+        "escape_games": "Escape Games",
+        "news_monitoring": "Suivi de l'actualité",
+        "reading": "Lecture de romans de Fantaisie"
+      },
       "projects": {
-        "project": "project"
+        "first3dplatformer": {
+          "learn_godot_title": "Apprendre Godot",
+          "learn_godot_text": "J'ai commencé à travailler sur ce jeu car je voulais apprendre à utiliser Godot et à créer un jeu en 3D. Mon premier objectif a été de créer un joueur avec des déplacements basiques évoluant dans un environnement 3D simpliste, puis de fil en aiguille j'ai décidé de continuer avec cette mécanique de gameplay simple et de faire un jeu de plateformes.",
+          "gameplay_elements_title": "Éléments de gameplay",
+          "gameplay_elements_text": "Continuer avec cette mécanique de gameplay simple m'a permis de me concentrer sur d'autres aspects du jeu comme la création de menus avec un menu de pause et d'options. Mais aussi de nouveaux éléments de gameplay comme des plateformes qui se déplacent, des ascenseurs ou des éléments à collecter dans chaque niveau.",
+          "skills_title": "Compétences acquises",
+          "skills_list": {
+            "godot": "Godot, GDScript",
+            "physics": "Physique 3D",
+            "game_design": "Game Design",
+            "mesh_creation": "Création de mesh 3D, textures"
+          },
+          "img_alt": "photo platformer 3D"
+        },
+        "firstgamejam": {
+          "title1": "Poster sur Itch.io mon premier jeu",
+          "text1": "En me baladant sur Itch.io, j'ai vu la section gamejam et ça m'a donné envie de participer. J'ai choisi la première gamejam qui allait commencer : <strong>1-BIT JAM #4</strong>, et je me suis mis à coder. J'ai fini 114ème sur 338 participants.",
+          "alt1": "photo first gamejam",
+          "title2": "1-BIT JAM #4",
+          "text2": "Cette game jam avait une condition : le jeu devait ne contenir que deux couleurs maximum, de préférences noir et blanc. J'ai créé TheLegendOfKnardWizight, un shooter 2D, en suivant ces contraintes. L'objectif est de défendre sa tour de vagues de monstres. Si vous vous faites toucher, ou si la tour est détruite, vous perdez.",
+          "play_link": "Tester le jeu !",
+          "alt2": "photo first gamejam result",
+          "skills_title": "Compétences acquises",
+          "skills_list": {
+            "godot": "Godot, GDScript",
+            "physics": "Physique 2D",
+            "sprites": "Création de sprites 2D",
+            "time": "Temps très limité"
+          }
+        },
+        "mazegenerator": {
+          "title1": "Algorithmes",
+          "text1": "Je souhaitais apprendre comment faire pour générer des labyrinthes. J'ai donc étudié divers algorithmes qui permettaient de réaliser cela, puis j'ai essayé de les implémenter.",
+          "alt1": "photo générateur de labyrinthe",
+          "title2": "Affichage graphique",
+          "text2": "Dans un premier temps, je faisais apparaître les labyrinthes dans la console sous forme textuelle, puis j'ai décidé d'essayer d'utiliser javaFx pour représenter mon labyrinthe. C'est à partir de ce projet personnel que j'ai développé l'affichage pour le projet de Saé 3.02 de développement d'application.",
+          "skills_title": "Compétences acquises",
+          "skills_list": {
+            "algo": "Algorithmes",
+            "javafx": "JavaFx"
+          }
+        },
+        "minigames": {
+          "title1": "Pong",
+          "text1": "Je voulais essayer de créer pleins de jeux classiques, donc après la copie de Flappy Bird, j'ai essayé de faire un Pong et un casse-Brique. Pour chacun des jeux j'ai ajouté un simple menu ainsi qu'un système de score et de highScore.",
+          "alt1": "photo du pong",
+          "title2": "Boucle",
+          "text2": "Créer ces jeux m'a permis de mieux connaître les boucles de jeux et l'affichage en javaFX.",
+          "alt2": "photo du casseBrique",
+          "skills_title": "Compétences acquises",
+          "skills_list": {
+            "timer": "AnimationTimer en JavaFX",
+            "gameloop": "GameLoop"
+          }
+        },
+        "miscellaneous": {
+          "list": [
+            "Flappy Bird Clone",
+            "Wolfenstein Clone",
+            "Minecraft Clone",
+            "Rpg textuel",
+            "Survival Game",
+            "Dungeon Crawler",
+            "RPG",
+            "& Divers Shoot'em up"
+          ],
+          "text": "J'apprécie d'essayer d'imaginer comment l'utilisateur va réagir afin de créer la meilleure interface ou un jeu amusant. Parfois j'ai une idée qui me vient soudainement en tête : un concept de jeux, une solution à un problème dans un projet... et je ne peux pas arrêter d'y penser avant d'essayer de l'implémenter."
+        }
       },
       "tags": {
         "WEB": "Web",

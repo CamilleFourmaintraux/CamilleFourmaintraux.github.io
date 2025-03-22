@@ -1,39 +1,32 @@
+import { useTranslation } from "react-i18next";
+
 export default function First3DPlatformer() {
+  const { t } = useTranslation();
+  const projectsPassionPath = `portfolio.passion.projects`;
+  const translationsPath = `${projectsPassionPath}.first3dplatformer`;
   return (
-    <>
+    <ul>
+      <li>
+        <h4>{t(`${translationsPath}.learn_godot_title`)}</h4>
+      </li>
+      <p>{t(`${translationsPath}.learn_godot_text`)}</p>
+      <img
+        src="/img/passions/platformer.png"
+        alt={t(`${translationsPath}.img_alt`)}
+      />
+      <li>
+        <h4>{t(`${translationsPath}.gameplay_elements_title`)}</h4>
+      </li>
+      <p>{t(`${translationsPath}.gameplay_elements_text`)}</p>
+      <li>
+        <h4>{t(`${translationsPath}.skills_title`)}</h4>
+      </li>
       <ul>
-        <li>
-          <h4>Apprendre Godot</h4>
-        </li>
-        <p>
-          J'ai commencé à travailler sur ce jeu car je voulais apprendre à
-          utiliser Godot et à créer un jeu en 3D. Mon premier objectif à été de
-          créer un joueur avec des déplacements basique évoluant dans un
-          environnement 3D simpliste, puis de fil en aiguille j'ai décidé de
-          continuer avec cette mécanique de gameplay simple et de faire un jeu
-          de plateformes.
-        </p>
-        <img src="/img/passions/platformer.png" alt="photo platformer 3D" />
-        <li>
-          <h4>Elements de gameplay</h4>
-        </li>
-        <p>
-          Continuer avec cette mécanique de gameplay simple m'a permis de me
-          concentrer sur d'autres aspects du jeu comme la créations de menus
-          avec un menu de pause et d'options. Mais aussi de nouveaux élements de
-          gamelay comme des plateformes qui se déplace, des ascenseurs ou des
-          élements à collecter dans chaques niveaux.
-        </p>
-        <li>
-          <h4>Compétences acquises</h4>
-        </li>
-        <ul>
-          <li>Godot, GDScript</li>
-          <li>3D Physics</li>
-          <li>Game Design</li>
-          <li>Création de mesh 3D, textures</li>
-        </ul>
+        <li>{t(`${translationsPath}.skills_list.godot`)}</li>
+        <li>{t(`${translationsPath}.skills_list.physics`)}</li>
+        <li>{t(`${translationsPath}.skills_list.game_design`)}</li>
+        <li>{t(`${translationsPath}.skills_list.mesh_creation`)}</li>
       </ul>
-    </>
+    </ul>
   );
 }

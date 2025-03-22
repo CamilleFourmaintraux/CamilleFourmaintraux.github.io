@@ -1,33 +1,31 @@
+import { useTranslation } from "react-i18next";
+
 export default function MiniGames() {
+  const { t } = useTranslation();
+  const projectsPassionPath = `portfolio.passion.projects`;
+  const translationsPath = `${projectsPassionPath}.minigames`;
   return (
-    <>
+    <ul>
+      <li>
+        <h4>{t(`${translationsPath}.title1`)}</h4>
+      </li>
+      <p>{t(`${translationsPath}.text1`)}</p>
+      <img src="/img/passions/pong.png" alt={t(`${translationsPath}.alt1`)} />
+      <li>
+        <h4>{t(`${translationsPath}.title2`)}</h4>
+      </li>
+      <p>{t(`${translationsPath}.text1`)}</p>
+      <img
+        src="/img/passions/casseBrique.png"
+        alt={t(`${translationsPath}.alt2`)}
+      />
+      <li>
+        <h4>{t(`${translationsPath}.skills_title`)}</h4>
+      </li>
       <ul>
-        <li>
-          <h4>Pong</h4>
-        </li>
-        <p>
-          Je voulais essayer de créer pleins de jeux classiques, donc après la
-          copie de Flappy Bird, j'ai essayé de faire un Pong et un casse-Brique.
-          Pour chacun des jeux j'ai ajouté un simple menu ainsi qu'un système de
-          score et de highScore.
-        </p>
-        <img src="/img/passions/pong.png" alt="photo du pong" />
-        <li>
-          <h4>Boucle</h4>
-        </li>
-        <p>
-          Créer ces jeux m'a permis de mieux connaître les boucles de jeux et
-          l'affichage en javaFX.
-        </p>
-        <img src="/img/passions/casseBrique.png" alt="photo du casseBrique" />
-        <li>
-          <h4>Compétences acquises</h4>
-        </li>
-        <ul>
-          <li>AnimationTimer en JavaFX</li>
-          <li>GameLoop</li>
-        </ul>
+        <li>{t(`${translationsPath}.skills_list.timer`)}</li>
+        <li>{t(`${translationsPath}.skills_list.gameloop`)}</li>
       </ul>
-    </>
+    </ul>
   );
 }

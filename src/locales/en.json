@@ -251,8 +251,141 @@
       "page_title": "My work",
       "page_subtitle": "My professionnal achiements",
       "page_description": "This page brings together all the projects in which I have participated in a professional context.",
+      "sae_explanation": "An SAÉ (Situation d'Apprentissage et d'Évaluation) is a project-based learning and assessment activity required to develop key professional competencies within the French higher education system.",
       "saes": {
-        "sae": "sae"
+        "linkText": "See the",
+        "link": "GitHub repository",
+        "skills": "Skills and expertise gained",
+        "knowHow": "Know-how acquired",
+        "pagil1": {
+          "title": "Creating a Game in the Terminal with Agile SCRUM Methodology",
+          "title1": "Development of a console game",
+          "text1": "We had only a few days to create a game, following the agile Scrum methodology. Teams were formed randomly among all the members of the cohort. This allowed us to team up with people we didn’t know and to learn how to collaborate and communicate despite that.",
+          "alt1": "dino photo",
+          "title2": "Role of ScrumMaster, managing User Stories and tracking the project using the agile SCRUM methodology",
+          "text2": "During this project, each team member had a role, and I was assigned the role of Scrum Master. I was responsible for updating the progress board and creating burn-up and burn-down charts to show our project's progress.",
+          "alt2": "Scrum photo",
+          "knowHow1": "SCRUM, agile methods",
+          "knowHow2": "join a team",
+          "knowHow3": "communicate and collaborate in a team"
+        },
+        "pagil2": {
+          "title": "Creation of a BACK-END and a FRONT-END for a website",
+          "presentation": "Development of CODE SWIPE",
+          "presentationDescription": "We only had a few days to create a website following the agile Scrum methodology. CodeSwipe is a parody application of Tinder where we replaced people with code snippets. Users swipe right if they think it's good code, or swipe left otherwise.",
+          "role": "Role of ScrumMaster, managing user stories and tracking the project using agile SCRUM methodology",
+          "roleDescription": "During this project, the role of ScrumMaster had to change every day. Therefore, I was responsible for updating the progress board and creating the burn-up chart. We paid more attention to managing tickets and Git branches during this project.",
+          "knowHow1": "SCRUM, agile methods",
+          "knowHow2": "Join a team",
+          "knowHow3": "Communicate and collaborate in a team"
+        },
+        "internship1": {
+          "title": "SOA webMethods integrator internship at EMothep",
+          "text": "See my achievements during the internship"
+        },
+        "internship2": {
+          "title": "SOA webMethods integrator internship at EMothep",
+          "text": "See my achievements during the internship"
+        },
+        "sae103": {
+          "title": "Network Service Installation",
+          "presentation": "Setting up a workstation",
+          "presentationDescription": "The primary goal of SAE 1.03 was to introduce us to network configuration, and SAE 2.03 aimed to teach us how to set up a network for a company and use Markdom or Ascii Doctor to write reports and documentation.",
+          "machineInstall": "We were instructed to install a virtual machine in two ways, one manually and one using a preconfigured file, to learn how to install operating systems on machines. This SAE required us to explore files and manuals to develop the skill of self-researching and finding the information we needed.",
+          "skill1": "Handling virtual machines",
+          "skill2": "Configuring a workstation and collaborative network",
+          "skill3": "Researching in documentation",
+          "skill4": "Using lightweight markup languages (Markdom, AsciiDoctor)"
+        },
+        "sae105": {
+          "title": "Design and development of a website to present a company",
+          "presentation": "Using HTML and CSS to create structure and design",
+          "presentationDescription": "This project was about analyzing the needs of a company wanting to create an online platform for carpooling among their employees to address traffic and pollution issues. Based on this analysis, we had to design a mockup and then create a website that met these needs.",
+          "skill1": "HTML, CSS",
+          "skill2": "Respecting a design guideline",
+          "skill3": "Analyzing a problem, proposing solutions"
+        },
+        "sae202": {
+          "title": "Creating a School Exchange Application in Java and JavaFX",
+          "presentation": "Development of an interactive application in Java",
+          "presentationDescription": "The application was designed to allow student exchanges between countries. We needed to include a database of students based on countries and then calculate affinities based on specific parameters to match students with the most compatible partners, using graph algorithms like Dijkstra.",
+          "interface": "Using JavaFX for the Human-Machine Interface",
+          "interfaceDescription": "This application was initially developed in a text format using the terminal. For the final version, we had to create a JavaFX application to give our program a graphical interface, making it more user-friendly and accessible.",
+          "skill1": "Java, JavaFX",
+          "skill2": "Finding pairings using algorithms",
+          "skill3": "Designing an ergonomic interface"
+        },
+        "sae207": {
+          "title": "Creating a Database - Data Breakdown",
+          "presentation": "Data Volume, Creating a Database",
+          "presentationDescription": "We had to extract a large dataset from a file into a table and then process these data.",
+          "skill1": "SQL, PostgreSQL, Access, WordPress",
+          "skill2": "Handling large data sets",
+          "skill3": "Formulating queries, analyzing data"
+        },
+        "sae213": {
+          "title": "Escape Game",
+          "presentation": "Developing an Escape Game",
+          "presentationDescription": "This SAE aimed to teach us teamwork and collaboration. Using Genially and Trello, which are collaborative tools, allowed us to better understand the importance of collaboration, even more so than in other group projects.",
+          "skill1": "Collaboration, teamwork",
+          "skill2": "Collaborative tools (Git, Trello)",
+          "skill3": "Creativity, designing puzzles (using Genially)"
+        },
+        "sae302": {
+          "title": "Creating a Game with JavaFX",
+          "presentation": "Designing MonsterHunt",
+          "presentationDescription": "We were given only gameplay instructions and some interface designs, and from that, we had to design the entire game. The game is played by two players: a monster and a hunter.",
+          "testing": "Testing and documentation",
+          "testingDescription": "During this SAE, the professors particularly emphasized the relevance of the tests and documentation that we had to provide.",
+          "skill1": "Java, JavaFX",
+          "skill2": "Implementing gameplay mechanics",
+          "skill3": "Tests, Documentation",
+          "skill4": "Design patterns"
+        },
+        "sae401": {
+          "title": "Developing a REST API",
+          "presentation": "Structuring",
+          "presentationDescription": "This SAE focused on building a website for a pizzeria called 'Pizzeria Mazzorello' following the REST architecture.",
+          "skill1": "REST architecture",
+          "skill2": "PostgreSQL",
+          "knowHow1": "Autonomy",
+          "knowHow2": "Respecting deadlines"
+        },
+        "sae402": {
+          "title": "Development of a complex application",
+          "presentation": "Gameplay Ideas",
+          "presentationDescription": "We received a project brief with all the minimum features that the final application should include. Our first task was to come up with gameplay elements and a theme to match the given requirements.",
+          "multiplayer": "Multiplayer with node.js and socket.io",
+          "multiplayerDescription": "It was our first time developing a multiplayer game, which was a very interesting challenge and helped us understand how multiplayer games generally work.",
+          "skill1": "JavaScript ES6",
+          "skill2": "Node.js, socket.io",
+          "skill3": "Babel, Prettier",
+          "skill4": "Canvas",
+          "knowHow1": "Teamwork",
+          "knowHow2": "Collaboration",
+          "knowHow3": "Quality git repositories (Commits, Milestones)"
+        },
+        "sae501": {
+          "title": "RiscV Emulator",
+          "presentation": "Low-level languages",
+          "presentationDescription": "In this SAE, we faced the development of software that was beyond the usual scope we were accustomed to. We developed software that emulates a computer based on a RISC-V processor.",
+          "programming": "Programming in a low-level language",
+          "programmingDescription": "Emulation is the process of simulating the operation of a hardware architecture using a computer program. The program is responsible for modeling and evolving the 'virtual' state of the hardware architecture. The emulation software must therefore provide a data structure that represents the hardware being simulated and evolve this data as the simulation progresses. Registers are the smallest storage units in the processor. They are integrated into the processor and have no address because they are not in memory. They can be used directly in machine instructions and serve as processing storage. The arithmetic and logic unit works exclusively with them on most architectures.",
+          "skill1": "Programming in C",
+          "skill2": "Learning a new language",
+          "skill3": "Understanding how processors work",
+          "skill4": "Writing a program that strictly follows specifications"
+        },
+        "sae509": {
+          "title": "WEB BACK",
+          "presentation": "The project",
+          "presentationDescription": "The objective of this project was to create an appointment management website for multiple users.",
+          "spring_framework": "Spring Framework",
+          "spring_description": "Spring is an open-source framework for building and defining the infrastructure of a Java application, facilitating its development and testing. Spring Boot is an open-source Java framework used to program standalone, production-quality Spring applications with a set of libraries that make it easier to start and manage projects. Through this project, we learned how to use the back-end Java framework Spring, as well as Spring Security. Spring Security is a Java/Java EE framework that provides authentication, authorization, and other security features for enterprise applications. Our project contains only two roles: User and Admin. An Admin can do everything a logged-in user can do, as well as access and modify other users' appointments.",
+          "skill1": "azer",
+          "skill2": "azer",
+          "skill3": "azer"
+        }
       },
       "tags": {
         "SCRUM": "Scrum",
@@ -279,8 +412,84 @@
       "page_title": "My passion",
       "page_subtitle": "My personnal achievements",
       "page_description": "My greatest passion remains programming, so I enjoy trying to make a few projects (often games) in my free time.",
+      "other_activities": {
+        "title": "Other activities",
+        "programming": "Programming",
+        "member_of_board_game_club": "Member of a board game club",
+        "solving_riddles": "Solving puzzles and riddles",
+        "escape_games": "Escape Games",
+        "news_monitoring": "Following the news",
+        "reading": "Reading Fantasy Novels"
+      },
       "projects": {
-        "project": "project"
+        "first3dplatformer": {
+          "learn_godot_title": "Learning Godot",
+          "learn_godot_text": "I started working on this game because I wanted to learn how to use Godot and create a 3D game. My first goal was to create a player with basic movement in a simple 3D environment. Then, step by step, I decided to continue with this simple gameplay mechanic and make a platformer game.",
+          "gameplay_elements_title": "Gameplay Elements",
+          "gameplay_elements_text": "Continuing with this simple gameplay mechanic allowed me to focus on other aspects of the game, like creating menus with a pause and options menu. Also, I added new gameplay elements such as moving platforms, elevators, or collectibles in each level.",
+          "skills_title": "Skills Acquired",
+          "skills_list": {
+            "godot": "Godot, GDScript",
+            "physics": "3D Physics",
+            "game_design": "Game Design",
+            "mesh_creation": "3D Mesh creation, textures"
+          },
+          "img_alt": "3D platformer screenshot"
+        },
+        "firstgamejam": {
+          "title1": "Post my first game on Itch.io",
+          "text1": "While browsing Itch.io, I saw the gamejam section and it made me want to participate. I chose the first gamejam that was about to start: <strong>1-BIT JAM #4</strong>, and I started coding. I finished 114th out of 338 participants.",
+          "alt1": "first gamejam photo",
+          "title2": "1-BIT JAM #4",
+          "text2": "This game jam had one condition: the game could only contain two colors maximum, preferably black and white. I created TheLegendOfKnardWizight, a 2D shooter, following these constraints. The goal is to defend your tower from waves of monsters. If you get hit or if the tower is destroyed, you lose.",
+          "play_link": "Play the game!",
+          "alt2": "first gamejam result photo",
+          "skills_title": "Skills Acquired",
+          "skills_list": {
+            "godot": "Godot, GDScript",
+            "physics": "2D Physics",
+            "sprites": "2D Sprite creation",
+            "time": "Very limited time"
+          }
+        },
+        "mazegenerator": {
+          "title1": "Algorithms",
+          "text1": "I wanted to learn how to generate mazes. So I studied several algorithms that could do this, and then I tried to implement them.",
+          "alt1": "maze generator photo",
+          "title2": "Graphical display",
+          "text2": "At first, I displayed the mazes in the console in text form, then I decided to use JavaFX to represent my maze. It is from this personal project that I developed the display for the Saé 3.02 application development project.",
+          "skills_title": "Skills Acquired",
+          "skills_list": {
+            "algo": "Algorithms",
+            "javafx": "JavaFx"
+          }
+        },
+        "minigames": {
+          "title1": "Pong",
+          "text1": "I wanted to try creating a bunch of classic games, so after cloning Flappy Bird, I tried making a Pong and a Breakout clone. For each game I added a simple menu as well as a score and high score system.",
+          "alt1": "pong photo",
+          "title2": "Game loop",
+          "text2": "Creating these games allowed me to better understand game loops and JavaFX rendering.",
+          "alt2": "breakout photo",
+          "skills_title": "Skills Acquired",
+          "skills_list": {
+            "timer": "AnimationTimer in JavaFX",
+            "gameloop": "GameLoop"
+          }
+        },
+        "miscellaneous": {
+          "list": [
+            "Flappy Bird Clone",
+            "Wolfenstein Clone",
+            "Minecraft Clone",
+            "Text RPG",
+            "Survival Game",
+            "Dungeon Crawler",
+            "RPG",
+            "& Various Shoot'em ups"
+          ],
+          "text": "I enjoy trying to imagine how the user will react in order to create the best interface or a fun game. Sometimes I suddenly have an idea: a game concept, a solution to a project problem... and I can't stop thinking about it until I try to implement it."
+        }
       },
       "tags": {
         "WEB": "Web",

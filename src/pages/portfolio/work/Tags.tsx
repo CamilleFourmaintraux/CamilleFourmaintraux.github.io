@@ -1,38 +1,3 @@
-import { useTranslation } from "react-i18next";
-
-const tagsWork = [
-  "SCRUM",
-  "WEB",
-  "REACT",
-  "FRONTEND",
-  "BACKEND",
-  "DB",
-  "SPRING",
-  "APIREST",
-  "INTERNSHIP",
-  "INTEGRATION",
-  "JSP",
-  "SYSTEMS",
-  "C",
-  "RUST",
-  "PYTHON",
-  "JAVA",
-  "JSTS",
-  "VIDEOGAME",
-];
-
-export const TagListWork: React.FC = () => {
-  const { t } = useTranslation();
-
-  return (
-    <div>
-      {tagsWork.map((tag) => (
-        <span key={tag}>{t(`portfolio.work.tags.${tag}`)}</span>
-      ))}
-    </div>
-  );
-};
-
 export const Tags = Object.freeze({
   SCRUM: "SCRUM",
   WEB: "WEB",

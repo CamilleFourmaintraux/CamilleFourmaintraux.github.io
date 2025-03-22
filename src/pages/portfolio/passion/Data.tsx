@@ -6,12 +6,13 @@ import MiniGames from "./projects/MiniGames";
 import Miscellaneous from "./projects/Miscellaneous";
 import { Tags } from "./Tags";
 
-const tagsPassionPath = "portfolio.passion.tags";
+export const tagsPassionPath = `portfolio.passion.tags`;
+
 const realisations: RealisationProps[] = [
   //const Tags = genTags();
   {
     idRealisation: "firstgamejam",
-    title: "Ma  première gamejam !",
+    title: "Ma première gamejam !",
     date: new Date(2024, 7, 26),
     dateEnd: new Date(2024, 9, 11),
     tags: [Tags.VIDEOGAME, Tags.WEB, Tags.TWODIMENSIONAL, Tags.SHOOTER],
