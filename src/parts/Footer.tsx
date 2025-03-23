@@ -1,18 +1,21 @@
 import { NavLink, useMatch } from "react-router";
+import { useTranslation } from "react-i18next";
 
 export default function Footer() {
   // <a  href="/files/resume.pdf" target="_blank" download> Cv <i className="fas fa-file-pdf"></i></a>
+  const { t } = useTranslation();
   return (
     <>
       <span id="findepage"></span>
       <footer>
         <a href="/files/resume.pdf" className="navlink">
           {" "}
-          CV <i className="fas fa-file-pdf"></i>
+          {t("footer.resume")}
+          <i className="fas fa-file-pdf"></i>
         </a>
         <NavLink to="contact" className="navlink">
           {" "}
-          E-Mail <i className="fas fa-envelope"></i>
+          {t("footer.email")} <i className="fas fa-envelope"></i>
         </NavLink>
         <a
           href="https://www.linkedin.com/in/camille-fourmaintraux-708b34275/"
@@ -20,7 +23,7 @@ export default function Footer() {
           className="navlink"
         >
           {" "}
-          Linkedin <i className="fab fa-linkedin"></i>
+          {t("footer.linkedin")} <i className="fab fa-linkedin"></i>
         </a>
         <a
           href="https://github.com/CamilleFourmaintraux"
@@ -28,7 +31,7 @@ export default function Footer() {
           className="navlink"
         >
           {" "}
-          GitHub <i className="fab fa-github"></i>
+          {t("footer.gitHub")} <i className="fab fa-github"></i>
         </a>
         <NavLink
           to="documents"
@@ -37,7 +40,7 @@ export default function Footer() {
           }
         >
           {" "}
-          Documents <Icon />
+          {t("footer.files")} <Icon />
         </NavLink>
       </footer>
     </>

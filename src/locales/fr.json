@@ -13,6 +13,13 @@
     "softskills": "Qualités",
     "experience": "Expérience"
   },
+  "footer": {
+    "resume": "CV",
+    "email": "E-Mail",
+    "linkedin": "Linkedin",
+    "github": "Github",
+    "files": "Documents"
+  },
   "topOfPage": "Haut de page",
   "presentation": {
     "title": "Présentation",

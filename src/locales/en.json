@@ -13,6 +13,13 @@
     "softskills": "Soft Skills",
     "experience": "Experience"
   },
+  "footer": {
+    "resume": "Resume",
+    "email": "E-Mail",
+    "linkedin": "Linkedin",
+    "github": "Github",
+    "files": "Files"
+  },
   "topOfPage": "Back to top",
   "presentation": {
     "title": "About Me",
