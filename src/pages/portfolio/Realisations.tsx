@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import { transformSaeID } from "../../Utils";
 import { useTranslation } from "react-i18next";
+import { useFilteredRealisationsStore } from "../../ZustandStore";
 
 interface RealisationsProps {
   data: RealisationProps[];
@@ -54,6 +55,8 @@ const Realisations: React.FC<RealisationsProps> = ({
 
     return matchesTag && matchesSearch && matchesDate;
   });
+
+  const { setFilteredRealisations } = useFilteredRealisationsStore();
 
   return (
     <>
