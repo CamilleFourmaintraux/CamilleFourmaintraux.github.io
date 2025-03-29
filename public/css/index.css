@@ -8,14 +8,16 @@
 
 :root[data-theme="light"] {
   --bg-color: white;
-  --bg-container-color: #eee;
+  --bg-url: url("/img/seamlessWallpaperLightNoBG.png");
+  --bg-container-color: rgba(255, 255, 255, 0.85);
   --bg-subcontainer-color: #d9eeed;
   --text-color: black;
 }
 
 :root[data-theme="dark"] {
   --bg-color: black;
-  --bg-container-color: #012;
+  --bg-url: url("/img/seamlessWallpaperDarkNoBG.png");
+  --bg-container-color: rgba(0, 0, 0, 0.85);
   --bg-subcontainer-color: #012345;
   --text-color: white;
 }
@@ -27,6 +29,7 @@ body {
   font-family: "Roboto", "sans-serif";
   background-color: var(--bg-color);
   color: var(--text-color);
+  background-image: var(--bg-url);
 }
 
 html {
