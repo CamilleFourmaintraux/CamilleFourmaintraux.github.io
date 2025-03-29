@@ -10,7 +10,7 @@ export default function CurriculumPage() {
   const location = useLocation();
   useEffect(() => {
     if (location.hash) {
-      scrollToSection(location.hash.substring(1));
+      scrollToSection(location.hash.substring(1), true);
     }
   }, [location]);
   return (
