@@ -18,7 +18,7 @@
   --bg-color: black;
   --bg-url: url("/img/seamlessWallpaperDarkNoBG.png");
   --bg-container-color: rgba(0, 0, 0, 0.85);
-  --bg-subcontainer-color: #012345;
+  --bg-subcontainer-color: rgb(11, 11, 32);
   --text-color: white;
 }
 
