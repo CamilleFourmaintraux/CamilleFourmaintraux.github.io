@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Realisation, RealisationProps } from "./Realisation";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -139,7 +139,7 @@ const Realisations: React.FC<RealisationsProps> = ({
                     ) : (
                       <i className="fa-solid fa-bars-progress" />
                     )}{" "}
-                    {t("portfolio.advancedsearch.filter_all")}{" "}
+                    {t("portfolio.advancedsearch.show")}{" "}
                     {onlyInProgress
                       ? t("portfolio.advancedsearch.filter_all")
                       : t("portfolio.advancedsearch.filter_inprogress")}
@@ -228,3 +228,12 @@ const Realisations: React.FC<RealisationsProps> = ({
 };
 
 export default Realisations;
+
+/*
+<SubNav
+  links={filteredRealisations.map(({ idRealisation, title }) => ({
+    id: idRealisation,
+    label: `${t(title)}`,
+  }))}
+/>;
+*/

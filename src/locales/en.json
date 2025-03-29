@@ -246,8 +246,9 @@
       "sort_button": "Sort",
       "sort_asc": "from oldest to newest",
       "sort_desc": "from newest to oldest",
-      "filter_all": "show all projects",
-      "filter_inprogress": "in progress projects",
+      "show": "Show",
+      "filter_all": "all projects",
+      "filter_inprogress": "projects in progress",
       "tag_all": "All",
       "result_count": "{{count}} result(s) found",
       "no_results": "No project matches your criteria."
