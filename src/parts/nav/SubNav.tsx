@@ -38,7 +38,7 @@ const SubNav: React.FC<SubNavProps> = ({ links }) => {
         <a
           key={link.href}
           href={link.href}
-          onClick={(e) => handleScrollToSection(e, link.href.substring(1))}
+          onClick={(e) => handleScrollToSection(e, link.href)}
           className="navlink"
         >
           <i className="fas fa-circle"></i> {link.label}
