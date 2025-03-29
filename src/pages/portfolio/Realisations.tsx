@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Realisation, RealisationProps } from "./Realisation";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { transformSaeID } from "../../Utils";
 import { useTranslation } from "react-i18next";
+import SubNav from "../../parts/nav/SubNav";
 
 interface RealisationsProps {
   data: RealisationProps[];
@@ -13,6 +14,18 @@ interface RealisationsProps {
   tagsButtonsPath: string;
   children: React.ReactNode;
 }
+
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return isMobile;
+};
 
 const Realisations: React.FC<RealisationsProps> = ({
   data,
@@ -54,6 +67,19 @@ const Realisations: React.FC<RealisationsProps> = ({
 
     return matchesTag && matchesSearch && matchesDate;
   });
+
+  const subNavLinks = filteredRealisations.map(
+    ({ idRealisation, title }, index) => ({
+      href: idRealisation,
+      label: `${index + 1}. ${t(title)}`,
+    })
+  );
+
+  const isMobile = useIsMobile();
+  const shouldHideSubNav =
+    isMobile ||
+    filteredRealisations.length < 2 ||
+    filteredRealisations.length > 6;
 
   return (
     <>
@@ -176,6 +202,10 @@ const Realisations: React.FC<RealisationsProps> = ({
               count: filteredRealisations.length,
             })}
           </p>
+
+          {!shouldHideSubNav && (
+            <SubNav links={subNavLinks} takeSubnavHeightIntoAccount={false} />
+          )}
 
           <AnimatePresence>
             {filteredRealisations.map(

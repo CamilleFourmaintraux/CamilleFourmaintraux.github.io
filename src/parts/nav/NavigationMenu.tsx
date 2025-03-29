@@ -34,7 +34,9 @@ const NavigationMenu: React.FC<subNavLinks> = ({ subNavLinks }) => {
   return (
     <div id="navbar" className={isFixed ? "fixed" : ""}>
       <MainNav />
-      {subNavLinks.length > 0 && <SubNav links={subNavLinks} />}
+      {subNavLinks.length > 0 && (
+        <SubNav links={subNavLinks} takeSubnavHeightIntoAccount={true} />
+      )}
       <div className="configButtons">
         {isFixed && <BackToTopButton />}
         <ThemeSwitcher />
