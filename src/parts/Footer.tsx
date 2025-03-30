@@ -31,7 +31,7 @@ export default function Footer() {
           className="navlink"
         >
           {" "}
-          {t("footer.gitHub")} <i className="fab fa-github"></i>
+          {t("footer.github")} <i className="fab fa-github"></i>
         </a>
         <NavLink
           to="documents"
