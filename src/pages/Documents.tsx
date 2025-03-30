@@ -16,80 +16,86 @@ export default function DocumentsPage() {
           <i className="fas fa-download"></i> {t("documents.title")}
         </h2>
         <table>
-          <tr>
-            <td>
-              <strong>{t("documents.cv")}</strong>
-            </td>
-            <td>
-              <a href="/files/resume.pdf" target="_blank" download>
-                {t("documents.download")}
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <strong>{t("documents.attestation_dut")}</strong>
-            </td>
-            <td>
-              <a href="/files/DutCertificate.pdf" target="_blank" download>
-                {t("documents.download")}
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <strong>{t("documents.rapport_stage")}</strong>
-            </td>
-            <td>
-              <a
-                href="/files/InternshipReportEmothep2024.pdf"
-                target="_blank"
-                download
-              >
-                {t("documents.download")}
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <strong>{t("documents.kaplan")}</strong>
-            </td>
-            <td>
-              <a href="/files/kaplanCertificate.pdf" target="_blank" download>
-                {t("documents.download")}
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <strong>{t("documents.pix")}</strong>
-            </td>
-            <td>
-              <a href="/files/pixCertificate.pdf" target="_blank" download>
-                {t("documents.download")}
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <strong>{t("documents.studies_notice")}</strong>
-            </td>
-            <td>
-              <a href="/files/StudiesNotice.pdf" target="_blank" download>
-                {t("documents.download")}
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <strong>{t("documents.toeic")}</strong>
-            </td>
-            <td>
-              <a href="/files/ToeicCertification.pdf" target="_blank" download>
-                {t("documents.download")}
-              </a>
-            </td>
-          </tr>
+          <tbody>
+            <tr>
+              <td>
+                <strong>{t("documents.cv")}</strong>
+              </td>
+              <td>
+                <a href="/files/resume.pdf" target="_blank" download>
+                  {t("documents.download")}
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>{t("documents.attestation_dut")}</strong>
+              </td>
+              <td>
+                <a href="/files/DutCertificate.pdf" target="_blank" download>
+                  {t("documents.download")}
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>{t("documents.rapport_stage")}</strong>
+              </td>
+              <td>
+                <a
+                  href="/files/InternshipReportEmothep2024.pdf"
+                  target="_blank"
+                  download
+                >
+                  {t("documents.download")}
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>{t("documents.kaplan")}</strong>
+              </td>
+              <td>
+                <a href="/files/kaplanCertificate.pdf" target="_blank" download>
+                  {t("documents.download")}
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>{t("documents.pix")}</strong>
+              </td>
+              <td>
+                <a href="/files/pixCertificate.pdf" target="_blank" download>
+                  {t("documents.download")}
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>{t("documents.studies_notice")}</strong>
+              </td>
+              <td>
+                <a href="/files/StudiesNotice.pdf" target="_blank" download>
+                  {t("documents.download")}
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>{t("documents.toeic")}</strong>
+              </td>
+              <td>
+                <a
+                  href="/files/ToeicCertification.pdf"
+                  target="_blank"
+                  download
+                >
+                  {t("documents.download")}
+                </a>
+              </td>
+            </tr>
+          </tbody>
         </table>
       </div>
 
