@@ -28,7 +28,7 @@
     "internship": "J'ai récemment obtenu un stage de 16 semaines au sein d'une équipe de développement chez",
     "internship_dates": "du 10 mars jusqu'au 27 juin 2025.",
     "previous_internship": "J'avais déjà réalisé mon précédent stage dans cette entreprise, qui avait été très satisfaite de mon travail et a donc décidé de me reprendre.",
-    "company_description": "est une société de conseil et d'intégration de solutions avec plus de 20 ans d'expériences. L'entreprise accompagne ses clients dans leurs démarches d'urbanisation de leurs systèmes d'informations, afin de les rendre plus efficaces et évolutifs.",
+    "company_description": "est une société de conseil et d'intégration de solutions avec plus de 20 ans d'expérience. L'entreprise accompagne ses clients dans leurs démarches d'urbanisation de leurs systèmes d'informations, afin de les rendre plus efficaces et évolutifs.",
     "motivation": "Mon parcours académique et ma passion pour l'informatique me motivent à m'engager pleinement dans ce domaine en constante évolution. Je suis déterminé à contribuer de manière significative et à apporter une valeur ajoutée à l'entreprise qui me fera confiance."
   },
   "goals": {
@@ -117,12 +117,12 @@
     "title": "Expériences professionnelle",
     "stage2025": {
       "title": "Stage intégrateur SOA webMethods pendant 16 semaines de mars à juin 2025 chez",
-      "in_progress": "Stage en cours...",
+      "in_progress": "Stage en cours",
       "link_previous": "Lire mon rapport de stage de l'année dernière"
     },
     "tutor": {
       "title": "Tuteur pour l'université de Lille de octobre 2024 à mars 2025",
-      "support": "Cours de soutien à des élèves en difficultés",
+      "support": "Cours de soutien à des élèves en difficulté",
       "group": "Gérer un groupe d'élèves",
       "responsibilities": "Responsabilités"
     },
@@ -403,7 +403,7 @@
         "sae501": {
           "title": "Emulateur RiscV",
           "presentation": "Langages de bas-niveaux",
-          "presentationDescription": "Dans le cadre de cette SAÉ, nous avons été confrontés au développement d’un logiciel qui sort du périmètre dans lequel nous avions l’habitude d’évoluer. Nous avons développer un logiciel permettant d’émuler un ordinateur basé sur un processeur RISC-V.",
+          "presentationDescription": "Dans le cadre de cette SAÉ, nous avons été confrontés au développement d’un logiciel qui sort du périmètre dans lequel nous avions l’habitude d’évoluer. Nous avons développé un logiciel permettant d’émuler un ordinateur basé sur un processeur RISC-V.",
           "programming": "Programmation dans un langage de bas-niveau",
           "programmingDescription": "L’émulation est le fait de simuler le fonctionnement d’une architecture matérielle à l’aide d’un programme informatique. Le programme est en charge de modéliser et de faire évoluer l’état « virtuel » de l’architecture matérielle. Le logiciel d’émulation doit donc proposer une structure de données qui représente le matériel que l’on cherche à simuler et faire évoluer ces données au fur-et-à-mesure de l’avancée de la simulation. Les registres sont les plus petites unités de stockage du processeur. Ils sont intégrés à celui-ci et n’ont pas d’adresse car il ne sont pas en mémoire. Il sont directement utilisables dans les instructions machine et servent de stockage de traitement. L’unité arithmétique et logique travaille exclusivement avec eux sur la plupart des architectures.",
           "skill1": "Programmation en C",
@@ -416,7 +416,7 @@
           "presentation": "Le projet",
           "presentationDescription": "L’objectif de ce projet consiste à réaliser un site internet de gestion de rendez-vous multi-utilisateurs.",
           "spring_framework": "Spring Framework",
-          "spring_description": "Spring est un framework open source pour construire et définir l'infrastructure d'une application Java, dont il facilite le développement et les tests. Spring Boot est un framework Java open source utilisé pour programmer des applications Spring autonomes de qualité production avec un ensemble de bibliothèques qui facilitent le démarrage et la gestion des projets. Grâce a ce projet, nous avons appris à utiliser le framework java back-end Spring, ainsi que Spring Security. Spring Security est un framework Java/Java EE qui fournit des fonctionnalités d'authentification, d'autorisation et d'autres fonctionnalités de sécurité pour les applications d'entreprise. Notre projet ne contenat que deux rôle : User et Admin. Un admin peut faire tout ce qu'un utilisateur connecté (User) peut faire, mais aussi accéder et modifier les rendez-vous des autres utilisateurs.",
+          "spring_description": "Spring est un framework open source pour construire et définir l'infrastructure d'une application Java, dont il facilite le développement et les tests. Spring Boot est un framework Java open source utilisé pour programmer des applications Spring autonomes de qualité production avec un ensemble de bibliothèques qui facilitent le démarrage et la gestion des projets. Grâce a ce projet, nous avons appris à utiliser le framework java back-end Spring, ainsi que Spring Security. Spring Security est un framework Java/Java EE qui fournit des fonctionnalités d'authentification, d'autorisation et d'autres fonctionnalités de sécurité pour les applications d'entreprise. Notre projet ne contenait que deux rôles : User et Admin. Un admin peut faire tout ce qu'un utilisateur connecté (User) peut faire, mais aussi accéder et modifier les rendez-vous des autres utilisateurs.",
           "skill1": "Framework Spring",
           "skill2": "JPA",
           "skill3": "Spring Security",
