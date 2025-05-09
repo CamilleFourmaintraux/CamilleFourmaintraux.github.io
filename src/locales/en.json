@@ -20,6 +20,11 @@
     "github": "Github",
     "files": "Files"
   },
+  "redirection": {
+    "title": "Redirection",
+    "sorry": "Sorry this page doesn't exist. :/",
+    "back": "Back to the main page"
+  },
   "topOfPage": "Back to top",
   "presentation": {
     "title": "About Me",
