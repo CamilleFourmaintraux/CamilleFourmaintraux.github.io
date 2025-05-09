@@ -10,8 +10,7 @@ export default function Footer() {
       <footer>
         <a href="/files/resume.pdf" className="navlink">
           {" "}
-          {t("footer.resume")}
-          <i className="fas fa-file-pdf"></i>
+          {t("footer.resume")} <i className="fas fa-file-pdf"></i>
         </a>
         <NavLink to="contact" className="navlink">
           {" "}
