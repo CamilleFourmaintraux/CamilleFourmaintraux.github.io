@@ -3,9 +3,13 @@ import { useTranslation } from "react-i18next";
 
 export default function LanguageSwitcher() {
   const { i18n } = useTranslation();
-  const [lang, setLang] = useState(() => localStorage.getItem("lang") || "fr");
+  const [lang, setLang] = useState(
+    () =>
+      localStorage.getItem("lang") || navigator.language.split("-")[0] || "fr"
+  );
 
   useEffect(() => {
+    console.log("Test langue : " + lang);
     i18n.changeLanguage(lang);
     document.documentElement.setAttribute("lang", lang);
     localStorage.setItem("lang", lang);

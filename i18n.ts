@@ -9,7 +9,7 @@ i18n.use(initReactI18next).init({
     en: { translation: en },
     fr: { translation: fr },
   },
-  lng: localStorage.getItem("lang") || "fr", // Langue par défaut
+  lng: localStorage.getItem("lang") || navigator.language.split("-")[0] || "fr", // Langue par défaut
   fallbackLng: "en", // Langue de secours
   interpolation: { escapeValue: false },
 });
