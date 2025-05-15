@@ -49,7 +49,6 @@ export default function Header() {
       <img
         src={imageSrc}
         alt={t("header.me_img_alt")}
-        title={t("header.me_img_alt")}
         id="photoPresentation"
         onClick={handleClick}
       ></img>
