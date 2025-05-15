@@ -1,17 +1,20 @@
 {
-  "subtitleSentence": "Étudiant en BUT Informatique",
-  "mainnav": {
-    "home": "Accueil",
-    "career": "Cursus",
-    "portfolio": "Portfolio",
-    "interests": "Centres d'intérêt",
-    "contact": "Contact"
-  },
-  "subnav": {
-    "education": "Formation",
-    "skills": "Compétences",
-    "softskills": "Qualités",
-    "experience": "Expérience"
+  "header":{
+    "subtitleSentence": "Étudiant en BUT Informatique",
+    "me_img_alt": "Photo de Camille Fourmaintraux, jeune homme aux cheveux brun, yeux marron, peau blanche, cheveux mi-longs, barbe mal rasé, moustache, pull bleu/rouge.",
+   "mainnav": {
+      "home": "Accueil",
+      "career": "Cursus",
+      "portfolio": "Portfolio",
+      "interests": "Centres d'intérêt",
+      "contact": "Contact"
+   },
+    "subnav": {
+      "education": "Formation",
+      "skills": "Compétences",
+      "softskills": "Qualités",
+      "experience": "Expérience"
+    }
   },
   "footer": {
     "resume": "CV",
@@ -108,12 +111,14 @@
     "2024": {
       "kaplan": "Séjour d'un mois en Angleterre dans une école spécialisée",
       "kaplan_desc": "pour renforcer mes compétences en anglais.",
-      "dut": "Obtention de mon DUT"
+      "dut": "Obtention de mon DUT",
+      "iut_img_alt":"Photo du devant de l'iut. Façade blanche avec écrit en grande lettre noire : 'INSTITUT UNIVERSITAIRE DE TECHNOLOGIE'."
     },
     "2022": {
       "bac": "Baccalauréat général Mention Bien - Lycée Pierre D'Ailly Compiègne",
       "pix": "Certification PIX 635pix",
-      "driving": "Permis B"
+      "driving": "Permis B",
+      "lyc_img_alt":"Photo d'un des bâtiment du lycée Pierre d'Ailly à Compiègne, ressemble à un petit château de la rennaissance en briques."
     },
     "iut": "IUT de Lille Villeneuve d'Ascq",
     "lycee": "Lycée Pierre D'Ailly Compiègne"
@@ -134,6 +139,7 @@
     "stage2024": {
       "title": "Stage intégrateur SOA webMethods pendant 10 semaines d'avril à juin 2024 chez",
       "company_desc": "est une entreprise spécialisée dans le développement de solutions logicielles.",
+      "logo_alt": "Logo d'E-Mothep, trois cubes dans une formation triangulaire, 2 verts, 1 gris.",
       "main_project": {
         "title": "Projet principal :",
         "desc": "Maintenance d'AMAT (Automated Monitoring & Analysing Tool) par l'intégration de nouvelles fonctionnalités et correction de bugs. Certains services avaient des comportements inattendus que j'ai dû analyser, comprendre et corriger."

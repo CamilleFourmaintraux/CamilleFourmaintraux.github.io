@@ -1,17 +1,20 @@
 {
-  "subtitleSentence": "Student in Computer Science BUT",
-  "mainnav": {
-    "home": "Home",
-    "career": "Career",
-    "portfolio": "Portfolio",
-    "interests": "Interests",
-    "contact": "Contact"
-  },
-  "subnav": {
-    "education": "Education",
-    "skills": "Skills",
-    "softskills": "Soft Skills",
-    "experience": "Experience"
+  "header":{
+    "subtitleSentence": "Student in Computer Science BUT",
+    "me_img_alt": "Photo of Camille Fourmaintraux, young man with brown hair, brown eyes, white skin, mid-length hair, unshaven beard, mustache, blue/red sweater.",
+    "mainnav": {
+      "home": "Home",
+      "career": "Career",
+      "portfolio": "Portfolio",
+      "interests": "Interests",
+      "contact": "Contact"
+    },
+    "subnav": {
+      "education": "Education",
+      "skills": "Skills",
+      "softskills": "Soft Skills",
+      "experience": "Experience"
+    }
   },
   "footer": {
     "resume": "Resume",
@@ -108,12 +111,15 @@
     "2024": {
       "kaplan": "One-month stay in England at a specialized school",
       "kaplan_desc": "to improve my English skills.",
-      "dut": "Obtained my DUT degree"
+      "dut": "Obtained my DUT degree",
+      "iut_img_alt":"Picture of the front of the IUT. White facade with the words 'UNIVERSITY INSTITUTE OF TECHNOLOGY' written in large black letters."
     },
     "2022": {
       "bac": "High School Diploma with Honors - Lycée Pierre D'Ailly Compiègne",
       "pix": "PIX Certification 635pix",
-      "driving": "Driver's license (B)"
+      "driving": "Driver's license (B)",
+      "lyc_img_alt":"Photo of one of the buildings of the Pierre d'Ailly high school in Compiègne, looks like a small Renaissance brick castle."
+
     },
     "iut": "IUT of Lille Villeneuve d'Ascq",
     "lycee": "Lycée Pierre D'Ailly Compiègne"
@@ -134,6 +140,7 @@
     "stage2024": {
       "title": "SOA webMethods integrator internship for 10 weeks from April to June 2024 at",
       "company_desc": "is a company specialized in software solutions development.",
+      "logo_alt": "E-Mothep logo, three cubes in a triangular formation, 2 green, 1 gray.",
       "main_project": {
         "title": "Main project:",
         "desc": "Maintenance of AMAT (Automated Monitoring & Analysing Tool) by integrating new features and fixing bugs. Some services had unexpected behaviors which I analyzed, understood, and corrected."

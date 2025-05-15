@@ -38,14 +38,14 @@ export default function Education() {
                 </a>{" "}
                 - {t("formation.iut")}
               </li>
-              <img src="/img/cursus/iut.jpg" alt="photo IUT" />
+              <img src="/img/cursus/iut.jpg" alt={t("formation.2024.iut_img_alt")} title={t("formation.2024.iut_img_alt")} />
             </ul>
           </li>
           <li>
             <strong>2022</strong>
             <ul>
               <li>{t("formation.2022.bac")}</li>
-              <img src="/img/cursus/lycee.png" alt="photo lycée" />
+              <img src="/img/cursus/lycee.png" alt={t("formation.2022.lyc_img_alt")} title={t("formation.2022.lyc_img_alt")} />
               <li>
                 <a href="/files/pixCertificate.pdf" target="_blank">
                   {t("formation.2022.pix")}
