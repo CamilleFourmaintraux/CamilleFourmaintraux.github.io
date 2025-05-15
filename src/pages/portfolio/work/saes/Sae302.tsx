@@ -19,7 +19,8 @@ export default function Sae302() {
         <p>{t(`${translationsPath}.testingDescription`)}</p>
         <img
           src="/img/portfolio/monsterhunt_tests.png"
-          alt="capture des tests"
+          alt="TODO"
+          title="TODO"
         />
         <li>
           <h4>{t(`${projectsWorkPath}.skills`)}</h4>

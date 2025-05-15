@@ -19,7 +19,8 @@ export default function Sae207() {
         <p>{t(`${translationsPath}.postgresql_text`)}</p>
         <img
           src="/img/portfolio/scriptSQL.png"
-          alt="photo fichier de script SQL"
+          alt="TODO"
+          title="TODO"
         />
         <li>
           <h4>{t(`${projectsWorkPath}.skills`)}</h4>

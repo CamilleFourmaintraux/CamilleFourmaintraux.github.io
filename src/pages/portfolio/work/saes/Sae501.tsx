@@ -12,7 +12,8 @@ export default function Sae501() {
           <h4>{t(`${translationsPath}.presentation`)}</h4>
         </li>
         <p>{t(`${translationsPath}.presentationDescription`)}</p>
-        <img src="/img/portfolio/riscV_encodage.png" alt="riscV_encodage" />
+        <img src="/img/portfolio/riscV_encodage.png" 
+          alt="TOTO" title="TODO" />
         <li>
           <h4>{t(`${translationsPath}.programming`)}</h4>
         </li>

@@ -36,7 +36,8 @@ export default function Sae401() {
         <p>{t(`${translationsPath}.security_description`)}</p>
         <img
           src="/img/portfolio/jwt-primer-token.png"
-          alt="authentificationRest"
+          alt="TOTO"
+          title="TODO"
         />
 
         <h4>{t(`${projectsWorkPath}.skills`)}</h4>
