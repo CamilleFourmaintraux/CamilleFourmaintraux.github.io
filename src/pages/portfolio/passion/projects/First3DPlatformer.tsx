@@ -13,6 +13,7 @@ export default function First3DPlatformer() {
       <img
         src="/img/passions/platformer.png"
         alt={t(`${translationsPath}.img_alt`)}
+        title={t(`${translationsPath}.img_alt`)}
       />
       <li>
         <h4>{t(`${translationsPath}.gameplay_elements_title`)}</h4>

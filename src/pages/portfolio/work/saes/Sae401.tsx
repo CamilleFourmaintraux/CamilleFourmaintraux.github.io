@@ -28,7 +28,7 @@ export default function Sae401() {
             </li>
           </ul>
         </div>
-        <img src="/img/portfolio/siteWebRestRequests.png" alt="requetesRest" />
+        <img src="/img/portfolio/siteWebRestRequests.png" alt="TOTO" title="TODO" />
 
         <li>
           <h4>{t(`${translationsPath}.security`)}</h4>

@@ -12,7 +12,7 @@ export default function Sae302() {
           <h4>{t(`${translationsPath}.presentation`)}</h4>
         </li>
         <p>{t(`${translationsPath}.presentationDescription`)}</p>
-        <img src="/img/portfolio/monsterhunt.png" alt="capture du jeu" />
+        <img src="/img/portfolio/monsterhunt.png" alt="TOTO" title="TODO" />
         <li>
           <h4>{t(`${translationsPath}.testing`)}</h4>
         </li>

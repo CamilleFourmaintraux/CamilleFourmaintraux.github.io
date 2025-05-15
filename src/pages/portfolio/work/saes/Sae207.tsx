@@ -12,7 +12,7 @@ export default function Sae207() {
           <h4>{t(`${translationsPath}.presentation`)}</h4>
         </li>
         <p>{t(`${translationsPath}.presentationDescription`)}</p>
-        <img src="/img/portfolio/donnes.png" alt="photo fichier de donnees" />
+        <img src="/img/portfolio/donnes.png" alt="TOTO" title="TODO"/>
         <li>
           <h4>{t(`${translationsPath}.postgresql`)}</h4>
         </li>

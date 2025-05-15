@@ -14,7 +14,7 @@ export default function Sae213() {
         <p>{t(`${translationsPath}.presentationDescription`)}</p>
         <img src="/img/portfolio/trello.png" alt="photo trello" />
         <p>{t(`${translationsPath}.text1`)}</p>
-        <img src="/img/portfolio/escapeGame.png" alt="photo escapeGame" />
+        <img src="/img/portfolio/escapeGame.png" alt="TOTO" title="TODO" />
         <p>{t(`${translationsPath}.text2`)}</p>
         <li>
           <h4>{t(`${projectsWorkPath}.skills`)}</h4>

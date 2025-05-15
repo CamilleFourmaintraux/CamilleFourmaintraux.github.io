@@ -16,6 +16,7 @@ export default function Pagil1() {
         <img
           src="/img/portfolio/dino.png"
           alt={t(`${translationsPath}.alt1`)}
+          title={t(`${translationsPath}.alt1`)}
         />
         <li>
           <h4>{t(`${translationsPath}.title2`)}</h4>
@@ -24,6 +25,7 @@ export default function Pagil1() {
         <img
           src="/img/portfolio/tabScrum.jpg"
           alt={t(`${translationsPath}.alt2`)}
+          title={t(`${translationsPath}.alt2`)}
         />
         <li>
           <h4>{t(`${projectsWorkPath}.know_how`)}</h4>

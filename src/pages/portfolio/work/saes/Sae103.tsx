@@ -12,7 +12,7 @@ export default function Sae103() {
           <h4>{t(`${translationsPath}.presentation`)}</h4>
         </li>
         <p>{t(`${translationsPath}.presentationDescription`)}</p>
-        <img src="/img/portfolio/reseau.png" alt="photo machine virtuelle" />
+        <img src="/img/portfolio/reseau.png" alt="TOTO" title="TODO" />
 
         <li>
           <h4>{t(`${translationsPath}.machine_install`)}</h4>

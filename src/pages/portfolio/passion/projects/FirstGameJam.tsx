@@ -16,6 +16,7 @@ export default function FirstGameJam() {
         <img
           src="/img/passions/firstgamejam.gif"
           alt={t(`${translationsPath}.alt1`)}
+          title={t(`${translationsPath}.alt1`)}
         />
       </li>
       <li>
@@ -30,6 +31,7 @@ export default function FirstGameJam() {
         <img
           src="/img/passions/firstgamejamresult.png"
           alt={t(`${translationsPath}.alt2`)}
+          title={t(`${translationsPath}.alt2`)}
         />
       </p>
       <li>

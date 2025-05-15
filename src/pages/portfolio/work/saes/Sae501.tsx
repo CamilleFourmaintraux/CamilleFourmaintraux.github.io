@@ -19,7 +19,7 @@ export default function Sae501() {
         <p>{t(`${translationsPath}.programmingDescription`)}</p>
         <img
           src="/img/portfolio/riscV_codeExample.png"
-          alt="riscV_codeExample"
+          alt="TOTO" title="TODO"
         />
         <li>
           <h4>{t(`${projectsWorkPath}.skills`)}</h4>
