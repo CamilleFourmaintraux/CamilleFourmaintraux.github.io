@@ -12,7 +12,7 @@ export default function Sae105() {
           <h4>{t(`${translationsPath}.presentation`)}</h4>
         </li>
         <p>{t(`${translationsPath}.presentationDescription`)}</p>
-        <img src="/img/portfolio/siteWeb.png" alt="photo site web" />
+        <img src="/img/portfolio/siteWeb.png" alt="TOTO" title="TODO" />
         <li>
           <h4>{t(`${translationsPath}.wordpress`)}</h4>
         </li>

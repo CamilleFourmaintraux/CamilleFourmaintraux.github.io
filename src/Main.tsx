@@ -8,12 +8,12 @@ export default function Main() {
   const subNavData: subNavLink[] = [];
   // Définition des sous-sections en fonction de la page actuelle
   if (location.pathname === "/cursus") {
-    subNavData.push({ href: "formation", label: t("subnav.education") });
-    subNavData.push({ href: "competences", label: t("subnav.skills") });
-    subNavData.push({ href: "qualites", label: t("subnav.softskills") });
+    subNavData.push({ href: "formation", label: t("header.subnav.education") });
+    subNavData.push({ href: "competences", label: t("header.subnav.skills") });
+    subNavData.push({ href: "qualites", label: t("header.subnav.softskills") });
     subNavData.push({
       href: "experiences",
-      label: t("subnav.experience"),
+      label: t("header.subnav.experience"),
     });
   }
   return <NavigationMenu subNavLinks={subNavData} />;

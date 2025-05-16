@@ -1,17 +1,20 @@
 {
-  "subtitleSentence": "Étudiant en BUT Informatique",
-  "mainnav": {
-    "home": "Accueil",
-    "career": "Cursus",
-    "portfolio": "Portfolio",
-    "interests": "Centres d'intérêt",
-    "contact": "Contact"
-  },
-  "subnav": {
-    "education": "Formation",
-    "skills": "Compétences",
-    "softskills": "Qualités",
-    "experience": "Expérience"
+  "header":{
+    "subtitleSentence": "Étudiant en BUT Informatique",
+    "me_img_alt": "Photo de Camille Fourmaintraux, jeune homme aux cheveux brun, yeux marron, peau blanche, cheveux mi-longs, barbe mal rasé, moustache, pull bleu/rouge.",
+   "mainnav": {
+      "home": "Accueil",
+      "career": "Cursus",
+      "portfolio": "Portfolio",
+      "interests": "Centres d'intérêt",
+      "contact": "Contact"
+   },
+    "subnav": {
+      "education": "Formation",
+      "skills": "Compétences",
+      "softskills": "Qualités",
+      "experience": "Expérience"
+    }
   },
   "footer": {
     "resume": "CV",
@@ -110,12 +113,14 @@
     "2024": {
       "kaplan": "Séjour d'un mois en Angleterre dans une école spécialisée",
       "kaplan_desc": "pour renforcer mes compétences en anglais.",
-      "dut": "Obtention de mon DUT"
+      "dut": "Obtention de mon DUT",
+      "iut_img_alt":"Photo du devant de l'iut. Façade blanche avec écrit en grande lettre noire : 'INSTITUT UNIVERSITAIRE DE TECHNOLOGIE'."
     },
     "2022": {
       "bac": "Baccalauréat général Mention Bien - Lycée Pierre D'Ailly Compiègne",
       "pix": "Certification PIX 635pix",
-      "driving": "Permis B"
+      "driving": "Permis B",
+      "lyc_img_alt":"Photo d'un des bâtiment du lycée Pierre d'Ailly à Compiègne, ressemble à un petit château de la rennaissance en briques."
     },
     "iut": "IUT de Lille Villeneuve d'Ascq",
     "lycee": "Lycée Pierre D'Ailly Compiègne"
@@ -136,6 +141,7 @@
     "stage2024": {
       "title": "Stage intégrateur SOA webMethods pendant 10 semaines d'avril à juin 2024 chez",
       "company_desc": "est une entreprise spécialisée dans le développement de solutions logicielles.",
+      "logo_alt": "Logo d'E-Mothep, trois cubes dans une formation triangulaire, 2 verts, 1 gris.",
       "main_project": {
         "title": "Projet principal :",
         "desc": "Maintenance d'AMAT (Automated Monitoring & Analysing Tool) par l'intégration de nouvelles fonctionnalités et correction de bugs. Certains services avaient des comportements inattendus que j'ai dû analyser, comprendre et corriger."
@@ -276,10 +282,10 @@
           "title": "Création d'un Jeu dans le Terminal avec Méthodologie Agile SCRUM",
           "title1": "Développement d'un jeu en mode console",
           "text1": "Nous n'avions que quelques jours pour créer un jeu, en suivant la méthode agile Scrum. Les équipes étaient formées aléatoirement entre tous les membres de la promotion. Cela nous a permis de faire équipe avec des personnes que l'on ne connaissait pas et d'apprendre à collaborer et communiquer malgré cela.",
-          "alt1": "photo dino",
+          "alt1": "TODO",
           "title2": "Rôle de ScrumMaster, gestion des User Stories et suivi du projet selon la méthodologie agile SCRUM",
           "text2": "Durant ce projet, chaque membre de l'équipe avait un rôle, on m'a attribué celui de Scrum Master. J'avais la responsabilité de mettre à jour le tableau d'avancement, et de réaliser les graphes burn-Up et burn-Down pour montrer l'avancement de notre projet.",
-          "alt2": "photo Scrum",
+          "alt2": "TODO",
           "know_how1": "SCRUM, méthodes agiles",
           "know_how2": "intégrer une équipe",
           "know_how3": "Communiquer et collaborer en équipe"
@@ -478,17 +484,17 @@
             "game_design": "Game Design",
             "mesh_creation": "Création de mesh 3D, textures"
           },
-          "img_alt": "photo platformer 3D"
+          "img_alt": "TODO"
         },
         "firstgamejam": {
           "title": "Ma première gamejam !",
           "title1": "Poster sur Itch.io mon premier jeu",
           "text1": "En me baladant sur Itch.io, j'ai vu la section gamejam et ça m'a donné envie de participer. J'ai choisi la première gamejam qui allait commencer : <strong>1-BIT JAM #4</strong>, et je me suis mis à coder. J'ai fini 114ème sur 338 participants.",
-          "alt1": "photo first gamejam",
+          "alt1": "TODO",
           "title2": "1-BIT JAM #4",
           "text2": "Cette game jam avait une condition : le jeu devait ne contenir que deux couleurs maximum, de préférences noir et blanc. J'ai créé TheLegendOfKnardWizight, un shooter 2D, en suivant ces contraintes. L'objectif est de défendre sa tour de vagues de monstres. Si vous vous faites toucher, ou si la tour est détruite, vous perdez.",
           "play_link": "Tester le jeu !",
-          "alt2": "photo first gamejam result",
+          "alt2": "TODO",
           "skills_title": "Compétences acquises",
           "skills_list": {
             "godot": "Godot, GDScript",
@@ -501,7 +507,7 @@
           "title": "Création d'un générateur de labyrinthe.",
           "title1": "Algorithmes",
           "text1": "Je souhaitais apprendre comment faire pour générer des labyrinthes. J'ai donc étudié divers algorithmes qui permettaient de réaliser cela, puis j'ai essayé de les implémenter.",
-          "alt1": "photo générateur de labyrinthe",
+          "alt1": "TODO",
           "title2": "Affichage graphique",
           "text2": "Dans un premier temps, je faisais apparaître les labyrinthes dans la console sous forme textuelle, puis j'ai décidé d'essayer d'utiliser javaFx pour représenter mon labyrinthe. C'est à partir de ce projet personnel que j'ai développé l'affichage pour le projet de Saé 3.02 de développement d'application.",
           "skills_title": "Compétences acquises",
@@ -514,10 +520,10 @@
           "title": "Création d'un Pong et d'un casse-brique.",
           "title1": "Pong",
           "text1": "Je voulais essayer de créer pleins de jeux classiques, donc après la copie de Flappy Bird, j'ai essayé de faire un Pong et un casse-Brique. Pour chacun des jeux j'ai ajouté un simple menu ainsi qu'un système de score et de highScore.",
-          "alt1": "photo du pong",
+          "alt1": "TODO",
           "title2": "Boucle",
           "text2": "Créer ces jeux m'a permis de mieux connaître les boucles de jeux et l'affichage en javaFX.",
-          "alt2": "photo du casseBrique",
+          "alt2": "TODO",
           "skills_title": "Compétences acquises",
           "skills_list": {
             "timer": "AnimationTimer en JavaFX",

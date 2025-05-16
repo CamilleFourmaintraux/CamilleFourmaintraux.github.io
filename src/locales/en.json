@@ -1,17 +1,20 @@
 {
-  "subtitleSentence": "Student in Computer Science BUT",
-  "mainnav": {
-    "home": "Home",
-    "career": "Career",
-    "portfolio": "Portfolio",
-    "interests": "Interests",
-    "contact": "Contact"
-  },
-  "subnav": {
-    "education": "Education",
-    "skills": "Skills",
-    "softskills": "Soft Skills",
-    "experience": "Experience"
+  "header":{
+    "subtitleSentence": "Student in Computer Science BUT",
+    "me_img_alt": "Photo of Camille Fourmaintraux, young man with brown hair, brown eyes, white skin, mid-length hair, unshaven beard, mustache, blue/red sweater.",
+    "mainnav": {
+      "home": "Home",
+      "career": "Career",
+      "portfolio": "Portfolio",
+      "interests": "Interests",
+      "contact": "Contact"
+    },
+    "subnav": {
+      "education": "Education",
+      "skills": "Skills",
+      "softskills": "Soft Skills",
+      "experience": "Experience"
+    }
   },
   "footer": {
     "resume": "Resume",
@@ -110,12 +113,15 @@
     "2024": {
       "kaplan": "One-month stay in England at a specialized school",
       "kaplan_desc": "to improve my English skills.",
-      "dut": "Obtained my DUT degree"
+      "dut": "Obtained my DUT degree",
+      "iut_img_alt":"Picture of the front of the IUT. White facade with the words 'UNIVERSITY INSTITUTE OF TECHNOLOGY' written in large black letters."
     },
     "2022": {
       "bac": "High School Diploma with Honors - Lycée Pierre D'Ailly Compiègne",
       "pix": "PIX Certification 635pix",
-      "driving": "Driver's license (B)"
+      "driving": "Driver's license (B)",
+      "lyc_img_alt":"Photo of one of the buildings of the Pierre d'Ailly high school in Compiègne, looks like a small Renaissance brick castle."
+
     },
     "iut": "IUT of Lille Villeneuve d'Ascq",
     "lycee": "Lycée Pierre D'Ailly Compiègne"
@@ -136,6 +142,7 @@
     "stage2024": {
       "title": "SOA webMethods integrator internship for 10 weeks from April to June 2024 at",
       "company_desc": "is a company specialized in software solutions development.",
+      "logo_alt": "E-Mothep logo, three cubes in a triangular formation, 2 green, 1 gray.",
       "main_project": {
         "title": "Main project:",
         "desc": "Maintenance of AMAT (Automated Monitoring & Analysing Tool) by integrating new features and fixing bugs. Some services had unexpected behaviors which I analyzed, understood, and corrected."
@@ -276,10 +283,10 @@
           "title": "Creating a Game in the Terminal with Agile SCRUM Methodology",
           "title1": "Development of a console game",
           "text1": "We had only a few days to create a game, following the agile Scrum methodology. Teams were formed randomly among all the members of the cohort. This allowed us to team up with people we didn’t know and to learn how to collaborate and communicate despite that.",
-          "alt1": "dino photo",
+          "alt1": "TODO",
           "title2": "Role of ScrumMaster, managing User Stories and tracking the project using the agile SCRUM methodology",
           "text2": "During this project, each team member had a role, and I was assigned the role of Scrum Master. I was responsible for updating the progress board and creating burn-up and burn-down charts to show our project's progress.",
-          "alt2": "Scrum photo",
+          "alt2": "TODO",
           "know_how1": "SCRUM, agile methods",
           "know_how2": "join a team",
           "know_how3": "communicate and collaborate in a team"
@@ -478,17 +485,17 @@
             "game_design": "Game Design",
             "mesh_creation": "3D Mesh creation, textures"
           },
-          "img_alt": "3D platformer screenshot"
+          "img_alt": "TODO"
         },
         "firstgamejam": {
           "title": "My first game jam!",
           "title1": "Post my first game on Itch.io",
           "text1": "While browsing Itch.io, I saw the gamejam section and it made me want to participate. I chose the first gamejam that was about to start: <strong>1-BIT JAM #4</strong>, and I started coding. I finished 114th out of 338 participants.",
-          "alt1": "first gamejam photo",
+          "alt1": "TODO",
           "title2": "1-BIT JAM #4",
           "text2": "This game jam had one condition: the game could only contain two colors maximum, preferably black and white. I created TheLegendOfKnardWizight, a 2D shooter, following these constraints. The goal is to defend your tower from waves of monsters. If you get hit or if the tower is destroyed, you lose.",
           "play_link": "Play the game!",
-          "alt2": "first gamejam result photo",
+          "alt2": "TODO",
           "skills_title": "Skills Acquired",
           "skills_list": {
             "godot": "Godot, GDScript",
@@ -501,7 +508,7 @@
           "title": "Creating a maze generator.",
           "title1": "Algorithms",
           "text1": "I wanted to learn how to generate mazes. So I studied several algorithms that could do this, and then I tried to implement them.",
-          "alt1": "maze generator photo",
+          "alt1": "TODO",
           "title2": "Graphical display",
           "text2": "At first, I displayed the mazes in the console in text form, then I decided to use JavaFX to represent my maze. It is from this personal project that I developed the display for the Saé 3.02 application development project.",
           "skills_title": "Skills Acquired",
@@ -514,10 +521,10 @@
           "title": "Creation of a Pong and a brick breaker.",
           "title1": "Pong",
           "text1": "I wanted to try creating a bunch of classic games, so after cloning Flappy Bird, I tried making a Pong and a Breakout clone. For each game I added a simple menu as well as a score and high score system.",
-          "alt1": "pong photo",
+          "alt1": "TODO",
           "title2": "Game loop",
           "text2": "Creating these games allowed me to better understand game loops and JavaFX rendering.",
-          "alt2": "breakout photo",
+          "alt2": "TODO",
           "skills_title": "Skills Acquired",
           "skills_list": {
             "timer": "AnimationTimer in JavaFX",

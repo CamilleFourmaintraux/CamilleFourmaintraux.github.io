@@ -44,11 +44,11 @@ export default function Header() {
       }}
     >
       <h1>Camille FOURMAINTRAUX</h1>
-      <p>{t("subtitleSentence")}</p>
+      <p>{t("header.subtitleSentence")}</p>
 
       <img
         src={imageSrc}
-        alt="Just a picture of me"
+        alt={t("header.me_img_alt")}
         id="photoPresentation"
         onClick={handleClick}
       ></img>

@@ -12,13 +12,13 @@ export default function Sae509() {
           <h4>{t(`${translationsPath}.presentation`)}</h4>
         </li>
         <p>{t(`${translationsPath}.presentationDescription`)}</p>
-        <img src="/img/portfolio/saeProfile.png" alt="placeholder" />
+        <img src="/img/portfolio/saeProfile.png" alt="TOTO" title="TODO"/>
 
         <li>
           <h4>{t(`${translationsPath}.spring_framework`)}</h4>
         </li>
         <p>{t(`${translationsPath}.spring_description`)}</p>
-        <img src="/img/portfolio/saeCalendrier.png" alt="placeholder" />
+        <img src="/img/portfolio/saeCalendrier.png" alt="TOTO" title="TODO" />
 
         <li>
           <h4>{t(`${projectsWorkPath}.skills`)}</h4>

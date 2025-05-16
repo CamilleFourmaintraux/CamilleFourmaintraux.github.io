@@ -9,31 +9,31 @@ const MainNav: React.FC = () => {
         to="/"
         className={({ isActive }) => (isActive ? "current navlink" : "navlink")}
       >
-        <i className="fas fa-home"></i> {t("mainnav.home")}
+        <i className="fas fa-home"></i> {t("header.mainnav.home")}
       </NavLink>
       <NavLink
         to="/cursus"
         className={({ isActive }) => (isActive ? "current navlink" : "navlink")}
       >
-        <i className="fas fa-graduation-cap"></i> {t("mainnav.career")}
+        <i className="fas fa-graduation-cap"></i> {t("header.mainnav.career")}
       </NavLink>
       <NavLink
         to="/portfolio"
         className={({ isActive }) => (isActive ? "current navlink" : "navlink")}
       >
-        <i className="fas fa-book"></i> {t("mainnav.portfolio")}
+        <i className="fas fa-book"></i> {t("header.mainnav.portfolio")}
       </NavLink>
       <NavLink
         to="/passions"
         className={({ isActive }) => (isActive ? "current navlink" : "navlink")}
       >
-        <i className="fas fa-puzzle-piece"></i> {t("mainnav.interests")}
+        <i className="fas fa-puzzle-piece"></i> {t("header.mainnav.interests")}
       </NavLink>
       <NavLink
         to="/contact"
         className={({ isActive }) => (isActive ? "current navlink" : "navlink")}
       >
-        <i className="fas fa-comment"></i> {t("mainnav.contact")}
+        <i className="fas fa-comment"></i> {t("header.mainnav.contact")}
       </NavLink>
     </nav>
   );

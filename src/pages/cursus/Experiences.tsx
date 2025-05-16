@@ -38,7 +38,7 @@ export default function Experiences() {
             </h3>
             <img
               src="/img/cursus/emothep_logo.png"
-              alt="logo E-Mothep"
+              alt={t("experience.stage2024.logo_alt")} title={t("experience.stage2024.logo_alt")}
               style={{ float: "right" }}
               id="emothepLogo"
             />
