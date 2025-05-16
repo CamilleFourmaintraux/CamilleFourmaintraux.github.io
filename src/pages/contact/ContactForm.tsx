@@ -72,13 +72,18 @@ export default function ContactForm() {
   // Gestionnaire de soumission du formulaire
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (isBeingSent) {
+      console.warn(
+        "Le mail est déjà en train de s'envoyer. isBeingSent:" + isBeingSent
+      );
+      return;
+    }
     const lastname = lastnameRef.current?.value || "";
     const firstname = firstnameRef.current?.value || "";
     const email = emailRef.current?.value || "";
     const subject = subjectRef.current?.value || "";
     const message = messageRef.current?.value || "";
-    console.log("isBeingSent : " + isBeingSent);
-    if (validateEmail(email) && !isBeingSent) {
+    if (validateEmail(email)) {
       setIsBeingSent(true);
       setIsSuccess(true);
       setStatusMessage(t("form.msg-sent"));
