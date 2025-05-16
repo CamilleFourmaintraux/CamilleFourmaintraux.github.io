@@ -90,9 +90,11 @@
     "message": "Message",
     "message_placeholder": "Your message...",
     "send": "Send",
+    "sent": "Sending...",
     "msg-success": "Your message was successfully sent.",
     "msg-error": "Sorry, an error happened while sending your message.",
-    "msg-invalidEmail": "Please enter a valid e-mail."
+    "msg-invalidEmail": "Please enter a valid e-mail.",
+    "msg-sent": "Please wait a few seconds."
   },
   "thanks": {
     "title": "Thank you",

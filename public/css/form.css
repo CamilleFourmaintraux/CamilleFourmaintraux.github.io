@@ -1,11 +1,15 @@
 :root[data-theme="light"] {
   --bg-button-color: #12345f;
   --bg-buttonhover-color: #1234ff;
+  --bg-button-color-success: #00560a;
+  --bg-button-color-error: #7d0006;
 }
 
 :root[data-theme="dark"] {
   --bg-button-color: #102fdf;
   --bg-buttonhover-color: #2080ff;
+  --bg-button-color-success: #1bff36;
+  --bg-button-color-error: #ff2e1f;
 }
 
 /*css pour le formulaire*/
@@ -64,10 +68,22 @@ button:hover {
   background: var(--bg-buttonhover-color);
 }
 
+#submit_button {
+  width: 130px;
+}
+
 @media all and (min-width: 500px) {
   #forename {
     width: 90%;
   }
+}
+
+.mail_sent_successfully {
+  color: var(--bg-button-color-success);
+}
+
+.mail_sending_error {
+  color: var(--bg-button-color-error);
 }
 
 /*

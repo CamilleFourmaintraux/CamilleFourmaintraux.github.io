@@ -4,6 +4,6 @@ export const emailjs_template = "template_kxdf4ll";
 
 // Fonction pour valider une adresse e-mail avec une expression régulière
 export function validateEmail(email: string) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
 }

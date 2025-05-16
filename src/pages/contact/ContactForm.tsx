@@ -18,8 +18,9 @@ export default function ContactForm() {
   const messageRef = useRef<HTMLTextAreaElement>(null);
 
   // États pour le message de statut et son affichage
-  const [statusMessage, setStatusMessage] = useState<string | null>(null);
-  const [isSuccess, setIsSuccess] = useState<boolean | null>(null);
+  const [statusMessage, setStatusMessage] = useState<string>("");
+  const [isSuccess, setIsSuccess] = useState<boolean>(true);
+  const [isBeingSent, setIsBeingSent] = useState<boolean>(false);
 
   // Initialisation d'EmailJS une seule fois
   useEffect(() => {
@@ -44,16 +45,18 @@ export default function ContactForm() {
       .then(() => {
         setStatusMessage(t("form.msg-success"));
         setIsSuccess(true);
+        setIsBeingSent(false);
         resetForm();
       })
       .catch(() => {
         setStatusMessage(t("form.msg-error"));
         setIsSuccess(false);
+        setIsBeingSent(false);
       });
 
     // Masquer le message après quelques secondes
     setTimeout(() => {
-      setStatusMessage(null);
+      setStatusMessage("");
     }, 8000);
   };
 
@@ -74,14 +77,17 @@ export default function ContactForm() {
     const email = emailRef.current?.value || "";
     const subject = subjectRef.current?.value || "";
     const message = messageRef.current?.value || "";
-
-    if (validateEmail(email)) {
+    console.log("isBeingSent : " + isBeingSent);
+    if (validateEmail(email) && !isBeingSent) {
+      setIsBeingSent(true);
+      setIsSuccess(true);
+      setStatusMessage(t("form.msg-sent"));
       sendMail(lastname, firstname, email, subject, message);
     } else {
       setIsSuccess(false);
       setStatusMessage(t("form.msg-invalidEmail"));
       setTimeout(() => {
-        setStatusMessage(null);
+        setStatusMessage("");
       }, 8000);
     }
   };
@@ -104,6 +110,7 @@ export default function ContactForm() {
                   placeholder={t("form.name_placeholder")}
                   required
                   ref={lastnameRef}
+                  disabled={isBeingSent}
                 />
               </div>
               <div className="form-name">
@@ -115,6 +122,7 @@ export default function ContactForm() {
                   placeholder={t("form.forename_placeholder")}
                   required
                   ref={firstnameRef}
+                  disabled={isBeingSent}
                 />
               </div>
             </div>
@@ -129,6 +137,7 @@ export default function ContactForm() {
               placeholder={t("form.email_placeholder")}
               required
               ref={emailRef}
+              disabled={isBeingSent}
             />
 
             <label htmlFor="subject">{t("form.subject")}</label>
@@ -139,6 +148,7 @@ export default function ContactForm() {
               placeholder={t("form.subject_placeholder")}
               required
               ref={subjectRef}
+              disabled={isBeingSent}
             />
 
             <label htmlFor="message">{t("form.message")}</label>
@@ -148,10 +158,16 @@ export default function ContactForm() {
               placeholder={t("form.message_placeholder")}
               required
               ref={messageRef}
+              disabled={isBeingSent}
             />
 
-            <button type="submit">
-              <i className="fas fa-paper-plane"></i> {t("form.send")}
+            <button type="submit" id="submit_button">
+              <i
+                className={
+                  isBeingSent ? "fas fa-truck-fast" : "fas fa-paper-plane"
+                }
+              ></i>{" "}
+              {isBeingSent ? t("form.sent") : t("form.send")}
             </button>
           </form>
         </section>
@@ -160,7 +176,9 @@ export default function ContactForm() {
           <section>
             <div
               id="message-status"
-              style={{ color: isSuccess ? "green" : "red", display: "block" }}
+              className={
+                isSuccess ? "mail_sent_successfully" : "mail_sending_error"
+              }
             >
               {statusMessage}
             </div>
