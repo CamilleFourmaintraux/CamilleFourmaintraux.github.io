@@ -28,6 +28,11 @@
     "sorry": "Désolé, cette page n'existe pas. :/",
     "back": "Revenir à l'accueil"
   },
+  "test": {
+    "title": "Page de Test",
+    "main": "Cette page est une page de test.",
+    "back": "Revenir à l'accueil"
+  },
   "topOfPage": "Haut de page",
   "presentation": {
     "title": "Présentation",

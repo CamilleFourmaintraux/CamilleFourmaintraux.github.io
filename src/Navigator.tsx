@@ -7,6 +7,7 @@ import PassionsPage from "./pages/portfolio/passion/Passions";
 import RedirectionPage from "./pages/Redirection";
 import DocumentsPage from "./pages/Documents";
 import ContactPage from "./pages/contact/Contact";
+import TestPage from "./pages/Test";
 
 export default function Navigator() {
   //<Route path="/detail/:slug" element={<GameDetail />} />
@@ -38,8 +39,14 @@ export default function Navigator() {
       <Route path="/hobbies" element={<PassionsPage />} />
 
       <Route path="/contact" element={<ContactPage />} />
+      <Route path="/mail" element={<ContactPage />} />
+      <Route path="/email" element={<ContactPage />} />
 
       <Route path="/documents" element={<DocumentsPage />} />
+      <Route path="/files" element={<DocumentsPage />} />
+      <Route path="/fichiers" element={<DocumentsPage />} />
+
+      <Route path="/test" element={<TestPage/>} />
     </Routes>
   );
 }
