@@ -13,6 +13,12 @@ export default function RedirectionPage() {
         <p>{t("test.main")}</p>
         <NavLink to="/"> {t("test.back")}</NavLink>
       </div>
+      <div className="container testFlexContainer">
+            <div className="testContainer">
+            </div>
+            <div className="testContainer">
+            </div>
+      </div>
     </>
   );
 }
