@@ -98,9 +98,11 @@
     "message": "Message",
     "message_placeholder": "Votre message...",
     "send": "Envoyer",
+    "sent": "Envoi...",
     "msg-success": "Votre message a bien été envoyé.",
     "msg-error": "Désolé, une erreur est survenue durant l'envoi de votre message.",
-    "msg-invalidEmail": "Veuillez entrer une e-mail valide."
+    "msg-invalidEmail": "Veuillez entrer une e-mail valide.",
+    "msg-sent": "Veuillez attendre quelques secondes."
   },
   "thanks": {
     "title": "Merci",
