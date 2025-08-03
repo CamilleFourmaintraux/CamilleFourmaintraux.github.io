@@ -28,6 +28,11 @@
     "sorry": "Sorry this page doesn't exist. :/",
     "back": "Back to the main page"
   },
+  "test": {
+    "title": "Test Page",
+    "main": "This is a test page.",
+    "back": "Back to the main page"
+  },
   "topOfPage": "Back to top",
   "presentation": {
     "title": "About Me",
