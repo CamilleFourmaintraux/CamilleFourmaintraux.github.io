@@ -1,5 +1,5 @@
 {
-  "header":{
+  "header": {
     "subtitleSentence": "Student in Computer Science BUT",
     "me_img_alt": "Photo of Camille Fourmaintraux, young man with brown hair, brown eyes, white skin, mid-length hair, unshaven beard, mustache, blue/red sweater.",
     "mainnav": {
@@ -32,11 +32,11 @@
   "presentation": {
     "title": "About Me",
     "greeting": "Hello!",
-    "intro": "I am a third-year Computer Science student at IUT of Lille.",
-    "internship": "I recently secured a 16-week internship within a development team at",
-    "internship_dates": "from March 10th to June 27th, 2025.",
-    "previous_internship": "I previously completed my last internship at this company, which was very satisfied with my work and decided to take me back.",
-    "company_description": "is a consulting and solution integration company with over 20 years of experience. The company helps its clients with the urbanization of their information systems to make them more efficient and scalable.",
+    "intro": "I am a third-year student at the Grenoble-Alpes Polytechnic University. I recently graduated with a BUT in Computer Science from the IUT of Lille.",
+    "internship_UNUSED": "I recently secured a 16-week internship within a development team at",
+    "internship_dates_UNUSED": "from March 10th to June 27th, 2025.",
+    "previous_internship_UNUSED": "I previously completed my last internship at this company, which was very satisfied with my work and decided to take me back.",
+    "company_description_UNUSED": "is a consulting and solution integration company with over 20 years of experience. The company helps its clients with the urbanization of their information systems to make them more efficient and scalable.",
     "motivation": "My academic background and passion for IT motivate me to fully commit to this constantly evolving field. I am determined to make a significant contribution and bring added value to the company that trusts me."
   },
   "goals": {
@@ -114,14 +114,13 @@
       "kaplan": "One-month stay in England at a specialized school",
       "kaplan_desc": "to improve my English skills.",
       "dut": "Obtained my DUT degree",
-      "iut_img_alt":"Picture of the front of the IUT. White facade with the words 'UNIVERSITY INSTITUTE OF TECHNOLOGY' written in large black letters."
+      "iut_img_alt": "Picture of the front of the IUT. White facade with the words 'UNIVERSITY INSTITUTE OF TECHNOLOGY' written in large black letters."
     },
     "2022": {
       "bac": "High School Diploma with Honors - Lycée Pierre D'Ailly Compiègne",
       "pix": "PIX Certification 635pix",
       "driving": "Driver's license (B)",
-      "lyc_img_alt":"Photo of one of the buildings of the Pierre d'Ailly high school in Compiègne, looks like a small Renaissance brick castle."
-
+      "lyc_img_alt": "Photo of one of the buildings of the Pierre d'Ailly high school in Compiègne, looks like a small Renaissance brick castle."
     },
     "iut": "IUT of Lille Villeneuve d'Ascq",
     "lycee": "Lycée Pierre D'Ailly Compiègne"

@@ -1,14 +1,14 @@
 {
-  "header":{
+  "header": {
     "subtitleSentence": "Étudiant en BUT Informatique",
     "me_img_alt": "Photo de Camille Fourmaintraux, jeune homme aux cheveux brun, yeux marron, peau blanche, cheveux mi-longs, barbe mal rasé, moustache, pull bleu/rouge.",
-   "mainnav": {
+    "mainnav": {
       "home": "Accueil",
       "career": "Cursus",
       "portfolio": "Portfolio",
       "interests": "Centres d'intérêt",
       "contact": "Contact"
-   },
+    },
     "subnav": {
       "education": "Formation",
       "skills": "Compétences",
@@ -32,11 +32,11 @@
   "presentation": {
     "title": "Présentation",
     "greeting": "Bonjour !",
-    "intro": "Je suis étudiant en troisième année de BUT Informatique à l'IUT de Lille.",
-    "internship": "J'ai récemment obtenu un stage de 16 semaines au sein d'une équipe de développement chez",
-    "internship_dates": "du 10 mars jusqu'au 27 juin 2025.",
-    "previous_internship": "J'avais déjà réalisé mon précédent stage dans cette entreprise, qui avait été très satisfaite de mon travail et a donc décidé de me reprendre.",
-    "company_description": "est une société de conseil et d'intégration de solutions avec plus de 20 ans d'expérience. L'entreprise accompagne ses clients dans leurs démarches d'urbanisation de leurs systèmes d'informations, afin de les rendre plus efficaces et évolutifs.",
+    "intro": "Je suis étudiant en troisième année à l'école polytechnique universitaire de Grenoble-Alpes. J'ai obtenu récemment mon diplôme de BUT informatique à l'IUT de Lille.",
+    "internship_UNUSED": "J'ai récemment obtenu un stage de 16 semaines au sein d'une équipe de développement chez",
+    "internship_dates_UNUSED": "du 10 mars jusqu'au 27 juin 2025.",
+    "previous_internship_UNUSED": "J'avais déjà réalisé mon précédent stage dans cette entreprise, qui avait été très satisfaite de mon travail et a donc décidé de me reprendre.",
+    "company_description_UNUSED": "est une société de conseil et d'intégration de solutions avec plus de 20 ans d'expérience. L'entreprise accompagne ses clients dans leurs démarches d'urbanisation de leurs systèmes d'informations, afin de les rendre plus efficaces et évolutifs.",
     "motivation": "Mon parcours académique et ma passion pour l'informatique me motivent à m'engager pleinement dans ce domaine en constante évolution. Je suis déterminé à contribuer de manière significative et à apporter une valeur ajoutée à l'entreprise qui me fera confiance."
   },
   "goals": {
@@ -114,13 +114,13 @@
       "kaplan": "Séjour d'un mois en Angleterre dans une école spécialisée",
       "kaplan_desc": "pour renforcer mes compétences en anglais.",
       "dut": "Obtention de mon DUT",
-      "iut_img_alt":"Photo du devant de l'iut. Façade blanche avec écrit en grande lettre noire : 'INSTITUT UNIVERSITAIRE DE TECHNOLOGIE'."
+      "iut_img_alt": "Photo du devant de l'iut. Façade blanche avec écrit en grande lettre noire : 'INSTITUT UNIVERSITAIRE DE TECHNOLOGIE'."
     },
     "2022": {
       "bac": "Baccalauréat général Mention Bien - Lycée Pierre D'Ailly Compiègne",
       "pix": "Certification PIX 635pix",
       "driving": "Permis B",
-      "lyc_img_alt":"Photo d'un des bâtiment du lycée Pierre d'Ailly à Compiègne, ressemble à un petit château de la rennaissance en briques."
+      "lyc_img_alt": "Photo d'un des bâtiment du lycée Pierre d'Ailly à Compiègne, ressemble à un petit château de la rennaissance en briques."
     },
     "iut": "IUT de Lille Villeneuve d'Ascq",
     "lycee": "Lycée Pierre D'Ailly Compiègne"
