@@ -12,13 +12,14 @@ export default function Experiences() {
               {t("experience.stage2025.title")} <EMothep /> [Lille]
             </h3>
           </div>
-          <p id="stage2025">{t("experience.stage2025.in_progress")}</p>
+          <br />
+          <p id="stage2025">{t("experience.stage2025.description")}</p>
           <a
-            href="/files/InternshipReportEmothep2024.pdf"
+            href="/files/InternshipReportEmothep2025.pdf"
             target="_blank"
-            id="stage2024rapport"
+            id="stage2025rapport"
           >
-            {t("experience.stage2025.link_previous")}
+            {t("experience.stage2025.full_report")}
           </a>
         </div>
 
@@ -38,7 +39,8 @@ export default function Experiences() {
             </h3>
             <img
               src="/img/cursus/emothep_logo.png"
-              alt={t("experience.stage2024.logo_alt")} title={t("experience.stage2024.logo_alt")}
+              alt={t("experience.stage2024.logo_alt")}
+              title={t("experience.stage2024.logo_alt")}
               style={{ float: "right" }}
               id="emothepLogo"
             />

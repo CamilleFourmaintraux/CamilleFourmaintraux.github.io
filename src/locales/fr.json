@@ -134,8 +134,8 @@
     "title": "Expériences professionnelle",
     "stage2025": {
       "title": "Stage intégrateur SOA webMethods pendant 16 semaines de mars à juin 2025 chez",
-      "in_progress": "Stage en cours",
-      "link_previous": "Lire mon rapport de stage de l'année dernière"
+      "description": "J'ai réalisé mon second stage chez E-Mothep, qui s'est très bien passé. Mes missions étaient similaires à celes que j'ai eu l'année dernière, à la différence que j'étais plus libre sur le choix et l'implémentation des solutions pour une tâche ou un problème.",
+      "full_report": "Lire mon rapport de stage complet"
     },
     "tutor": {
       "title": "Tuteur pour l'université de Lille de octobre 2024 à mars 2025",
