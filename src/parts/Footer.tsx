@@ -8,7 +8,7 @@ export default function Footer() {
     <>
       <span id="findepage"></span>
       <footer>
-        <a href="/files/resume.pdf" className="navlink">
+        <a href={t("footer.resume_filename")} className="navlink">
           {" "}
           {t("footer.resume")} <i className="fas fa-file-pdf"></i>
         </a>

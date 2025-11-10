@@ -18,6 +18,7 @@
   },
   "footer": {
     "resume": "CV",
+    "resume_filename": "/files/resume_stage.pdf",
     "email": "E-Mail",
     "linkedin": "Linkedin",
     "github": "Github",

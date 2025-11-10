@@ -18,6 +18,7 @@
   },
   "footer": {
     "resume": "Resume",
+    "resume_filename": "/files/resume_intership.pdf",
     "email": "E-Mail",
     "linkedin": "Linkedin",
     "github": "Github",
