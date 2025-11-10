@@ -126,3 +126,7 @@ p {
     gap: 20px; /* Espacement entre les éléments */
   }
 }
+
+.align-center {
+  justify-content: center;
+}
