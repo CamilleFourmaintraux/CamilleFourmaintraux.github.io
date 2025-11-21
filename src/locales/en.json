@@ -18,7 +18,7 @@
   },
   "footer": {
     "resume": "Resume",
-    "resume_filename": "/files/resume_intership.pdf",
+    "resume_filename": "/files/resume_internship.pdf",
     "email": "E-Mail",
     "linkedin": "Linkedin",
     "github": "Github",
@@ -64,7 +64,8 @@
   },
   "documents": {
     "title": "List of all downloadable PDF documents",
-    "cv": "Resume",
+    "resume_english": "English Resume",
+    "resume_french": "French Resume",
     "attestation_dut": "DUT Certificate",
     "rapport_stage": "2024 Internship Report",
     "kaplan": "Kaplan International London School Certificate",

@@ -19,10 +19,20 @@ export default function DocumentsPage() {
           <tbody>
             <tr>
               <td>
-                <strong>{t("documents.cv")}</strong>
+                <strong>{t("documents.resume_english")}</strong>
               </td>
               <td>
-                <a href="/files/resume.pdf" target="_blank" download>
+                <a href="/files/resume_internship.pdf" target="_blank" download>
+                  {t("documents.download")}
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>{t("documents.resume_french")}</strong>
+              </td>
+              <td>
+                <a href="/files/resume_stage.pdf" target="_blank" download>
                   {t("documents.download")}
                 </a>
               </td>

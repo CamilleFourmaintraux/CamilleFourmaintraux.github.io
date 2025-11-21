@@ -64,7 +64,8 @@
   },
   "documents": {
     "title": "Liste de tous les documents pdf téléchargeables",
-    "cv": "CV",
+    "resume_english": "CV en anglais",
+    "resume_french": "CV en français",
     "attestation_dut": "Attestation DUT",
     "rapport_stage": "Rapport de stage 2024",
     "kaplan": "Attestation Kaplan International London School",
