@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 
 export interface EditableNumberGridProps {
   value: number[][];
   onChange?: (newValue: number[][]) => void;
   cellSize?: number;
+  cellMargin?: number;
   inputStep?: number;
   inputMin?: number;
   inputMax?: number;
@@ -13,32 +14,32 @@ export interface EditableNumberGridProps {
 const EditableNumberGrid: React.FC<EditableNumberGridProps> = ({
   value,
   onChange,
-  cellSize = 40,
+  cellSize = 60,
+  cellMargin = 1,
   inputStep = 1,
   inputMin,
   inputMax,
   className,
 }) => {
-  const [matrix, setMatrix] = useState<number[][]>(value);
-
   const updateCell = (row: number, col: number, newVal: string) => {
     const parsed = parseFloat(newVal);
-    const updated = matrix.map((r, i) =>
+
+    const updated = value.map((r, i) =>
       r.map((c, j) =>
-        i === row && j === col ? (isNaN(parsed) ? 0 : parsed) : c
-      )
+        i === row && j === col ? (isNaN(parsed) ? 0 : parsed) : c,
+      ),
     );
 
-    setMatrix(updated);
     onChange?.(updated);
   };
 
   return (
-    <div className={className} style={{ display: "inline-block" }}>
-      {matrix.map((row, rowIndex) => (
-        <div style={{ display: "flex" }} key={rowIndex}>
+    <div className={"matrix " + className}>
+      {value.map((row, rowIndex) => (
+        <div className="matrix_inputs_wrapper" key={rowIndex}>
           {row.map((cell, colIndex) => (
             <input
+              className="matrix_inputs"
               key={colIndex}
               type="number"
               value={cell}
@@ -49,8 +50,7 @@ const EditableNumberGrid: React.FC<EditableNumberGridProps> = ({
               style={{
                 width: cellSize,
                 height: cellSize,
-                textAlign: "center",
-                margin: 1,
+                margin: cellMargin,
               }}
             />
           ))}
