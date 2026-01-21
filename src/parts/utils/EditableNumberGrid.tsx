@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 export interface EditableNumberGridProps {
   value: number[][];
@@ -19,23 +19,21 @@ const EditableNumberGrid: React.FC<EditableNumberGridProps> = ({
   inputMax,
   className,
 }) => {
-  const [matrix, setMatrix] = useState<number[][]>(value);
-
   const updateCell = (row: number, col: number, newVal: string) => {
     const parsed = parseFloat(newVal);
-    const updated = matrix.map((r, i) =>
+
+    const updated = value.map((r, i) =>
       r.map((c, j) =>
-        i === row && j === col ? (isNaN(parsed) ? 0 : parsed) : c
-      )
+        i === row && j === col ? (isNaN(parsed) ? 0 : parsed) : c,
+      ),
     );
 
-    setMatrix(updated);
     onChange?.(updated);
   };
 
   return (
     <div className={className} style={{ display: "inline-block" }}>
-      {matrix.map((row, rowIndex) => (
+      {value.map((row, rowIndex) => (
         <div style={{ display: "flex" }} key={rowIndex}>
           {row.map((cell, colIndex) => (
             <input
