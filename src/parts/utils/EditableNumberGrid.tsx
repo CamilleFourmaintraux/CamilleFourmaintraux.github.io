@@ -4,6 +4,7 @@ export interface EditableNumberGridProps {
   value: number[][];
   onChange?: (newValue: number[][]) => void;
   cellSize?: number;
+  cellMargin?: number;
   inputStep?: number;
   inputMin?: number;
   inputMax?: number;
@@ -13,7 +14,8 @@ export interface EditableNumberGridProps {
 const EditableNumberGrid: React.FC<EditableNumberGridProps> = ({
   value,
   onChange,
-  cellSize = 40,
+  cellSize = 60,
+  cellMargin = 1,
   inputStep = 1,
   inputMin,
   inputMax,
@@ -32,11 +34,12 @@ const EditableNumberGrid: React.FC<EditableNumberGridProps> = ({
   };
 
   return (
-    <div className={className} style={{ display: "inline-block" }}>
+    <div className={"matrix " + className}>
       {value.map((row, rowIndex) => (
-        <div style={{ display: "flex" }} key={rowIndex}>
+        <div className="matrix_inputs_wrapper" key={rowIndex}>
           {row.map((cell, colIndex) => (
             <input
+              className="matrix_inputs"
               key={colIndex}
               type="number"
               value={cell}
@@ -47,8 +50,7 @@ const EditableNumberGrid: React.FC<EditableNumberGridProps> = ({
               style={{
                 width: cellSize,
                 height: cellSize,
-                textAlign: "center",
-                margin: 1,
+                margin: cellMargin,
               }}
             />
           ))}

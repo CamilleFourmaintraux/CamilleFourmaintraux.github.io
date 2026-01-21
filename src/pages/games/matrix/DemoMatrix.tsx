@@ -7,6 +7,16 @@ function createEmptyMatrix(size: number): number[][] {
   return Array.from({ length: size }, () => Array(size).fill(0));
 }
 
+function createIdentityMatrix(size: number): number[][] {
+  const result = createEmptyMatrix(size);
+  for (let i = 0; i < size; i++) {
+    for (let j = 0; j < size; j++) {
+      if (i == j) result[i][j] = 1;
+    }
+  }
+  return result;
+}
+
 function transpose(matrix: number[][]): number[][] {
   return matrix[0].map((_, colIndex) => matrix.map((row) => row[colIndex]));
 }
@@ -84,8 +94,32 @@ export default function DemoMatrixPage() {
   const [matrix, setMatrix] = useState(createEmptyMatrix(3));
   const [detValue, setDetValue] = useState<number | null>(null);
 
+  const minSize = 0;
+  const maxSize = 8;
+
   const updateSize = (newSize: number) => {
-    if (newSize < 1) return;
+    if (newSize < minSize) {
+      /*console.error(
+        newSize +
+          " is an invalid size (must be " +
+          newSize +
+          ">=" +
+          minSize +
+          ")",
+      );*/
+      return;
+    }
+    if (newSize > maxSize) {
+      /*console.error(
+        newSize +
+          " is an invalid size (must be " +
+          newSize +
+          "<=" +
+          maxSize +
+          ")",
+      );*/
+      return;
+    }
     setSize(newSize);
     setMatrix(createEmptyMatrix(newSize));
     setDetValue(null);
@@ -97,7 +131,7 @@ export default function DemoMatrixPage() {
   };
 
   const handleReset = () => {
-    setMatrix(createEmptyMatrix(size));
+    setMatrix(createIdentityMatrix(size));
     setDetValue(null);
   };
 
@@ -111,14 +145,14 @@ export default function DemoMatrixPage() {
 
   return (
     <div className="container">
-      <h2>Matrices</h2>
+      <h2>{t("portfolio.passion.games.matrix.matrices")}</h2>
 
       <label>
-        Taille :{" "}
+        {t("portfolio.passion.games.matrix.size")} :{" "}
         <input
           type="number"
-          min={1}
-          max={20}
+          min={minSize}
+          max={maxSize}
           value={size}
           onChange={(e) => updateSize(Number(e.target.value))}
         />
@@ -133,27 +167,28 @@ export default function DemoMatrixPage() {
         }}
       >
         <div>
-          <h4>Matrice A</h4>
-          <EditableNumberGrid
-            value={matrix}
-            onChange={setMatrix}
-            cellSize={60}
-            inputStep={1}
-          />
+          <h4>{t("portfolio.passion.games.matrix.m")}</h4>
+          <EditableNumberGrid value={matrix} onChange={setMatrix} />
         </div>
 
         {inverseMatrix && (
           <div>
-            <h4>A⁻¹</h4>
-            <EditableNumberGrid value={inverseMatrix} cellSize={60} />
+            <h4>{t("portfolio.passion.games.matrix.m_inverse")}</h4>
+            <EditableNumberGrid value={inverseMatrix} />
           </div>
         )}
       </div>
 
       <div style={{ marginTop: 20, display: "flex", gap: 10 }}>
-        <button onClick={handleTranspose}>Transposer A</button>
-        <button onClick={handleDeterminant}>Calculer det(A)</button>
-        <button onClick={handleReset}>Reset</button>
+        <button onClick={handleTranspose}>
+          {t("portfolio.passion.games.matrix.transpose")}
+        </button>
+        <button onClick={handleDeterminant}>
+          {t("portfolio.passion.games.matrix.det")}
+        </button>
+        <button onClick={handleReset}>
+          {t("portfolio.passion.games.matrix.identity")}
+        </button>
       </div>
 
       {detValue !== null && (

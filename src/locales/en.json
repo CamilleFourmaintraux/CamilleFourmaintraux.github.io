@@ -552,6 +552,17 @@
           "text": "I enjoy trying to imagine how the user will react in order to create the best interface or a fun game. Sometimes I suddenly have an idea: a game concept, a solution to a problem in a project... and I can't stop thinking about it until I try to implement it."
         }
       },
+      "games": {
+        "matrix": {
+          "matrices": "Matrices",
+          "size": "Size",
+          "m": "Matrix M",
+          "m_inverse": "Inverse Matrix M⁻¹",
+          "transpose": "Transpose M",
+          "det": "Calculate det(M)",
+          "identity": "Identity Matrix"
+        }
+      },
       "tags": {
         "WEB": "Web",
         "SOFTWARE": "Software",
