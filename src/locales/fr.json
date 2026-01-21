@@ -270,7 +270,7 @@
       "filter_all": "tous les projets",
       "filter_inprogress": "les projets en cours",
       "tag_all": "Tous",
-      "result_count": "{{count}} résultat(s) trouvé(s)",
+      "result_count": "{{count}} résultat{{plural}} trouvé{{plural}}",
       "no_results": "Aucune réalisation ne correspond aux critères."
     },
     "period": "Période : ",

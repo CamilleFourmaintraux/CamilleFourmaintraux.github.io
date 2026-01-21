@@ -51,7 +51,7 @@ const Realisations: React.FC<RealisationsProps> = ({
   const sortedRealisations = [...data].sort((a, b) =>
     orderAsc
       ? b.date.getTime() - a.date.getTime()
-      : a.date.getTime() - b.date.getTime()
+      : a.date.getTime() - b.date.getTime(),
   );
 
   // Fonction de filtrage
@@ -72,7 +72,7 @@ const Realisations: React.FC<RealisationsProps> = ({
     ({ idRealisation, title }, index) => ({
       href: idRealisation,
       label: `${index + 1}. ${t(title)}`,
-    })
+    }),
   );
 
   const isMobile = useIsMobile();
@@ -115,7 +115,7 @@ const Realisations: React.FC<RealisationsProps> = ({
                     type="text"
                     className="searchInput"
                     placeholder={t(
-                      "portfolio.advancedsearch.search_placeholder"
+                      "portfolio.advancedsearch.search_placeholder",
                     )}
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
@@ -200,6 +200,7 @@ const Realisations: React.FC<RealisationsProps> = ({
           <p>
             {t("portfolio.advancedsearch.result_count", {
               count: filteredRealisations.length,
+              plural: filteredRealisations.length >= 2 ? "s" : "",
             })}
           </p>
 
@@ -219,7 +220,7 @@ const Realisations: React.FC<RealisationsProps> = ({
                   tagsPath,
                   children,
                 },
-                index
+                index,
               ) => (
                 <motion.div
                   key={idRealisation}
@@ -231,7 +232,7 @@ const Realisations: React.FC<RealisationsProps> = ({
                   <Realisation
                     idRealisation={idRealisation}
                     title={`${index + 1}. ${transformSaeID(idRealisation)} ${t(
-                      title
+                      title,
                     )}`}
                     tags={tags}
                     date={date}
@@ -244,7 +245,7 @@ const Realisations: React.FC<RealisationsProps> = ({
                     {children}
                   </Realisation>
                 </motion.div>
-              )
+              ),
             )}
           </AnimatePresence>
 
