@@ -44,7 +44,7 @@ export default function Header() {
       }}
     >
       <h1>Camille FOURMAINTRAUX</h1>
-      <p>{t("header.subtitleSentence")}</p>
+      <p>{t("header.subtitle_sentence")}</p>
 
       <img
         src={imageSrc}
