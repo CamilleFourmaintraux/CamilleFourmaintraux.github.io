@@ -4,11 +4,14 @@ interface SubNavProps {
 }
 
 const bugOmeter = 300;
+const bugOmeterFather = 20;
+const bugOmeterSon = 4;
+const bugOmeterSonBrother = 2;
 
 export const handleScrollToSection = (
   event: React.MouseEvent<HTMLAnchorElement>,
   targetId: string,
-  takeSubnavHeightIntoAccount: boolean
+  takeSubnavHeightIntoAccount: boolean,
 ) => {
   event.preventDefault();
   scrollToSection(targetId, takeSubnavHeightIntoAccount);
@@ -16,7 +19,7 @@ export const handleScrollToSection = (
 
 export const scrollToSection = (
   targetId: string,
-  takeSubnavHeightIntoAccount: boolean
+  takeSubnavHeightIntoAccount: boolean,
 ) => {
   //console.log("Scroll to : "+targetId);
   const targetElement = document.getElementById(targetId);
@@ -25,10 +28,11 @@ export const scrollToSection = (
   if (targetElement && subnav) {
     let targetPosition =
       targetElement.getBoundingClientRect().top + window.scrollY;
-    let offsetPosition = targetPosition - 20;
+    let offsetPosition = targetPosition - bugOmeterFather;
     if (takeSubnavHeightIntoAccount) {
       let subnavHeight =
-        subnav.offsetHeight * (window.scrollY < bugOmeter ? 4 : 2); // Hauteur de la sub-barre de navigation * NumberOfLife
+        subnav.offsetHeight *
+        (window.scrollY < bugOmeter ? bugOmeterSon : bugOmeterSonBrother); // Hauteur de la sub-barre de navigation * NumberOfLife
       offsetPosition = targetPosition - subnavHeight; // Décalage pour éviter le chevauchement
     }
     //console.log(`${targetPosition} - ${subnavHeight} = ${offsetPosition}`);
