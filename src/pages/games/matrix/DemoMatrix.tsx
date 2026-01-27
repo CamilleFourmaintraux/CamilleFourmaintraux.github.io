@@ -2,9 +2,20 @@ import { NavLink } from "react-router";
 import { useTranslation } from "react-i18next";
 import { useState, useMemo } from "react";
 import EditableNumberGrid from "../../../parts/utils/EditableNumberGrid";
+import { randomIntFromInterval } from "../../../parts/utils/Utils";
 
 function createEmptyMatrix(size: number): number[][] {
   return Array.from({ length: size }, () => Array(size).fill(0));
+}
+
+function createRandomMatrix(size: number): number[][] {
+  const result = createEmptyMatrix(size);
+  for (let i = 0; i < size; i++) {
+    for (let j = 0; j < size; j++) {
+      result[i][j] = randomIntFromInterval(-9, 9);
+    }
+  }
+  return result;
 }
 
 function createIdentityMatrix(size: number): number[][] {
@@ -90,12 +101,14 @@ function determinant(matrix: number[][]): number {
 }
 
 export default function DemoMatrixPage() {
-  const [size, setSize] = useState(3);
-  const [matrix, setMatrix] = useState(createEmptyMatrix(3));
-  const [detValue, setDetValue] = useState<number | null>(null);
-
+  const defaultSize = 3;
   const minSize = 0;
   const maxSize = 8;
+
+  const [size, setSize] = useState(defaultSize);
+  const [matrix, setMatrix] = useState(createIdentityMatrix(defaultSize));
+  const [detValue, setDetValue] = useState<number>(determinant(matrix));
+  useMemo(() => setDetValue(determinant(matrix)), [matrix]);
 
   const updateSize = (newSize: number) => {
     if (newSize < minSize) {
@@ -121,22 +134,15 @@ export default function DemoMatrixPage() {
       return;
     }
     setSize(newSize);
-    setMatrix(createEmptyMatrix(newSize));
-    setDetValue(null);
+    setMatrix(createIdentityMatrix(newSize));
   };
 
   const handleTranspose = () => {
     setMatrix(transpose(matrix));
-    setDetValue(null);
   };
 
-  const handleReset = () => {
-    setMatrix(createIdentityMatrix(size));
-    setDetValue(null);
-  };
-
-  const handleDeterminant = () => {
-    setDetValue(determinant(matrix));
+  const handleRandom = () => {
+    setMatrix(createRandomMatrix(size));
   };
 
   const inverseMatrix = useMemo(() => invertMatrix(matrix), [matrix]);
@@ -147,25 +153,30 @@ export default function DemoMatrixPage() {
     <div className="container">
       <h2>{t("portfolio.passion.games.matrix.matrices")}</h2>
 
-      <label>
-        {t("portfolio.passion.games.matrix.size")} :{" "}
-        <input
-          type="number"
-          min={minSize}
-          max={maxSize}
-          value={size}
-          onChange={(e) => updateSize(Number(e.target.value))}
-        />
-      </label>
+      <div id="matrix_labels_wrapper">
+        <label id="matrix_label_size">
+          {t("portfolio.passion.games.matrix.size")}
+          <input
+            id="matrix_input_size"
+            type="number"
+            min={minSize}
+            max={maxSize}
+            value={size}
+            onChange={(e) => updateSize(Number(e.target.value))}
+          />
+        </label>
+        <div>
+          <strong>det(M)&nbsp;=&nbsp;</strong>
+          {detValue!.toFixed(4)}
+        </div>
+        {!inverseMatrix && (
+          <div className="marginTop redText">
+            {t("portfolio.passion.games.matrix.not_inversible")}
+          </div>
+        )}
+      </div>
 
-      <div
-        style={{
-          display: "flex",
-          gap: 40,
-          marginTop: 20,
-          alignItems: "flex-start",
-        }}
-      >
+      <div id="matrix_wrapper">
         <div>
           <h4>{t("portfolio.passion.games.matrix.m")}</h4>
           <EditableNumberGrid value={matrix} onChange={setMatrix} />
@@ -179,31 +190,14 @@ export default function DemoMatrixPage() {
         )}
       </div>
 
-      <div style={{ marginTop: 20, display: "flex", gap: 10 }}>
+      <div id="matrix_button_wrapper">
         <button onClick={handleTranspose}>
           {t("portfolio.passion.games.matrix.transpose")}
         </button>
-        <button onClick={handleDeterminant}>
-          {t("portfolio.passion.games.matrix.det")}
-        </button>
-        <button onClick={handleReset}>
-          {t("portfolio.passion.games.matrix.identity")}
+        <button onClick={handleRandom}>
+          {t("portfolio.passion.games.matrix.random")}
         </button>
       </div>
-
-      {detValue !== null && (
-        <p style={{ marginTop: 10 }}>
-          <strong>det(A) = </strong>
-          {detValue.toFixed(4)}
-        </p>
-      )}
-
-      {!inverseMatrix && (
-        <p style={{ marginTop: 10, color: "red" }}>
-          La matrice n'est pas inversible
-        </p>
-      )}
-
       <NavLink to="/"> {t("test.back")}</NavLink>
     </div>
   );

@@ -555,12 +555,13 @@
       "games": {
         "matrix": {
           "matrices": "Matrices",
-          "size": "Size",
+          "size": "Size:",
           "m": "Matrix M",
           "m_inverse": "Inverse Matrix M⁻¹",
           "transpose": "Transpose M",
           "det": "Calculate det(M)",
-          "identity": "Identity Matrix"
+          "random": "Random Matrix",
+          "not_inversible": "The matrix is not invertible"
         }
       },
       "tags": {
