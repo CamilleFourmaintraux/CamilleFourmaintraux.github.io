@@ -130,3 +130,7 @@ p {
 .align-center {
   justify-content: center;
 }
+
+.redText {
+  color: red;
+}
