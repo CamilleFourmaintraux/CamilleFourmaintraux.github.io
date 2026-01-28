@@ -4,6 +4,7 @@
 
 #matrix_wrapper {
   display: flex;
+  flex-wrap: wrap;
   gap: 40px;
   margin-top: 20px;
   align-items: flex-end;
@@ -11,7 +12,8 @@
 }
 
 .matrix_inputs_wrapper {
-  display: "flex";
+  display: flex;
+  flex-wrap: nowrap;
 }
 
 .matrix_inputs {
