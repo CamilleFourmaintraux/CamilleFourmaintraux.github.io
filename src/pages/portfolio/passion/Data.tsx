@@ -5,6 +5,7 @@ import MazeGenerator from "./projects/MazeGenerator";
 import MiniGames from "./projects/MiniGames";
 import Miscellaneous from "./projects/Miscellaneous";
 import { Tags } from "./Tags";
+import Matrices from "./projects/Matrices";
 
 export const tagsPassionPath = `portfolio.passion.tags`;
 const projectsWorkPath = `portfolio.passion.projects`;
@@ -19,6 +20,18 @@ const realisations: RealisationProps[] = [
     dateEnd: new Date(2024, 9, 11),
     tags: [Tags.VIDEOGAME, Tags.WEB, Tags.TWODIMENSIONAL, Tags.SHOOTER],
     children: <FirstGameJam />,
+    tagsPath: tagsPassionPath,
+    current: "",
+    isInPeriod: false,
+    isInProgress: false,
+  },
+  {
+    idRealisation: "matrices",
+    title: `${projectsWorkPath}.matrices.${projectTitlePath}`,
+    date: new Date(2026, 1, 26),
+    dateEnd: new Date(2026, 1, 28),
+    tags: [Tags.WEB, Tags.MATRIX],
+    children: <Matrices />,
     tagsPath: tagsPassionPath,
     current: "",
     isInPeriod: false,

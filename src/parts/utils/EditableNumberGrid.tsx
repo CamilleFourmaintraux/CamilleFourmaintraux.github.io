@@ -14,7 +14,7 @@ export interface EditableNumberGridProps {
 const EditableNumberGrid: React.FC<EditableNumberGridProps> = ({
   value,
   onChange,
-  cellSize = 60,
+  cellSize = 40,
   cellMargin = 1,
   inputStep = 1,
   inputMin,
@@ -23,7 +23,6 @@ const EditableNumberGrid: React.FC<EditableNumberGridProps> = ({
 }) => {
   const updateCell = (row: number, col: number, newVal: string) => {
     const parsed = parseFloat(newVal);
-
     const updated = value.map((r, i) =>
       r.map((c, j) =>
         i === row && j === col ? (isNaN(parsed) ? 0 : parsed) : c,
