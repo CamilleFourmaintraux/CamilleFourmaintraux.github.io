@@ -550,6 +550,11 @@
             "& Various Shoot'em ups"
           ],
           "text": "I enjoy trying to imagine how the user will react in order to create the best interface or a fun game. Sometimes I suddenly have an idea: a game concept, a solution to a problem in a project... and I can't stop thinking about it until I try to implement it."
+        },
+        "matrices": {
+          "title": "Some Matrices !",
+          "text": "I recently had fun making a page that does some matrix calculations, in order to practice using React.",
+          "link": "See the page"
         }
       },
       "games": {
@@ -579,7 +584,8 @@
         "SHOOTER": "Shooter",
         "ARCADE": "Arcade",
         "PLATFORMER": "Platformer",
-        "MAZES": "Mazes"
+        "MAZES": "Mazes",
+        "MATRIX": "Matrix"
       }
     }
   }

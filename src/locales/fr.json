@@ -550,6 +550,11 @@
             "& Divers Shoot'em up"
           ],
           "text": "J'apprécie d'essayer d'imaginer comment l'utilisateur va réagir afin de créer la meilleure interface ou un jeu amusant. Parfois j'ai une idée qui me vient soudainement en tête : un concept de jeux, une solution à un problème dans un projet... et je ne peux pas arrêter d'y penser avant d'essayer de l'implémenter."
+        },
+        "matrices": {
+          "title": "Des matrices !",
+          "text": "Je me suis amusé récemment à faire une page qui fais quelques calculs de matrices, afin de m'exercer à utiliser React.",
+          "link": "Voir la page"
         }
       },
       "games": {
@@ -579,7 +584,8 @@
         "SHOOTER": "Tirs",
         "ARCADE": "Arcade",
         "PLATFORMER": "Platformes",
-        "MAZES": "Labyrinthes"
+        "MAZES": "Labyrinthes",
+        "MATRIX": "Matrice"
       }
     }
   }

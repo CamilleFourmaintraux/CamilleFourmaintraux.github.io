@@ -14,4 +14,5 @@ export const Tags = Object.freeze({
   ARCADE: "ARCADE",
   PLATFORMER: "PLATFORMER",
   MAZES: "MAZES",
+  MATRIX: "MATRIX",
 } as const);
