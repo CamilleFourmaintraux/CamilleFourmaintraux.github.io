@@ -17,5 +17,5 @@ createRoot(document.getElementById("root")!).render(
       <Navigator />
       <Footer />
     </HashRouter>
-  </StrictMode>
+  </StrictMode>,
 );

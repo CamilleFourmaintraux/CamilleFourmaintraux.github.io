@@ -10,7 +10,11 @@ export default function MazeGenerator() {
         <h4>{t(`${translationsPath}.title1`)}</h4>
       </li>
       <p>{t(`${translationsPath}.text1`)}</p>
-      <img src="/img/passions/laby.png" alt={t(`${translationsPath}.alt1`)} title={t(`${translationsPath}.alt1`)} />
+      <img
+        src="/img/passions/laby.png"
+        alt={t(`${translationsPath}.alt1`)}
+        title={t(`${translationsPath}.alt1`)}
+      />
       <li>
         <h4>{t(`${translationsPath}.title2`)}</h4>
       </li>

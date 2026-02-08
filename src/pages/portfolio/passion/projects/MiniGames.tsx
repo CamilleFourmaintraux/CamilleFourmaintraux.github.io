@@ -10,7 +10,11 @@ export default function MiniGames() {
         <h4>{t(`${translationsPath}.title1`)}</h4>
       </li>
       <p>{t(`${translationsPath}.text1`)}</p>
-      <img src="/img/passions/pong.png" alt={t(`${translationsPath}.alt1`)} title={t(`${translationsPath}.alt1`)} />
+      <img
+        src="/img/passions/pong.png"
+        alt={t(`${translationsPath}.alt1`)}
+        title={t(`${translationsPath}.alt1`)}
+      />
       <li>
         <h4>{t(`${translationsPath}.title2`)}</h4>
       </li>

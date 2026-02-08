@@ -19,7 +19,7 @@ export default function Passions() {
             <li>{t("portfolio.passion.other_activities.programming")}</li>
             <li>
               {t(
-                "portfolio.passion.other_activities.member_of_board_game_club"
+                "portfolio.passion.other_activities.member_of_board_game_club",
               )}
             </li>
             <li>{t("portfolio.passion.other_activities.solving_riddles")}</li>

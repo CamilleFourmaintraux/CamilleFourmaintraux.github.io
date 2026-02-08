@@ -5,7 +5,7 @@ export default function LanguageSwitcher() {
   const { i18n } = useTranslation();
   const [lang, setLang] = useState(
     () =>
-      localStorage.getItem("lang") || navigator.language.split("-")[0] || "fr"
+      localStorage.getItem("lang") || navigator.language.split("-")[0] || "fr",
   );
 
   useEffect(() => {

@@ -1,7 +1,7 @@
 export default function Template() {
-    return (
-      <>
-        <p>Un component vide.</p>
-      </>
-    );
+  return (
+    <>
+      <p>Un component vide.</p>
+    </>
+  );
 }

@@ -26,7 +26,7 @@ export function transformSaeID(saeID: string) {
   ) {
     // Remplace le "e" par "é", ajoute un espace entre "sae" et les chiffres, et ajoute un espace et un ":" à la fin
     return `${saeID.slice(0, 3).replace("e", "é").toUpperCase()} ${saeID.slice(
-      3
+      3,
     )} :`;
   }
   // Si les conditions ne sont pas remplies, la fonction ne renvoie rien

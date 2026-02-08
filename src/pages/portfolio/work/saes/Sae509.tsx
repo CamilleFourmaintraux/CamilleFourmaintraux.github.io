@@ -12,7 +12,7 @@ export default function Sae509() {
           <h4>{t(`${translationsPath}.presentation`)}</h4>
         </li>
         <p>{t(`${translationsPath}.presentationDescription`)}</p>
-        <img src="/img/portfolio/saeProfile.png" alt="TOTO" title="TODO"/>
+        <img src="/img/portfolio/saeProfile.png" alt="TOTO" title="TODO" />
 
         <li>
           <h4>{t(`${translationsPath}.spring_framework`)}</h4>

@@ -33,7 +33,7 @@ export default function ContactForm() {
     firstname: string,
     email: string,
     subject: string,
-    message: string
+    message: string,
   ) => {
     emailjs
       .send(emailjs_service, emailjs_template, {
@@ -74,7 +74,7 @@ export default function ContactForm() {
     e.preventDefault();
     if (isBeingSent) {
       console.warn(
-        "Le mail est déjà en train de s'envoyer. isBeingSent:" + isBeingSent
+        "Le mail est déjà en train de s'envoyer. isBeingSent:" + isBeingSent,
       );
       return;
     }

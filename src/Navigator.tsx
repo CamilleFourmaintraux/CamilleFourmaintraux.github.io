@@ -9,6 +9,7 @@ import DocumentsPage from "./pages/Documents";
 import ContactPage from "./pages/contact/Contact";
 import TestPage from "./pages/Test";
 import DemoMatrixPage from "./pages/games/matrix/DemoMatrix";
+import DemoPongPage from "./pages/games/pong/DemoPong";
 
 export default function Navigator() {
   //<Route path="/detail/:slug" element={<GameDetail />} />
@@ -48,6 +49,7 @@ export default function Navigator() {
       <Route path="/fichiers" element={<DocumentsPage />} />
 
       <Route path="/matrix" element={<DemoMatrixPage />} />
+      <Route path="/pong" element={<DemoPongPage />} />
 
       <Route path="/test" element={<TestPage />} />
     </Routes>
