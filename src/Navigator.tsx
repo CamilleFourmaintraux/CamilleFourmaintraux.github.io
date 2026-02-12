@@ -9,6 +9,8 @@ import DocumentsPage from "./pages/Documents";
 import ContactPage from "./pages/contact/Contact";
 import TestPage from "./pages/Test";
 import DemoMatrixPage from "./pages/games/matrix/DemoMatrix";
+import PingPongPage from "./pages/games/pong/TestPingPong";
+import PythonPage from "./pages/games/prog/Python";
 
 export default function Navigator() {
   //<Route path="/detail/:slug" element={<GameDetail />} />
@@ -48,6 +50,9 @@ export default function Navigator() {
       <Route path="/fichiers" element={<DocumentsPage />} />
 
       <Route path="/matrix" element={<DemoMatrixPage />} />
+      <Route path="/pingpong" element={<PingPongPage />} />
+
+      <Route path="/python" element={<PythonPage />} />
 
       <Route path="/test" element={<TestPage />} />
     </Routes>

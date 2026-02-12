@@ -275,6 +275,15 @@
     },
     "period": "Période : ",
     "in_progress": "En cours",
+    "prog": {
+      "python": {
+        "title": "Console Python",
+        "desc": "Cette page contient une console Python intégrée."
+      },
+      "java": {
+        "": ""
+      }
+    },
     "work": {
       "page_title": "Mes travaux",
       "page_subtitle": "Mes réalisations professionnelles",
