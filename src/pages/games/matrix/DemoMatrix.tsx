@@ -167,7 +167,7 @@ export default function DemoMatrixPage() {
         </label>
         <div>
           <strong>det(M)&nbsp;=&nbsp;</strong>
-          {detValue!.toFixed(4)}
+          {detValue!.toFixed(3)}
         </div>
         {!inverseMatrix && (
           <div className="marginTop redText">
