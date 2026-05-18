@@ -6,6 +6,7 @@ import Header from "./parts/Header.tsx";
 import Footer from "./parts/Footer.tsx";
 import ResetScroll from "./parts/nav/ResetScroll.ts";
 import Main from "./Main.tsx";
+import Chatbot from "./parts/utils/Chatbot.jsx";
 import "../i18n";
 
 createRoot(document.getElementById("root")!).render(
@@ -15,6 +16,7 @@ createRoot(document.getElementById("root")!).render(
       <Header />
       <Main />
       <Navigator />
+      <Chatbot />
       <Footer />
     </HashRouter>
   </StrictMode>,
