@@ -1,7 +1,7 @@
 {
   "header": {
     "subtitle_sentence": "Étudiant à Polytech Grenoble",
-    "me_img_alt": "Photo de Camille Fourmaintraux, jeune homme aux cheveux brun, yeux marron, peau blanche, cheveux mi-longs, barbe mal rasé, moustache, pull bleu/rouge.",
+    "me_img_alt": "Photo de Camille Fourmaintraux, jeune homme aux cheveux brun(#291c16), yeux marron(#432b26), peau blanche(#c8988f), cheveux mi-longs, barbe mal rasé, moustache, pull bleu(#001b36).",
     "mainnav": {
       "home": "Accueil",
       "career": "Cursus",
@@ -47,7 +47,7 @@
   },
   "goals": {
     "title": "Mes objectifs",
-    "text": "Une fois mon BUT obtenu, je souhaite poursuivre mes études en école d'ingénieur ou en Master, et suivre une formation spécialisée dans le développement logiciel et back-end. Poursuivre un niveau d'étude Bac+5 me permettra d'approfondir mes compétences et mes connaissances et de me spécialiser dans ces domaines, ce qui me permettra de m'intégrer pleinement dans une équipe de développement logiciel."
+    "text": "Mes études à Polytech Grenoble me permettront d'approfondir mes compétences et mes connaissances ainsi que de me spécialiser dans le domaine du développement logiciel et dans la gestion des systèmes réseaux, ce qui me permettra de m'intégrer pleinement dans une équipe de développement logiciel."
   },
   "cv": {
     "title": "Mon CV",

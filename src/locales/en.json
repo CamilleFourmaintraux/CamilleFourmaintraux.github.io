@@ -1,7 +1,7 @@
 {
   "header": {
     "subtitle_sentence": "Student at Polytech Grenoble",
-    "me_img_alt": "Photo of Camille Fourmaintraux, young man with brown hair, brown eyes, white skin, mid-length hair, unshaven beard, mustache, blue/red sweater.",
+    "me_img_alt": "Photo of Camille Fourmaintraux, young man with brown hair(#291c16), brown eyes(#432b26), white skin(#c8988f), mid-length hair, unshaven beard, mustache, blue sweater(#001b36).",
     "mainnav": {
       "home": "Home",
       "career": "Career",
@@ -47,7 +47,7 @@
   },
   "goals": {
     "title": "My Goals",
-    "text": "Once I obtain my degree, I would like to continue my studies in an engineering school or a Master's program, specializing in software and back-end development. A Master's degree (Bac+5) will allow me to deepen my skills and knowledge and to specialize in these areas, enabling me to fully integrate into a software development team."
+    "text": "My studies at Polytech Grenoble will allow me to deepen my skills and knowledge and to specialize in the field of software development and network systems management, which will allow me to fully integrate into a software development team."
   },
   "cv": {
     "title": "My Resume",
