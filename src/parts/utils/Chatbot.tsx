@@ -10,12 +10,13 @@ export default function Chatbot() {
   const [input, setInput] = useState("");
 
   const sendMessage = async () => {
+    console.log("Sending request...");
     if (!input) return;
 
     const newMessages = [...messages, { isFromUser: true, text: input }];
     setMessages(newMessages);
 
-    const res = await fetch("http://localhost:3001/chat", {
+    const res = await fetch("https://backendportfolio-ujn6.onrender.com/chat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -23,7 +24,11 @@ export default function Chatbot() {
       body: JSON.stringify({ message: input }),
     });
 
+    console.log("Response status:", res.status);
+
     const data = await res.json();
+
+    console.log("Response data:", data);
 
     setMessages([...newMessages, { isFromUser: false, text: data.reply }]);
 

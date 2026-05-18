@@ -27,10 +27,7 @@
   "devDependencies": {
     "@eslint/js": "^9.21.0",
     "@types/babel__core": "^7.20.5",
-    "@types/cors": "^2.8.19",
-    "@types/express": "^5.0.6",
     "@types/json-schema": "^7.0.15",
-    "@types/node": "^25.9.0",
     "@types/react": "19.2.13",
     "@types/react-dom": "^19.0.4",
     "@types/react-i18next": "^7.8.3",
@@ -41,7 +38,6 @@
     "gh-pages": "^6.3.0",
     "globals": "^15.15.0",
     "prettier": "3.8.1",
-    "typescript": "~5.7.2",
     "typescript-eslint": "^8.24.1",
     "vite": "^6.2.0"
   },
