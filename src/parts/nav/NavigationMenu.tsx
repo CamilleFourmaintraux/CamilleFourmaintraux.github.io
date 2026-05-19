@@ -5,6 +5,7 @@ import SubNav from "./SubNav";
 import BackToTopButton from "./BackToTopButton";
 import ThemeSwitcher from "./ThemeSwitcher";
 import LanguageSwitcher from "./LanguageSwitcher";
+import ChatbotSwitcher from "./ChatbotSwitcher";
 
 export interface subNavLink {
   href: string;
@@ -43,6 +44,7 @@ const NavigationMenu: React.FC<subNavLinks> = ({ subNavLinks }) => {
         {isFixed && <BackToTopButton />}
         <ThemeSwitcher />
         <LanguageSwitcher />
+        <ChatbotSwitcher />
       </div>
       <Outlet />
     </div>
