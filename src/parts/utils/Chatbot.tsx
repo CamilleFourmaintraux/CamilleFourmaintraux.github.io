@@ -1,58 +1,66 @@
 import { useState } from "react";
 
-type Message = {
-  isFromUser: boolean; //"user"->true | "bot"->false
-  text: string;
-};
+type Message = { isFromUser: boolean; text: string };
+
+const API_URL =
+  import.meta.env.VITE_BACKEND_URL ??
+  "https://backendportfolio-ujn6.onrender.com";
 
 export default function Chatbot() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
 
   const sendMessage = async () => {
-    console.log("Sending request...");
-    if (!input) return;
-
-    const newMessages = [...messages, { isFromUser: true, text: input }];
-    setMessages(newMessages);
-
-    const res = await fetch("https://backendportfolio-ujn6.onrender.com/chat", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ message: input }),
-    });
-
-    console.log("Response status:", res.status);
-
-    const data = await res.json();
-
-    console.log("Response data:", data);
-
-    setMessages([...newMessages, { isFromUser: false, text: data.reply }]);
-
+    if (!input.trim()) return;
+    const userMsg = { isFromUser: true, text: input };
+    setMessages((m) => [...m, userMsg]);
     setInput("");
+
+    try {
+      const res = await fetch(`${API_URL}/chat`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: input }),
+      });
+      const data = await res.json();
+      setMessages((m) => [
+        ...m,
+        { isFromUser: false, text: data.reply ?? "Error" },
+      ]);
+    } catch (e) {
+      setMessages((m) => [...m, { isFromUser: false, text: "Network error" }]);
+    }
   };
 
   return (
-    <div style={{ border: "1px solid #ccc", padding: "1rem" }}>
-      <h3>Ask me about my projects</h3>
-
-      <div style={{ minHeight: "200px" }}>
+    <div className="chat-box">
+      <div className="chat-box-header">
+        <h3>Ask me about my projects</h3>
+        <p id="close-btn">&times;</p>
+      </div>
+      <div className="chat-box-body" style={{ minHeight: "200px" }}>
         {messages.map((msg, i) => (
           <div key={i}>
-            <strong>{msg.isFromUser ? "user" : "bot"}:</strong> {msg.text}
+            <strong className="message">
+              {msg.isFromUser ? "user" : "bot"}:
+            </strong>{" "}
+            {msg.text}
           </div>
         ))}
       </div>
-
-      <input
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        placeholder="Ask something..."
-      />
-      <button onClick={sendMessage}>Send</button>
+      <div className="chat-box-footer">
+        <input
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="Ask something..."
+        />
+        <button id="sendBtn" onClick={sendMessage}>
+          Send
+        </button>
+      </div>
+      <div className="chat-button" id="chatBtn">
+        💬
+      </div>
     </div>
   );
 }
