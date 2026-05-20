@@ -6,7 +6,7 @@ export default function PythonPage() {
   return (
     <div className="container">
       <h2>
-        <i className="fas fa-triangle-exclamation"></i>{" "}
+        <i className="fas fa-brands fa-python"></i>{" "}
         {t("portfolio.prog.python.title")}
       </h2>
       <p>{t("portfolio.prog.python.desc")}</p>
