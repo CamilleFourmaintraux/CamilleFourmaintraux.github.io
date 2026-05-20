@@ -42,23 +42,13 @@ export default function ChatbotPage() {
     const transcript = transcriptRef.current;
     if (loggedRef.current || transcript.length === 0) return;
     loggedRef.current = true;
-
-    const body = JSON.stringify({ transcript });
-
-    // sendBeacon survives tab close / navigation; fetch is the fallback.
-    if (navigator.sendBeacon) {
-      navigator.sendBeacon(
-        `${API_URL}/mail-service`,
-        new Blob([body], { type: "application/json" }),
-      );
-    } else {
-      fetch(`${API_URL}/mail-service`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body,
-        keepalive: true,
-      }).catch((err) => console.error("Conversation log failed:", err));
-    }
+    fetch(`${API_URL}/mail-service`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ transcript }),
+      keepalive: true, // survives page unload, like sendBeacon
+      credentials: "omit", // no cookies → no wildcard conflict
+    }).catch((err) => console.error("Conversation log failed:", err));
   }, []);
 
   // Flush on tab close/hide and on component unmount (leaving the page).
