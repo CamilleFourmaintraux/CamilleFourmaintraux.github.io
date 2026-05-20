@@ -9,7 +9,6 @@ export interface RealisationProps {
   dateEnd: Date;
   children: React.ReactNode;
   current: string;
-  tagsPath: string;
   isInPeriod: boolean;
   isInProgress: boolean;
 }
@@ -22,7 +21,6 @@ export const Realisation: React.FC<RealisationProps> = ({
   dateEnd,
   children,
   current,
-  tagsPath,
   isInPeriod,
   isInProgress,
 }) => {
@@ -57,7 +55,7 @@ export const Realisation: React.FC<RealisationProps> = ({
       <div className="tags-container">
         {tags.map((tag) => (
           <span key={tag} className={`tag ${current == tag ? "active" : ""}`}>
-            {t(`${tagsPath}.${tag}`)}
+            {t(`portfolio.tags.${tag}`)}
           </span>
         ))}
       </div>

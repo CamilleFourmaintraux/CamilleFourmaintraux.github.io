@@ -10,7 +10,6 @@ export default function Work() {
       pageTitle={t("portfolio.work.page_title")}
       pageSubtitle={t("portfolio.work.page_subtitle")}
       pageDescription={t("portfolio.work.page_description")}
-      tagsButtonsPath="portfolio.work.tags"
     >
       <i>{t("portfolio.work.sae_explanation")}</i>
     </Realisations>

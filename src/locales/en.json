@@ -305,6 +305,16 @@
         "link": "GitHub repository",
         "skills": "Skills gained",
         "know_how": "Soft-Skills acquired",
+        "mnia-env": {
+          "title": "MNIA Project (Numerical Methods Applied to AI)",
+          "presentation": "Designing a Learning Environment",
+          "presentationDescription": "Developing an Environment for a Reinforcement Learning (RL) Agent.",
+          "section": "Designing an RL AI",
+          "section_text": "Developing a Simple RL AI to Test the Environment",
+          "skill1": "Introduction to Reinforcement Learning",
+          "skill2": "Better Understanding of AI",
+          "skill3": "Free rein in the choice of programming language, choice of Java. Complete design of the code structure."
+        },
         "pagil1": {
           "title": "Creating a Game in the Terminal with Agile SCRUM Methodology",
           "title1": "Development of a console game",
@@ -462,26 +472,6 @@
           "skill3": "Spring Security",
           "skill4": "Lombok"
         }
-      },
-      "tags": {
-        "SCRUM": "Scrum",
-        "WEB": "Web",
-        "REACT": "React",
-        "FRONTEND": "Front-End",
-        "BACKEND": "Back-End",
-        "DB": "Database",
-        "SPRING": "Spring",
-        "APIREST": "REST API",
-        "INTERNSHIP": "Internship",
-        "INTEGRATION": "Integration",
-        "JSP": "JSP",
-        "SYSTEMS": "Embedded Systems",
-        "C": "C",
-        "RUST": "Rust",
-        "PYTHON": "Python",
-        "JAVA": "Java",
-        "JSTS": "JS/TS",
-        "VIDEOGAME": "Video Game"
       }
     },
     "passion": {
@@ -588,25 +578,40 @@
           "random": "Random Matrix",
           "not_inversible": "The matrix is not invertible"
         }
-      },
-      "tags": {
-        "WEB": "Web",
-        "SOFTWARE": "Software",
-        "C": "C",
-        "PYTHON": "Python",
-        "JAVA": "Java",
-        "JSTS": "JS/TS",
-        "VIDEOGAME": "Video Game",
-        "MULTIPLAYER": "Multiplayer",
-        "THREEDIMENSIONAL": "3D",
-        "TWODIMENSIONAL": "2D",
-        "RPG": "RPG",
-        "SHOOTER": "Shooter",
-        "ARCADE": "Arcade",
-        "PLATFORMER": "Platformer",
-        "MAZES": "Mazes",
-        "MATRIX": "Matrix"
       }
+    },
+    "tags": {
+      "SCRUM": "Scrum",
+      "WEB": "Web",
+      "REACT": "React",
+      "FRONTEND": "Front-End",
+      "BACKEND": "Back-End",
+      "DB": "Database",
+      "SPRING": "Spring",
+      "APIREST": "REST API",
+      "INTERNSHIP": "Internship",
+      "INTEGRATION": "Integration",
+      "JSP": "JSP",
+      "SYSTEMS": "Embedded Systems",
+      "C": "C",
+      "RUST": "Rust",
+      "PYTHON": "Python",
+      "JAVA": "Java",
+      "JSTS": "JS/TS",
+      "VIDEOGAME": "Video Game",
+      "SOFTWARE": "Software",
+      "HARDWARE": "Hardware",
+      "MULTIPLAYER": "Multiplayer",
+      "THREEDIMENSIONAL": "3D",
+      "TWODIMENSIONAL": "2D",
+      "RPG": "RPG",
+      "SHOOTER": "Shooter",
+      "ARCADE": "Arcade",
+      "PLATFORMER": "Platformer",
+      "MAZES": "Mazes",
+      "MATRIX": "Matrix",
+      "AI": "AI",
+      "RL": "RL"
     }
   }
 }

@@ -10,15 +10,26 @@ import Sae202 from "./saes/Sae202";
 import Sae105 from "./saes/Sae105";
 import Sae103 from "./saes/Sae103";
 import Pagil2 from "./saes/Pagil2";
-import { Tags } from "./Tags";
+import { Tags } from "../Tags";
 import { RealisationProps } from "../Realisation";
 import Internship from "./saes/Internship";
+import MniaEnv from "./saes/MniaEnv";
 
-export const tagsWorkPath = `portfolio.work.tags`;
 const projectsWorkPath = `portfolio.work.saes`;
 const saesTitlePath = `title`;
 
 const realisations: RealisationProps[] = [
+  {
+    idRealisation: "mnia-env",
+    title: `${projectsWorkPath}.mnia-env.${saesTitlePath}`,
+    date: new Date(2025, 11, 1),
+    dateEnd: new Date(2026, 4, 30),
+    tags: [Tags.AI, Tags.RL, Tags.JAVA],
+    children: <MniaEnv />,
+    current: "",
+    isInPeriod: false,
+    isInProgress: false,
+  },
   {
     idRealisation: "pagil2",
     title: `${projectsWorkPath}.pagil2.${saesTitlePath}`,
@@ -37,7 +48,6 @@ const realisations: RealisationProps[] = [
       Tags.JAVA,
     ],
     children: <Pagil2 />,
-    tagsPath: tagsWorkPath,
     current: "",
     isInPeriod: false,
     isInProgress: false,
@@ -49,7 +59,6 @@ const realisations: RealisationProps[] = [
     dateEnd: new Date(2025, 5, 27),
     tags: [Tags.INTERNSHIP, Tags.BACKEND, Tags.INTEGRATION, Tags.DB],
     children: <Internship />,
-    tagsPath: tagsWorkPath,
     current: "",
     isInPeriod: false,
     isInProgress: false,
@@ -61,7 +70,6 @@ const realisations: RealisationProps[] = [
     dateEnd: new Date(2024, 5, 21),
     tags: [Tags.INTERNSHIP, Tags.BACKEND, Tags.INTEGRATION, Tags.DB],
     children: <Internship />,
-    tagsPath: tagsWorkPath,
     current: "",
     isInPeriod: false,
     isInProgress: false,
@@ -83,7 +91,6 @@ const realisations: RealisationProps[] = [
       Tags.JSP,
     ],
     children: <Sae509 />,
-    tagsPath: tagsWorkPath,
     current: "",
     isInPeriod: false,
     isInProgress: false,
@@ -95,7 +102,6 @@ const realisations: RealisationProps[] = [
     dateEnd: new Date(2025, 1, 9),
     tags: [Tags.SYSTEMS, Tags.C],
     children: <Sae501 />,
-    tagsPath: tagsWorkPath,
     current: "",
     isInPeriod: false,
     isInProgress: false,
@@ -107,7 +113,6 @@ const realisations: RealisationProps[] = [
     dateEnd: new Date(2024, 2, 22),
     tags: [Tags.VIDEOGAME, Tags.JSTS],
     children: <Sae402 />,
-    tagsPath: tagsWorkPath,
     current: "",
     isInPeriod: false,
     isInProgress: false,
@@ -126,7 +131,6 @@ const realisations: RealisationProps[] = [
       Tags.JSP,
     ],
     children: <Sae401 />,
-    tagsPath: tagsWorkPath,
     current: "",
     isInPeriod: false,
     isInProgress: false,
@@ -138,7 +142,6 @@ const realisations: RealisationProps[] = [
     dateEnd: new Date(2023, 11, 4),
     tags: [Tags.VIDEOGAME, Tags.JAVA],
     children: <Sae302 />,
-    tagsPath: tagsWorkPath,
     current: "",
     isInPeriod: false,
     isInProgress: false,
@@ -150,7 +153,6 @@ const realisations: RealisationProps[] = [
     dateEnd: new Date(2023, 8, 5),
     tags: [Tags.SCRUM, Tags.VIDEOGAME, Tags.JAVA],
     children: <Pagil1 />,
-    tagsPath: tagsWorkPath,
     current: "",
     isInPeriod: false,
     isInProgress: false,
@@ -162,7 +164,6 @@ const realisations: RealisationProps[] = [
     dateEnd: new Date(2023, 5, 19),
     tags: [Tags.SCRUM, Tags.VIDEOGAME],
     children: <Sae213 />,
-    tagsPath: tagsWorkPath,
     current: "",
     isInPeriod: false,
     isInProgress: false,
@@ -174,7 +175,6 @@ const realisations: RealisationProps[] = [
     dateEnd: new Date(2023, 3, 24),
     tags: [Tags.DB],
     children: <Sae207 />,
-    tagsPath: tagsWorkPath,
     current: "",
     isInPeriod: false,
     isInProgress: false,
@@ -186,7 +186,6 @@ const realisations: RealisationProps[] = [
     dateEnd: new Date(2023, 2, 31),
     tags: [Tags.JAVA],
     children: <Sae202 />,
-    tagsPath: tagsWorkPath,
     current: "",
     isInPeriod: false,
     isInProgress: false,
@@ -198,7 +197,6 @@ const realisations: RealisationProps[] = [
     dateEnd: new Date(2022, 11, 9),
     tags: [Tags.WEB],
     children: <Sae105 />,
-    tagsPath: tagsWorkPath,
     current: "",
     isInPeriod: false,
     isInProgress: false,
@@ -210,7 +208,6 @@ const realisations: RealisationProps[] = [
     dateEnd: new Date(2022, 9, 21),
     tags: [Tags.SYSTEMS, Tags.C],
     children: <Sae103 />,
-    tagsPath: tagsWorkPath,
     current: "",
     isInPeriod: false,
     isInProgress: false,

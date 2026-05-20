@@ -11,7 +11,6 @@ export default function Passions() {
         pageTitle={t("portfolio.passion.page_title")}
         pageSubtitle={t("portfolio.passion.page_subtitle")}
         pageDescription={t("portfolio.passion.page_description")}
-        tagsButtonsPath="portfolio.passion.tags"
       >
         <div>
           <h3>{t("portfolio.passion.other_activities.title")}</h3>

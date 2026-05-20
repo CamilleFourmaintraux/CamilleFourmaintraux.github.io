@@ -11,7 +11,6 @@ interface RealisationsProps {
   pageTitle: string;
   pageSubtitle: string;
   pageDescription: string;
-  tagsButtonsPath: string;
   children: React.ReactNode;
 }
 
@@ -32,7 +31,6 @@ const Realisations: React.FC<RealisationsProps> = ({
   pageTitle,
   pageSubtitle,
   pageDescription,
-  tagsButtonsPath,
   children,
 }) => {
   const { t } = useTranslation();
@@ -186,7 +184,7 @@ const Realisations: React.FC<RealisationsProps> = ({
                       onClick={() => setSelectedTag(tag)}
                       className={selectedTag === tag ? "active" : ""}
                     >
-                      {t(`${tagsButtonsPath}.${tag}`)}
+                      {t(`portfolio.tags.${tag}`)}
                     </button>
                   ))}
                 </div>
@@ -211,15 +209,7 @@ const Realisations: React.FC<RealisationsProps> = ({
           <AnimatePresence>
             {filteredRealisations.map(
               (
-                {
-                  idRealisation,
-                  title,
-                  date,
-                  dateEnd,
-                  tags,
-                  tagsPath,
-                  children,
-                },
+                { idRealisation, title, date, dateEnd, tags, children },
                 index,
               ) => (
                 <motion.div
@@ -237,7 +227,6 @@ const Realisations: React.FC<RealisationsProps> = ({
                     tags={tags}
                     date={date}
                     dateEnd={dateEnd}
-                    tagsPath={tagsPath}
                     current={selectedTag}
                     isInPeriod={startDate !== "" && endDate !== ""}
                     isInProgress={onlyInProgress}
