@@ -1,8 +1,6 @@
 import { NavLink } from "react-router";
 import { useTranslation } from "react-i18next";
-import { useState, useEffect, useRef } from "react";
-import emailjs from "@emailjs/browser";
-import { emailjs_user, emailjs_service, emailjs_template } from "../Utils"; // adjust the relative path to wherever MailUtils.ts lives
+import { useState, useEffect, useRef, useCallback } from "react";
 
 type Message = {
   isFromUser: boolean;
@@ -16,28 +14,6 @@ const API_URL =
 
 const TYPING_SPEED_MS = 18;
 
-/**
- * Fire-and-forget email log. Never blocks the chat UI and never surfaces
- * errors to the user — failures only go to the console.
- */
-function logMessageByEmail(sender: "user" | "bot", text: string) {
-  const params = {
-    from_name: sender,
-    sender,
-    message: text,
-    subject: `Portfolio chatbot — ${sender}`,
-    timestamp: new Date().toISOString(),
-  };
-
-  emailjs
-    .send(emailjs_service, emailjs_template, params, {
-      publicKey: emailjs_user,
-    })
-    .catch((err) => {
-      console.error("EmailJS log failed:", err);
-    });
-}
-
 export default function ChatbotPage() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
@@ -45,6 +21,60 @@ export default function ChatbotPage() {
   const [hasWokenUp, setHasWokenUp] = useState(false);
   const chatBodyRef = useRef<HTMLDivElement>(null);
   const { t } = useTranslation();
+
+  // Always-current transcript for the unmount/close handler to read.
+  const transcriptRef = useRef<Message[]>([]);
+  // Guards against sending the same conversation twice (unmount + tab close).
+  const loggedRef = useRef(false);
+
+  // Keep the transcript ref in sync. We store final text, not mid-typing text.
+  useEffect(() => {
+    transcriptRef.current = messages.map((m) => ({
+      isFromUser: m.isFromUser,
+      text: m.fullText ?? m.text,
+    }));
+    // A new message means there's fresh content worth logging again.
+    loggedRef.current = false;
+  }, [messages]);
+
+  // Send the whole conversation as a single email.
+  const flushConversation = useCallback(() => {
+    const transcript = transcriptRef.current;
+    if (loggedRef.current || transcript.length === 0) return;
+    loggedRef.current = true;
+
+    const body = JSON.stringify({ transcript });
+
+    // sendBeacon survives tab close / navigation; fetch is the fallback.
+    if (navigator.sendBeacon) {
+      navigator.sendBeacon(
+        `${API_URL}/mail-service`,
+        new Blob([body], { type: "application/json" }),
+      );
+    } else {
+      fetch(`${API_URL}/mail-service`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body,
+        keepalive: true,
+      }).catch((err) => console.error("Conversation log failed:", err));
+    }
+  }, []);
+
+  // Flush on tab close/hide and on component unmount (leaving the page).
+  useEffect(() => {
+    const handleHide = () => {
+      if (document.visibilityState === "hidden") flushConversation();
+    };
+    window.addEventListener("visibilitychange", handleHide);
+    window.addEventListener("pagehide", flushConversation);
+
+    return () => {
+      window.removeEventListener("visibilitychange", handleHide);
+      window.removeEventListener("pagehide", flushConversation);
+      flushConversation(); // navigating away within the SPA
+    };
+  }, [flushConversation]);
 
   // Typing animation — reveals the last bot message one character at a time.
   useEffect(() => {
@@ -79,7 +109,6 @@ export default function ChatbotPage() {
     const trimmed = input.trim();
     if (!trimmed || isLoading) return;
 
-    // Finalize any in-progress typing before adding the new user message.
     setMessages((m) => {
       const updated = [...m];
       const last = updated[updated.length - 1];
@@ -96,9 +125,6 @@ export default function ChatbotPage() {
     setInput("");
     setIsLoading(true);
 
-    // Log the user message.
-    logMessageByEmail("user", trimmed);
-
     try {
       const res = await fetch(`${API_URL}/chat`, {
         method: "POST",
@@ -106,21 +132,17 @@ export default function ChatbotPage() {
         body: JSON.stringify({ message: trimmed }),
       });
       const data = await res.json();
-      const reply = data.reply ?? t("chatbot.chat.error");
+      const reply = data.reply ?? "Sorry, I didn't get a response.";
       setHasWokenUp(true);
       setMessages((m) => [
         ...m,
         { isFromUser: false, text: "", fullText: reply },
       ]);
-
-      // Log the bot reply (full text, not the slowly-typed-out version).
-      logMessageByEmail("bot", reply);
     } catch {
-      const errorMsg = t("chatbot.chat.network-error");
-      setMessages((m) => [...m, { isFromUser: false, text: errorMsg }]);
-
-      // Log the bot error response as well.
-      logMessageByEmail("bot", errorMsg);
+      setMessages((m) => [
+        ...m,
+        { isFromUser: false, text: "Network error. Please try again." },
+      ]);
     } finally {
       setIsLoading(false);
     }
