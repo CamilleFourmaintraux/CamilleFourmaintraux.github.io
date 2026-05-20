@@ -2,7 +2,7 @@ import { NavLink } from "react-router";
 import { useTranslation } from "react-i18next";
 import { useState, useEffect, useRef } from "react";
 import emailjs from "@emailjs/browser";
-import { emailjs_user, emailjs_service, emailjs_template } from "../MailUtils"; // adjust the relative path to wherever MailUtils.ts lives
+import { emailjs_user, emailjs_service, emailjs_template } from "../Utils"; // adjust the relative path to wherever MailUtils.ts lives
 
 type Message = {
   isFromUser: boolean;
@@ -96,7 +96,7 @@ export default function ChatbotPage() {
     setInput("");
     setIsLoading(true);
 
-    // 📧 Log the user message.
+    // Log the user message.
     logMessageByEmail("user", trimmed);
 
     try {
@@ -113,13 +113,13 @@ export default function ChatbotPage() {
         { isFromUser: false, text: "", fullText: reply },
       ]);
 
-      // 📧 Log the bot reply (full text, not the slowly-typed-out version).
+      // Log the bot reply (full text, not the slowly-typed-out version).
       logMessageByEmail("bot", reply);
     } catch {
       const errorMsg = t("chatbot.chat.network-error");
       setMessages((m) => [...m, { isFromUser: false, text: errorMsg }]);
 
-      // 📧 Log the bot error response as well.
+      // Log the bot error response as well.
       logMessageByEmail("bot", errorMsg);
     } finally {
       setIsLoading(false);

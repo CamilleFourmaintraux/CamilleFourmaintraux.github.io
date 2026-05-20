@@ -1,19 +1,4 @@
 import { useTranslation } from "react-i18next";
-//import EMothep from "../parts/E-Mothep";
-
-/*
-
-          <br />
-          
-          {t("presentation.internship")} <EMothep />{" "}
-          {t("presentation.internship_dates")}
-          <br />
-          {t("presentation.previous_internship")}
-          <br />
-          <EMothep /> {t("presentation.company_description")}
-          <br />
-
-*/
 
 export default function IntroductionPage() {
   const { t } = useTranslation();

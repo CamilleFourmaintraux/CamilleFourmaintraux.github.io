@@ -14,7 +14,6 @@ export default function ChatbotSwitcher() {
 
   function Icon() {
     // Utilisation de `useMatch` pour vérifier si le lien est actif
-
     return <span>{match ? "🏠" : "🤖"}</span>;
   }
 
