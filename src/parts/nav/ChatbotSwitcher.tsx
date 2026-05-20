@@ -1,19 +1,26 @@
-import { useEffect, useState } from "react";
+import { useMatch, useNavigate } from "react-router-dom";
 
 export default function ChatbotSwitcher() {
-  const [chat, setChat] = useState(() => localStorage.getItem("chat") || "off");
+  let navigate = useNavigate();
+  const match = useMatch("chatbot");
 
-  useEffect(() => {
-    console.log("Test chat : " + chat);
-    document.documentElement.setAttribute("chat", chat);
-    localStorage.setItem("chat", chat);
-  }, [chat]);
+  function togglechat() {
+    if (match) {
+      navigate(`/home`);
+    } else {
+      navigate(`/chatbot`);
+    }
+  }
 
-  const togglechat = () => setChat(chat === "on" ? "off" : "on");
+  function Icon() {
+    // Utilisation de `useMatch` pour vérifier si le lien est actif
+
+    return <span>{match ? "🏠" : "🤖"}</span>;
+  }
 
   return (
     <button onClick={togglechat} id="chatSwitcher">
-      {chat === "on" ? "❌" : "💬"}
+      {Icon()}
     </button>
   );
 }

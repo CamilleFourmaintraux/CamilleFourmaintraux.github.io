@@ -11,6 +11,7 @@ import TestPage from "./pages/Test";
 import DemoMatrixPage from "./pages/games/matrix/DemoMatrix";
 import DemoPongPage from "./pages/games/pong/DemoPong";
 import PythonPage from "./pages/games/prog/Python";
+import ChatbotPage from "./pages/Chatbot";
 
 export default function Navigator() {
   return (
@@ -51,6 +52,8 @@ export default function Navigator() {
       <Route path="/matrix" element={<DemoMatrixPage />} />
       <Route path="/pong" element={<DemoPongPage />} />
       <Route path="/pingpong" element={<DemoPongPage />} />
+
+      <Route path="/chatbot" element={<ChatbotPage />} />
 
       <Route path="/python" element={<PythonPage />} />
 

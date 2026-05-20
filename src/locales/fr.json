@@ -34,6 +34,17 @@
     "main": "Cette page est une page de test.",
     "back": "Revenir à l'accueil"
   },
+  "chatbot": {
+    "title": "CamilleGPT",
+    "main": "Cette page est une expérimentation avec l'IA générative pour qu'un agent me connaisse, ainsi que mes projets, afin qu'il puisse parler en mon nom.",
+    "chat": {
+      "title": "Discutez avec le robot",
+      "subtitle": "Posez-moi toutes vos questions sur Camille et ses projets !",
+      "label": "Envoie le message",
+      "placeholder": "Posez une question..."
+    },
+    "back": "Retour à la page d'accueil"
+  },
   "topOfPage": "Haut de page",
   "presentation": {
     "title": "Présentation",

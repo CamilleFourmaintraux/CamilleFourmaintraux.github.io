@@ -34,6 +34,17 @@
     "main": "This is a test page.",
     "back": "Back to the main page"
   },
+  "chatbot": {
+    "title": "CamGPT",
+    "main": "This page is an experimentation with generative AI to have an agent know about me and my projects so it can speak on my behalf.",
+    "chat": {
+      "title": "Discuss with the bot",
+      "subtitle": "Ask me anything about Camille and his projects!",
+      "label": "Send message",
+      "placeholder": "Ask something..."
+    },
+    "back": "Back to the home page"
+  },
   "topOfPage": "Back to top",
   "presentation": {
     "title": "About Me",
