@@ -41,7 +41,11 @@
       "title": "Discutez avec le robot",
       "subtitle": "Posez-moi toutes vos questions sur Camille et ses projets !",
       "label": "Envoie le message",
-      "placeholder": "Posez une question..."
+      "placeholder": "Posez une question...",
+      "wakingup": "CamilleGPT se réveille",
+      "thinking": "CamilleGPT réflechit",
+      "error": "Désolé, je ne suis pas disponible pour le moment. Merci d'essayer plus tard.",
+      "network-error": "Erreur réseau. Veuillez réessayer."
     },
     "back": "Retour à la page d'accueil"
   },

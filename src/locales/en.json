@@ -41,7 +41,11 @@
       "title": "Discuss with the bot",
       "subtitle": "Ask me anything about Camille and his projects!",
       "label": "Send message",
-      "placeholder": "Ask something..."
+      "placeholder": "Ask something...",
+      "wakingup": "bot waking up",
+      "thinking": "bot thinking",
+      "error": "Sorry, seems like I'm unavailable right now. Please try later.",
+      "network-error": "Network error. Please try again."
     },
     "back": "Back to the home page"
   },

@@ -106,7 +106,7 @@ export default function ChatbotPage() {
         body: JSON.stringify({ message: trimmed }),
       });
       const data = await res.json();
-      const reply = data.reply ?? "Sorry, I didn't get a response.";
+      const reply = data.reply ?? t("chatbot.chat.error");
       setHasWokenUp(true);
       setMessages((m) => [
         ...m,
@@ -116,7 +116,7 @@ export default function ChatbotPage() {
       // 📧 Log the bot reply (full text, not the slowly-typed-out version).
       logMessageByEmail("bot", reply);
     } catch {
-      const errorMsg = "Network error. Please try again.";
+      const errorMsg = t("chatbot.chat.network-error");
       setMessages((m) => [...m, { isFromUser: false, text: errorMsg }]);
 
       // 📧 Log the bot error response as well.
@@ -172,7 +172,11 @@ export default function ChatbotPage() {
           {isLoading && (
             <div className="chat-bubble-row bot">
               <div className="chat-bubble bot loading">
-                <span>{hasWokenUp ? "bot thinking" : "bot waking up"}</span>
+                <span>
+                  {hasWokenUp
+                    ? t("chatbot.chat.thinking")
+                    : t("chatbot.chat.wakingup")}
+                </span>
                 <span className="typing-dots" aria-hidden="true">
                   <span></span>
                   <span></span>
@@ -195,7 +199,7 @@ export default function ChatbotPage() {
             className="chat-button"
             onClick={sendMessage}
             disabled={isLoading || !input.trim()}
-            aria-label="Send message"
+            aria-label={t("chatbot.chat.label")}
           >
             <i className="fas fa-paper-plane"></i>
           </button>
