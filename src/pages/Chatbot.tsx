@@ -158,7 +158,7 @@ export default function ChatbotPage() {
   return (
     <div className="container">
       <h2>
-        <i className="fas fa-solid fa-robot"></i> {t("chatbot.title")}
+        <i className="fas fa-solid fa-robot"></i> {t("chatbot.title") + " v1.2"}
       </h2>
       <p>{t("chatbot.main")}</p>
 
