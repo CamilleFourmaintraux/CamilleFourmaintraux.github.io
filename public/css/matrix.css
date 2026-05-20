@@ -1,0 +1,43 @@
+.matrix {
+  display: inline-block;
+}
+
+#matrix_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-top: 20px;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.matrix_inputs_wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.matrix_inputs {
+  text-align: center;
+}
+
+#matrix_labels_wrapper {
+  display: flex;
+  gap: 10px;
+  justify-content: left;
+  width: min-content;
+}
+
+#matrix_label_size {
+  width: 100px;
+}
+
+#matrix_input_size {
+  width: 25px;
+}
+
+#matrix_button_wrapper {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}

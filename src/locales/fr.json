@@ -1,0 +1,619 @@
+{
+  "header": {
+    "subtitle_sentence": "Étudiant à Polytech Grenoble",
+    "me_img_alt": "Photo de Camille Fourmaintraux, jeune homme aux cheveux brun(#291c16), yeux marron(#432b26), peau blanche(#c8988f), cheveux mi-longs, barbe mal rasé, moustache, pull bleu(#001b36).",
+    "mainnav": {
+      "home": "Accueil",
+      "career": "Cursus",
+      "portfolio": "Portfolio",
+      "interests": "Centres d'intérêt",
+      "contact": "Contact"
+    },
+    "subnav": {
+      "education": "Formation",
+      "skills": "Compétences",
+      "softskills": "Qualités",
+      "experience": "Expérience"
+    }
+  },
+  "footer": {
+    "resume": "CV",
+    "resume_filename": "/files/resume_stage.pdf",
+    "email": "E-Mail",
+    "linkedin": "Linkedin",
+    "github": "Github",
+    "files": "Documents"
+  },
+  "redirection": {
+    "title": "Redirection",
+    "sorry": "Désolé, cette page n'existe pas. :/",
+    "back": "Revenir à l'accueil"
+  },
+  "test": {
+    "title": "Page de Test",
+    "main": "Cette page est une page de test.",
+    "back": "Revenir à l'accueil"
+  },
+  "chatbot": {
+    "title": "CamilleGPT",
+    "main": "Cette page est une expérimentation avec l'IA générative pour qu'un agent me connaisse, ainsi que mes projets, afin qu'il puisse parler en mon nom.",
+    "chat": {
+      "title": "Discutez avec le robot",
+      "subtitle": "Posez-moi toutes vos questions sur Camille et ses projets !",
+      "label": "Envoie le message",
+      "placeholder": "Posez une question..."
+    },
+    "back": "Retour à la page d'accueil"
+  },
+  "topOfPage": "Haut de page",
+  "presentation": {
+    "title": "Présentation",
+    "greeting": "Bonjour !",
+    "intro": "Je suis étudiant en troisième année à l'école polytechnique universitaire de Grenoble-Alpes. J'ai obtenu récemment mon diplôme de BUT informatique à l'IUT de Lille.",
+    "internship_UNUSED": "J'ai récemment obtenu un stage de 16 semaines au sein d'une équipe de développement chez",
+    "internship_dates_UNUSED": "du 10 mars jusqu'au 27 juin 2025.",
+    "previous_internship_UNUSED": "J'avais déjà réalisé mon précédent stage dans cette entreprise, qui avait été très satisfaite de mon travail et a donc décidé de me reprendre.",
+    "company_description_UNUSED": "est une société de conseil et d'intégration de solutions avec plus de 20 ans d'expérience. L'entreprise accompagne ses clients dans leurs démarches d'urbanisation de leurs systèmes d'informations, afin de les rendre plus efficaces et évolutifs.",
+    "motivation": "Mon parcours académique et ma passion pour l'informatique me motivent à m'engager pleinement dans ce domaine en constante évolution. Je suis déterminé à contribuer de manière significative et à apporter une valeur ajoutée à l'entreprise qui me fera confiance."
+  },
+  "goals": {
+    "title": "Mes objectifs",
+    "text": "Mes études à Polytech Grenoble me permettront d'approfondir mes compétences et mes connaissances ainsi que de me spécialiser dans le domaine du développement logiciel et dans la gestion des systèmes réseaux, ce qui me permettra de m'intégrer pleinement dans une équipe de développement logiciel."
+  },
+  "cv": {
+    "title": "Mon CV",
+    "download": "Vous pouvez télécharger mon CV en pdf en cliquant",
+    "here": "ici"
+  },
+  "dev": {
+    "title": "En développement",
+    "text": "Mon site est encore en développement, il pourrait encore y avoir de nouveaux ajouts, des modifications (et des bugs)."
+  },
+  "secret": {
+    "title": "Page secrète ?",
+    "description": "Cette page regroupe tous les documents téléchargeables du site en un seul endroit. Étant donné que les liens de téléchargement des fichiers sont dispersés à travers le site, chaque fichier étant associé à la section qui lui correspond, j'ai créé cette page pour faciliter l'accès à l'ensemble des documents."
+  },
+  "documents": {
+    "title": "Liste de tous les documents pdf téléchargeables",
+    "resume_english": "CV en anglais",
+    "resume_french": "CV en français",
+    "attestation_dut": "Attestation DUT",
+    "rapport_stage": "Rapport de stage 2024",
+    "kaplan": "Attestation Kaplan International London School",
+    "pix": "Attestation PIX",
+    "studies_notice": "Avis de poursuite d'étude",
+    "toeic": "Certification du Toeic",
+    "download": "Télécharger"
+  },
+  "pending": {
+    "title": "Documents en attente",
+    "description": "Il se peut que certains documents affichent la mention « Bientôt » au lieu de « Télécharger ». J'attends encore la réception de certains documents et les mettrai à disposition sur le site dès que possible."
+  },
+
+  "contact": {
+    "title": "Contact",
+    "intro": "Si mon profil vous intéresse, ou si vous voulez plus d'informations, vous pouvez me contacter grâce au formulaire de contact, ou avec l'un des services suivants :",
+    "mail": "Mon mail :",
+    "linkedin": "Mon Linkedin :",
+    "github": "Mon GitHub :",
+    "footer": "La version pdf de mon CV, ainsi que mes réseaux sont aussi disponibles en bas de chacune des pages."
+  },
+  "form": {
+    "title": "M'envoyer un message",
+    "name": "Nom",
+    "name_placeholder": "Votre nom...",
+    "forename": "Prénom",
+    "forename_placeholder": "Votre prénom...",
+    "email": "E-Mail",
+    "email_placeholder": "Votre mail...",
+    "subject": "Intitulé",
+    "subject_placeholder": "Intitulé du message...",
+    "message": "Message",
+    "message_placeholder": "Votre message...",
+    "send": "Envoyer",
+    "sent": "Envoi...",
+    "msg-success": "Votre message a bien été envoyé.",
+    "msg-error": "Désolé, une erreur est survenue durant l'envoi de votre message.",
+    "msg-invalidEmail": "Veuillez entrer une e-mail valide.",
+    "msg-sent": "Veuillez attendre quelques secondes."
+  },
+  "thanks": {
+    "title": "Merci",
+    "message": "Merci d'avoir pris le temps de vous intéresser à mon profil !"
+  },
+  "formation": {
+    "title": "Formation",
+    "2025": {
+      "notice": "Avis de poursuite d'étude très favorable",
+      "toeic": "Obtention de ma certification du",
+      "toeic_level": "Niveau C1"
+    },
+    "2024": {
+      "kaplan": "Séjour d'un mois en Angleterre dans une école spécialisée",
+      "kaplan_desc": "pour renforcer mes compétences en anglais.",
+      "dut": "Obtention de mon DUT",
+      "iut_img_alt": "Photo du devant de l'iut. Façade blanche avec écrit en grande lettre noire : 'INSTITUT UNIVERSITAIRE DE TECHNOLOGIE'."
+    },
+    "2022": {
+      "bac": "Baccalauréat général Mention Bien - Lycée Pierre D'Ailly Compiègne",
+      "pix": "Certification PIX 635pix",
+      "driving": "Permis B",
+      "lyc_img_alt": "Photo d'un des bâtiment du lycée Pierre d'Ailly à Compiègne, ressemble à un petit château de la rennaissance en briques."
+    },
+    "iut": "IUT de Lille Villeneuve d'Ascq",
+    "lycee": "Lycée Pierre D'Ailly Compiègne"
+  },
+  "experience": {
+    "title": "Expériences professionnelle",
+    "stage2025": {
+      "title": "Stage intégrateur SOA webMethods pendant 16 semaines de mars à juin 2025 chez",
+      "description": "J'ai réalisé mon second stage chez E-Mothep, qui s'est très bien passé. Mes missions étaient similaires à celes que j'ai eu l'année dernière, à la différence que j'étais plus libre sur le choix et l'implémentation des solutions pour une tâche ou un problème.",
+      "full_report": "Lire mon rapport de stage complet"
+    },
+    "tutor": {
+      "title": "Tuteur pour l'université de Lille de octobre 2024 à mars 2025",
+      "support": "Cours de soutien à des élèves en difficulté",
+      "group": "Gérer un groupe d'élèves",
+      "responsibilities": "Responsabilités"
+    },
+    "stage2024": {
+      "title": "Stage intégrateur SOA webMethods pendant 10 semaines d'avril à juin 2024 chez",
+      "company_desc": "est une entreprise spécialisée dans le développement de solutions logicielles.",
+      "logo_alt": "Logo d'E-Mothep, trois cubes dans une formation triangulaire, 2 verts, 1 gris.",
+      "main_project": {
+        "title": "Projet principal :",
+        "desc": "Maintenance d'AMAT (Automated Monitoring & Analysing Tool) par l'intégration de nouvelles fonctionnalités et correction de bugs. Certains services avaient des comportements inattendus que j'ai dû analyser, comprendre et corriger."
+      },
+      "api": {
+        "title": "Développement d'une API :",
+        "desc": "Pour la mise à jour automatique des référentiels, optimisant les processus et réduisant les erreurs."
+      },
+      "documentation": {
+        "title": "Rétrodocumentation :",
+        "desc": "Rédaction de rétro-documentation sur un projet interne via l'analyse du code et des interactions avec la base de données Firebase."
+      },
+      "internal_project": {
+        "title": "Développement sur un projet interne de base de connaissances :",
+        "desc": "Refactorisation de la gestion des erreurs à partir d'un autre projet et tests via Postman pour valider les retours d'erreurs."
+      },
+      "pm": {
+        "title": "Expérience en gestion de projet :",
+        "desc": "Priorisation des tâches, travail en équipe et résolution de problèmes."
+      },
+      "skills": {
+        "title": "Compétences techniques acquises :",
+        "desc": "Gestion des bases de données, développement d'API, documentation, gestion de projet, travail en équipe."
+      },
+      "tools": {
+        "title": "Outils & langages de programmation employés :",
+        "desc": "DBeaver, Software AG Designer, Postman, MANTIS, WinSCP, GitHub, Firebase, Angular, TypeScript."
+      },
+      "full_report": "Lire mon rapport de stage complet"
+    },
+    "carrefour": {
+      "title": "Employé Polyvalent dans le Carrefour Contact de Ressons sur Matz de Juillet à Août 2022.",
+      "team": "Intégration d’une équipe",
+      "autonomy": "Travail en autonomie",
+      "initiative": "Prise d’initiatives"
+    }
+  },
+  "skills": {
+    "qualities": {
+      "title": "Qualités/Savoir-être",
+      "organized": "Organisé",
+      "attentive": "Attentif",
+      "curious": "Curieux",
+      "autonomous": "Autonome"
+    },
+    "title": "Compétences / Savoir-faire",
+    "language": "Langue :",
+    "language_value": "Anglais",
+    "programming": "Langages de programmation :",
+    "programming_value": "Java, JavaScript, TypeScript, Python, C",
+    "tools": "Outils de développement (IDE) :",
+    "tools_value": "Software AG Designer, Eclipse, IntelliJ, VSCode",
+    "web": "Développement web :",
+    "web_value": "HTML, CSS, JavaEE, React, Angular, Spring-Boot",
+    "sql": "Gestion de bases de données SQL :",
+    "sql_value": "PostgreSQL, DBeaver, H2",
+    "nosql": "Gestion de bases de données NoSQL :",
+    "nosql_value": "MongoDB, Redis, Cassandra",
+    "api": "Gestion d'API :",
+    "api_value": "Bruno, Postman",
+    "collab": "Outils collaboratifs :",
+    "collab_value": "Git, GitLab, GitHub, Trello, Mantis",
+    "scrum": "Scrum :",
+    "scrum_value": "Fut Scrum Master lors d'un projet agile.",
+    "ci": "CI/CD :",
+    "ci_value": "Automatisation, intégration et déploiement continus",
+    "quality": "Qualité du code :",
+    "quality_value": "Qualité de développement et algorithmique",
+    "math": "Modélisation Mathématiques :",
+    "math_value": "Graphes, imagerie, IA, visualisation",
+    "media": "Programmation multimédia :",
+    "media_value": "Manipulation d'images 2D, filtrage spatial"
+  },
+  "courses": {
+    "springboot_title": "Spring-Boot",
+    "springboot_desc": "Formation et projet sur Spring-Boot et Spring security pour la conception du back-end d'un site de prise de rendez-vous.",
+
+    "math_title": "Modélisation Mathématique",
+    "math_desc": "L’objectif de cette ressource était d’approfondir plusieurs domaines d’applications en donnant des éléments de formalisation, de connaissances et d’usages spécifiques à ces domaines, en particulier dans le domaine des mathématiques et de l’algorithmique sous-jacentes.",
+
+    "nosql_title": "MongoDB, Redis, Cassandra",
+    "nosql_desc": "Formation sur les Base de Données NoSQl. Introduction à MongoDb, Redis et à Cassandra pour la distribution de données : scalabilité horizontale.",
+
+    "react_title": "React",
+    "react_desc": "Formation et projet pour développer un front-end en React. Utilisation d'API, appels AJAX, Formulaires, Components, Refs, Redux.",
+
+    "quality_title": "Qualité de code",
+    "quality_desc": "Formation sur la qualité de développement, qualité algorithmique et aide à la décision. Algorithmes glouton, Apprentissage supervisé/K-NN, Classification Bayesienne et arbre de décisions.",
+
+    "ci_title": "CI/CD",
+    "ci_desc": "L’objectif de cette ressource est de concrétiser la chaîne de production d’une application afin de développer les aptitudes nécessaires pour travailler efficacement dans une équipe informatique.",
+
+    "postman_title": "Postman, Bruno",
+    "postman_desc": "Utilisation de Postman et de Bruno pour émettre des requêtes afin de tester des APIS.",
+
+    "multimedia_title": "Programmation multimédia",
+    "multimedia_desc": "Sensibilisation à la programmation multimédia. Manipulation d'images 2D, Historigrammes, Convolution et filtrage spatiale et Détections de contours. L'objectif de cette formation était de nous familiariser avec des méthodes classiques d’analyse et de traitement d’images.",
+
+    "tools_title": "Outils Collaboratifs",
+    "tools_desc": "Utilisation régulière d'outils de collaborations tels que Gitlab, GitHub, Trello, Mantis, Microsoft Teams.",
+
+    "softwareag_title": "Software AG Designer",
+    "softwareag_desc": "WebMethods était une société de logiciels d’entreprise qui se concentrait sur l’intégration d’applications, l’intégration de processus commerciaux et également l’intégration de partenaires B2B. En 2007, WebMethods a été rachetée par Software AG est devenue une filiale de cette entreprise. Software AG a conservé le nom WebMethods. Elle l’utilise pour identifier une suite logicielle englobant l’amélioration des processus, la mise en place d’une SOA, la modernisation informatique ainsi que l’intégration des entreprises.",
+
+    "toeic_title": "Certification Toeic",
+    "toeic_desc": "Certification au Toeic de niveau C1, correspondant à un utilisateur expérimenté, c'est-à-dire : Capable de comprendre des textes longs, de saisir des significations implicite, ainsi que de s'exprimer spontanément et couramment sans trop devoir chercher ses mots."
+  },
+  "portfolio": {
+    "advancedsearch": {
+      "toggle_show": "Afficher la recherche 🔽",
+      "toggle_hide": "Masquer la recherche 🔼",
+      "search_placeholder": "Rechercher un projet...",
+      "filter_from": "Du :",
+      "filter_to": "Au :",
+      "sort_button": "Trier",
+      "sort_asc": "du plus ancien au plus récent",
+      "sort_desc": "du plus récent au plus ancien",
+      "show": "Afficher",
+      "filter_all": "tous les projets",
+      "filter_inprogress": "les projets en cours",
+      "tag_all": "Tous",
+      "result_count": "{{count}} résultat{{plural}} trouvé{{plural}}",
+      "no_results": "Aucune réalisation ne correspond aux critères."
+    },
+    "period": "Période : ",
+    "in_progress": "En cours",
+    "prog": {
+      "python": {
+        "title": "Console Python",
+        "desc": "Cette page contient une console Python intégrée."
+      },
+      "java": {
+        "": ""
+      }
+    },
+    "work": {
+      "page_title": "Mes travaux",
+      "page_subtitle": "Mes réalisations professionnelles",
+      "page_description": "Cette page regroupe tous les projets auxquels j'ai participé dans un cadre professionnel.",
+      "sae_explanation": "Une SAÉ (Situation d'Apprentissage et d'Évaluation) est une activité d'apprentissage et d'évaluation par projet nécessaire au développement de compétences professionnelles clés au sein du système d'enseignement supérieur français.",
+      "saes": {
+        "linkText": "Voir le",
+        "link": "dépôt GitHub",
+        "skills": "Savoir-faires acquis",
+        "know_how": "Savoir-êtres acquis",
+        "mnia-env": {
+          "title": "Projet MNIA (Méthodes Numériques appliqués à l'IA)",
+          "presentation": "Conception d'un environnement d'apprentissage",
+          "presentationDescription": "Développement d'un environnement pour un agent d'apprentissage par renforcement (RL).",
+          "section": "Conception d'IA RL",
+          "section_text": "Développement d'IA RL simple pour tester l'environnement",
+          "skill1": "Introduction à l'apprentissage par renforcement",
+          "skill2": "Meileure compréhension des IA",
+          "skill3": "Carte blanche pour le choix, choix de Java. Design complet de la structure du code."
+        },
+        "pagil1": {
+          "title": "Création d'un Jeu dans le Terminal avec Méthodologie Agile SCRUM",
+          "title1": "Développement d'un jeu en mode console",
+          "text1": "Nous n'avions que quelques jours pour créer un jeu, en suivant la méthode agile Scrum. Les équipes étaient formées aléatoirement entre tous les membres de la promotion. Cela nous a permis de faire équipe avec des personnes que l'on ne connaissait pas et d'apprendre à collaborer et communiquer malgré cela.",
+          "alt1": "TODO",
+          "title2": "Rôle de ScrumMaster, gestion des User Stories et suivi du projet selon la méthodologie agile SCRUM",
+          "text2": "Durant ce projet, chaque membre de l'équipe avait un rôle, on m'a attribué celui de Scrum Master. J'avais la responsabilité de mettre à jour le tableau d'avancement, et de réaliser les graphes burn-Up et burn-Down pour montrer l'avancement de notre projet.",
+          "alt2": "TODO",
+          "know_how1": "SCRUM, méthodes agiles",
+          "know_how2": "intégrer une équipe",
+          "know_how3": "Communiquer et collaborer en équipe"
+        },
+        "pagil2": {
+          "title": "Création d'un BACK-END et d'un FRONT-END pour un site web",
+          "presentation": "Développement de CODE SWIPE",
+          "presentationDescription": "Nous n'avions que quelques jours pour créer un site web en suivant la méthode agile Scrum. CodeSwipe est une application parodique de Tinder où on a remplacé les gens par du morceaux de codes. Les utilisateurs swipent à droite s'ils pensent que c'est un bon code, ou swipent gauche dans le cas contraire.",
+          "role": "Rôle de ScrumMaster, gestion des User Stories et suivi du projet selon la méthodologie agile SCRUM",
+          "roleDescription": "Durant ce projet, le rôle de ScrumMaster devait changer chaque jour. J'ai donc eu la responsabilité de mettre à jour le tableau d'avancement, et de réaliser le graphe burn-Up. Durant ce projet, nous avons fait bien plus attention à la gestion des tickets et des branches sur Git.",
+          "know_how1": "SCRUM, méthodes agiles",
+          "know_how2": "intégrer une équipe",
+          "know_how3": "Communiquer et collaborer en équipe"
+        },
+        "internship1": {
+          "title": "Stage intégrateur SOA webMethods chez EMothep",
+          "text": "Voir mes réalisations durant le stage"
+        },
+        "internship2": {
+          "title": "Stage intégrateur SOA webMethods chez EMothep",
+          "text": "Voir mes réalisations durant le stage"
+        },
+        "sae103": {
+          "title": "Installation de service réseau",
+          "presentation": "Installation d'un poste de travail",
+          "presentationDescription": "L’objectif principal de la saé 1.03 était de nous introduire à la configuration réseau, celui de la saé 2.03 était de nous introduire à la configuration d’un réseau pour une entreprise ainsi qu’à nous apprendre à utiliser Markdom ou Ascii Doctor pour rédiger des rapports et de la documentation.",
+          "machine_install": "Recherches en autonomies",
+          "machine_install_text": "On nous a fait installer une machine virtuelle, de deux manières, une manuelle et une avec un fichier préconfiguré, afin de nous apprendre à installer des OS sur des machines. Cette Saé nous a fait beaucoup explorer les fichiers et les manuels afin que l’on développe la compétence se chercher et de se renseigner pour trouver ce que l’on cherche.",
+          "skill1": "Manier des machines virtuelles",
+          "skill2": "Configurer un poste et un réseau collaboratif",
+          "skill3": "Chercher dans la documentation",
+          "skill4": "Utiliser des langages de balisages léger (markdom, asciiDoctor)"
+        },
+        "sae105": {
+          "title": "Conception et développement d'un site web pour présenter une entreprise",
+          "presentation": "Utilisation de HTML et de CSS pour la création de la structure et du design",
+          "presentationDescription": "Ce projet consistait à analyser les besoins d’un entreprise voulant créer une plateforme en ligne pour mettre en place du covoiturage entre leurs employés pour répondre à des problèmes de trafics et de pollutions. A partir de cette analyse, il fallait concevoir une maquette puis leur créer un site répondant à ces besoins.",
+          "wordpress": "Maquette WordPress",
+          "wordpress_text": "Nous avions commencé par faire une maquette WordPress pour proposer un début de design et de solutions aux besoins, et une fois celle-ci validée, nous sommes passés à la conception directement en HTML et en CSS. L’objectif principal était de nous apprendre à coder avec ces langages dans des conditions semblables à un réel projet ainsi qu’à nous faire respecter une charte graphique particulière, le tout se devait d’être cohérent et appréciable à regarder.",
+          "skill1": "HTML, CSS",
+          "skill2": "Respecter une charte graphique",
+          "skill3": "Analyser un problème, proposer des solutions"
+        },
+        "sae202": {
+          "title": "Création d'une Application d'Échanges Scolaires en Java et JavaFX",
+          "presentation": "Développement d’une application interactive en java",
+          "presentationDescription": "L'application consistait à permettre des échanges scolaires entre pays. Ainsi, nous devions y inclure une base de données d'étudiants en fonction de pays, puis calculer les affinités en fonction de certains paramètres pour choisir les binômes d'étudiants les plus compatibles, grâce à des algorithmes de graphes, notamment Dijkstra.",
+          "interface": "Utilisation de JavaFX pour l’Interface Homme-Machine",
+          "interface_description": "Cette application était à réaliser, dans un premier temps, entièrement au format texte dans la console du terminal. Pour le rendu final par contre, nous devions créer une application en JavaFx afin de donner un interface graphique à notre programme, rendant notre application plus ergonomique et accessible d'utilisation.",
+          "skill1": "Java, JavaFx",
+          "skill2": "Trouver des appairements à l'aide d'algorithmes",
+          "skill3": "Concevoir une interface ergonomique"
+        },
+        "sae207": {
+          "title": "Création d'une Base de Données - Ventilation de Données",
+          "presentation": "Volume de données, création d’une base de données",
+          "presentationDescription": "Nous devions extraire un ensemble volumineux de données d'un fichier en une table, puis ventiler ces données.",
+          "postgresql": "Utilisation de PostgreSQL et Access pour stocker et interroger les données",
+          "postgresql_text": "Nous avons utilisé Postgresql et Access pour créer les tables et formuler les requêtes afin de pouvoir répondre aux interrogations du 'client' sur les données.",
+          "skill1": "SQL, Postgresql, Access, WordPress",
+          "skill2": "Ventiler des données, gérer un grand ensemble de données",
+          "skill3": "Formuler des requêtes, analyser les données"
+        },
+        "sae213": {
+          "title": "Escape Game",
+          "presentation": "Développement d'un escape game",
+          "presentationDescription": "Cette Saé avait pour but de nous faire travailler en équipe, de nous apprendre le travail d’équipe. L’utilisation de Genially et de Trello qui sont des logiciels collaboratifs nous ont permis de mieux voir l’importance de la collaboration, encore plus que dans les autres Saé en groupe.",
+          "text1": "Nous devions régulièrement organiser des réunions entre tous les membres de l’équipe, ces réunions permettaient de faire le point sur l’avancement du projet, sur les difficultés qu’un membre pouvait rencontrer, d’apporter de l’aide à ceux qui en aurait besoin et de permettre l’apparition de nouvelles idées à travers les échanges. Nous devions aussi documenter tous les progrès du projet et rédiger les comptes-rendus des réunions.",
+          "text2": "On nous a fait installer et configurer Gitea pour nous faire configurer un réseau collaboratif et nous apprendre à l’utiliser. Enfin, il fallait rédiger un rapport pour garder trace et expliquer tout ce qu’on a fait. Ces rapports devaient être rédigés en balisage léger comme Markdom ou Ascii Doctor ce qui nous a permis d’obtenir les compétences nécessaires pour utiliser des langages de Balisages léger.",
+          "skill1": "Collaboration, travail en équipe",
+          "skill2": "Outils de collaboration (Git, Trello)",
+          "skill3": "Créativité, conception d'énigmes (sur Genially)",
+          "escapeGameLink": "Tester l'escape game !"
+        },
+        "sae302": {
+          "title": "Création d'un jeu avec JavaFX",
+          "presentation": "Concevoir MonsterHunt",
+          "presentationDescription": "On nous avait simplement donné des instructions de gameplay et quelques interfaces et nous devions, à partir de cela, concevoir tout le jeu. Ce jeu se joue à deux joueurs, un monstre et un chasseur.",
+          "testing": "Tests et documentations",
+          "testingDescription": "Durant cette saé, les professeurs ont particulièrement insisté sur la pertinence des tests et de la documentation que nous devons fournir.",
+          "skill1": "Java, JavaFx",
+          "skill2": "Implémanter des mécaniques de gameplay",
+          "skill3": "Tests, Documentation",
+          "skill4": "Patrons de conceptions"
+        },
+        "sae401": {
+          "title": "Développement d'une API REST",
+          "presentation": "Structuration",
+          "presentationDescription": "Cette saé portait sur réaliser un site web d'une pizzeria 'Pizzeria Mazzorello' respectant l'architecture REST.",
+          "ingredients_table": "Ingrédients : ",
+          "ingredients_table_values": "id, nom, prix",
+          "pizza_table": "Pizzas : ",
+          "pizza_table_value": "id, nom, type de pâte, ingrédient, prix de base",
+          "orders_table": "Commandes : ",
+          "orders_table_value": " id, client, date",
+          "security": "Sécurité",
+          "security_description": "Mise en place de différents système d'authentification notamment API Token et JWT token.",
+          "skill1": "Architecture REST : ",
+          "skill1_text": "Nous ne connaisions pas les architectures REST, ce projet nous à permis de les comprendre et d'apprendre à créer des site la respectant.",
+          "skill2": "Postgresql : ",
+          "skill2_text": "Pour ce projet, l'utilisation d'une base de données était nécessaire.",
+          "know_how1": "Autonomie : ",
+          "know_how1_text": "Ce projet est le seul que nous avons eu à réaliser entièrement seul mais étant très autonome, cela ne m'a pas posé de problèmes.",
+          "know_how2": "Respect des délais : ",
+          "know_how2_text": "Les délais pour ce projet étaient assez court, ce fut un bon exercice pour bien faire attention à rendre dans les temps tout en respectant le cachier des charges."
+        },
+        "sae402": {
+          "title": "Développement d'une application complexe",
+          "presentation": "Idées de gameplay",
+          "presentationDescription": "Nous avons reçu un cahier des charges, avec toutes les fonctionnalités minimales que devrais avoir l'application finale. Notre première mission était donc de réfléchir à des éléments de gameplay ainsi qu'à un thème permettant de répondre aux consignes.",
+          "multiplayer": "Multijoueurs avec node.js et socket.io",
+          "multiplayer_description": "C'était la première fois que nous devions développer un jeu multijoueur, ce fut un défi très intéressant et cela nous à fait réfléchir et comprendre à comment fonctionnent les jeux multijoueurs en général. Grâce à cette saé, nous avons appris à utiliser socket.iio pour connecter le server et les clients entre eux, et permettre la création de différentes parties indépendantes sur le même serveur grâce aux rooms.",
+          "skill1": "JavaScript ES6 : ",
+          "skill1_text": "Nous n'avions jamais codé en javascript avant ce projet. Ce fut l'occasion d'apprendre et de mettre en pratique ces nouvelles compétences.",
+          "skill2": "Nodes.js, socket.io : ",
+          "skill2_text": "Grâce à socket.io, nous avons pu créer un jeu multijoueur où plusieurs parties peuvent se dérouler en même temps.",
+          "skill3": "Babel, Prettier : ",
+          "skill3_text": "Gérer des dépendances (package.json) dans un projet js.",
+          "skill4": "Canvas : ",
+          "skill4_text": "Dessiner des formes, des images dans un canvas",
+          "know_how1": "Travail d'équipe : ",
+          "know_how1_text": "Nous avons réalisé ce projet en binôme, qui était prévu d'être fait en trinôme, ce qui nous à mis à l'épreuve pour finir dans les temps avec un tiers de notre force de travail.",
+          "know_how2": "Collaboration : ",
+          "know_how2_text": "Afin de pouvoir finir dans les temps, une bonne répartition du travail était essentielle. Nous avons relevé ce défi haut la main, en respectant le cahier des charges et en ayant même des fonctionnalités suplémentaires.",
+          "know_how3": "Qualité des dépôts git (Commits, Milestones) : ",
+          "know_how3_text": "Le professeur avait particulièrement insisté sur la qualité de notre dépôt git et sur la gestion des tâches, nous avons donc appris à mieux utiliser les outils collaboratif de GitLab."
+        },
+        "sae501": {
+          "title": "Emulateur RiscV",
+          "presentation": "Langages de bas-niveaux",
+          "presentationDescription": "Dans le cadre de cette SAÉ, nous avons été confrontés au développement d’un logiciel qui sort du périmètre dans lequel nous avions l’habitude d’évoluer. Nous avons développé un logiciel permettant d’émuler un ordinateur basé sur un processeur RISC-V.",
+          "programming": "Programmation dans un langage de bas-niveau",
+          "programmingDescription": "L’émulation est le fait de simuler le fonctionnement d’une architecture matérielle à l’aide d’un programme informatique. Le programme est en charge de modéliser et de faire évoluer l’état « virtuel » de l’architecture matérielle. Le logiciel d’émulation doit donc proposer une structure de données qui représente le matériel que l’on cherche à simuler et faire évoluer ces données au fur-et-à-mesure de l’avancée de la simulation. Les registres sont les plus petites unités de stockage du processeur. Ils sont intégrés à celui-ci et n’ont pas d’adresse car il ne sont pas en mémoire. Il sont directement utilisables dans les instructions machine et servent de stockage de traitement. L’unité arithmétique et logique travaille exclusivement avec eux sur la plupart des architectures.",
+          "skill1": "Programmation en C",
+          "skill2": "Apprendre un nouveau langage",
+          "skill3": "Découvrir le fonctionnement d'un processeur",
+          "skill4": "Écrire un programme respectant une spécification stricte"
+        },
+        "sae509": {
+          "title": "WEB BACK",
+          "presentation": "Le projet",
+          "presentationDescription": "L’objectif de ce projet consiste à réaliser un site internet de gestion de rendez-vous multi-utilisateurs.",
+          "spring_framework": "Spring Framework",
+          "spring_description": "Spring est un framework open source pour construire et définir l'infrastructure d'une application Java, dont il facilite le développement et les tests. Spring Boot est un framework Java open source utilisé pour programmer des applications Spring autonomes de qualité production avec un ensemble de bibliothèques qui facilitent le démarrage et la gestion des projets. Grâce a ce projet, nous avons appris à utiliser le framework java back-end Spring, ainsi que Spring Security. Spring Security est un framework Java/Java EE qui fournit des fonctionnalités d'authentification, d'autorisation et d'autres fonctionnalités de sécurité pour les applications d'entreprise. Notre projet ne contenait que deux rôles : User et Admin. Un admin peut faire tout ce qu'un utilisateur connecté (User) peut faire, mais aussi accéder et modifier les rendez-vous des autres utilisateurs.",
+          "skill1": "Framework Spring",
+          "skill2": "JPA",
+          "skill3": "Spring Security",
+          "skill4": "Lombok"
+        }
+      }
+    },
+    "passion": {
+      "page_title": "Ma passion",
+      "page_subtitle": "Mes réalisations personnelles",
+      "page_description": "Ma plus grande passion reste avant tout la programmation. Je m'amuse donc à essayer de réaliser quelques projets (souvent des jeux) sur mon temps libre.",
+      "other_activities": {
+        "title": "Autre activités",
+        "programming": "Encore plus de programmation",
+        "member_of_board_game_club": "Membre d’un club de jeux de plateau et de société",
+        "solving_riddles": "Résolution de casse-têtes, d'énigmes",
+        "escape_games": "Escape Games",
+        "news_monitoring": "Suivi de l'actualité",
+        "reading": "Lecture de romans de Fantaisie"
+      },
+      "projects": {
+        "first3dplatformer": {
+          "title": "Création d'un jeu de mon premier jeu en 3D : un platformer !",
+          "learn_godot_title": "Apprendre Godot",
+          "learn_godot_text": "J'ai commencé à travailler sur ce jeu car je voulais apprendre à utiliser Godot et à créer un jeu en 3D. Mon premier objectif a été de créer un joueur avec des déplacements basiques évoluant dans un environnement 3D simpliste, puis de fil en aiguille j'ai décidé de continuer avec cette mécanique de gameplay simple et de faire un jeu de plateformes.",
+          "gameplay_elements_title": "Éléments de gameplay",
+          "gameplay_elements_text": "Continuer avec cette mécanique de gameplay simple m'a permis de me concentrer sur d'autres aspects du jeu comme la création de menus avec un menu de pause et d'options. Mais aussi de nouveaux éléments de gameplay comme des plateformes qui se déplacent, des ascenseurs ou des éléments à collecter dans chaque niveau.",
+          "skills_title": "Compétences acquises",
+          "skills_list": {
+            "godot": "Godot, GDScript",
+            "physics": "Physique 3D",
+            "game_design": "Game Design",
+            "mesh_creation": "Création de mesh 3D, textures"
+          },
+          "img_alt": "TODO"
+        },
+        "firstgamejam": {
+          "title": "Ma première gamejam !",
+          "title1": "Poster sur Itch.io mon premier jeu",
+          "text1": "En me baladant sur Itch.io, j'ai vu la section gamejam et ça m'a donné envie de participer. J'ai choisi la première gamejam qui allait commencer : <strong>1-BIT JAM #4</strong>, et je me suis mis à coder. J'ai fini 114ème sur 338 participants.",
+          "alt1": "TODO",
+          "title2": "1-BIT JAM #4",
+          "text2": "Cette game jam avait une condition : le jeu devait ne contenir que deux couleurs maximum, de préférences noir et blanc. J'ai créé TheLegendOfKnardWizight, un shooter 2D, en suivant ces contraintes. L'objectif est de défendre sa tour de vagues de monstres. Si vous vous faites toucher, ou si la tour est détruite, vous perdez.",
+          "play_link": "Tester le jeu !",
+          "alt2": "TODO",
+          "skills_title": "Compétences acquises",
+          "skills_list": {
+            "godot": "Godot, GDScript",
+            "physics": "Physique 2D",
+            "sprites": "Création de sprites 2D",
+            "time": "Temps très limité"
+          }
+        },
+        "mazegenerator": {
+          "title": "Création d'un générateur de labyrinthe.",
+          "title1": "Algorithmes",
+          "text1": "Je souhaitais apprendre comment faire pour générer des labyrinthes. J'ai donc étudié divers algorithmes qui permettaient de réaliser cela, puis j'ai essayé de les implémenter.",
+          "alt1": "TODO",
+          "title2": "Affichage graphique",
+          "text2": "Dans un premier temps, je faisais apparaître les labyrinthes dans la console sous forme textuelle, puis j'ai décidé d'essayer d'utiliser javaFx pour représenter mon labyrinthe. C'est à partir de ce projet personnel que j'ai développé l'affichage pour le projet de Saé 3.02 de développement d'application.",
+          "skills_title": "Compétences acquises",
+          "skills_list": {
+            "algo": "Algorithmes",
+            "javafx": "JavaFx"
+          }
+        },
+        "minigames": {
+          "title": "Création d'un Pong et d'un casse-brique.",
+          "title1": "Pong",
+          "text1": "Je voulais essayer de créer pleins de jeux classiques, donc après la copie de Flappy Bird, j'ai essayé de faire un Pong et un casse-Brique. Pour chacun des jeux j'ai ajouté un simple menu ainsi qu'un système de score et de highScore.",
+          "alt1": "TODO",
+          "title2": "Boucle",
+          "text2": "Créer ces jeux m'a permis de mieux connaître les boucles de jeux et l'affichage en javaFX.",
+          "alt2": "TODO",
+          "skills_title": "Compétences acquises",
+          "skills_list": {
+            "timer": "AnimationTimer en JavaFX",
+            "gameloop": "GameLoop"
+          }
+        },
+        "miscellaneous": {
+          "title": "Autres jeux en développement.",
+          "list": [
+            "Flappy Bird Clone",
+            "Wolfenstein Clone",
+            "Minecraft Clone",
+            "Rpg textuel",
+            "Survival Game",
+            "Dungeon Crawler",
+            "RPG",
+            "& Divers Shoot'em up"
+          ],
+          "text": "J'apprécie d'essayer d'imaginer comment l'utilisateur va réagir afin de créer la meilleure interface ou un jeu amusant. Parfois j'ai une idée qui me vient soudainement en tête : un concept de jeux, une solution à un problème dans un projet... et je ne peux pas arrêter d'y penser avant d'essayer de l'implémenter."
+        },
+        "matrices": {
+          "title": "Des matrices !",
+          "text": "Je me suis amusé récemment à faire une page qui fais quelques calculs de matrices, afin de m'exercer à utiliser React.",
+          "link": "Voir la page"
+        }
+      },
+      "games": {
+        "matrix": {
+          "matrices": "Matrices",
+          "size": "Taille : ",
+          "m": "Matrice M",
+          "m_inverse": "Matrice inverse M⁻¹",
+          "transpose": "Transposer M",
+          "det": "Calculer det(M)",
+          "random": "Matrice Aléatoire",
+          "not_inversible": "La matrice n'est pas inversible"
+        }
+      }
+    },
+    "tags": {
+      "SCRUM": "Scrum",
+      "WEB": "Web",
+      "REACT": "React",
+      "FRONTEND": "Front-End",
+      "BACKEND": "Back-End",
+      "DB": "BDD",
+      "SPRING": "Spring",
+      "APIREST": "Api-Rest",
+      "INTERNSHIP": "Stage",
+      "INTEGRATION": "Intégration",
+      "JSP": "JSP",
+      "SYSTEMS": "Systèmes embarqués",
+      "C": "C",
+      "RUST": "Rust",
+      "PYTHON": "Python",
+      "JAVA": "Java",
+      "SOFTWARE": "Logiciel",
+      "HARDWARE": "Matériel",
+      "Python": "Python",
+      "Java": "Java",
+      "JSTS": "JS/TS",
+      "VIDEOGAME": "Jeu-Vidéo",
+      "MULTIPLAYER": "Multijoueur",
+      "THREEDIMENSIONAL": "3D",
+      "TWODIMENSIONAL": "2D",
+      "RPG": "RPG",
+      "SHOOTER": "Tirs",
+      "ARCADE": "Arcade",
+      "PLATFORMER": "Platformes",
+      "MAZES": "Labyrinthes",
+      "MATRIX": "Matrice",
+      "AI": "AI",
+      "RL": "RL"
+    }
+  }
+}

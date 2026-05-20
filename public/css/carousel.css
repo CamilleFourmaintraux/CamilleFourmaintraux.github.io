@@ -1,0 +1,69 @@
+:root {
+  --bg-cardhover-color: #bbdddd;
+}
+
+:root[data-theme="light"] {
+  --bg-card-color: #fff;
+}
+
+:root[data-theme="dark"] {
+  --bg-card-color: #eee;
+}
+
+.carousel {
+  width: 100%; /* Width of carousel */
+  height: 166px; /* Height of carousel */
+  scrollbar-color: rgba(38, 38, 126, 0.69) rgba(255, 255, 255, 0);
+  scrollbar-width: thin;
+}
+
+.card-container {
+  /*width: 100%; /* Width of card container */
+  display: flex; /* Set inline elements */
+  overflow-x: auto; /* Set overflow in horizontal scroll */
+  overflow-y: hidden; /* Hidden overflow in vertical scroll */
+  gap: 8px; /* Set gap between cards */
+  width: calc(100% - 16px);
+  height: 150px;
+  margin: 8px;
+  flex: 0 0 calc(100% - 16px); /* Set width of card container */
+}
+
+/* CSS only for phones */
+@media all and (max-width: 500px) {
+  .card-container::-webkit-scrollbar {
+    display: none; /* Hide scrollbar in Chrome, Safari and Opera */
+  }
+  .card-container {
+    scroll-snap-type: x mandatory;
+  }
+}
+
+/* CSS only for PC */ /*Depreciated*/
+@media all and (min-width: 500px) {
+  .selected {
+    background: #ff5858; /* Set background color when selected */
+  }
+}
+
+.card {
+  min-width: 250px; /* Set min width of card */
+  height: 86%; /* Set height of card */
+  scroll-snap-align: start; /* Set the element focus position in scroll container */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #4f5873;
+  color: #4a544c;
+  background-color: var(--bg-card-color);
+  border-radius: 8px;
+}
+.card:hover {
+  background: var(--bg-cardhover-color); /* Set background color when hover */
+}
+
+.cardPicture {
+  max-width: 90%;
+  height: auto;
+  margin: 10px;
+}

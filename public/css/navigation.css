@@ -1,0 +1,184 @@
+/*Colors both mode*/
+:root {
+  --bg-navLink-color: white;
+  --bg-navLink-current-color: #00aaff;
+}
+
+/*Colors light mode*/
+:root[data-theme="light"] {
+  --bg-navbar-color: #444;
+  --bg-link-color: #1234a5;
+  --bg-visitedLink-color: purple;
+}
+
+/*Colors dark mode*/
+:root[data-theme="dark"] {
+  --bg-navbar-color: #111;
+  --bg-link-color: #308aff;
+  --bg-visitedLink-color: pink;
+}
+
+nav {
+  text-align: center;
+  background-color: var(--bg-navbar-color);
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1px;
+  width: 100%;
+}
+
+.navlink {
+  text-decoration: none;
+  color: var(--bg-navLink-color);
+  margin: 5px;
+  white-space: nowrap;
+}
+
+.navlink:link {
+  color: var(--bg-navLink-color);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.navlink:visited {
+  color: var(--bg-navLink-color);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.navlink:active {
+  color: var(--bg-navLink-current-color);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.navlink:hover {
+  color: #bbdddd;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.navlink.current {
+  color: var(--bg-navLink-current-color);
+  cursor: default;
+}
+
+a:link {
+  color: var(--bg-link-color);
+  background-color: transparent;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+a:hover {
+  color: #1234ff; /*#abcdef;*/
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color: var(--bg-visitedLink-color); /*#abcdef;*/
+  background-color: transparent;
+  text-decoration: none;
+}
+
+/* Si la navigation devient fixe */
+#main_nav-wrapper.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+}
+
+.configButtons {
+  position: fixed;
+  z-index: 999;
+  right: 10px;
+}
+
+.configButtons button {
+  height: 42px;
+  width: 42px;
+  padding: 3px;
+  margin: 3px;
+  z-index: 999;
+}
+
+.configButtons #back-to-top {
+  height: 42px;
+  width: auto;
+  padding: 10px;
+}
+
+@media all and (max-width: 412px) {
+  .configButtons {
+    bottom: 80px;
+  }
+}
+@media all and (min-width: 412px) {
+  .configButtons {
+    bottom: 50px;
+  }
+}
+
+/*
+nav {
+    text-align: center;
+    background-color: #444;
+    padding: 10px 0;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+nav.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+
+#sub-navbar {
+    width: 100%;
+    background-color: #555;
+    padding: 5px;
+    display: flex;
+    gap: 10px;
+    position: fixed;
+    top: 50px;
+    left: 0;
+    z-index: 999;
+  }
+
+#sub-navbar.fixed {
+    position: fixed;
+    top: 50;
+    left: 0;
+    right: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    margin: 0 10px;
+    white-space: nowrap;
+}
+
+nav a:hover{
+    color: #BBDDDD;
+}
+
+nav a.current:hover{
+    color: #FF5151;
+}
+
+.current{
+    color: #FF5858;
+}
+*/

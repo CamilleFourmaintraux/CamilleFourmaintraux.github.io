@@ -1,0 +1,136 @@
+/*@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: black;
+    --bg-container-color: #012345;
+    --text-color: white;
+  }
+}*/
+
+:root[data-theme="light"] {
+  --bg-color: white;
+  --bg-url: url("/img/seamlessWallpaperLightNoBG.png");
+  --bg-container-color: rgba(255, 255, 255, 0.9);
+  --bg-subcontainer-color: #d9eeed;
+  --text-color: black;
+}
+
+:root[data-theme="dark"] {
+  --bg-color: black;
+  --bg-url: url("/img/seamlessWallpaperDarkNoBG.png");
+  --bg-container-color: rgba(0, 0, 0, 0.9);
+  --bg-subcontainer-color: rgb(11, 11, 32);
+  --text-color: white;
+}
+
+/*@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");*/
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", "sans-serif";
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  background-image: var(--bg-url);
+}
+
+html {
+  scrollbar-color: rgba(0, 0, 0, 0.69) rgba(125, 125, 125, 0.51);
+  scrollbar-width: thin;
+  min-height: 1000px;
+}
+
+.protected {
+  word-break: keep-all; /* Empêche la coupure des mots */
+  white-space: nowrap; /* Empêche le retour à la ligne forcé */
+}
+
+.persecuted {
+  word-wrap: break-word; /* Ancienne propriété, toujours utile pour la compatibilité */
+  overflow-wrap: break-word; /* Nouvelle version standard */
+  word-break: break-word; /* Spécifique pour les mots longs */
+}
+
+h2 {
+  margin-top: 0;
+}
+
+p {
+  line-height: 1.6;
+}
+
+@media all and (max-width: 900px) {
+  img {
+    max-width: 90%;
+    height: auto;
+    margin: 10px;
+  }
+}
+@media all and (min-width: 900px) {
+  img {
+    max-width: 60%;
+    height: auto;
+    margin: 10px;
+    margin-left: 20%;
+  }
+}
+
+.container {
+  max-width: 1250px;
+  margin: 20px auto;
+  background-color: var(--bg-container-color);
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.subcontainer {
+  max-width: 1200px;
+  margin: 10px auto;
+  background-color: var(--bg-subcontainer-color);
+  padding: 20px;
+  padding-right: 50px;
+  border-radius: 5px;
+}
+.subcontainer h4 {
+  margin: auto;
+  padding: auto;
+}
+.subcontainer h3 {
+  margin: auto;
+  padding: auto;
+}
+
+.next-to-each-other {
+  align-items: stretch;
+  width: 100%;
+}
+
+.next-to-each-other div {
+  align-items: center; /* Espacement entre les éléments */
+  width: 100%;
+}
+
+.next-to-each-other button {
+  flex: 1; /* Permet aux boutons de prendre la même largeur */
+  width: 100%;
+  align-items: center;
+}
+
+.next-to-each-other label {
+  margin: 0; /* Évite l'espacement par défaut autour des labels */
+  width: min-content;
+}
+
+@media all and (min-width: 500px) {
+  .next-to-each-other {
+    display: flex;
+    gap: 20px; /* Espacement entre les éléments */
+  }
+}
+
+.align-center {
+  justify-content: center;
+}
+
+.redText {
+  color: red;
+}
