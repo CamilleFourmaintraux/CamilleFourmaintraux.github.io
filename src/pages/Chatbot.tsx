@@ -1,16 +1,13 @@
 import { NavLink } from "react-router";
 import { useTranslation } from "react-i18next";
 import { useState, useEffect, useRef, useCallback } from "react";
+import { API_URL } from "../Utils";
 
 type Message = {
   isFromUser: boolean;
   text: string;
   fullText?: string;
 };
-
-const API_URL =
-  import.meta.env.VITE_BACKEND_URL ??
-  "https://backendportfolio-ujn6.onrender.com";
 
 const TYPING_SPEED_MS = 18;
 
@@ -42,12 +39,22 @@ export default function ChatbotPage() {
     const transcript = transcriptRef.current;
     if (loggedRef.current || transcript.length === 0) return;
     loggedRef.current = true;
+
+    const conversationText = transcript
+      .map((m) => `${m.isFromUser ? "USER" : "BOT"}: ${m.text}`)
+      .join("\n\n");
+
     fetch(`${API_URL}/mail-service`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ transcript }),
-      keepalive: true, // survives page unload, like sendBeacon
-      credentials: "omit", // no cookies → no wildcard conflict
+      body: JSON.stringify({
+        from_name: "Portfolio",
+        from_email: "Back-end",
+        subject: `Portfolio chatbot — ${transcript.length} messages`,
+        message: conversationText,
+      }),
+      keepalive: true,
+      credentials: "omit",
     }).catch((err) => console.error("Conversation log failed:", err));
   }, []);
 
