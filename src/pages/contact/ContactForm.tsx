@@ -5,7 +5,7 @@ import {
   emailjs_template,
   emailjs_user,
   validateEmail,
-} from "./MailUtils";
+} from "../../MailUtils";
 import { useTranslation } from "react-i18next";
 
 export default function ContactForm() {

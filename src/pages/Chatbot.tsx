@@ -1,11 +1,13 @@
 import { NavLink } from "react-router";
 import { useTranslation } from "react-i18next";
 import { useState, useEffect, useRef } from "react";
+import emailjs from "@emailjs/browser";
+import { emailjs_user, emailjs_service, emailjs_template } from "../MailUtils"; // adjust the relative path to wherever MailUtils.ts lives
 
 type Message = {
   isFromUser: boolean;
-  text: string; // currently displayed text
-  fullText?: string; // full target text for bot messages (drives typing animation)
+  text: string;
+  fullText?: string;
 };
 
 const API_URL =
@@ -13,6 +15,28 @@ const API_URL =
   "https://backendportfolio-ujn6.onrender.com";
 
 const TYPING_SPEED_MS = 18;
+
+/**
+ * Fire-and-forget email log. Never blocks the chat UI and never surfaces
+ * errors to the user — failures only go to the console.
+ */
+function logMessageByEmail(sender: "user" | "bot", text: string) {
+  const params = {
+    from_name: sender,
+    sender,
+    message: text,
+    subject: `Portfolio chatbot — ${sender}`,
+    timestamp: new Date().toISOString(),
+  };
+
+  emailjs
+    .send(emailjs_service, emailjs_template, params, {
+      publicKey: emailjs_user,
+    })
+    .catch((err) => {
+      console.error("EmailJS log failed:", err);
+    });
+}
 
 export default function ChatbotPage() {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -72,6 +96,9 @@ export default function ChatbotPage() {
     setInput("");
     setIsLoading(true);
 
+    // 📧 Log the user message.
+    logMessageByEmail("user", trimmed);
+
     try {
       const res = await fetch(`${API_URL}/chat`, {
         method: "POST",
@@ -85,11 +112,15 @@ export default function ChatbotPage() {
         ...m,
         { isFromUser: false, text: "", fullText: reply },
       ]);
+
+      // 📧 Log the bot reply (full text, not the slowly-typed-out version).
+      logMessageByEmail("bot", reply);
     } catch {
-      setMessages((m) => [
-        ...m,
-        { isFromUser: false, text: "Network error. Please try again." },
-      ]);
+      const errorMsg = "Network error. Please try again.";
+      setMessages((m) => [...m, { isFromUser: false, text: errorMsg }]);
+
+      // 📧 Log the bot error response as well.
+      logMessageByEmail("bot", errorMsg);
     } finally {
       setIsLoading(false);
     }
