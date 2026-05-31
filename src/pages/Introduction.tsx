@@ -62,6 +62,31 @@ export default function IntroductionPage() {
       </div>
       <div className="container">
         <h2>
+          <i className="fas fa-hand-holding-dollar"></i> {t("donation.title")}
+        </h2>
+        <p>
+          {" "}
+          {t("donation.text")}
+          <a href="https://gofund.me/5ec8669bb">gofund.me/5ec8669bb</a>
+        </p>
+
+        <img
+          src="/img/qr-code.png"
+          alt={t("donation.img.alt")}
+          title={t("donation.img.alt")}
+        />
+        <div
+          className="gfm-embed"
+          data-url="https://www.gofundme.com/f/help-us-fight-back-against-unfair-business-practices/widget/large?sharesheet=undefined&attribution_id=sl:4d30830d-8c9b-44f9-8ffb-9b3d113ff850"
+        ></div>
+        <script
+          defer
+          src="https://www.gofundme.com/static/js/embed.js"
+        ></script>
+      </div>
+
+      <div className="container">
+        <h2>
           <i className="fas fa-circle-exclamation"></i> {t("dev.title")}
         </h2>
         <p>

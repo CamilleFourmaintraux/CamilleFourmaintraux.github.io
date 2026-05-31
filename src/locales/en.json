@@ -77,6 +77,13 @@
     "title": "Recommended Youtube video",
     "mychannel": "My own Youtube channel (I post mostly demonstration of some of my projects): "
   },
+  "donation": {
+    "title": "My last donation",
+    "text": "Link towards the last gofundme I've last contributed: ",
+    "img": {
+      "alt": "qr-code toward the go fund me"
+    }
+  },
   "secret": {
     "title": "Secret page?",
     "description": "This page brings together all the downloadable documents from the site in one place. Since the download links are scattered across the site, with each file linked to its corresponding section, I created this page to make it easier to access all documents."
@@ -84,8 +91,7 @@
   "documents": {
     "title": "List of all downloadable PDF documents",
     "resume_english": "English Resume",
-    "resume_french": "French Resume",
-    "attestation_dut": "DUT Certificate",
+    "resumeestation_dut": "DUT Certificate",
     "rapport_stage": "2024 Internship Report",
     "kaplan": "Kaplan International London School Certificate",
     "pix": "PIX Certificate",
@@ -133,7 +139,8 @@
     "title": "Education",
     "2025": {
       "notice": "Highly favorable notice for further studies",
-      "toeic": "Obtained my",
+      "t_french": "French Resume",
+      "attoeic": "Obtained my",
       "toeic_level": "TOEIC Level C1"
     },
     "2024": {
