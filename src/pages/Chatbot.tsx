@@ -1,16 +1,13 @@
 import { NavLink } from "react-router";
 import { useTranslation } from "react-i18next";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { API_URL } from "../Utils";
 
 type Message = {
   isFromUser: boolean;
-  text: string; // currently displayed text
-  fullText?: string; // full target text for bot messages (drives typing animation)
+  text: string;
+  fullText?: string;
 };
-
-const API_URL =
-  import.meta.env.VITE_BACKEND_URL ??
-  "https://backendportfolio-ujn6.onrender.com";
 
 const TYPING_SPEED_MS = 18;
 
@@ -21,6 +18,60 @@ export default function ChatbotPage() {
   const [hasWokenUp, setHasWokenUp] = useState(false);
   const chatBodyRef = useRef<HTMLDivElement>(null);
   const { t } = useTranslation();
+
+  // Always-current transcript for the unmount/close handler to read.
+  const transcriptRef = useRef<Message[]>([]);
+  // Guards against sending the same conversation twice (unmount + tab close).
+  const loggedRef = useRef(false);
+
+  // Keep the transcript ref in sync. We store final text, not mid-typing text.
+  useEffect(() => {
+    transcriptRef.current = messages.map((m) => ({
+      isFromUser: m.isFromUser,
+      text: m.fullText ?? m.text,
+    }));
+    // A new message means there's fresh content worth logging again.
+    loggedRef.current = false;
+  }, [messages]);
+
+  // Send the whole conversation as a single email.
+  const flushConversation = useCallback(() => {
+    const transcript = transcriptRef.current;
+    if (loggedRef.current || transcript.length === 0) return;
+    loggedRef.current = true;
+
+    const conversationText = transcript
+      .map((m) => `${m.isFromUser ? "USER" : "BOT"}: ${m.text}`)
+      .join("\n\n");
+
+    fetch(`${API_URL}/mail-service`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        from_name: "Portfolio",
+        from_email: "Back-end",
+        subject: `Portfolio chatbot — ${transcript.length} messages`,
+        message: conversationText,
+      }),
+      keepalive: true,
+      credentials: "omit",
+    }).catch((err) => console.error("Conversation log failed:", err));
+  }, []);
+
+  // Flush on tab close/hide and on component unmount (leaving the page).
+  useEffect(() => {
+    const handleHide = () => {
+      if (document.visibilityState === "hidden") flushConversation();
+    };
+    window.addEventListener("visibilitychange", handleHide);
+    window.addEventListener("pagehide", flushConversation);
+
+    return () => {
+      window.removeEventListener("visibilitychange", handleHide);
+      window.removeEventListener("pagehide", flushConversation);
+      flushConversation(); // navigating away within the SPA
+    };
+  }, [flushConversation]);
 
   // Typing animation — reveals the last bot message one character at a time.
   useEffect(() => {
@@ -55,7 +106,6 @@ export default function ChatbotPage() {
     const trimmed = input.trim();
     if (!trimmed || isLoading) return;
 
-    // Finalize any in-progress typing before adding the new user message.
     setMessages((m) => {
       const updated = [...m];
       const last = updated[updated.length - 1];
@@ -105,7 +155,7 @@ export default function ChatbotPage() {
   return (
     <div className="container">
       <h2>
-        <i className="fas fa-solid fa-robot"></i> {t("chatbot.title")}
+        <i className="fas fa-solid fa-robot"></i> {t("chatbot.title") + " v1.2"}
       </h2>
       <p>{t("chatbot.main")}</p>
 
@@ -141,7 +191,11 @@ export default function ChatbotPage() {
           {isLoading && (
             <div className="chat-bubble-row bot">
               <div className="chat-bubble bot loading">
-                <span>{hasWokenUp ? "bot thinking" : "bot waking up"}</span>
+                <span>
+                  {hasWokenUp
+                    ? t("chatbot.chat.thinking")
+                    : t("chatbot.chat.wakingup")}
+                </span>
                 <span className="typing-dots" aria-hidden="true">
                   <span></span>
                   <span></span>
@@ -164,7 +218,7 @@ export default function ChatbotPage() {
             className="chat-button"
             onClick={sendMessage}
             disabled={isLoading || !input.trim()}
-            aria-label="Send message"
+            aria-label={t("chatbot.chat.label")}
           >
             <i className="fas fa-paper-plane"></i>
           </button>

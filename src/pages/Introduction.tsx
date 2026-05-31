@@ -1,19 +1,7 @@
 import { useTranslation } from "react-i18next";
-//import EMothep from "../parts/E-Mothep";
 
-/*
-
-          <br />
-          
-          {t("presentation.internship")} <EMothep />{" "}
-          {t("presentation.internship_dates")}
-          <br />
-          {t("presentation.previous_internship")}
-          <br />
-          <EMothep /> {t("presentation.company_description")}
-          <br />
-
-*/
+let ytbVideoRef = "EuAhIBpanhQ?si=NSjBc6L4-NPG9d3E";
+let ytbLink = "https://www.youtube.com/embed/";
 
 export default function IntroductionPage() {
   const { t } = useTranslation();
@@ -50,6 +38,27 @@ export default function IntroductionPage() {
           </a>
           .<br />
         </p>
+      </div>
+      <div className="container">
+        <h2>
+          <i className="fas fa-video"></i> {t("youtube.title")}
+        </h2>
+        <p>
+          {t("youtube.mychannel")}
+          <a href="https://youtube.com/@camille-we8dx?si=hSlOW24EazkZ0QTH">
+            @Camille-we8dx
+          </a>
+        </p>
+        <iframe
+          width="666"
+          height="420"
+          src={ytbLink + ytbVideoRef}
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        ></iframe>
       </div>
       <div className="container">
         <h2>

@@ -1,66 +1,54 @@
-import { useRef, useState, useEffect } from "react";
-import emailjs from "@emailjs/browser";
-import {
-  emailjs_service,
-  emailjs_template,
-  emailjs_user,
-  validateEmail,
-} from "./MailUtils";
+import { useRef, useState } from "react";
+import { validateEmail, API_URL } from "../../Utils";
 import { useTranslation } from "react-i18next";
 
 export default function ContactForm() {
   const { t } = useTranslation();
-  // Références pour les champs du formulaire
   const lastnameRef = useRef<HTMLInputElement>(null);
   const firstnameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const subjectRef = useRef<HTMLInputElement>(null);
   const messageRef = useRef<HTMLTextAreaElement>(null);
 
-  // États pour le message de statut et son affichage
   const [statusMessage, setStatusMessage] = useState<string>("");
   const [isSuccess, setIsSuccess] = useState<boolean>(true);
   const [isBeingSent, setIsBeingSent] = useState<boolean>(false);
 
-  // Initialisation d'EmailJS une seule fois
-  useEffect(() => {
-    emailjs.init(emailjs_user);
-  }, []);
-
-  // Fonction pour envoyer l'email via EmailJS
-  const sendMail = (
+  // Envoie l'email via le back-end (qui relaie vers EmailJS).
+  const sendMail = async (
     lastname: string,
     firstname: string,
     email: string,
     subject: string,
     message: string,
   ) => {
-    emailjs
-      .send(emailjs_service, emailjs_template, {
-        from_name: `${firstname} ${lastname}`,
-        from_email: email,
-        subject: subject,
-        message: message,
-      })
-      .then(() => {
-        setStatusMessage(t("form.msg-success"));
-        setIsSuccess(true);
-        setIsBeingSent(false);
-        resetForm();
-      })
-      .catch(() => {
-        setStatusMessage(t("form.msg-error"));
-        setIsSuccess(false);
-        setIsBeingSent(false);
+    try {
+      const res = await fetch(`${API_URL}/mail-service`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          from_name: `${firstname} ${lastname}`.trim(),
+          from_email: email,
+          subject,
+          message,
+        }),
       });
 
-    // Masquer le message après quelques secondes
-    setTimeout(() => {
-      setStatusMessage("");
-    }, 8000);
+      if (!res.ok) throw new Error(`Server responded ${res.status}`);
+
+      setStatusMessage(t("form.msg-success"));
+      setIsSuccess(true);
+      resetForm();
+    } catch (err) {
+      console.error("Mail send failed:", err);
+      setStatusMessage(t("form.msg-error"));
+      setIsSuccess(false);
+    } finally {
+      setIsBeingSent(false);
+      setTimeout(() => setStatusMessage(""), 8000);
+    }
   };
 
-  // Fonction pour vider les champs du formulaire
   const resetForm = () => {
     if (lastnameRef.current) lastnameRef.current.value = "";
     if (firstnameRef.current) firstnameRef.current.value = "";
@@ -69,13 +57,10 @@ export default function ContactForm() {
     if (messageRef.current) messageRef.current.value = "";
   };
 
-  // Gestionnaire de soumission du formulaire
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (isBeingSent) {
-      console.warn(
-        "Le mail est déjà en train de s'envoyer. isBeingSent:" + isBeingSent,
-      );
+      console.warn("Le mail est déjà en train de s'envoyer.");
       return;
     }
     const lastname = lastnameRef.current?.value || "";
@@ -83,6 +68,7 @@ export default function ContactForm() {
     const email = emailRef.current?.value || "";
     const subject = subjectRef.current?.value || "";
     const message = messageRef.current?.value || "";
+
     if (validateEmail(email)) {
       setIsBeingSent(true);
       setIsSuccess(true);
@@ -91,9 +77,7 @@ export default function ContactForm() {
     } else {
       setIsSuccess(false);
       setStatusMessage(t("form.msg-invalidEmail"));
-      setTimeout(() => {
-        setStatusMessage("");
-      }, 8000);
+      setTimeout(() => setStatusMessage(""), 8000);
     }
   };
 

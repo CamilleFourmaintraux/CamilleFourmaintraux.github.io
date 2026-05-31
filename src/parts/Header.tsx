@@ -6,6 +6,7 @@ export default function Header() {
   const { t } = useTranslation();
   const [backgroundImage, setBackgroundImage] = useState("");
 
+  //////////// EASTER EGG ///////////
   useEffect(() => {
     setBackgroundImage(`/img/header/matrix${getRandomInt(4) + 1}.gif`);
   }, []);
@@ -36,6 +37,7 @@ export default function Header() {
       }, 300);
     }
   };
+  ////////////////////////////////////
   return (
     <header
       id="header"

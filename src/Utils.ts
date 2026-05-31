@@ -1,3 +1,13 @@
+export const API_URL =
+  import.meta.env.VITE_BACKEND_URL ??
+  "https://backendportfolio-ujn6.onrender.com";
+
+// Fonction pour valider une adresse e-mail avec une expression régulière
+export function validateEmail(email: string) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
 export function formatDate(date: Date) {
   // Extraire le jour, le mois et l'année
   let day = date.getDate();

@@ -41,7 +41,11 @@
       "title": "Discuss with the bot",
       "subtitle": "Ask me anything about Camille and his projects!",
       "label": "Send message",
-      "placeholder": "Ask something..."
+      "placeholder": "Ask something...",
+      "wakingup": "bot waking up",
+      "thinking": "bot thinking",
+      "error": "Sorry, seems like I'm unavailable right now. Please try later.",
+      "network-error": "Network error. Please try again."
     },
     "back": "Back to the home page"
   },
@@ -68,6 +72,10 @@
   "dev": {
     "title": "In Progress",
     "text": "My website is still under development, there may still be new features, modifications (and bugs)."
+  },
+  "youtube": {
+    "title": "Recommended Youtube video",
+    "mychannel": "My own Youtube channel (I post mostly demonstration of some of my projects): "
   },
   "secret": {
     "title": "Secret page?",
