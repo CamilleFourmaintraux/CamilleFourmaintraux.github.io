@@ -73,6 +73,10 @@
     "title": "In Progress",
     "text": "My website is still under development, there may still be new features, modifications (and bugs)."
   },
+  "youtube": {
+    "title": "Recommended Youtube video",
+    "mychannel": "My own Youtube channel (I post mostly demonstration of some of my projects): "
+  },
   "secret": {
     "title": "Secret page?",
     "description": "This page brings together all the downloadable documents from the site in one place. Since the download links are scattered across the site, with each file linked to its corresponding section, I created this page to make it easier to access all documents."

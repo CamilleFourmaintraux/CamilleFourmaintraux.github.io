@@ -63,11 +63,20 @@ p {
     height: auto;
     margin: 10px;
   }
+  iframe {
+    max-width: 90%;
+    margin: 10px;
+  }
 }
 @media all and (min-width: 900px) {
   img {
-    max-width: 60%;
+    max-width: 90%;
     height: auto;
+    margin: 10px;
+    margin-left: 20%;
+  }
+  iframe {
+    max-width: 100%;
     margin: 10px;
     margin-left: 20%;
   }
@@ -90,6 +99,7 @@ p {
   padding-right: 50px;
   border-radius: 5px;
 }
+
 .subcontainer h4 {
   margin: auto;
   padding: auto;

@@ -73,6 +73,10 @@
     "title": "En développement",
     "text": "Mon site est encore en développement, il pourrait encore y avoir de nouveaux ajouts, des modifications (et des bugs)."
   },
+  "youtube": {
+    "title": "Vidéo Youtube recommandé",
+    "mychannel": "Ma chaîne Youtube (j'y poste quelques démonstrations de projets) : "
+  },
   "secret": {
     "title": "Page secrète ?",
     "description": "Cette page regroupe tous les documents téléchargeables du site en un seul endroit. Étant donné que les liens de téléchargement des fichiers sont dispersés à travers le site, chaque fichier étant associé à la section qui lui correspond, j'ai créé cette page pour faciliter l'accès à l'ensemble des documents."
