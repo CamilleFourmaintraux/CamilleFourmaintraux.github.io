@@ -71,7 +71,12 @@ export default function IntroductionPage() {
         </p>
 
         <img
-          src="/img/qr-code.png"
+          src="/img/qr-code_gofundme1.png"
+          alt={t("donation.img.alt")}
+          title={t("donation.img.alt")}
+        />
+        <img
+          src="/img/qr-code_gofundme2.png"
           alt={t("donation.img.alt")}
           title={t("donation.img.alt")}
         />
