@@ -54,10 +54,8 @@
     "title": "About Me",
     "greeting": "Hello!",
     "intro": "I am a third-year student at the Grenoble-Alpes Polytechnic University. I recently graduated with a BUT in Computer Science from the IUT of Lille.",
-    "internship_UNUSED": "I recently secured a 16-week internship within a development team at",
-    "internship_dates_UNUSED": "from March 10th to June 27th, 2025.",
-    "previous_internship_UNUSED": "I previously completed my last internship at this company, which was very satisfied with my work and decided to take me back.",
-    "company_description_UNUSED": "is a consulting and solution integration company with over 20 years of experience. The company helps its clients with the urbanization of their information systems to make them more efficient and scalable.",
+    "career_path": "This unusual carrer path gives me an advantage as I already have some experience working with a team in a company for 6 total month during my BUT at Lille.",
+    "internship": "Today, I'm looking again for an internship in the software/web development field, preferably around Grenoble.",
     "motivation": "My academic background and passion for IT motivate me to fully commit to this constantly evolving field. I am determined to make a significant contribution and bring added value to the company that trusts me."
   },
   "goals": {

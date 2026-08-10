@@ -53,11 +53,9 @@
   "presentation": {
     "title": "Présentation",
     "greeting": "Bonjour !",
-    "intro": "Je suis étudiant en troisième année à l'école polytechnique universitaire de Grenoble-Alpes. J'ai obtenu récemment mon diplôme de BUT informatique à l'IUT de Lille.",
-    "internship_UNUSED": "J'ai récemment obtenu un stage de 16 semaines au sein d'une équipe de développement chez",
-    "internship_dates_UNUSED": "du 10 mars jusqu'au 27 juin 2025.",
-    "previous_internship_UNUSED": "J'avais déjà réalisé mon précédent stage dans cette entreprise, qui avait été très satisfaite de mon travail et a donc décidé de me reprendre.",
-    "company_description_UNUSED": "est une société de conseil et d'intégration de solutions avec plus de 20 ans d'expérience. L'entreprise accompagne ses clients dans leurs démarches d'urbanisation de leurs systèmes d'informations, afin de les rendre plus efficaces et évolutifs.",
+    "intro": "Je suis étudiant en quatrième année à Polytech de Grenoble-Alpes. J'y ai obtenu ma troisième année sans problème, réussissant avec brio ma transition de BUT informatique à école d'ingénieur.",
+    "career_path": "Ce parcours particulier me donne l'avantage d'avoir une expérience en entreprise durant les 6 mois de stage que j'ai effectué durant mon BUT.",
+    "internship": "Je cherche à nouveau un stage en entreprise de développement logiciel/web, de préférence sur Grenoble et ses alentours.",
     "motivation": "Mon parcours académique et ma passion pour l'informatique me motivent à m'engager pleinement dans ce domaine en constante évolution. Je suis déterminé à contribuer de manière significative et à apporter une valeur ajoutée à l'entreprise qui me fera confiance."
   },
   "goals": {

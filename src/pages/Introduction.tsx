@@ -18,6 +18,11 @@ export default function IntroductionPage() {
           <br />
           {t("presentation.intro")}
           <br />
+          {t("presentation.career_path")}
+          <br />
+          <br />
+          {t("presentation.internship")}
+          <br />
           <br />
           {t("presentation.motivation")}
           <br />
