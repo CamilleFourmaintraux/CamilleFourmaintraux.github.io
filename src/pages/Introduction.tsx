@@ -1,7 +1,9 @@
 import { useTranslation } from "react-i18next";
-
-let ytbVideoRef = "EuAhIBpanhQ?si=NSjBc6L4-NPG9d3E";
-let ytbLink = "https://www.youtube.com/embed/";
+const myYoutubeChannel =
+  "https://youtube.com/@camille-we8dx?si=hSlOW24EazkZ0QTH";
+const myYoutubeID = "@Camille-we8dx";
+let ytbVideoRef = "Zwbzhw_zF74";
+const ytbLink = "https://www.youtube.com/embed/";
 
 export default function IntroductionPage() {
   const { t } = useTranslation();
@@ -45,9 +47,7 @@ export default function IntroductionPage() {
         </h2>
         <p>
           {t("youtube.mychannel")}
-          <a href="https://youtube.com/@camille-we8dx?si=hSlOW24EazkZ0QTH">
-            @Camille-we8dx
-          </a>
+          <a href={myYoutubeChannel}>{myYoutubeID}</a>
         </p>
         <iframe
           width="666"
@@ -60,7 +60,7 @@ export default function IntroductionPage() {
           allowFullScreen
         ></iframe>
       </div>
-      <div className="container">
+      {/* <div className="container">
         <h2>
           <i className="fas fa-hand-holding-dollar"></i> {t("donation.title")}
         </h2>
@@ -88,7 +88,7 @@ export default function IntroductionPage() {
           defer
           src="https://www.gofundme.com/static/js/embed.js"
         ></script>
-      </div>
+      </div> */}
 
       <div className="container">
         <h2>
