@@ -129,7 +129,7 @@ export default function ChatbotPage() {
         body: JSON.stringify({ message: trimmed }),
       });
       const data = await res.json();
-      const reply = data.reply ?? "Sorry, I didn't get a response.";
+      const reply: string = data.reply ?? t("chatbot.chat.error");
       setHasWokenUp(true);
       setMessages((m) => [
         ...m,
@@ -138,7 +138,7 @@ export default function ChatbotPage() {
     } catch {
       setMessages((m) => [
         ...m,
-        { isFromUser: false, text: "Network error. Please try again." },
+        { isFromUser: false, text: t("chatbot.chat.network-error") },
       ]);
     } finally {
       setIsLoading(false);
