@@ -57,28 +57,30 @@ p {
   line-height: 1.6;
 }
 
-@media all and (max-width: 900px) {
-  img {
-    max-width: 90%;
-    height: auto;
-    margin: 10px;
-  }
-  iframe {
-    max-width: 90%;
-    margin: 10px;
-  }
+/* Content images and embeds are centered horizontally on every screen size.
+   display:block + auto side margins centers them inside their container,
+   instead of the previous fixed 20% left offset that pushed them right. */
+img,
+iframe {
+  display: block;
+  max-width: 90%;
+  margin: 10px auto;
 }
+
+img {
+  height: auto;
+}
+
+/* Images placed inside two nested lists (e.g. Education timeline) inherit
+   2 x 40px of list indentation; shift them back so they center on the card. */
+ul ul > img {
+  position: relative;
+  left: -40px;
+}
+
 @media all and (min-width: 900px) {
-  img {
-    max-width: 90%;
-    height: auto;
-    margin: 10px;
-    margin-left: 20%;
-  }
   iframe {
     max-width: 100%;
-    margin: 10px;
-    margin-left: 20%;
   }
 }
 
