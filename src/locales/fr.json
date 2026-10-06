@@ -41,9 +41,9 @@
       "title": "Discuter avec le bot",
       "subtitle": "Posez-moi toutes vos questions sur Camille et ses projets !",
       "label": "Envoyer le message",
-      "placeholder": "Posez une question...",
-      "wakingup": "CamilleGPT se réveille...",
-      "thinking": "CamilleGPT réfléchit...",
+      "placeholder": "Posez une question",
+      "wakingup": "CamilleGPT se réveille",
+      "thinking": "CamilleGPT réfléchit",
       "error": "Désolé, je ne suis pas disponible pour le moment. Veuillez réessayer plus tard.",
       "network-error": "Erreur réseau. Veuillez réessayer."
     },
