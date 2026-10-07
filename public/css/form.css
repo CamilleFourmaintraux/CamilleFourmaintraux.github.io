@@ -12,7 +12,7 @@
   --bg-button-color-error: #ff2e1f;
 }
 
-/*css pour le formulaire*/
+/* Form styles */
 label {
   margin-right: 0px;
   margin-left: 0px;
@@ -21,7 +21,7 @@ label {
 textarea {
   height: 100px;
 }
-/* Barre de recherche et filtres */
+/* Search bar, filters and form fields */
 input[type="text"],
 input[type="date"],
 input[type="email"],
@@ -52,7 +52,7 @@ textarea:focus {
   border-color: #0a0321;
   box-shadow: 0 0 5px rgba(0, 0, 42, 0.5);
 }
-/* Bouton de tri */
+/* Buttons */
 button {
   background: var(--bg-button-color);
   border: none;
@@ -69,13 +69,66 @@ button:hover {
 }
 
 #submit_button {
-  width: 130px;
+  min-width: 130px;
+}
+
+/* ---------- Contact form layout ---------- */
+
+/* Remove the default fieldset frame (it is only used to disable the form). */
+#contact-form fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+/* One field = label stacked above its input, always. */
+#contact-form .form-field {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  margin-bottom: 10px;
+}
+
+#contact-form .form-field label {
+  margin-bottom: 2px;
+}
+
+/* All controls share the same width, font and box model, so their
+   right edges line up whatever their padding and border. */
+#contact-form input,
+#contact-form textarea {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  font-family: inherit;
+}
+
+#contact-form textarea {
+  min-height: 120px;
+}
+
+/* Last name and first name side by side on wider screens. */
+#contact-form .form-row {
+  display: flex;
+  flex-direction: column;
 }
 
 @media all and (min-width: 500px) {
-  #forename {
-    width: 90%;
+  #contact-form .form-row {
+    flex-direction: row;
+    gap: 20px;
   }
+}
+
+#contact-form #submit_button {
+  margin: 5px 0 0;
+}
+
+#contact-form #submit_button:disabled {
+  cursor: wait;
+  opacity: 0.8;
 }
 
 .mail_sent_successfully {

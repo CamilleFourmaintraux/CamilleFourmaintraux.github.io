@@ -30,8 +30,8 @@ export default function Sae401() {
         </div>
         <img
           src="/img/portfolio/siteWebRestRequests.png"
-          alt="TOTO"
-          title="TODO"
+          alt={t(`${translationsPath}.alt1`)}
+          title={t(`${translationsPath}.alt1`)}
         />
 
         <li>
@@ -40,8 +40,8 @@ export default function Sae401() {
         <p>{t(`${translationsPath}.security_description`)}</p>
         <img
           src="/img/portfolio/jwt-primer-token.png"
-          alt="TOTO"
-          title="TODO"
+          alt={t(`${translationsPath}.alt2`)}
+          title={t(`${translationsPath}.alt2`)}
         />
 
         <h4>{t(`${projectsWorkPath}.skills`)}</h4>

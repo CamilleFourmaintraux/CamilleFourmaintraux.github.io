@@ -138,7 +138,7 @@
     "2025": {
       "notice": "Avis de poursuite d'études très favorable",
       "toeic": "Obtention de la certification",
-      "toeic_level": "TOEIC Niveau C1"
+      "toeic_level": "Niveau C1"
     },
     "2024": {
       "kaplan": "Séjour linguistique d'un mois en Angleterre en école spécialisée",
@@ -292,9 +292,6 @@
       "python": {
         "title": "Console Python",
         "desc": "Cette page intègre une console Python exécutable."
-      },
-      "java": {
-        "": ""
       }
     },
     "work": {
@@ -315,16 +312,17 @@
           "section_text": "Implémentation d'une IA simple pour valider le fonctionnement de l'environnement.",
           "skill1": "Introduction à l'apprentissage par renforcement (Reinforcement Learning)",
           "skill2": "Compréhension approfondie des architectures d'IA",
-          "skill3": "Autonomie dans le choix stack/langage (Java retenu) ; conception intégrale de la structure logicielle."
+          "skill3": "Autonomie dans le choix stack/langage (Java retenu) ; conception intégrale de la structure logicielle.",
+          "alt1": "Configuration d'une machine virtuelle dans VirtualBox"
         },
         "pagil1": {
           "title": "Jeu en console & Méthodologie Agile SCRUM",
           "title1": "Développement d'un jeu en mode console",
           "text1": "Réalisation d'un jeu sur une courte période en suivant la méthode Scrum. Les équipes mixées aléatoirement ont permis de développer l'adaptabilité et la communication.",
-          "alt1": "TODO",
+          "alt1": "Dinosaure en pixel art affiché dans le terminal",
           "title2": "Rôle de Scrum Master & Suivi Agile",
           "text2": "Prise en charge du rôle de Scrum Master : animation des réunions, mise à jour du kanban et suivi via graphes de Burn-Up et Burn-Down.",
-          "alt2": "TODO",
+          "alt2": "Tableau Scrum avec des post-it (à faire, en cours, tests)",
           "know_how1": "Pratique des méthodes agiles (Scrum)",
           "know_how2": "Intégration rapide au sein d'une équipe",
           "know_how3": "Communication interpersonnelle en projet"
@@ -337,7 +335,9 @@
           "roleDescription": "Rotation sur le rôle de Scrum Master : suivi des tickets, analyse de l'avancement et rigueur accrue dans la gestion des branches Git.",
           "know_how1": "Méthodologie Scrum",
           "know_how2": "Travail en équipe",
-          "know_how3": "Collaboration et communication"
+          "know_how3": "Collaboration et communication",
+          "alt1": "Page de connexion de l'application web CodeSwipe",
+          "alt2": "Tableaux Scrum couverts de post-it dans la salle de projet"
         },
         "internship1": {
           "title": "Stage Intégrateur SOA webMethods chez E-Mothep",
@@ -356,7 +356,8 @@
           "skill1": "Administration de machines virtuelles",
           "skill2": "Configuration de postes et de réseaux collaboratifs",
           "skill3": "Recherche documentaire technique",
-          "skill4": "Utilisation de langages de balisage léger (Markdown, AsciiDoc)"
+          "skill4": "Utilisation de langages de balisage léger (Markdown, AsciiDoc)",
+          "alt1": "Configuration d'une machine virtuelle dans VirtualBox"
         },
         "sae105": {
           "title": "Conception web pour une présentation d'entreprise",
@@ -366,7 +367,8 @@
           "wordpress_text": "Conception d'un prototype sur WordPress pour valider l'ergonomie, puis intégration sur mesure en HTML/CSS dans le respect strict de la charte graphique.",
           "skill1": "HTML5 et CSS3",
           "skill2": "Respect d'une charte graphique d'entreprise",
-          "skill3": "Analyse des besoins et proposition de solutions"
+          "skill3": "Analyse des besoins et proposition de solutions",
+          "alt1": "Page de connexion et d'inscription du site NexyWays"
         },
         "sae202": {
           "title": "Application d'échanges scolaires (Java / JavaFX)",
@@ -376,7 +378,9 @@
           "interface_description": "Évolution de l'application initiale (console) vers une interface graphique ergonomique conçue avec JavaFX.",
           "skill1": "Java et JavaFX",
           "skill2": "Algorithmes d'optimisation et théorie des graphes",
-          "skill3": "Conception d'interfaces utilisateurs (IHM)"
+          "skill3": "Conception d'interfaces utilisateurs (IHM)",
+          "alt1": "Code Java construisant le graphe de compatibilité entre les adolescents",
+          "alt2": "Interface JavaFX de l'application d'échanges scolaires listant les élèves"
         },
         "sae207": {
           "title": "Conception de base de données & ventilation de données",
@@ -386,7 +390,9 @@
           "postgresql_text": "Création des tables et écriture de requêtes SQL complexes pour répondre aux besoins d'analyse métiers.",
           "skill1": "SQL, PostgreSQL, Access, WordPress",
           "skill2": "Ventilation et structuration de données volumineuses",
-          "skill3": "Formulation de requêtes analytiques"
+          "skill3": "Formulation de requêtes analytiques",
+          "alt1": "Extrait du jeu de données CSV des athlètes olympiques",
+          "alt2": "Script SQL important les données dans PostgreSQL"
         },
         "sae213": {
           "title": "Projet Escape Game",
@@ -397,7 +403,9 @@
           "skill1": "Organisation et travail d'équipe",
           "skill2": "Maîtrise d'outils collaboratifs (Git, Trello)",
           "skill3": "Conception créative d'énigmes",
-          "escapeGameLink": "Tester l'escape game !"
+          "escapeGameLink": "Tester l'escape game !",
+          "alt1": "Tableau Trello utilisé pour organiser le projet d'escape game",
+          "alt2": "Écran d'accueil de l'escape game « Mystères et disparitions à la rentrée de l'IUT ! »"
         },
         "sae302": {
           "title": "Jeu MonsterHunt (JavaFX)",
@@ -408,7 +416,9 @@
           "skill1": "Java et JavaFX",
           "skill2": "Implémentation de règles de jeu complexes",
           "skill3": "Tests unitaires et documentation",
-          "skill4": "Utilisation de patrons de conception (Design Patterns)"
+          "skill4": "Utilisation de patrons de conception (Design Patterns)",
+          "alt1": "Le jeu Monster Hunt lancé à côté de son code Java dans Eclipse",
+          "alt2": "Tests unitaires JUnit du labyrinthe de Monster Hunt"
         },
         "sae401": {
           "title": "Développement d'une API REST",
@@ -429,7 +439,9 @@
           "know_how1": "Autonomie : ",
           "know_how1_text": "Réalisation du projet individuellement avec une gestion autonome des priorités.",
           "know_how2": "Gestion des délais : ",
-          "know_how2_text": "Respect strict des livrables et du cahier des charges dans un temps imparti."
+          "know_how2_text": "Respect strict des livrables et du cahier des charges dans un temps imparti.",
+          "alt1": "Documentation de l'API REST de la pizzeria : exemples de requêtes cURL et codes de retour HTTP",
+          "alt2": "Schéma du processus d'authentification JWT : le client envoie ses identifiants et reçoit un jeton"
         },
         "sae402": {
           "title": "Développement d'une application multijoueur complexe",
@@ -450,7 +462,9 @@
           "know_how2": "Collaboration : ",
           "know_how2_text": "Excellente répartition du travail permettant la livraison des exigences principales et bonus.",
           "know_how3": "Rigueur sur Git : ",
-          "know_how3_text": "Suivi rigoureux des règles de commits, des jalons (milestones) et des tickets sur GitLab."
+          "know_how3_text": "Suivi rigoureux des règles de commits, des jalons (milestones) et des tickets sur GitLab.",
+          "alt1": "Première version du jeu : des carrés qui se déplacent dans un canvas HTML",
+          "alt2": "Version finale : menu de connexion pour créer ou rejoindre une partie multijoueur"
         },
         "sae501": {
           "title": "Émulateur RISC-V en C",
@@ -461,7 +475,9 @@
           "skill1": "Langage C",
           "skill2": "Apprentissage d'un langage système",
           "skill3": "Compréhension de l'architecture des processeurs",
-          "skill4": "Rigueur d'implémentation face à une spécification matérielle stricte"
+          "skill4": "Rigueur d'implémentation face à une spécification matérielle stricte",
+          "alt1": "Formats d'encodage des instructions RISC-V (types R, I, S et U)",
+          "alt2": "Code C de l'émulateur exécutant une instruction de chargement RISC-V"
         },
         "sae509": {
           "title": "Développement Web Backend (Spring)",
@@ -472,7 +488,9 @@
           "skill1": "Framework Spring",
           "skill2": "JPA / Hibernate",
           "skill3": "Spring Security",
-          "skill4": "Lombok"
+          "skill4": "Lombok",
+          "alt1": "Page de profil de l'application web OlympicSwim",
+          "alt2": "Calendrier de réservation de l'application web OlympicSwim"
         }
       }
     },
@@ -503,17 +521,17 @@
             "game_design": "Game Design 3D",
             "mesh_creation": "Création de maillages 3D et textures"
           },
-          "img_alt": "TODO"
+          "img_alt": "Niveau du jeu de plateforme 3D réalisé avec Godot"
         },
         "firstgamejam": {
           "title": "Ma première Game Jam !",
           "title1": "Publication sur Itch.io",
           "text1": "Participation à la **1-BIT JAM #4** sur Itch.io. Réalisation d'un projet complet classé 114ème sur 338 participants.",
-          "alt1": "TODO",
+          "alt1": "Aperçu du jeu de tir en 1 bit réalisé pendant la game jam",
           "title2": "1-BIT JAM #4",
           "text2": "Contrainte de la jam : palette limitée à deux couleurs. Développement de 'TheLegendOfKnardWizight', un jeu de tir 2D type Tower Defense.",
           "play_link": "Jouer au jeu !",
-          "alt2": "TODO",
+          "alt2": "Résultats de la game jam : 1er dans la catégorie « Is the graphics 1 bit? »",
           "skills_title": "Compétences acquises",
           "skills_list": {
             "godot": "Godot & GDScript",
@@ -526,7 +544,7 @@
           "title": "Générateur de labyrinthes",
           "title1": "Algorithmique",
           "text1": "Étude et implémentation de plusieurs algorithmes de génération procédurale de labyrinthes.",
-          "alt1": "TODO",
+          "alt1": "Labyrinthe généré par le programme Java",
           "title2": "Rendu graphique",
           "text2": "Passage d'un affichage texte en console à un rendu dynamique en JavaFX (réexploité dans la SAÉ 3.02).",
           "skills_title": "Compétences acquises",
@@ -539,10 +557,10 @@
           "title": "Jeux d'arcade (Pong & Casse-briques)",
           "title1": "Classiques arcade",
           "text1": "Développement de clones de Pong et de Casse-Briques, intégrant menus, gestion des scores et sauvegarde des meilleurs scores.",
-          "alt1": "TODO",
+          "alt1": "Jeu de Pong réalisé en Java",
           "title2": "Boucle de jeu",
           "text2": "Assimilation du fonctionnement des boucles de jeu (Game Loop) et du rendu d'animation JavaFX.",
-          "alt2": "TODO",
+          "alt2": "Jeu de casse-briques réalisé en Java",
           "skills_title": "Compétences acquises",
           "skills_list": {
             "timer": "AnimationTimer en JavaFX",

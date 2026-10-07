@@ -137,9 +137,8 @@
     "title": "Education",
     "2025": {
       "notice": "Highly favorable recommendation for further studies",
-      "t_french": "French Resume",
-      "attoeic": "Obtained my",
-      "toeic_level": "TOEIC C1 Level"
+      "toeic": "Obtained the",
+      "toeic_level": "C1 Level certification"
     },
     "2024": {
       "kaplan": "One-month language stay in England at a language school",
@@ -293,9 +292,6 @@
       "python": {
         "title": "Python Console",
         "desc": "This page features an embedded Python console."
-      },
-      "java": {
-        "": ""
       }
     },
     "work": {
@@ -316,16 +312,17 @@
           "section_text": "Building a basic RL model to benchmark the environment.",
           "skill1": "Introduction to Reinforcement Learning",
           "skill2": "Deeper understanding of AI concepts",
-          "skill3": "Full autonomy in language selection (Java selected); designed code architecture from scratch."
+          "skill3": "Full autonomy in language selection (Java selected); designed code architecture from scratch.",
+          "alt1": "Virtual machine configuration in VirtualBox"
         },
         "pagil1": {
           "title": "Terminal Game Development using Agile SCRUM",
           "title1": "Console Game Development",
           "text1": "Built a console game within a few days under Agile Scrum. Teams were assigned randomly across the entire cohort, providing valuable experience in collaborating with new team members.",
-          "alt1": "TODO",
+          "alt1": "Pixel-art dinosaur displayed in the terminal",
           "title2": "Scrum Master Role & Agile Tracking",
           "text2": "Served as Scrum Master, managing User Stories, maintaining the task board, and producing Burn-Up and Burn-Down charts to track sprint progress.",
-          "alt2": "TODO",
+          "alt2": "Scrum board with sticky notes (to do, in progress, testing)",
           "know_how1": "Agile Scrum practices",
           "know_how2": "Team integration",
           "know_how3": "Team communication & collaboration"
@@ -338,7 +335,9 @@
           "roleDescription": "Rotated into the Scrum Master role, overseeing project progress, burn-up tracking, Git branch discipline, and ticket workflows.",
           "know_how1": "Agile Scrum methodology",
           "know_how2": "Team integration",
-          "know_how3": "Collaborative development"
+          "know_how3": "Collaborative development",
+          "alt1": "Sign-in page of the CodeSwipe web application",
+          "alt2": "Scrum boards covered in sticky notes in the project room"
         },
         "internship1": {
           "title": "SOA webMethods Integrator Internship at E-Mothep",
@@ -357,7 +356,8 @@
           "skill1": "Virtual Machine management",
           "skill2": "Workstation & collaborative network configuration",
           "skill3": "Technical documentation research",
-          "skill4": "Lightweight markup languages (Markdown, AsciiDoc)"
+          "skill4": "Lightweight markup languages (Markdown, AsciiDoc)",
+          "alt1": "Virtual machine configuration in VirtualBox"
         },
         "sae105": {
           "title": "Corporate Website Design & Development",
@@ -367,7 +367,8 @@
           "wordpress_text": "Created WordPress prototypes to refine layout ideas before coding the production version in vanilla HTML/CSS while adhering strictly to design guidelines.",
           "skill1": "HTML5 & CSS3",
           "skill2": "Brand guideline compliance",
-          "skill3": "Requirement analysis & problem-solving"
+          "skill3": "Requirement analysis & problem-solving",
+          "alt1": "Sign-in and registration page of the NexyWays website"
         },
         "sae202": {
           "title": "Student Exchange Application (Java / JavaFX)",
@@ -377,7 +378,9 @@
           "interface_description": "Migrated an initial CLI prototype into a modern JavaFX graphical user interface to enhance usability.",
           "skill1": "Java & JavaFX",
           "skill2": "Graph algorithms & matching optimization",
-          "skill3": "UX/UI design principles"
+          "skill3": "UX/UI design principles",
+          "alt1": "Java code building the compatibility graph between the teenagers",
+          "alt2": "JavaFX interface of the school exchange application listing the students"
         },
         "sae207": {
           "title": "Database Design & Data Normalization",
@@ -387,7 +390,9 @@
           "postgresql_text": "Built tables and wrote complex SQL queries in PostgreSQL and MS Access to extract business insights.",
           "skill1": "SQL, PostgreSQL, Access, WordPress",
           "skill2": "Big data handling & normalization",
-          "skill3": "Data analysis & query optimization"
+          "skill3": "Data analysis & query optimization",
+          "alt1": "Extract of the Olympic athletes CSV dataset",
+          "alt2": "SQL script importing the data into PostgreSQL"
         },
         "sae213": {
           "title": "Interactive Escape Game Project",
@@ -398,7 +403,9 @@
           "skill1": "Teamwork & project coordination",
           "skill2": "Collaborative platforms (Git, Trello)",
           "skill3": "Puzzle design & creative problem solving",
-          "escapeGameLink": "Try the escape game!"
+          "escapeGameLink": "Try the escape game!",
+          "alt1": "Trello board used to organise the escape game project",
+          "alt2": "Title screen of the escape game \"Mystères et disparitions à la rentrée de l'IUT !\""
         },
         "sae302": {
           "title": "MonsterHunt Game (JavaFX)",
@@ -409,7 +416,9 @@
           "skill1": "Java & JavaFX",
           "skill2": "Game mechanics implementation",
           "skill3": "Unit testing & technical documentation",
-          "skill4": "Software design patterns"
+          "skill4": "Software design patterns",
+          "alt1": "The Monster Hunt game running next to its Java code in Eclipse",
+          "alt2": "JUnit unit tests of the Monster Hunt maze"
         },
         "sae401": {
           "title": "RESTful API Development",
@@ -430,7 +439,9 @@
           "know_how1": "Autonomy:",
           "know_how1_text": "Executed the full project individually, demonstrating strong self-management.",
           "know_how2": "Deadline Adherence:",
-          "know_how2_text": "Delivered a fully compliant application within tight timeline constraints."
+          "know_how2_text": "Delivered a fully compliant application within tight timeline constraints.",
+          "alt1": "Pizzeria REST API documentation: example cURL requests with their HTTP status codes",
+          "alt2": "Diagram of the JWT authentication process: the client sends its credentials and receives a token"
         },
         "sae402": {
           "title": "Complex Real-Time Multiplayer Application",
@@ -451,7 +462,9 @@
           "know_how2": "Work Distribution:",
           "know_how2_text": "Maintained structured task allocation to deliver both core and stretch features.",
           "know_how3": "Git Hygiene & Project Management:",
-          "know_how3_text": "Practiced clean commit conventions, milestone tracking, and issue management in GitLab."
+          "know_how3_text": "Practiced clean commit conventions, milestone tracking, and issue management in GitLab.",
+          "alt1": "First version of the game: squares moving in an HTML canvas",
+          "alt2": "Final version: login menu to create or join a multiplayer game"
         },
         "sae501": {
           "title": "RISC-V Hardware Emulator in C",
@@ -462,7 +475,9 @@
           "skill1": "C Programming Language",
           "skill2": "Systems-level language acquisition",
           "skill3": "Computer architecture & CPU mechanics",
-          "skill4": "Strict adherence to hardware specifications"
+          "skill4": "Strict adherence to hardware specifications",
+          "alt1": "RISC-V instruction encoding formats (R, I, S and U types)",
+          "alt2": "C code of the emulator executing a RISC-V load instruction"
         },
         "sae509": {
           "title": "Backend Web Development (Spring)",
@@ -473,7 +488,9 @@
           "skill1": "Spring Framework",
           "skill2": "JPA / Hibernate",
           "skill3": "Spring Security",
-          "skill4": "Lombok"
+          "skill4": "Lombok",
+          "alt1": "Profile page of the OlympicSwim web application",
+          "alt2": "Booking calendar of the OlympicSwim web application"
         }
       }
     },
@@ -504,17 +521,17 @@
             "game_design": "3D Game Design",
             "mesh_creation": "3D Texturing & Meshes"
           },
-          "img_alt": "TODO"
+          "img_alt": "Level of the 3D platformer made with Godot"
         },
         "firstgamejam": {
           "title": "My First Game Jam!",
           "title1": "Publishing on Itch.io",
           "text1": "Participated in the **1-BIT JAM #4** on Itch.io, finishing 114th out of 338 submissions.",
-          "alt1": "TODO",
+          "alt1": "Gameplay of the 1-bit shooter made during the game jam",
           "title2": "1-BIT JAM #4 Project",
           "text2": "Designed 'TheLegendOfKnardWizight', a 2D tower defense shooter using a strict two-color palette constraint.",
           "play_link": "Play the game!",
-          "alt2": "TODO",
+          "alt2": "Game jam results: ranked #1 in the \"Is the graphics 1 bit?\" category",
           "skills_title": "Skills Acquired",
           "skills_list": {
             "godot": "Godot & GDScript",
@@ -527,7 +544,7 @@
           "title": "Maze Generation Algorithms",
           "title1": "Algorithmic Exploration",
           "text1": "Studied and implemented procedural maze generation algorithms in Java.",
-          "alt1": "TODO",
+          "alt1": "Maze generated by the Java program",
           "title2": "Graphical Rendering",
           "text2": "Transitioned from CLI string outputs to a graphical UI in JavaFX, which served as a foundation for SAÉ 3.02.",
           "skills_title": "Skills Acquired",
@@ -540,10 +557,10 @@
           "title": "Arcade Games (Pong & Breakout)",
           "title1": "Classic Clones",
           "text1": "Built clones of Pong and Breakout complete with menus, scoring systems, and high-score persistence.",
-          "alt1": "TODO",
+          "alt1": "Pong game made in Java",
           "title2": "Game Loops",
           "text2": "Gained a solid understanding of frame update loops and JavaFX rendering timers.",
-          "alt2": "TODO",
+          "alt2": "Brick breaker game made in Java",
           "skills_title": "Skills Acquired",
           "skills_list": {
             "timer": "JavaFX AnimationTimer",

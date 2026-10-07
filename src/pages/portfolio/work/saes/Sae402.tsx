@@ -12,12 +12,20 @@ export default function Sae402() {
           <h4>{t(`${translationsPath}.presentation`)}</h4>
         </li>
         <p>{t(`${translationsPath}.presentationDescription`)}</p>
-        <img src="/img/portfolio/versionBasique.gif" alt="TOTO" title="TODO" />
+        <img
+          src="/img/portfolio/versionBasique.gif"
+          alt={t(`${translationsPath}.alt1`)}
+          title={t(`${translationsPath}.alt1`)}
+        />
         <li>
           <h4>{t(`${translationsPath}.multiplayer`)}</h4>
         </li>
         <p>{t(`${translationsPath}.multiplayer_description`)}</p>
-        <img src="/img/portfolio/versionFinale.gif" alt="TOTO" title="TODO" />
+        <img
+          src="/img/portfolio/versionFinale.gif"
+          alt={t(`${translationsPath}.alt2`)}
+          title={t(`${translationsPath}.alt2`)}
+        />
         <h4>{t(`${projectsWorkPath}.skills`)}</h4>
         <ul>
           <li>

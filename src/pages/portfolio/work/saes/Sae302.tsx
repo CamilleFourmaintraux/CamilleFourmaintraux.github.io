@@ -12,15 +12,19 @@ export default function Sae302() {
           <h4>{t(`${translationsPath}.presentation`)}</h4>
         </li>
         <p>{t(`${translationsPath}.presentationDescription`)}</p>
-        <img src="/img/portfolio/monsterhunt.png" alt="TOTO" title="TODO" />
+        <img
+          src="/img/portfolio/monsterhunt.png"
+          alt={t(`${translationsPath}.alt1`)}
+          title={t(`${translationsPath}.alt1`)}
+        />
         <li>
           <h4>{t(`${translationsPath}.testing`)}</h4>
         </li>
         <p>{t(`${translationsPath}.testingDescription`)}</p>
         <img
           src="/img/portfolio/monsterhunt_tests.png"
-          alt="TODO"
-          title="TODO"
+          alt={t(`${translationsPath}.alt2`)}
+          title={t(`${translationsPath}.alt2`)}
         />
         <li>
           <h4>{t(`${projectsWorkPath}.skills`)}</h4>
