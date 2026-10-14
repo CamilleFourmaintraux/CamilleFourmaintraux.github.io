@@ -35,6 +35,12 @@ const MainNav: React.FC = () => {
       >
         <i className="fas fa-comment"></i> {t("header.mainnav.contact")}
       </NavLink>
+      <NavLink
+        to="/chatbot"
+        className={({ isActive }) => (isActive ? "current navlink" : "navlink")}
+      >
+        <i className="fas fa-robot"></i> {t("header.mainnav.chatbot")}
+      </NavLink>
     </nav>
   );
 };
