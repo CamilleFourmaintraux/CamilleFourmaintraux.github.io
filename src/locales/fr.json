@@ -304,6 +304,17 @@
         "link": "dépôt GitHub",
         "skills": "Savoir-faire acquis",
         "know_how": "Savoir-être acquis",
+        "2d_game_engine": {
+          "title": "2D Moteur de jeu",
+          "presentation": "Conception d'un moteur de jeu 2D en java",
+          "presentationDescription": "Développement du moteur puis de deux jeux pour le tester, sur uen durée totale de 4 semaines.",
+          "section": "Projet en équipe de 6",
+          "section_text": "Travail d'équipe, répartition des tâches, outils de collaboration et de versions notamment Git",
+          "skill1": "Introduction au développement d'un moteur de jeu. Compréhension approfondie de leurs fonctionnements.",
+          "skill2": "Java obligatoire mais liberté dans l'implémentation du moteur : architecture logicielle",
+          "skill3": "Collaboration dans une équipe de 6.",
+          "alt1": "Capture d'écran du premier jeu fait sur le moteur : un clone de Pac-Man."
+        },
         "mnia-env": {
           "title": "Projet MNIA (Méthodes Numériques appliquées à l'IA)",
           "presentation": "Conception d'un environnement d'apprentissage",
@@ -313,7 +324,7 @@
           "skill1": "Introduction à l'apprentissage par renforcement (Reinforcement Learning)",
           "skill2": "Compréhension approfondie des architectures d'IA",
           "skill3": "Autonomie dans le choix stack/langage (Java retenu) ; conception intégrale de la structure logicielle.",
-          "alt1": "Configuration d'une machine virtuelle dans VirtualBox"
+          "alt1": "Sortie de la console du programme d'apprentissage"
         },
         "pagil1": {
           "title": "Jeu en console & Méthodologie Agile SCRUM",

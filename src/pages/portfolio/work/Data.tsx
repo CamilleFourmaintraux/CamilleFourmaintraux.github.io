@@ -14,11 +14,29 @@ import { Tags } from "../Tags";
 import { RealisationProps } from "../Realisation";
 import Internship from "./saes/Internship";
 import MniaEnv from "./saes/MniaEnv";
+import GameEngine from "./saes/GameEngine";
 
 const projectsWorkPath = `portfolio.work.saes`;
 const saesTitlePath = `title`;
 
 const realisations: RealisationProps[] = [
+  {
+    idRealisation: "2d_game_engine",
+    title: `${projectsWorkPath}.2d_game_engine.${saesTitlePath}`,
+    date: new Date(2026, 6, 1),
+    dateEnd: new Date(2026, 7, 30),
+    tags: [
+      Tags.JAVA,
+      Tags.VIDEOGAME,
+      Tags.TWODIMENSIONAL,
+      Tags.ARCADE,
+      Tags.MAZES,
+    ],
+    children: <GameEngine />,
+    current: "",
+    isInPeriod: false,
+    isInProgress: false,
+  },
   {
     idRealisation: "mnia-env",
     title: `${projectsWorkPath}.mnia-env.${saesTitlePath}`,

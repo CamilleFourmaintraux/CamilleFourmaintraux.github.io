@@ -13,7 +13,7 @@ export default function MniaEnv() {
         </li>
         <p>{t(`${translationsPath}.presentationDescription`)}</p>
         <img
-          src="/img/portfolio/reseau.png"
+          src="/img/portfolio/illustration_mnia_project.png"
           alt={t(`${translationsPath}.alt1`)}
           title={t(`${translationsPath}.alt1`)}
         />
