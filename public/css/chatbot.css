@@ -319,6 +319,121 @@
   }
 }
 
+/* ===== Header actions ===== */
+.chat-box-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.chat-reset-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  background: transparent;
+  color: var(--chat-bot-bubble-text);
+  border: 1px solid var(--chat-input-border);
+  border-radius: 16px;
+}
+
+.chat-reset-button:hover:not(:disabled) {
+  background: var(--chat-bot-bubble-bg);
+}
+
+.chat-reset-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ===== Suggested questions ===== */
+.chat-suggestions-title {
+  margin-top: 20px !important;
+  font-size: 0.85rem !important;
+  opacity: 0.7;
+}
+
+.chat-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.chat-suggestion {
+  margin: 0;
+  padding: 8px 14px;
+  font-size: 0.875rem;
+  background: var(--chat-bot-bubble-bg);
+  color: var(--chat-bot-bubble-text);
+  border: 1px solid var(--chat-divider);
+  border-radius: 18px;
+}
+
+.chat-suggestion:hover {
+  background: var(--chat-button-bg);
+  color: var(--chat-button-text);
+}
+
+/* ===== Bubble column (bubble + feedback buttons) ===== */
+.chat-bubble-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 75%;
+}
+
+.chat-bubble-row.user .chat-bubble-column {
+  align-items: flex-end;
+}
+
+.chat-bubble-column .chat-bubble {
+  max-width: 100%;
+}
+
+.chat-bubble.error {
+  border: 1px solid var(--bg-button-color-error, #c0392b);
+}
+
+/* Links written by the bot */
+.chat-link {
+  color: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.chat-link:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* ===== Feedback (thumbs up / down) ===== */
+.chat-feedback {
+  display: flex;
+  gap: 2px;
+  margin-top: 2px;
+}
+
+.chat-feedback button {
+  margin: 0;
+  padding: 4px 6px;
+  font-size: 0.8rem;
+  background: transparent;
+  color: var(--chat-bot-bubble-text);
+  opacity: 0.45;
+  border-radius: 6px;
+}
+
+.chat-feedback button:hover,
+.chat-feedback button[aria-pressed="true"] {
+  background: transparent;
+  opacity: 1;
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 480px) {
   .chat-box {
@@ -332,6 +447,12 @@
   .chat-bubble {
     max-width: 85%;
     font-size: 0.9rem;
+  }
+  .chat-bubble-column {
+    max-width: 85%;
+  }
+  .chat-reset-button span {
+    display: none; /* icon only on small screens */
   }
   .chat-box-footer {
     padding: 10px;

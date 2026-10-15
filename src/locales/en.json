@@ -36,17 +36,28 @@
     "back": "Back to main page"
   },
   "chatbot": {
-    "title": "CamGPT",
+    "title": "CamilleGPT",
     "main": "This page is an experiment with generative AI to let an agent learn about me and my projects so it can speak on my behalf.",
     "chat": {
       "title": "Chat with the bot",
       "subtitle": "Ask me anything about Camille and his projects!",
       "label": "Send message",
-      "placeholder": "Ask something",
-      "wakingup": "Bot waking up",
-      "thinking": "Bot thinking",
+      "placeholder": "Ask something...",
+      "wakingup": "Bot waking up...",
+      "thinking": "Bot thinking...",
       "error": "Sorry, it seems I am unavailable right now. Please try again later.",
-      "network-error": "Network error. Please try again."
+      "network-error": "Network error. Please try again.",
+      "reset": "New conversation",
+      "rate-limited": "You have sent a lot of messages. Please try again a little later, or use the contact form.",
+      "feedback-up": "Helpful answer",
+      "feedback-down": "Unhelpful answer",
+      "suggestions-title": "Some ideas to start:",
+      "suggestions": {
+        "q1": "What are his main projects?",
+        "q2": "Is he looking for an internship?",
+        "q3": "What are his technical skills?",
+        "q4": "What did he do at E-Mothep?"
+      }
     },
     "back": "Back to home page"
   },
@@ -305,17 +316,6 @@
         "link": "GitHub repository",
         "skills": "Hard skills acquired",
         "know_how": "Soft skills acquired",
-        "2d_game_engine": {
-          "title": "2D Game Engine",
-          "presentation": "Design and development of a 2D game engine in Java",
-          "presentationDescription": "Development of the engine followed by two games to test it, over a total period of four weeks.",
-          "section": "Team Project (6 Members)",
-          "section_text": "Teamwork, task distribution, collaboration tools, and version control using Git.",
-          "skill1": "Introduction to game engine development and in-depth understanding of how game engines work.",
-          "skill2": "Java was mandatory, but the engine's implementation was open-ended, allowing for software architecture decisions.",
-          "skill3": "Collaboration within a six-person team.",
-          "alt1": "Screenshot of the first game developed using the engine: a Pac-Man clone."
-        },
         "mnia-env": {
           "title": "MNIA Project (Numerical Methods Applied to AI)",
           "presentation": "Designing a Learning Environment",
@@ -325,7 +325,7 @@
           "skill1": "Introduction to Reinforcement Learning",
           "skill2": "Deeper understanding of AI concepts",
           "skill3": "Full autonomy in language selection (Java selected); designed code architecture from scratch.",
-          "alt1": "Console output of the ai-learning program"
+          "alt1": "Virtual machine configuration in VirtualBox"
         },
         "pagil1": {
           "title": "Terminal Game Development using Agile SCRUM",

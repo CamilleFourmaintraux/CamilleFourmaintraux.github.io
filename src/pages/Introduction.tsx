@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 const myYoutubeChannel =
   "https://youtube.com/@camille-we8dx?si=hSlOW24EazkZ0QTH";
 const myYoutubeID = "@Camille-we8dx";
-let ytbVideoRef = "Zwbzhw_zF74";
+const ytbVideoRef = "Zwbzhw_zF74";
 const ytbLink = "https://www.youtube.com/embed/";
 
 export default function IntroductionPage() {
@@ -40,7 +40,7 @@ export default function IntroductionPage() {
         </h2>
         <p>
           {t("cv.download")}{" "}
-          <a href="/files/resume.pdf" target="_blank" download>
+          <a href={t("footer.resume_filename")} target="_blank" download>
             {t("cv.here")}
           </a>
           .<br />
