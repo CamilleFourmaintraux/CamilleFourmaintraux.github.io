@@ -37,7 +37,7 @@
   },
   "chatbot": {
     "title": "CamilleGPT",
-    "main": "This page is an experiment with generative AI to let an agent learn about me and my projects so it can speak on my behalf.",
+    "main": "This page is an experiment with generative AI to let an agent learn about me and my projects so it can speak on my behalf. The first message takes some time.",
     "chat": {
       "title": "Chat with the bot",
       "subtitle": "Ask me anything about Camille and his projects!",

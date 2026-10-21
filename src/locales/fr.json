@@ -37,7 +37,7 @@
   },
   "chatbot": {
     "title": "CamilleGPT",
-    "main": "Cette page est une expérimentation avec l'IA générative afin d'entraîner un agent sur mon parcours et mes projets pour qu'il puisse répondre en mon nom.",
+    "main": "Cette page est une expérimentation avec l'IA générative afin d'entraîner un agent sur mon parcours et mes projets pour qu'il puisse répondre en mon nom. Le premier message prend du temps.",
     "chat": {
       "title": "Discuter avec le bot",
       "subtitle": "Posez-moi toutes vos questions sur Camille et ses projets !",
