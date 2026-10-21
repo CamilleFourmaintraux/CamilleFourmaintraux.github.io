@@ -316,6 +316,17 @@
         "link": "dépôt GitHub",
         "skills": "Savoir-faire acquis",
         "know_how": "Savoir-être acquis",
+        "2d_game_engine": {
+          "title": "Moteur de jeu 2D",
+          "presentation": "Conception et développement d'un moteur de jeu 2D en Java",
+          "presentationDescription": "Développement du moteur, suivi de la création de deux jeux pour le tester, sur une durée totale de quatre semaines.",
+          "section": "Projet en équipe (6 membres)",
+          "section_text": "Travail d'équipe, répartition des tâches, utilisation d'outils de collaboration et gestion de versions avec Git.",
+          "skill1": "Initiation au développement de moteurs de jeu et compréhension approfondie de leur fonctionnement.",
+          "skill2": "Utilisation imposée du langage Java ; conception libre du moteur, permettant de prendre des décisions en matière d'architecture logicielle.",
+          "skill3": "Collaboration au sein d'une équipe de six personnes.",
+          "alt1": "Capture d'écran du premier jeu développé avec ce moteur : un clone de Pac-Man."
+        },
         "mnia-env": {
           "title": "Projet MNIA (Méthodes Numériques appliquées à l'IA)",
           "presentation": "Conception d'un environnement d'apprentissage",
@@ -538,7 +549,7 @@
         "firstgamejam": {
           "title": "Ma première Game Jam !",
           "title1": "Publication sur Itch.io",
-          "text1": "Participation à la **1-BIT JAM #4** sur Itch.io. Réalisation d'un projet complet classé 114ème sur 338 participants.",
+          "text1": "Participation à la 1-BIT JAM #4 sur Itch.io. Réalisation d'un projet complet classé 114ème sur 338 participants.",
           "alt1": "Aperçu du jeu de tir en 1 bit réalisé pendant la game jam",
           "title2": "1-BIT JAM #4",
           "text2": "Contrainte de la jam : palette limitée à deux couleurs. Développement de 'TheLegendOfKnardWizight', un jeu de tir 2D type Tower Defense.",

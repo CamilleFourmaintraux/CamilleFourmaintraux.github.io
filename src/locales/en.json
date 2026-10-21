@@ -316,6 +316,17 @@
         "link": "GitHub repository",
         "skills": "Hard skills acquired",
         "know_how": "Soft skills acquired",
+        "2d_game_engine": {
+          "title": "2D Game Engine",
+          "presentation": "Design and development of a 2D game engine in Java",
+          "presentationDescription": "Development of the engine followed by two games to test it, over a total period of four weeks.",
+          "section": "Team Project (6 Members)",
+          "section_text": "Teamwork, task distribution, collaboration tools, and version control using Git.",
+          "skill1": "Introduction to game engine development and in-depth understanding of how game engines work.",
+          "skill2": "Java was mandatory, but the engine's implementation was open-ended, allowing for software architecture decisions.",
+          "skill3": "Collaboration within a six-person team.",
+          "alt1": "Screenshot of the first game developed using the engine: a Pac-Man clone."
+        },
         "mnia-env": {
           "title": "MNIA Project (Numerical Methods Applied to AI)",
           "presentation": "Designing a Learning Environment",
@@ -538,7 +549,7 @@
         "firstgamejam": {
           "title": "My First Game Jam!",
           "title1": "Publishing on Itch.io",
-          "text1": "Participated in the **1-BIT JAM #4** on Itch.io, finishing 114th out of 338 submissions.",
+          "text1": "Participated in the 1-BIT JAM #4 on Itch.io, finishing 114th out of 338 submissions.",
           "alt1": "Gameplay of the 1-bit shooter made during the game jam",
           "title2": "1-BIT JAM #4 Project",
           "text2": "Designed 'TheLegendOfKnardWizight', a 2D tower defense shooter using a strict two-color palette constraint.",
