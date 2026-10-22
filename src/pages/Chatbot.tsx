@@ -14,17 +14,11 @@ import {
 
 const TYPING_SPEED_MS = 18;
 
-/*
- * Number of previous exchanges (user message + bot reply) remembered and sent
- * back with each new message. When the limit is exceeded, the oldest exchange
- * is forgotten. The back-end applies its own cap (BUFFER_MEMORY env var), so
- * keep this value lower than or equal to the server's.
- */
+// Exchanges remembered. Keep <= the server's BUFFER_MEMORY.
 const BUFFER_MEMORY = 5;
 
 const SUGGESTION_KEYS = ["q1", "q2", "q3", "q4"] as const;
 
-/** Plain-text transcript used for the conversation email. */
 function buildTranscript(messages: Message[]): string {
   return messages
     .map((m) => {
@@ -42,22 +36,18 @@ function buildTranscript(messages: Message[]): string {
 export default function ChatbotPage() {
   const { t, i18n } = useTranslation();
 
-  // Restored once from sessionStorage (same browser tab).
   const [saved] = useState(loadConversation);
   const [messages, setMessages] = useState<Message[]>(saved.messages);
   const [input, setInput] = useState("");
-  const [isLoading, setIsLoading] = useState(false); // waiting for 1st word
+  const [isLoading, setIsLoading] = useState(false);
   const [isStreaming, setIsStreaming] = useState(false);
   const [hasWokenUp, setHasWokenUp] = useState(saved.messages.length > 0);
   const chatBodyRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const abortRef = useRef<AbortController | null>(null);
 
-  // Conversation memory: only successful exchanges, oldest first.
   const historyRef = useRef<ChatTurn[]>(saved.history);
-  // Always-current messages for the unmount/close handler to read.
   const messagesRef = useRef<Message[]>(saved.messages);
-  // Transcript already emailed (survives page changes via sessionStorage).
   const loggedSignatureRef = useRef(saved.loggedSignature);
 
   const isBusy = isLoading || isStreaming;
@@ -70,17 +60,12 @@ export default function ChatbotPage() {
     });
   }, []);
 
-  // Keep the ref in sync and save the conversation for this tab.
   useEffect(() => {
     messagesRef.current = messages;
     persist();
   }, [messages, persist]);
 
-  /*
-   * Emails the whole conversation, including feedback, unless this exact
-   * transcript was already sent. A conversation continued later is sent
-   * again in full, so the latest email is always the complete one.
-   */
+  // Emails the full transcript, unless this exact one was already sent.
   const flushConversation = useCallback(() => {
     const finished = messagesRef.current.filter((m) => !m.streaming);
     if (finished.length === 0) return;
@@ -103,7 +88,6 @@ export default function ChatbotPage() {
     }).catch((err) => console.error("Conversation log failed:", err));
   }, [persist]);
 
-  // Flush on tab close/hide and on component unmount (leaving the page).
   useEffect(() => {
     const handleHide = () => {
       if (document.visibilityState === "hidden") flushConversation();
@@ -115,12 +99,11 @@ export default function ChatbotPage() {
       window.removeEventListener("visibilitychange", handleHide);
       window.removeEventListener("pagehide", flushConversation);
       abortRef.current?.abort();
-      flushConversation(); // navigating away within the SPA
+      flushConversation();
     };
   }, [flushConversation]);
 
-  // Typing animation: reveals the last bot message progressively. It also
-  // follows the stream, and speeds up when it falls behind.
+  // Typing animation, speeds up when it falls behind the stream.
   useEffect(() => {
     const last = messages[messages.length - 1];
     if (!last || last.isFromUser || !last.fullText) return;
@@ -145,13 +128,11 @@ export default function ChatbotPage() {
     return () => clearTimeout(timer);
   }, [messages]);
 
-  // Auto-scroll to bottom on new content.
   useEffect(() => {
     const el = chatBodyRef.current;
     if (el) el.scrollTop = el.scrollHeight;
   }, [messages, isLoading]);
 
-  /** Updates the last message (the bot answer being streamed). */
   const updateLast = (update: (m: Message) => Message) =>
     setMessages((prev) => {
       if (prev.length === 0) return prev;
@@ -164,7 +145,6 @@ export default function ChatbotPage() {
     const trimmed = text.trim();
     if (!trimmed || isBusy) return;
 
-    // Finish the previous animation instantly, then add the user message.
     setMessages((m) => {
       const updated = m.map((msg) =>
         !msg.isFromUser && msg.fullText ? { ...msg, text: msg.fullText } : msg,
@@ -182,13 +162,11 @@ export default function ChatbotPage() {
       const result = await streamChat(
         {
           message: trimmed,
-          // Empty for the first message of the conversation.
           history: historyRef.current,
           lang: i18n.language.split("-")[0],
         },
         (delta) => {
           if (!reply) {
-            // First words: replace the "thinking" bubble by the answer.
             setIsLoading(false);
             setIsStreaming(true);
             setHasWokenUp(true);
@@ -209,7 +187,6 @@ export default function ChatbotPage() {
         provider: result.provider,
       }));
 
-      // Remember the exchange, then forget the oldest beyond BUFFER_MEMORY.
       historyRef.current = [
         ...historyRef.current,
         { role: "user" as const, content: trimmed },
@@ -249,7 +226,7 @@ export default function ChatbotPage() {
 
   const resetConversation = () => {
     if (isBusy) return;
-    flushConversation(); // keep a copy of the conversation by email
+    flushConversation();
     historyRef.current = [];
     loggedSignatureRef.current = "";
     clearConversation();

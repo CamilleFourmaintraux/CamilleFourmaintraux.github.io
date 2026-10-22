@@ -1,12 +1,10 @@
 import { API_URL } from "../../Utils";
 
-/** One entry of the conversation memory, in the format the LLM API expects. */
 export type ChatTurn = { role: "user" | "assistant"; content: string };
 
 export type ChatRequest = {
   message: string;
   history: ChatTurn[];
-  /** Language the website is displayed in, used when the visitor's is unclear. */
   lang: string;
 };
 
@@ -28,11 +26,6 @@ type StreamEvent =
   | { type: "done"; provider: string; truncated: boolean }
   | { type: "error"; error: string };
 
-/**
- * Sends a message to the back-end and streams the answer.
- * onDelta is called with each piece of text as soon as it arrives.
- * Rejects with a ChatError if no answer could be obtained at all.
- */
 export async function streamChat(
   request: ChatRequest,
   onDelta: (text: string) => void,
@@ -54,7 +47,7 @@ export async function streamChat(
     throw new ChatError("rate-limit", "Too many messages");
   if (!res.ok) throw new ChatError("unavailable", `HTTP ${res.status}`);
 
-  // Older back-ends answer with plain JSON: { reply }.
+  // Non-streamed fallback: { reply }.
   const contentType = res.headers.get("Content-Type") ?? "";
   if (!contentType.includes("ndjson") || !res.body) {
     const data = await res.json().catch(() => ({}));
@@ -104,7 +97,6 @@ export async function streamChat(
     if (!receivedText) throw new ChatError("network", String(err));
   }
 
-  // The stream stopped without a "done" event (connection lost).
   if (!receivedText) throw new ChatError("unavailable", "Empty reply");
   onDelta("…");
   return { provider, truncated: true };

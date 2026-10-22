@@ -4,15 +4,10 @@ export type Rating = "up" | "down";
 
 export type Message = {
   isFromUser: boolean;
-  /** Text currently displayed (grows during the typing animation). */
   text: string;
-  /** Complete text received so far (bot messages only). */
   fullText?: string;
-  /** True while the answer is still being streamed. */
   streaming?: boolean;
-  /** Error messages are not rated, remembered or sent back to the bot. */
   isError?: boolean;
-  /** Which LLM provider answered (useful when reading the logs). */
   provider?: string;
   rating?: Rating;
 };
@@ -20,7 +15,6 @@ export type Message = {
 export type SavedConversation = {
   messages: Message[];
   history: ChatTurn[];
-  /** Transcript already emailed, to avoid sending the same one twice. */
   loggedSignature: string;
 };
 
@@ -32,12 +26,7 @@ const EMPTY: SavedConversation = {
   loggedSignature: "",
 };
 
-/**
- * Restores the conversation of the current browser tab. sessionStorage is
- * cleared when the tab is closed, so a new visit starts a new conversation.
- * Storage can be unavailable (private mode, blocked cookies): every access
- * is guarded and the chat simply works without persistence.
- */
+// Storage may be unavailable (private mode): the chat works without it.
 export function loadConversation(): SavedConversation {
   try {
     const raw = sessionStorage.getItem(STORAGE_KEY);
@@ -47,7 +36,6 @@ export function loadConversation(): SavedConversation {
       return EMPTY;
     }
     return {
-      // Finish any animation that was interrupted when leaving the page.
       messages: data.messages.map((m) => ({
         ...m,
         text: m.fullText ?? m.text,
@@ -76,7 +64,7 @@ export function saveConversation(conversation: SavedConversation): void {
       }),
     );
   } catch {
-    // Storage full or unavailable: persistence is a convenience only.
+    // Persistence is optional.
   }
 }
 
@@ -84,6 +72,6 @@ export function clearConversation(): void {
   try {
     sessionStorage.removeItem(STORAGE_KEY);
   } catch {
-    // Ignore, see loadConversation.
+    // Persistence is optional.
   }
 }

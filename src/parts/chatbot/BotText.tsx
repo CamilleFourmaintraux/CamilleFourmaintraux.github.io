@@ -1,13 +1,8 @@
 import type { ReactNode } from "react";
 
-// Markdown link: [label](url)
 const LINK_RE = /\[([^\]\n]+)\]\(([^)\s]+)\)/g;
 
-/**
- * Only these link targets are turned into clickable links. Anything else
- * (javascript:, data:, unknown domains written without https...) is shown as
- * plain text, so a manipulated answer can never produce a dangerous link.
- */
+// Anything else (javascript:, data:...) is rendered as plain text.
 function isAllowedUrl(url: string): boolean {
   return (
     url.startsWith("#/") ||
@@ -20,8 +15,6 @@ function isAllowedUrl(url: string): boolean {
 function renderLink(label: string, url: string, key: number): ReactNode {
   if (!isAllowedUrl(url)) return label;
 
-  // Internal pages stay in the same tab (the conversation is kept in the
-  // session, so the visitor finds it again when coming back).
   if (url.startsWith("#/")) {
     return (
       <a key={key} href={url} className="chat-link">
@@ -42,7 +35,6 @@ function renderLink(label: string, url: string, key: number): ReactNode {
   );
 }
 
-/** Renders a bot answer: plain text with Markdown links made clickable. */
 export default function BotText({ text }: { text: string }) {
   const parts: ReactNode[] = [];
   let lastIndex = 0;
