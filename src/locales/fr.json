@@ -664,7 +664,7 @@
     "loading": "Chargement des données Steam… Le serveur peut mettre quelques secondes à se réveiller.",
     "error": "Impossible de charger les données Steam.",
     "retry": "Réessayer",
-    "percent": "{{value}} %",
+    "percent": "{{value}} %",
     "profile": {
       "level": "Niveau",
       "view": "Voir le profil sur Steam",
@@ -681,24 +681,25 @@
       }
     },
     "stats": {
-      "games": "Jeux possédés",
+      "games": "Jeux joués",
       "hours": "Heures de jeu",
-      "played": "Jeux lancés",
       "achievements": "Succès débloqués",
       "ofTotal": "sur {{total}} ({{percent}})",
-      "perfect": "Jeux terminés à 100 %"
+      "perfect": "Jeux terminés à 100 %",
+      "recent": "Joués ces 2 dernières semaines"
     },
     "recent": {
       "title": "Joués récemment",
       "none": "Aucun jeu lancé ces deux dernières semaines.",
-      "twoWeeks": "{{hours}} h ces 2 dernières semaines",
-      "total": "{{hours}} h au total"
+      "twoWeeks": "{{hours}} h ces 2 dernières semaines",
+      "total": "{{hours}} h au total"
     },
     "latest": {
       "title": "Derniers succès",
       "none": "Aucun succès pour le moment.",
       "loading": "Chargement des succès…",
-      "rarity": "{{percent}} % des joueurs"
+      "rarity": "{{percent}} % des joueurs",
+      "unavailable": "Les succès ne sont pas disponibles pour le moment."
     },
     "library": {
       "title": "Bibliothèque de jeux",
@@ -712,7 +713,7 @@
       "showLess": "Afficher moins",
       "empty": "Aucun jeu ne correspond à votre recherche.",
       "neverPlayed": "Jamais lancé",
-      "hours": "{{hours}} h",
+      "hours": "{{hours}} h",
       "lastPlayed": "joué le {{date}}"
     },
     "game": {

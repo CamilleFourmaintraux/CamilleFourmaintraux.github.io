@@ -681,24 +681,25 @@
       }
     },
     "stats": {
-      "games": "Games owned",
+      "games": "Games played",
       "hours": "Hours played",
-      "played": "Games played",
       "achievements": "Achievements unlocked",
       "ofTotal": "out of {{total}} ({{percent}})",
-      "perfect": "Perfect games"
+      "perfect": "Perfect games",
+      "recent": "Played in the last 2 weeks"
     },
     "recent": {
       "title": "Recently played",
       "none": "No games played in the last two weeks.",
-      "twoWeeks": "{{hours}} h in the last 2 weeks",
-      "total": "{{hours}} h total"
+      "twoWeeks": "{{hours}} h in the last 2 weeks",
+      "total": "{{hours}} h total"
     },
     "latest": {
       "title": "Latest achievements",
       "none": "No achievements yet.",
       "loading": "Loading achievements…",
-      "rarity": "{{percent}}% of players"
+      "rarity": "{{percent}}% of players",
+      "unavailable": "Achievements are not available at the moment."
     },
     "library": {
       "title": "Game library",
@@ -712,7 +713,7 @@
       "showLess": "Show less",
       "empty": "No game matches your search.",
       "neverPlayed": "Never played",
-      "hours": "{{hours}} h",
+      "hours": "{{hours}} h",
       "lastPlayed": "last played {{date}}"
     },
     "game": {

@@ -149,6 +149,9 @@ export default function SteamPage() {
   }
 
   const { profile, stats } = overview;
+  const unavailable = summaryError || Boolean(summary?.achievementsPrivate);
+  const achievementValue = (value: number | undefined) =>
+    unavailable ? "–" : value === undefined ? "…" : value;
   const statusClass = profile.currentGame
     ? "in-game"
     : profile.status > 0
@@ -218,17 +221,17 @@ export default function SteamPage() {
             <span className="steam-stat-label">{t("steam.stats.hours")}</span>
           </div>
           <div className="steam-stat">
-            <span className="steam-stat-value">{stats.playedCount}</span>
-            <span className="steam-stat-label">{t("steam.stats.played")}</span>
+            <span className="steam-stat-value">{stats.recentCount}</span>
+            <span className="steam-stat-label">{t("steam.stats.recent")}</span>
           </div>
           <div className="steam-stat">
             <span className="steam-stat-value">
-              {summary ? summary.totalUnlocked : "…"}
+              {achievementValue(summary?.totalUnlocked)}
             </span>
             <span className="steam-stat-label">
               {t("steam.stats.achievements")}
             </span>
-            {summary && summary.totalAvailable > 0 && (
+            {summary && !unavailable && summary.totalAvailable > 0 && (
               <>
                 <div className="steam-meter" aria-hidden="true">
                   <div
@@ -253,7 +256,7 @@ export default function SteamPage() {
           </div>
           <div className="steam-stat">
             <span className="steam-stat-value">
-              {summary ? summary.perfectGames : "…"}
+              {achievementValue(summary?.perfectGames)}
             </span>
             <span className="steam-stat-label">{t("steam.stats.perfect")}</span>
           </div>
@@ -297,8 +300,8 @@ export default function SteamPage() {
         <h2>
           <i className="fas fa-trophy"></i> {t("steam.latest.title")}
         </h2>
-        {summaryError ? (
-          <p className="steam-muted">{t("steam.game.error")}</p>
+        {unavailable ? (
+          <p className="steam-muted">{t("steam.latest.unavailable")}</p>
         ) : !summary ? (
           <p className="steam-muted" role="status">
             {t("steam.latest.loading")}

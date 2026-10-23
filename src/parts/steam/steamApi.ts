@@ -23,7 +23,7 @@ export type SteamGame = {
 
 export type SteamOverview = {
   profile: SteamProfile;
-  stats: { gameCount: number; playedCount: number; totalMinutes: number };
+  stats: { gameCount: number; recentCount: number; totalMinutes: number };
   games: SteamGame[];
 };
 
@@ -39,6 +39,7 @@ export type Achievement = {
 };
 
 export type AchievementSummary = {
+  achievementsPrivate: boolean;
   totalUnlocked: number;
   totalAvailable: number;
   perfectGames: number;
