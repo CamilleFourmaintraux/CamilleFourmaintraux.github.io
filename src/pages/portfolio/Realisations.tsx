@@ -10,7 +10,7 @@ interface RealisationsProps {
   data: RealisationProps[];
   pageTitle: string;
   pageSubtitle: string;
-  pageDescription: string;
+  pageDescription: React.ReactNode;
   children: React.ReactNode;
 }
 

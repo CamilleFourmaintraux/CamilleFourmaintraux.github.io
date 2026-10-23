@@ -621,7 +621,8 @@
           "random": "Matrice aléatoire",
           "not_inversible": "La matrice n'est pas inversible"
         }
-      }
+      },
+      "steam_sentence": "J'aime aussi jouer aux jeux vidéo, jetez un œil à <steamLink>mon compte Steam</steamLink>."
     },
     "tags": {
       "SCRUM": "Scrum",
@@ -656,5 +657,74 @@
       "AI": "IA",
       "RL": "Apprentissage par renforcement"
     }
+  },
+  "steam": {
+    "title": "Mon compte Steam",
+    "intro": "Ma bibliothèque de jeux et mes succès, récupérés en direct depuis Steam.",
+    "loading": "Chargement des données Steam… Le serveur peut mettre quelques secondes à se réveiller.",
+    "error": "Impossible de charger les données Steam.",
+    "retry": "Réessayer",
+    "percent": "{{value}} %",
+    "profile": {
+      "level": "Niveau",
+      "view": "Voir le profil sur Steam",
+      "memberSince": "Membre depuis le {{date}}",
+      "playing": "En train de jouer à {{game}}",
+      "status": {
+        "0": "Hors ligne",
+        "1": "En ligne",
+        "2": "Occupé",
+        "3": "Absent",
+        "4": "Endormi",
+        "5": "Cherche à échanger",
+        "6": "Cherche à jouer"
+      }
+    },
+    "stats": {
+      "games": "Jeux possédés",
+      "hours": "Heures de jeu",
+      "played": "Jeux lancés",
+      "achievements": "Succès débloqués",
+      "ofTotal": "sur {{total}} ({{percent}})",
+      "perfect": "Jeux terminés à 100 %"
+    },
+    "recent": {
+      "title": "Joués récemment",
+      "none": "Aucun jeu lancé ces deux dernières semaines.",
+      "twoWeeks": "{{hours}} h ces 2 dernières semaines",
+      "total": "{{hours}} h au total"
+    },
+    "latest": {
+      "title": "Derniers succès",
+      "none": "Aucun succès pour le moment.",
+      "loading": "Chargement des succès…",
+      "rarity": "{{percent}} % des joueurs"
+    },
+    "library": {
+      "title": "Bibliothèque de jeux",
+      "search": "Rechercher un jeu…",
+      "sort": "Trier par",
+      "sortPlaytime": "Les plus joués",
+      "sortRecent": "Joués récemment",
+      "sortName": "Nom",
+      "sortAchievements": "Progression des succès",
+      "showAll": "Afficher les {{count}} jeux",
+      "showLess": "Afficher moins",
+      "empty": "Aucun jeu ne correspond à votre recherche.",
+      "neverPlayed": "Jamais lancé",
+      "hours": "{{hours}} h",
+      "lastPlayed": "joué le {{date}}"
+    },
+    "game": {
+      "progress": "{{unlocked}} / {{total}} succès débloqués",
+      "none": "Ce jeu n'a pas de succès.",
+      "hidden": "Succès caché",
+      "locked": "Verrouillé",
+      "close": "Fermer",
+      "loading": "Chargement des succès…",
+      "error": "Impossible de charger les succès.",
+      "openStore": "Page du magasin"
+    },
+    "back": "Retour à mes passions"
   }
 }

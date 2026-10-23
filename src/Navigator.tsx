@@ -12,6 +12,7 @@ import DemoMatrixPage from "./pages/games/matrix/DemoMatrix";
 import DemoPongPage from "./pages/games/pong/DemoPong";
 import PythonPage from "./pages/games/prog/Python";
 import ChatbotPage from "./pages/Chatbot";
+import SteamPage from "./pages/steam/SteamPage";
 import PacManPage from "./pages/games/pacman/PacMan";
 import MinicraftPage from "./pages/games/minecraft/minicraft";
 
@@ -56,6 +57,7 @@ export default function Navigator() {
       <Route path="/pingpong" element={<DemoPongPage />} />
 
       <Route path="/chatbot" element={<ChatbotPage />} />
+      <Route path="/steam" element={<SteamPage />} />
 
       <Route path="/python" element={<PythonPage />} />
       <Route path="/pacman" element={<PacManPage />} />

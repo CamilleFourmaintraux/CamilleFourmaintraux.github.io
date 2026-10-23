@@ -621,7 +621,8 @@
           "random": "Random Matrix",
           "not_inversible": "Matrix is not invertible"
         }
-      }
+      },
+      "steam_sentence": "I also enjoy playing video games, have a look at <steamLink>my Steam account</steamLink>."
     },
     "tags": {
       "SCRUM": "Scrum",
@@ -656,5 +657,74 @@
       "AI": "AI",
       "RL": "Reinforcement Learning"
     }
+  },
+  "steam": {
+    "title": "My Steam account",
+    "intro": "My game library and achievements, fetched live from Steam.",
+    "loading": "Loading Steam data… The server may take a few seconds to wake up.",
+    "error": "Steam data could not be loaded.",
+    "retry": "Retry",
+    "percent": "{{value}}%",
+    "profile": {
+      "level": "Level",
+      "view": "View profile on Steam",
+      "memberSince": "Member since {{date}}",
+      "playing": "Currently playing {{game}}",
+      "status": {
+        "0": "Offline",
+        "1": "Online",
+        "2": "Busy",
+        "3": "Away",
+        "4": "Snooze",
+        "5": "Looking to trade",
+        "6": "Looking to play"
+      }
+    },
+    "stats": {
+      "games": "Games owned",
+      "hours": "Hours played",
+      "played": "Games played",
+      "achievements": "Achievements unlocked",
+      "ofTotal": "out of {{total}} ({{percent}})",
+      "perfect": "Perfect games"
+    },
+    "recent": {
+      "title": "Recently played",
+      "none": "No games played in the last two weeks.",
+      "twoWeeks": "{{hours}} h in the last 2 weeks",
+      "total": "{{hours}} h total"
+    },
+    "latest": {
+      "title": "Latest achievements",
+      "none": "No achievements yet.",
+      "loading": "Loading achievements…",
+      "rarity": "{{percent}}% of players"
+    },
+    "library": {
+      "title": "Game library",
+      "search": "Search a game…",
+      "sort": "Sort by",
+      "sortPlaytime": "Most played",
+      "sortRecent": "Recently played",
+      "sortName": "Name",
+      "sortAchievements": "Achievement completion",
+      "showAll": "Show all {{count}} games",
+      "showLess": "Show less",
+      "empty": "No game matches your search.",
+      "neverPlayed": "Never played",
+      "hours": "{{hours}} h",
+      "lastPlayed": "last played {{date}}"
+    },
+    "game": {
+      "progress": "{{unlocked}} / {{total}} achievements unlocked",
+      "none": "This game has no achievements.",
+      "hidden": "Hidden achievement",
+      "locked": "Locked",
+      "close": "Close",
+      "loading": "Loading achievements…",
+      "error": "Achievements could not be loaded.",
+      "openStore": "Store page"
+    },
+    "back": "Back to my passions"
   }
 }

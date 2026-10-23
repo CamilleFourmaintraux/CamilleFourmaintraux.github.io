@@ -1,4 +1,5 @@
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
+import { NavLink } from "react-router-dom";
 import Realisations from "../Realisations";
 import Data from "./Data";
 
@@ -10,7 +11,15 @@ export default function Passions() {
         data={Data}
         pageTitle={t("portfolio.passion.page_title")}
         pageSubtitle={t("portfolio.passion.page_subtitle")}
-        pageDescription={t("portfolio.passion.page_description")}
+        pageDescription={
+          <>
+            {t("portfolio.passion.page_description")}{" "}
+            <Trans
+              i18nKey="portfolio.passion.steam_sentence"
+              components={{ steamLink: <NavLink to="/steam" /> }}
+            />
+          </>
+        }
       >
         <div>
           <h3>{t("portfolio.passion.other_activities.title")}</h3>
