@@ -726,6 +726,22 @@
       "error": "Achievements could not be loaded.",
       "openStore": "Store page"
     },
-    "back": "Back to my passions"
+    "back": "Back to my passions",
+    "workshop": {
+      "title": "Workshop items",
+      "intro": "Mods and content I published on the Steam Workshop.",
+      "loading": "Loading Workshop items…",
+      "error": "Workshop items could not be loaded.",
+      "items_one": "{{value}} item",
+      "items_other": "{{value}} items",
+      "subscribers_one": "{{value}} subscriber",
+      "subscribers_other": "{{value}} subscribers",
+      "favorites_one": "{{value}} favorite",
+      "favorites_other": "{{value}} favorites",
+      "views_one": "{{value}} view",
+      "views_other": "{{value}} views",
+      "rating": "{{percent}} positive",
+      "updated": "Updated {{date}}"
+    }
   }
 }

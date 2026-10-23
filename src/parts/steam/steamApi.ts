@@ -84,3 +84,32 @@ export const headerImage = (appid: number) =>
 
 export const storePage = (appid: number) =>
   `https://store.steampowered.com/app/${appid}/`;
+
+export type WorkshopItem = {
+  id: string;
+  title: string;
+  description: string;
+  preview: string | null;
+  appid: number;
+  game: string | null;
+  created: number | null;
+  updated: number | null;
+  subscriptions: number;
+  favorites: number;
+  views: number;
+  positivePercent: number | null;
+  tags: string[];
+  url: string;
+};
+
+export type Workshop = {
+  items: WorkshopItem[];
+  totals: {
+    items: number;
+    subscriptions: number;
+    favorites: number;
+    views: number;
+  };
+};
+
+export const fetchWorkshop = () => getJson<Workshop>("/steam/workshop");

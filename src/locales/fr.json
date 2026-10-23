@@ -726,6 +726,22 @@
       "error": "Impossible de charger les succès.",
       "openStore": "Page du magasin"
     },
-    "back": "Retour à mes passions"
+    "back": "Retour à mes passions",
+    "workshop": {
+      "title": "Mes créations du Workshop",
+      "intro": "Mods et contenus que j'ai publiés sur le Steam Workshop.",
+      "loading": "Chargement des créations du Workshop…",
+      "error": "Impossible de charger les créations du Workshop.",
+      "items_one": "{{value}} création",
+      "items_other": "{{value}} créations",
+      "subscribers_one": "{{value}} abonné",
+      "subscribers_other": "{{value}} abonnés",
+      "favorites_one": "{{value}} favori",
+      "favorites_other": "{{value}} favoris",
+      "views_one": "{{value}} vue",
+      "views_other": "{{value}} vues",
+      "rating": "{{percent}} d'avis positifs",
+      "updated": "Mis à jour le {{date}}"
+    }
   }
 }

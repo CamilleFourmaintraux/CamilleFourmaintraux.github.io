@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import AchievementList from "../../parts/steam/AchievementList";
 import AchievementsDialog from "../../parts/steam/AchievementsDialog";
+import WorkshopSection from "../../parts/steam/WorkshopSection";
 import {
   fetchAchievementSummary,
   fetchOverview,
@@ -312,6 +313,8 @@ export default function SteamPage() {
           <AchievementList achievements={summary.latestUnlocks} lang={lang} />
         )}
       </div>
+
+      <WorkshopSection lang={lang} />
 
       <div className="container">
         <h2>
