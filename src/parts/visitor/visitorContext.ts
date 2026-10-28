@@ -1,3 +1,10 @@
+export type VisitActions = {
+  chat: number;
+  contact: boolean;
+  recontact: boolean;
+  documents: string[];
+};
+
 export type VisitorContext = {
   src: string | null;
   referrer: string | null;
@@ -8,17 +15,24 @@ export type VisitorContext = {
   os: string | null;
   browser: string | null;
   landedAt: string;
+  activeMs: number;
+  totalMs: number;
+  actions: VisitActions;
 };
 
 type StoredVisit = Pick<
   VisitorContext,
-  "src" | "referrer" | "pages" | "landedAt"
->;
+  "src" | "referrer" | "pages" | "landedAt" | "activeMs" | "actions"
+> & { id: string };
 
-const STORAGE_KEY = "visitor-context-v1";
+const STORAGE_KEY = "visitor-context-v2";
+const OPT_OUT_KEY = "visit-stats-opt-out";
 const MAX_PAGES = 30;
+const MAX_DOCUMENTS = 10;
 
 let visit: StoredVisit | null = null;
+// Start of the current visible period, used to measure active time.
+let visibleSince: number | null = null;
 
 function readSrc(): string | null {
   // ?src= may be before the hash (/?src=cv#/home) or inside it (#/home?src=cv).
@@ -43,6 +57,21 @@ function readReferrer(): string | null {
   }
 }
 
+function randomId(): string {
+  try {
+    return crypto.randomUUID();
+  } catch {
+    return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 12)}`;
+  }
+}
+
+const emptyActions = (): VisitActions => ({
+  chat: 0,
+  contact: false,
+  recontact: false,
+  documents: [],
+});
+
 function save() {
   try {
     sessionStorage.setItem(STORAGE_KEY, JSON.stringify(visit));
@@ -57,8 +86,16 @@ function load(): StoredVisit {
     const raw = sessionStorage.getItem(STORAGE_KEY);
     if (raw) {
       const data = JSON.parse(raw) as StoredVisit;
-      if (Array.isArray(data.pages) && typeof data.landedAt === "string") {
-        visit = data;
+      if (
+        typeof data.id === "string" &&
+        Array.isArray(data.pages) &&
+        typeof data.landedAt === "string"
+      ) {
+        visit = {
+          ...data,
+          activeMs: Number(data.activeMs) || 0,
+          actions: { ...emptyActions(), ...data.actions },
+        };
       }
     }
   } catch {
@@ -66,10 +103,13 @@ function load(): StoredVisit {
   }
   if (!visit) {
     visit = {
+      id: randomId(),
       src: readSrc(),
       referrer: readReferrer(),
       pages: [],
       landedAt: new Date().toISOString(),
+      activeMs: 0,
+      actions: emptyActions(),
     };
   } else if (!visit.src) {
     // A tagged link opened later in the same tab still counts.
@@ -79,11 +119,63 @@ function load(): StoredVisit {
   return visit;
 }
 
+function pauseTimer() {
+  const current = load();
+  if (visibleSince !== null) {
+    current.activeMs += Date.now() - visibleSince;
+    visibleSince = null;
+    save();
+  }
+}
+
+function resumeTimer() {
+  if (visibleSince === null) visibleSince = Date.now();
+}
+
 export function recordPage(path: string) {
   const current = load();
   if (current.pages[current.pages.length - 1] === path) return;
   current.pages = [...current.pages, path].slice(-MAX_PAGES);
   save();
+}
+
+export function recordAction(
+  action: "chat" | "contact" | "recontact" | "document",
+  detail?: string,
+) {
+  const { actions } = load();
+  if (action === "chat") actions.chat += 1;
+  else if (action === "document") {
+    const name = detail?.slice(0, 60);
+    if (name && !actions.documents.includes(name)) {
+      actions.documents = [...actions.documents, name].slice(-MAX_DOCUMENTS);
+    }
+  } else actions[action] = true;
+  save();
+}
+
+export function getVisitId(): string {
+  return load().id;
+}
+
+export function isVisitStatsDisabled(): boolean {
+  const gpc = (navigator as Navigator & { globalPrivacyControl?: boolean })
+    .globalPrivacyControl;
+  if (gpc) return true;
+  try {
+    return localStorage.getItem(OPT_OUT_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
+export function setVisitStatsDisabled(disabled: boolean) {
+  try {
+    if (disabled) localStorage.setItem(OPT_OUT_KEY, "1");
+    else localStorage.removeItem(OPT_OUT_KEY);
+  } catch {
+    // Without storage the choice cannot be kept.
+  }
 }
 
 function detectDevice(ua: string): VisitorContext["device"] {
@@ -129,8 +221,16 @@ export function getVisitorContext(): VisitorContext {
   } catch {
     timeZone = null;
   }
+  const now = Date.now();
   return {
-    ...current,
+    src: current.src,
+    referrer: current.referrer,
+    pages: [...current.pages],
+    landedAt: current.landedAt,
+    actions: { ...current.actions, documents: [...current.actions.documents] },
+    activeMs:
+      current.activeMs + (visibleSince !== null ? now - visibleSince : 0),
+    totalMs: Math.max(0, now - Date.parse(current.landedAt)),
     language: navigator.language,
     timeZone,
     device: detectDevice(ua),
@@ -141,3 +241,11 @@ export function getVisitorContext(): VisitorContext {
 
 // Captures the landing information as soon as the module is loaded.
 load();
+if (document.visibilityState === "visible") resumeTimer();
+document.addEventListener("visibilitychange", () =>
+  document.visibilityState === "visible" ? resumeTimer() : pauseTimer(),
+);
+window.addEventListener("pagehide", pauseTimer);
+window.addEventListener("pageshow", () => {
+  if (document.visibilityState === "visible") resumeTimer();
+});

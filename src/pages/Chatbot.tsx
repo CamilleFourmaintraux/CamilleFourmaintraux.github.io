@@ -4,7 +4,10 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { API_URL } from "../Utils";
 import BotText from "../parts/chatbot/BotText";
 import ContactRequest from "../parts/chatbot/ContactRequest";
-import { getVisitorContext } from "../parts/visitor/visitorContext";
+import {
+  getVisitorContext,
+  recordAction,
+} from "../parts/visitor/visitorContext";
 import { ChatError, streamChat, type ChatTurn } from "../parts/chatbot/chatApi";
 import {
   clearConversation,
@@ -156,6 +159,7 @@ export default function ChatbotPage() {
     });
     setInput("");
     setIsLoading(true);
+    recordAction("chat");
 
     const controller = new AbortController();
     abortRef.current = controller;
@@ -246,6 +250,7 @@ export default function ChatbotPage() {
       credentials: "omit",
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    recordAction("recontact");
     // The transcript is already in this e-mail: do not send it again.
     loggedSignatureRef.current = transcript;
     persist();

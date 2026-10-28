@@ -2,9 +2,19 @@ import { useEffect, useRef, useState } from "react";
 import { validateEmail, API_URL } from "../../Utils";
 import { Trans, useTranslation } from "react-i18next";
 import { NavLink } from "react-router-dom";
-import { getVisitorContext } from "../../parts/visitor/visitorContext";
+import {
+  getVisitorContext,
+  recordAction,
+} from "../../parts/visitor/visitorContext";
 
 const STATUS_DISPLAY_MS = 8000;
+
+// The input's required attribute already informs screen readers.
+const required = (
+  <span className="form-required" aria-hidden="true">
+    *
+  </span>
+);
 
 export default function ContactForm() {
   const { t } = useTranslation();
@@ -34,29 +44,36 @@ export default function ContactForm() {
     }
   };
 
+  type Fields = {
+    lastname: string;
+    firstname: string;
+    company: string;
+    role: string;
+    email: string;
+    subject: string;
+    message: string;
+  };
+
   // Sends the email through the back-end (which relays it to EmailJS).
-  const sendMail = async (
-    lastname: string,
-    firstname: string,
-    email: string,
-    subject: string,
-    message: string,
-  ) => {
+  const sendMail = async (fields: Fields) => {
     try {
       const res = await fetch(`${API_URL}/mail-service`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          from_name: `${firstname} ${lastname}`.trim(),
-          from_email: email,
-          subject,
-          message,
+          from_name: `${fields.firstname} ${fields.lastname}`.trim(),
+          from_email: fields.email,
+          company: fields.company,
+          role: fields.role,
+          subject: fields.subject,
+          message: fields.message,
           context: getVisitorContext(),
         }),
       });
 
       if (!res.ok) throw new Error(`Server responded ${res.status}`);
 
+      recordAction("contact");
       showStatus(t("form.msg-success"), true);
       formRef.current?.reset();
     } catch (err) {
@@ -83,13 +100,15 @@ export default function ContactForm() {
     setIsBeingSent(true);
     // Stays visible until the request finishes.
     showStatus(t("form.msg-sent"), true, false);
-    sendMail(
-      field("name"),
-      field("forename"),
+    sendMail({
+      lastname: field("name"),
+      firstname: field("forename"),
+      company: field("company"),
+      role: field("role"),
       email,
-      field("subject"),
-      field("message"),
-    );
+      subject: field("subject"),
+      message: field("message"),
+    });
   };
 
   return (
@@ -103,7 +122,9 @@ export default function ContactForm() {
           <fieldset disabled={isBeingSent}>
             <div className="form-row">
               <div className="form-field">
-                <label htmlFor="name">{t("form.name")}</label>
+                <label htmlFor="name">
+                  {t("form.name")} {required}
+                </label>
                 <input
                   id="name"
                   name="name"
@@ -121,13 +142,39 @@ export default function ContactForm() {
                   type="text"
                   autoComplete="given-name"
                   placeholder={t("form.forename_placeholder")}
-                  required
+                />
+              </div>
+            </div>
+
+            <div className="form-row">
+              <div className="form-field">
+                <label htmlFor="company">{t("form.company")}</label>
+                <input
+                  id="company"
+                  name="company"
+                  type="text"
+                  autoComplete="organization"
+                  maxLength={100}
+                  placeholder={t("form.company_placeholder")}
+                />
+              </div>
+              <div className="form-field">
+                <label htmlFor="role">{t("form.role")}</label>
+                <input
+                  id="role"
+                  name="role"
+                  type="text"
+                  autoComplete="organization-title"
+                  maxLength={100}
+                  placeholder={t("form.role_placeholder")}
                 />
               </div>
             </div>
 
             <div className="form-field">
-              <label htmlFor="mail">{t("form.email")}</label>
+              <label htmlFor="mail">
+                {t("form.email")} {required}
+              </label>
               <input
                 id="mail"
                 name="mail"
@@ -139,7 +186,9 @@ export default function ContactForm() {
             </div>
 
             <div className="form-field">
-              <label htmlFor="subject">{t("form.subject")}</label>
+              <label htmlFor="subject">
+                {t("form.subject")} {required}
+              </label>
               <input
                 id="subject"
                 name="subject"
@@ -150,7 +199,9 @@ export default function ContactForm() {
             </div>
 
             <div className="form-field">
-              <label htmlFor="message">{t("form.message")}</label>
+              <label htmlFor="message">
+                {t("form.message")} {required}
+              </label>
               <textarea
                 id="message"
                 name="message"
@@ -158,6 +209,8 @@ export default function ContactForm() {
                 required
               />
             </div>
+
+            <p className="form-required-note">{t("form.required_note")}</p>
 
             <button type="submit" id="submit_button">
               <i

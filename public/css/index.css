@@ -169,3 +169,18 @@ ul ul > img {
   font-size: 0.85rem;
   opacity: 0.75;
 }
+
+.privacy-optout {
+  margin-top: 10px;
+  padding: 10px 15px;
+  border-radius: 5px;
+  background-color: var(--bg-subcontainer-color);
+}
+
+.privacy-optout p {
+  margin: 0;
+}
+
+.privacy-optout button {
+  margin: 8px 0 0;
+}

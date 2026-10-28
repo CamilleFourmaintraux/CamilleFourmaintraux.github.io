@@ -1,5 +1,6 @@
 import { Trans, useTranslation } from "react-i18next";
 import { NavLink } from "react-router-dom";
+import VisitStatsToggle from "../parts/visitor/VisitStatsToggle";
 
 const EMAIL = "fourmaintrauxcamille2004@gmail.com";
 
@@ -9,7 +10,16 @@ const SECTIONS: { key: string; items?: string[] }[] = [
   { key: "chatbot", items: ["providers", "email", "recontact"] },
   {
     key: "context",
-    items: ["src", "referrer", "pages", "locale", "device", "time"],
+    items: [
+      "src",
+      "referrer",
+      "pages",
+      "locale",
+      "device",
+      "time",
+      "duration",
+      "actions",
+    ],
   },
   { key: "technical", items: ["ip", "hosting", "resources"] },
   { key: "storage", items: ["local", "session"] },
@@ -61,6 +71,7 @@ export default function PrivacyPage() {
               ))}
             </ul>
           )}
+          {key === "context" && <VisitStatsToggle />}
         </section>
       ))}
     </div>

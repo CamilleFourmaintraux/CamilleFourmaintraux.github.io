@@ -61,7 +61,7 @@
       }
     },
     "back": "Retour à la page d'accueil",
-    "privacy-notice": "Vos messages sont transmis à des services d'IA tiers pour générer les réponses, et Camille reçoit les conversations par e-mail pour améliorer le chatbot. N'y partagez pas d'informations sensibles. <privacyLink>En savoir plus</privacyLink>",
+    "privacy-notice": "Vos messages sont transmis à des services d'IA tiers pour générer les réponses, et Camille reçoit les conversations par e-mail pour améliorer le chatbot. N'y partagez pas d'informations sensibles. <privacyLink>En savoir plus</privacyLink>",
     "contact": {
       "button": "Être recontacté par Camille",
       "intro": "Laissez votre e-mail : Camille recevra cette conversation et pourra vous répondre.",
@@ -141,12 +141,17 @@
     "name_placeholder": "Votre nom...",
     "forename": "Prénom",
     "forename_placeholder": "Votre prénom...",
+    "company": "Entreprise",
+    "company_placeholder": "Votre entreprise...",
+    "role": "Poste / fonction",
+    "role_placeholder": "Votre poste ou fonction...",
     "email": "E-Mail",
     "email_placeholder": "Votre adresse e-mail...",
     "subject": "Sujet",
     "subject_placeholder": "Sujet du message...",
     "message": "Message",
     "message_placeholder": "Votre message...",
+    "required_note": "Les champs marqués d'un astérisque (*) sont obligatoires.",
     "send": "Envoyer",
     "sent": "Envoi en cours...",
     "msg-success": "Votre message a été envoyé avec succès.",
@@ -764,11 +769,11 @@
     "intro": "Ce site est mon portfolio personnel. Cette page explique quelles données sont collectées quand vous l'utilisez, pourquoi, et ce que vous pouvez demander.",
     "who": {
       "title": "Qui est responsable ?",
-      "text": "Camille Fourmaintraux, auteur du site. Pour toute question sur vos données : <mailLink>{{email}}</mailLink>."
+      "text": "Camille Fourmaintraux, auteur du site. Pour toute question sur vos données, vous pouvez m'envoyer un e-mail à : <mailLink>{{email}}</mailLink>."
     },
     "contact": {
       "title": "Formulaire de contact",
-      "text": "Le nom, l'e-mail, le sujet et le message que vous saisissez me sont envoyés par e-mail via le service EmailJS. Ils servent uniquement à vous répondre."
+      "text": "Le nom, le prénom, l'entreprise, le poste, l'e-mail, le sujet et le message que vous saisissez me sont envoyés par e-mail via le service EmailJS. Ils servent uniquement à vous répondre."
     },
     "chatbot": {
       "title": "Chatbot",
@@ -781,14 +786,22 @@
     },
     "context": {
       "title": "Contexte de visite",
-      "text": "Ces informations sont relevées dans votre navigateur pendant la visite, sans cookie et sans adresse IP. Elles ne me sont transmises que si vous utilisez le chatbot ou le formulaire de contact, et m'aident à comprendre comment les visiteurs découvrent le site :",
+      "text": "Ces informations sont relevées dans votre navigateur pendant la visite, sans cookie et sans adresse IP. Quand vous quittez le site, elles me sont envoyées par e-mail pour mesurer sa fréquentation et comprendre comment les visiteurs le découvrent. Elles sont aussi jointes aux messages du chatbot et du formulaire de contact :",
       "items": {
         "src": "la source du lien suivi, si elle y figure (par exemple ?src=linkedin)",
         "referrer": "le site d'où vous venez, s'il est transmis par votre navigateur",
         "pages": "les pages de ce site consultées pendant la visite",
         "locale": "la langue de votre navigateur et votre fuseau horaire",
         "device": "le type d'appareil, le système d'exploitation et le navigateur",
-        "time": "l'heure de votre arrivée sur le site"
+        "time": "l'heure de votre arrivée sur le site",
+        "duration": "le temps passé sur le site, onglet affiché",
+        "actions": "les actions réalisées : nombre de messages envoyés au chatbot, envoi du formulaire de contact ou d'une demande de recontact, documents PDF ouverts"
+      },
+      "optout": {
+        "enabled": "Vous pouvez désactiver cette mesure des visites sur ce navigateur. Elle est aussi désactivée automatiquement si votre navigateur envoie le signal Global Privacy Control.",
+        "disabled": "La mesure des visites est désactivée sur ce navigateur.",
+        "disable": "Ne pas mesurer mes visites",
+        "enable": "Réactiver la mesure des visites"
       }
     },
     "technical": {
@@ -802,15 +815,15 @@
     },
     "storage": {
       "title": "Stockage dans votre navigateur",
-      "text": "Ce site ne dépose aucun cookie et n'utilise aucun outil de mesure d'audience ou de publicité. Il enregistre seulement dans votre navigateur :",
+      "text": "Ce site ne dépose aucun cookie et n'utilise aucun service tiers de mesure d'audience (comme Google Analytics) ni de publicité. Il enregistre seulement dans votre navigateur :",
       "items": {
-        "local": "votre thème et votre langue (stockage local), pour les retrouver à votre prochaine visite",
-        "session": "la conversation en cours avec le chatbot et le contexte de visite (stockage de session), effacés à la fermeture de l'onglet"
+        "local": "votre thème, votre langue et votre éventuel refus de la mesure des visites (stockage local), pour les retrouver à votre prochaine visite",
+        "session": "la conversation en cours avec le chatbot, le contexte de visite et un identifiant de visite aléatoire (stockage de session), effacés à la fermeture de l'onglet"
       }
     },
     "retention": {
       "title": "Conservation et transferts",
-      "text": "Les e-mails reçus (messages, conversations, demandes de recontact) sont conservés au maximum 12 mois, puis supprimés. Les services cités sur cette page peuvent se situer hors de l'Union européenne, notamment aux États-Unis."
+      "text": "Les e-mails reçus (visites, messages, conversations, demandes de recontact) sont conservés au maximum 12 mois, puis supprimés. Les services cités sur cette page peuvent se situer hors de l'Union européenne, notamment aux États-Unis."
     },
     "rights": {
       "title": "Vos droits",

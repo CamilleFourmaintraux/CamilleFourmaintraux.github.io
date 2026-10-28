@@ -61,12 +61,12 @@
       }
     },
     "back": "Back to home page",
-    "privacy-notice": "Your messages are sent to third-party AI services to generate the answers, and Camille receives the conversations by email to improve the chatbot. Please do not share sensitive information. <privacyLink>Learn more</privacyLink>",
+    "privacy-notice": "Your messages are sent to third-party AI services to generate the answers, and Camille receives the conversations by email to improve the chatbot. Please do not share sensitive information. <privacyLink>Learn more</privacyLink>",
     "contact": {
       "button": "Be contacted by Camille",
       "intro": "Leave your email: Camille will receive this conversation and can get back to you.",
       "email": "Your email address",
-      "name": "Your name or company (optional)",
+      "name": "Your name and/or company (optional)",
       "submit": "Send",
       "sending": "Sending…",
       "cancel": "Cancel",
@@ -141,12 +141,17 @@
     "name_placeholder": "Your last name...",
     "forename": "First Name",
     "forename_placeholder": "Your first name...",
+    "company": "Company",
+    "company_placeholder": "Your company...",
+    "role": "Job title",
+    "role_placeholder": "Your job title...",
     "email": "Email",
     "email_placeholder": "Your email...",
     "subject": "Subject",
     "subject_placeholder": "Subject...",
     "message": "Message",
     "message_placeholder": "Your message...",
+    "required_note": "Fields marked with an asterisk (*) are required.",
     "send": "Send",
     "sent": "Sending...",
     "msg-success": "Your message was sent successfully.",
@@ -764,11 +769,11 @@
     "intro": "This website is my personal portfolio. This page explains what data is collected when you use it, why, and what you can ask for.",
     "who": {
       "title": "Who is responsible?",
-      "text": "Camille Fourmaintraux, author of this website. For any question about your data: <mailLink>{{email}}</mailLink>."
+      "text": "Camille Fourmaintraux, author of this website. If you have any question about your data, you can send me an email at: <mailLink>{{email}}</mailLink>."
     },
     "contact": {
       "title": "Contact form",
-      "text": "The name, email, subject and message you enter are sent to me by email through the EmailJS service. They are only used to reply to you."
+      "text": "The last name, first name, company, job title, email, subject and message you enter are sent to me by email through the EmailJS service. They are only used to reply to you."
     },
     "chatbot": {
       "title": "Chatbot",
@@ -781,14 +786,22 @@
     },
     "context": {
       "title": "Visit context",
-      "text": "This information is collected in your browser during your visit, without cookies and without your IP address. It is only sent to me if you use the chatbot or the contact form, and helps me understand how visitors find this website:",
+      "text": "This information is collected in your browser during your visit, without cookies and without your IP address. When you leave the website, it is sent to me by email to measure how many people visit it and understand how they find it. It is also attached to chatbot conversations and contact form messages:",
       "items": {
         "src": "the source of the link you followed, if it has one (for example ?src=linkedin)",
         "referrer": "the website you came from, if your browser shares it",
         "pages": "the pages of this website viewed during your visit",
         "locale": "your browser language and time zone",
         "device": "the type of device, operating system and browser",
-        "time": "the time you arrived on the website"
+        "time": "the time you arrived on the website",
+        "duration": "the time spent on the website, with the tab displayed",
+        "actions": "what you did: number of messages sent to the chatbot, contact form or contact request sent, PDF documents opened"
+      },
+      "optout": {
+        "enabled": "You can turn off this visit measurement on this browser. It is also turned off automatically if your browser sends the Global Privacy Control signal.",
+        "disabled": "Visit measurement is turned off on this browser.",
+        "disable": "Do not measure my visits",
+        "enable": "Turn visit measurement back on"
       }
     },
     "technical": {
@@ -802,15 +815,15 @@
     },
     "storage": {
       "title": "Storage in your browser",
-      "text": "This website sets no cookies and uses no analytics or advertising tools. It only stores in your browser:",
+      "text": "This website sets no cookies and uses no third-party analytics (such as Google Analytics) or advertising tools. It only stores in your browser:",
       "items": {
-        "local": "your theme and language (local storage), to keep them for your next visit",
-        "session": "the current chatbot conversation and the visit context (session storage), cleared when you close the tab"
+        "local": "your theme, your language and your choice to turn off visit measurement, if any (local storage), to keep them for your next visit",
+        "session": "the current chatbot conversation, the visit context and a random visit identifier (session storage), cleared when you close the tab"
       }
     },
     "retention": {
       "title": "Retention and transfers",
-      "text": "The emails I receive (messages, conversations, contact requests) are kept for at most 12 months, then deleted. The services mentioned on this page may be located outside the European Union, notably in the United States."
+      "text": "The emails I receive (visits, messages, conversations, contact requests) are kept for at most 12 months, then deleted. The services mentioned on this page may be located outside the European Union, notably in the United States."
     },
     "rights": {
       "title": "Your rights",
