@@ -697,7 +697,6 @@
     "stats": {
       "games": "Jeux joués",
       "hours": "Heures de jeu",
-      "played": "Jeux lancés",
       "achievements": "Succès débloqués",
       "ofTotal": "sur {{total}} ({{percent}})",
       "perfect": "Jeux terminés à 100 %",

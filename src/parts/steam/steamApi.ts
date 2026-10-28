@@ -23,7 +23,7 @@ export type SteamGame = {
 
 export type SteamOverview = {
   profile: SteamProfile;
-  stats: { gameCount: number; playedCount: number; totalMinutes: number };
+  stats: { gameCount: number; recentCount: number; totalMinutes: number };
   games: SteamGame[];
 };
 
@@ -39,6 +39,7 @@ export type Achievement = {
 };
 
 export type AchievementSummary = {
+  achievementsPrivate: boolean;
   totalUnlocked: number;
   totalAvailable: number;
   perfectGames: number;
@@ -61,10 +62,13 @@ const responses = new Map<string, Promise<unknown>>();
 function getJson<T>(path: string): Promise<T> {
   const hit = responses.get(path);
   if (hit) return hit as Promise<T>;
-  const promise = fetch(`${API_URL}${path}`).then((res) => {
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    return res.json() as Promise<T>;
-  });
+  // Revalidates with the server, so a stale error is never reused.
+  const promise = fetch(`${API_URL}${path}`, { cache: "no-cache" }).then(
+    (res) => {
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return res.json() as Promise<T>;
+    },
+  );
   responses.set(path, promise);
   promise.catch(() => responses.delete(path));
   return promise;
@@ -83,3 +87,32 @@ export const headerImage = (appid: number) =>
 
 export const storePage = (appid: number) =>
   `https://store.steampowered.com/app/${appid}/`;
+
+export type WorkshopItem = {
+  id: string;
+  title: string;
+  description: string;
+  preview: string | null;
+  appid: number;
+  game: string | null;
+  created: number | null;
+  updated: number | null;
+  subscriptions: number;
+  favorites: number;
+  views: number;
+  positivePercent: number | null;
+  tags: string[];
+  url: string;
+};
+
+export type Workshop = {
+  items: WorkshopItem[];
+  totals: {
+    items: number;
+    subscriptions: number;
+    favorites: number;
+    views: number;
+  };
+};
+
+export const fetchWorkshop = () => getJson<Workshop>("/steam/workshop");

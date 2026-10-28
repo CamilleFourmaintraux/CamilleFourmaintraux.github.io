@@ -697,7 +697,6 @@
     "stats": {
       "games": "Games played",
       "hours": "Hours played",
-      "played": "Games played",
       "achievements": "Achievements unlocked",
       "ofTotal": "out of {{total}} ({{percent}})",
       "perfect": "Perfect games",
