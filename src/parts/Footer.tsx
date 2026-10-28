@@ -1,13 +1,32 @@
+import { useEffect, useRef } from "react";
 import { NavLink, useMatch } from "react-router";
 import { useTranslation } from "react-i18next";
+
+// Shares the footer height with the CSS: it changes when the links wrap.
+function useFooterHeight() {
+  const ref = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const footer = ref.current;
+    if (!footer) return;
+    const root = document.documentElement;
+    const update = () =>
+      root.style.setProperty("--footer-height", `${footer.offsetHeight}px`);
+    update();
+    const observer = new ResizeObserver(update);
+    observer.observe(footer);
+    return () => observer.disconnect();
+  }, []);
+  return ref;
+}
 
 export default function Footer() {
   // <a  href="/files/resume.pdf" target="_blank" download> Cv <i className="fas fa-file-pdf"></i></a>
   const { t } = useTranslation();
+  const footerRef = useFooterHeight();
   return (
     <>
-      <span id="findepage"></span>
-      <footer>
+      <div id="findepage" aria-hidden="true"></div>
+      <footer ref={footerRef}>
         <a href={t("footer.resume_filename")} className="navlink">
           {" "}
           {t("footer.resume")} <i className="fas fa-file-pdf"></i>

@@ -9,7 +9,6 @@ export default function LanguageSwitcher() {
   );
 
   useEffect(() => {
-    console.log("Test langue : " + lang);
     i18n.changeLanguage(lang);
     document.documentElement.setAttribute("lang", lang);
     localStorage.setItem("lang", lang);

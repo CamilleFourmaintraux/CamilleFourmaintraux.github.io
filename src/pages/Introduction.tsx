@@ -1,10 +1,9 @@
 import { useTranslation } from "react-i18next";
+import YouTubeEmbed from "../parts/media/YouTubeEmbed";
 const myYoutubeChannel =
   "https://youtube.com/@camille-we8dx?si=hSlOW24EazkZ0QTH";
 const myYoutubeID = "@Camille-we8dx";
 const ytbVideoRef = "Zwbzhw_zF74";
-// Privacy-enhanced mode: no YouTube cookies until the video is played.
-const ytbLink = "https://www.youtube-nocookie.com/embed/";
 
 export default function IntroductionPage() {
   const { t } = useTranslation();
@@ -55,16 +54,7 @@ export default function IntroductionPage() {
           {t("youtube.mychannel")}
           <a href={myYoutubeChannel}>{myYoutubeID}</a>
         </p>
-        <iframe
-          width="666"
-          height="420"
-          src={ytbLink + ytbVideoRef}
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerPolicy="strict-origin-when-cross-origin"
-          allowFullScreen
-        ></iframe>
+        <YouTubeEmbed videoId={ytbVideoRef} title={t("youtube.title")} />
       </div>
       {/* <div className="container">
         <h2>

@@ -98,7 +98,8 @@
   },
   "youtube": {
     "title": "Recommended YouTube video",
-    "mychannel": "My YouTube channel (where I mostly post demonstrations of my projects): "
+    "mychannel": "My YouTube channel (where I mostly post demonstrations of my projects): ",
+    "play": "Play the video: {{title}}"
   },
   "donation": {
     "title": "My latest donation",
@@ -158,7 +159,7 @@
     "msg-error": "Sorry, an error occurred while sending your message.",
     "msg-invalidEmail": "Please enter a valid email address.",
     "msg-sent": "Please wait a few seconds.",
-    "privacy": "Your data is only used to reply to you. <privacyLink>Privacy policy</privacyLink>"
+    "privacy": "Your data is only used to reply to you. <privacyLink>Privacy policy</privacyLink>"
   },
   "thanks": {
     "title": "Thank you",
@@ -641,7 +642,7 @@
           "not_inversible": "Matrix is not invertible"
         }
       },
-      "steam_sentence": "I also enjoy playing video games, have a look at <steamLink>my Steam account</steamLink>."
+      "steam_sentence": "I also enjoy playing video games, have a look at <steamLink>my Steam account</steamLink>."
     },
     "tags": {
       "SCRUM": "Scrum",
@@ -810,7 +811,7 @@
       "items": {
         "ip": "my server keeps your IP address in memory for at most one hour to limit abuse (number of messages per hour). It is neither stored nor shared.",
         "hosting": "the website is hosted by GitHub Pages and the server by Render, which may keep technical logs (including IP addresses) for security.",
-        "resources": "your browser loads fonts from Google Fonts, icons from cdnjs, the Steam page images from Steam's servers, and the home page video from YouTube in privacy-enhanced mode (no YouTube cookies until you play the video)."
+        "resources": "your browser loads fonts from Google Fonts, icons from cdnjs, the Steam page images from Steam's servers and the home page video thumbnail from YouTube's servers. The YouTube player, in privacy-enhanced mode, only loads if you click the video."
       }
     },
     "storage": {
@@ -827,7 +828,7 @@
     },
     "rights": {
       "title": "Your rights",
-      "text": "You can ask to access, correct or delete your data by writing to <mailLink>{{email}}</mailLink> or through the <contactLink>contact page</contactLink>. You can also file a complaint with the <cnilLink>CNIL</cnilLink> (French data protection authority)."
+      "text": "You can ask to access, correct or delete your data by writing to <mailLink>{{email}}</mailLink> or through the <contactLink>contact page</contactLink>. You can also file a complaint with the <cnilLink>CNIL</cnilLink> (French data protection authority)."
     }
   }
 }

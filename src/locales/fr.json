@@ -98,7 +98,8 @@
   },
   "youtube": {
     "title": "Vidéo YouTube recommandée",
-    "mychannel": "Ma chaîne YouTube (démonstrations de certains projets) : "
+    "mychannel": "Ma chaîne YouTube (démonstrations de certains projets) : ",
+    "play": "Lire la vidéo : {{title}}"
   },
   "donation": {
     "title": "Ma dernière contribution",
@@ -158,7 +159,7 @@
     "msg-error": "Une erreur est survenue lors de l'envoi de votre message.",
     "msg-invalidEmail": "Veuillez saisir une adresse e-mail valide.",
     "msg-sent": "Veuillez patienter quelques secondes.",
-    "privacy": "Vos données servent uniquement à vous répondre. <privacyLink>Politique de confidentialité</privacyLink>"
+    "privacy": "Vos données servent uniquement à vous répondre. <privacyLink>Politique de confidentialité</privacyLink>"
   },
   "thanks": {
     "title": "Merci",
@@ -641,7 +642,7 @@
           "not_inversible": "La matrice n'est pas inversible"
         }
       },
-      "steam_sentence": "J'aime aussi jouer aux jeux vidéo, jetez un œil à <steamLink>mon compte Steam</steamLink>."
+      "steam_sentence": "J'aime aussi jouer aux jeux vidéo, jetez un œil à <steamLink>mon compte Steam</steamLink>."
     },
     "tags": {
       "SCRUM": "Scrum",
@@ -810,7 +811,7 @@
       "items": {
         "ip": "mon serveur garde votre adresse IP en mémoire pendant une heure au maximum pour limiter les abus (nombre de messages par heure). Elle n'est ni enregistrée ni transmise.",
         "hosting": "le site est hébergé par GitHub Pages et le serveur par Render, qui peuvent conserver des journaux techniques (dont l'adresse IP) pour leur sécurité.",
-        "resources": "votre navigateur charge les polices depuis Google Fonts, les icônes depuis cdnjs, les images de la page Steam depuis les serveurs de Steam, et la vidéo de l'accueil depuis YouTube en mode de confidentialité renforcée (aucun cookie YouTube tant que vous ne lancez pas la vidéo)."
+        "resources": "votre navigateur charge les polices depuis Google Fonts, les icônes depuis cdnjs, les images de la page Steam depuis les serveurs de Steam et la miniature de la vidéo de l'accueil depuis les serveurs de YouTube. Le lecteur YouTube, en mode de confidentialité renforcée, n'est chargé que si vous cliquez sur la vidéo."
       }
     },
     "storage": {
@@ -827,7 +828,7 @@
     },
     "rights": {
       "title": "Vos droits",
-      "text": "Vous pouvez demander l'accès à vos données, leur rectification ou leur suppression en m'écrivant à <mailLink>{{email}}</mailLink> ou via la <contactLink>page Contact</contactLink>. Vous pouvez aussi adresser une réclamation à la <cnilLink>CNIL</cnilLink>."
+      "text": "Vous pouvez demander l'accès à vos données, leur rectification ou leur suppression en m'écrivant à <mailLink>{{email}}</mailLink> ou via la <contactLink>page Contact</contactLink>. Vous pouvez aussi adresser une réclamation à la <cnilLink>CNIL</cnilLink>."
     }
   }
 }

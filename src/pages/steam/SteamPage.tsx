@@ -322,6 +322,8 @@ export default function SteamPage() {
         </h2>
         <div className="steam-controls">
           <input
+            id="steam-search"
+            name="search"
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
@@ -331,6 +333,8 @@ export default function SteamPage() {
           <label className="steam-sort">
             <span>{t("steam.library.sort")}</span>
             <select
+              id="steam-sort"
+              name="sort"
               value={sort}
               onChange={(e) => setSort(e.target.value as SortKey)}
             >

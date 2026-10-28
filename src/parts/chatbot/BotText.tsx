@@ -12,8 +12,13 @@ function isAllowedUrl(url: string): boolean {
   );
 }
 
-function renderLink(label: string, url: string, key: number): ReactNode {
-  if (!isAllowedUrl(url)) return label;
+// Short labels never wrap, so a link is not split across two lines.
+const MAX_UNBROKEN_LABEL = 40;
+
+function renderLink(text: string, url: string, key: number): ReactNode {
+  if (!isAllowedUrl(url)) return text;
+  const label =
+    text.length <= MAX_UNBROKEN_LABEL ? text.replace(/ /g, "\u00a0") : text;
 
   if (url.startsWith("#/")) {
     return (

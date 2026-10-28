@@ -66,6 +66,8 @@ export default function ContactRequest({ onSubmit, disabled }: Props) {
       <p className="chat-contact-intro">{t("chatbot.contact.intro")}</p>
       <div className="chat-contact-fields">
         <input
+          id="chat-contact-email"
+          name="email"
           type="email"
           value={email}
           onChange={(e) => {
@@ -80,6 +82,8 @@ export default function ContactRequest({ onSubmit, disabled }: Props) {
           disabled={status === "sending"}
         />
         <input
+          id="chat-contact-name"
+          name="name"
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}

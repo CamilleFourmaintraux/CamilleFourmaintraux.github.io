@@ -184,3 +184,77 @@ ul ul > img {
 .privacy-optout button {
   margin: 8px 0 0;
 }
+
+/* Same size as the former 666x420 player, and fluid on small screens. */
+.youtube-embed {
+  display: block;
+  width: 666px;
+  max-width: 90%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  margin: 10px auto;
+  border: 0;
+}
+
+@media all and (min-width: 900px) {
+  .youtube-embed {
+    max-width: 100%;
+  }
+}
+
+.youtube-facade {
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #000;
+  cursor: pointer;
+}
+
+.youtube-facade:hover {
+  background: #000;
+}
+
+/* hqdefault thumbnails are 4:3 with black bars: crop them to 16:9. */
+.youtube-facade img {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  margin: 0;
+  object-fit: cover;
+}
+
+.youtube-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 68px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(33, 33, 33, 0.85);
+  color: #fff;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.youtube-facade:hover .youtube-play,
+.youtube-facade:focus-visible .youtube-play {
+  background: #f00;
+}
+
+/* A text link moves to the next line as a whole instead of being split.
+   Links longer than a full line (sentences, long URLs) still wrap inside
+   their own box. */
+.container a:not([class]),
+.container a.persecuted,
+.chat-link,
+.form-privacy a,
+.chat-privacy a {
+  display: inline-block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}

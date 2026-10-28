@@ -276,7 +276,7 @@ export default function ChatbotPage() {
   return (
     <div className="container">
       <h2>
-        <i className="fas fa-solid fa-robot"></i> {t("chatbot.title") + " v1.6"}
+        <i className="fas fa-solid fa-robot"></i> {t("chatbot.title") + " v1.7"}
       </h2>
       <p>{t("chatbot.main")}</p>
 
@@ -400,6 +400,10 @@ export default function ChatbotPage() {
 
         <div className="chat-box-footer">
           <input
+            id="chat-input"
+            name="message"
+            aria-label={t("chatbot.chat.placeholder")}
+            autoComplete="off"
             ref={inputRef}
             value={input}
             onChange={(e) => setInput(e.target.value)}

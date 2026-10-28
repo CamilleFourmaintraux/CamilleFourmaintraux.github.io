@@ -110,8 +110,13 @@ const Realisations: React.FC<RealisationsProps> = ({
                 <div className="searchbar">
                   <i className="fa-solid fa-magnifying-glass"></i>
                   <input
+                    id="portfolio-search"
+                    name="search"
                     type="text"
                     className="searchInput"
+                    aria-label={t(
+                      "portfolio.advancedsearch.search_placeholder",
+                    )}
                     placeholder={t(
                       "portfolio.advancedsearch.search_placeholder",
                     )}
@@ -122,18 +127,22 @@ const Realisations: React.FC<RealisationsProps> = ({
 
                 {/* Filtres par date */}
                 <div className="date-filters next-to-each-other">
-                  <label className="protected">
+                  <label className="protected" htmlFor="portfolio-from">
                     {t("portfolio.advancedsearch.filter_from")}
                   </label>
                   <input
+                    id="portfolio-from"
+                    name="from"
                     type="date"
                     value={startDate}
                     onChange={(e) => setStartDate(e.target.value)}
                   />
-                  <label className="protected">
+                  <label className="protected" htmlFor="portfolio-to">
                     {t("portfolio.advancedsearch.filter_to")}
                   </label>
                   <input
+                    id="portfolio-to"
+                    name="to"
                     type="date"
                     value={endDate}
                     onChange={(e) => setEndDate(e.target.value)}

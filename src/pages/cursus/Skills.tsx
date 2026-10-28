@@ -72,7 +72,6 @@ export default function Skills() {
   const popupRef = useRef<HTMLDivElement | null>(null);
 
   const handleCardClick = (index: number) => {
-    console.log(`Card n°${index} clicked !`);
     if (
       !cardContainerRef.current ||
       !carouselRef.current ||
