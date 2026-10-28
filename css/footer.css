@@ -25,12 +25,15 @@ footer a {
   text-decoration: none;
   color: #fff;
   margin: 0 10px;
+  white-space: nowrap;
 }
 
 footer a:hover {
   color: #bbdddd;
 }
 
+/* Keeps the end of the page above the fixed footer and the corner buttons. */
 #findepage {
-  padding: 56px;
+  height: calc(var(--footer-height, 44px) + 60px);
+  pointer-events: none;
 }

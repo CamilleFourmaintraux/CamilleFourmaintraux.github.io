@@ -113,15 +113,10 @@ a:visited {
   padding: 10px;
 }
 
-@media all and (max-width: 412px) {
-  .configButtons {
-    bottom: 80px;
-  }
-}
-@media all and (min-width: 412px) {
-  .configButtons {
-    bottom: 50px;
-  }
+/* --footer-height is measured in Footer.tsx, so the buttons stay above the
+   footer whatever the number of lines its links wrap on. */
+.configButtons {
+  bottom: calc(var(--footer-height, 44px) + 6px);
 }
 
 /*
