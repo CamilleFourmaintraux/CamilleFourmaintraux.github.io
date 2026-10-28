@@ -13,6 +13,7 @@ import DemoPongPage from "./pages/games/pong/DemoPong";
 import PythonPage from "./pages/games/prog/Python";
 import ChatbotPage from "./pages/Chatbot";
 import SteamPage from "./pages/steam/SteamPage";
+import PrivacyPage from "./pages/Privacy";
 import PacManPage from "./pages/games/pacman/PacMan";
 import MinicraftPage from "./pages/games/minecraft/minicraft";
 
@@ -58,6 +59,8 @@ export default function Navigator() {
 
       <Route path="/chatbot" element={<ChatbotPage />} />
       <Route path="/steam" element={<SteamPage />} />
+      <Route path="/privacy" element={<PrivacyPage />} />
+      <Route path="/confidentialite" element={<PrivacyPage />} />
 
       <Route path="/python" element={<PythonPage />} />
       <Route path="/pacman" element={<PacManPage />} />

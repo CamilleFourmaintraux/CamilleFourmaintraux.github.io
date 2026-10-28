@@ -23,7 +23,8 @@
     "email": "E-Mail",
     "linkedin": "LinkedIn",
     "github": "GitHub",
-    "files": "Documents"
+    "files": "Documents",
+    "privacy": "Confidentialité"
   },
   "redirection": {
     "title": "Redirection",
@@ -59,7 +60,19 @@
         "q4": "Qu'a-t-il fait chez E-Mothep ?"
       }
     },
-    "back": "Retour à la page d'accueil"
+    "back": "Retour à la page d'accueil",
+    "privacy-notice": "Vos messages sont transmis à des services d'IA tiers pour générer les réponses, et Camille reçoit les conversations par e-mail pour améliorer le chatbot. N'y partagez pas d'informations sensibles. <privacyLink>En savoir plus</privacyLink>",
+    "contact": {
+      "button": "Être recontacté par Camille",
+      "intro": "Laissez votre e-mail : Camille recevra cette conversation et pourra vous répondre.",
+      "email": "Votre adresse e-mail",
+      "name": "Votre nom et/ou entreprise (facultatif)",
+      "submit": "Envoyer",
+      "sending": "Envoi…",
+      "cancel": "Annuler",
+      "sent": "Merci ! Camille vous répondra à {{email}}.",
+      "error": "L'envoi a échoué. Réessayez ou utilisez la page Contact."
+    }
   },
   "topOfPage": "Haut de page",
   "presentation": {
@@ -139,7 +152,8 @@
     "msg-success": "Votre message a été envoyé avec succès.",
     "msg-error": "Une erreur est survenue lors de l'envoi de votre message.",
     "msg-invalidEmail": "Veuillez saisir une adresse e-mail valide.",
-    "msg-sent": "Veuillez patienter quelques secondes."
+    "msg-sent": "Veuillez patienter quelques secondes.",
+    "privacy": "Vos données servent uniquement à vous répondre. <privacyLink>Politique de confidentialité</privacyLink>"
   },
   "thanks": {
     "title": "Merci",
@@ -664,7 +678,7 @@
     "loading": "Chargement des données Steam… Le serveur peut mettre quelques secondes à se réveiller.",
     "error": "Impossible de charger les données Steam.",
     "retry": "Réessayer",
-    "percent": "{{value}} %",
+    "percent": "{{value}} %",
     "profile": {
       "level": "Niveau",
       "view": "Voir le profil sur Steam",
@@ -681,24 +695,26 @@
       }
     },
     "stats": {
-      "games": "Jeux possédés",
+      "games": "Jeux joués",
       "hours": "Heures de jeu",
       "played": "Jeux lancés",
       "achievements": "Succès débloqués",
       "ofTotal": "sur {{total}} ({{percent}})",
-      "perfect": "Jeux terminés à 100 %"
+      "perfect": "Jeux terminés à 100 %",
+      "recent": "Joués ces 2 dernières semaines"
     },
     "recent": {
       "title": "Joués récemment",
       "none": "Aucun jeu lancé ces deux dernières semaines.",
-      "twoWeeks": "{{hours}} h ces 2 dernières semaines",
-      "total": "{{hours}} h au total"
+      "twoWeeks": "{{hours}} h ces 2 dernières semaines",
+      "total": "{{hours}} h au total"
     },
     "latest": {
       "title": "Derniers succès",
       "none": "Aucun succès pour le moment.",
       "loading": "Chargement des succès…",
-      "rarity": "{{percent}} % des joueurs"
+      "rarity": "{{percent}} % des joueurs",
+      "unavailable": "Les succès ne sont pas disponibles pour le moment."
     },
     "library": {
       "title": "Bibliothèque de jeux",
@@ -712,7 +728,7 @@
       "showLess": "Afficher moins",
       "empty": "Aucun jeu ne correspond à votre recherche.",
       "neverPlayed": "Jamais lancé",
-      "hours": "{{hours}} h",
+      "hours": "{{hours}} h",
       "lastPlayed": "joué le {{date}}"
     },
     "game": {
@@ -725,6 +741,81 @@
       "error": "Impossible de charger les succès.",
       "openStore": "Page du magasin"
     },
-    "back": "Retour à mes passions"
+    "back": "Retour à mes passions",
+    "workshop": {
+      "title": "Mes créations du Workshop",
+      "intro": "Mods et contenus que j'ai publiés sur le Steam Workshop.",
+      "loading": "Chargement des créations du Workshop…",
+      "error": "Impossible de charger les créations du Workshop.",
+      "items_one": "{{value}} création",
+      "items_other": "{{value}} créations",
+      "subscribers_one": "{{value}} abonné",
+      "subscribers_other": "{{value}} abonnés",
+      "favorites_one": "{{value}} favori",
+      "favorites_other": "{{value}} favoris",
+      "views_one": "{{value}} vue",
+      "views_other": "{{value}} vues",
+      "rating": "{{percent}} d'avis positifs",
+      "updated": "Mis à jour le {{date}}"
+    }
+  },
+  "privacy": {
+    "title": "Confidentialité",
+    "updated": "Dernière mise à jour : 28 octobre 2026",
+    "intro": "Ce site est mon portfolio personnel. Cette page explique quelles données sont collectées quand vous l'utilisez, pourquoi, et ce que vous pouvez demander.",
+    "who": {
+      "title": "Qui est responsable ?",
+      "text": "Camille Fourmaintraux, auteur du site. Pour toute question sur vos données : <mailLink>{{email}}</mailLink>."
+    },
+    "contact": {
+      "title": "Formulaire de contact",
+      "text": "Le nom, l'e-mail, le sujet et le message que vous saisissez me sont envoyés par e-mail via le service EmailJS. Ils servent uniquement à vous répondre."
+    },
+    "chatbot": {
+      "title": "Chatbot",
+      "text": "Le chatbot répond à partir des informations publiques de mon CV et de mon portfolio. Quand vous l'utilisez :",
+      "items": {
+        "providers": "vos messages et les échanges précédents de la conversation sont transmis à des services d'IA (Groq, Google Gemini, OpenRouter, Hugging Face) pour générer les réponses. Certains d'entre eux, notamment l'offre gratuite de Google Gemini et certains modèles gratuits d'OpenRouter, peuvent utiliser ces échanges pour améliorer leurs services.",
+        "email": "la conversation, vos éventuels avis 👍/👎 et le contexte de visite décrit plus bas me sont envoyés par e-mail via EmailJS, pour que je puisse améliorer le chatbot.",
+        "recontact": "si vous cliquez sur « Être recontacté par Camille », l'adresse e-mail et le nom que vous indiquez me sont envoyés avec la conversation, uniquement pour vous répondre."
+      }
+    },
+    "context": {
+      "title": "Contexte de visite",
+      "text": "Ces informations sont relevées dans votre navigateur pendant la visite, sans cookie et sans adresse IP. Elles ne me sont transmises que si vous utilisez le chatbot ou le formulaire de contact, et m'aident à comprendre comment les visiteurs découvrent le site :",
+      "items": {
+        "src": "la source du lien suivi, si elle y figure (par exemple ?src=linkedin)",
+        "referrer": "le site d'où vous venez, s'il est transmis par votre navigateur",
+        "pages": "les pages de ce site consultées pendant la visite",
+        "locale": "la langue de votre navigateur et votre fuseau horaire",
+        "device": "le type d'appareil, le système d'exploitation et le navigateur",
+        "time": "l'heure de votre arrivée sur le site"
+      }
+    },
+    "technical": {
+      "title": "Données techniques",
+      "text": "Comme pour tout site web, certaines données techniques sont traitées pour faire fonctionner le service :",
+      "items": {
+        "ip": "mon serveur garde votre adresse IP en mémoire pendant une heure au maximum pour limiter les abus (nombre de messages par heure). Elle n'est ni enregistrée ni transmise.",
+        "hosting": "le site est hébergé par GitHub Pages et le serveur par Render, qui peuvent conserver des journaux techniques (dont l'adresse IP) pour leur sécurité.",
+        "resources": "votre navigateur charge les polices depuis Google Fonts, les icônes depuis cdnjs, les images de la page Steam depuis les serveurs de Steam, et la vidéo de l'accueil depuis YouTube en mode de confidentialité renforcée (aucun cookie YouTube tant que vous ne lancez pas la vidéo)."
+      }
+    },
+    "storage": {
+      "title": "Stockage dans votre navigateur",
+      "text": "Ce site ne dépose aucun cookie et n'utilise aucun outil de mesure d'audience ou de publicité. Il enregistre seulement dans votre navigateur :",
+      "items": {
+        "local": "votre thème et votre langue (stockage local), pour les retrouver à votre prochaine visite",
+        "session": "la conversation en cours avec le chatbot et le contexte de visite (stockage de session), effacés à la fermeture de l'onglet"
+      }
+    },
+    "retention": {
+      "title": "Conservation et transferts",
+      "text": "Les e-mails reçus (messages, conversations, demandes de recontact) sont conservés au maximum 12 mois, puis supprimés. Les services cités sur cette page peuvent se situer hors de l'Union européenne, notamment aux États-Unis."
+    },
+    "rights": {
+      "title": "Vos droits",
+      "text": "Vous pouvez demander l'accès à vos données, leur rectification ou leur suppression en m'écrivant à <mailLink>{{email}}</mailLink> ou via la <contactLink>page Contact</contactLink>. Vous pouvez aussi adresser une réclamation à la <cnilLink>CNIL</cnilLink>."
+    }
   }
 }

@@ -434,6 +434,86 @@
   opacity: 1;
 }
 
+/* ===== Contact request ===== */
+.chat-contact {
+  padding: 8px 12px;
+  background-color: var(--chat-header-bg);
+  border-top: 1px solid var(--chat-divider);
+  font-size: 0.9rem;
+}
+
+.chat-contact-toggle,
+.chat-contact-cancel {
+  margin: 0;
+  padding: 4px 8px;
+  font-size: 0.9rem;
+  color: var(--chat-bot-bubble-text);
+  background: transparent;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.chat-contact-toggle:hover:not(:disabled),
+.chat-contact-cancel:hover:not(:disabled) {
+  background: transparent;
+  text-decoration-thickness: 2px;
+}
+
+.chat-contact-intro {
+  margin: 0 0 8px;
+}
+
+.chat-contact-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chat-contact-fields input {
+  flex: 1;
+  min-width: 180px;
+  margin: 0;
+  padding: 8px 12px;
+  font: inherit;
+  color: var(--chat-input-text);
+  background-color: var(--chat-input-bg);
+  border: 1px solid var(--chat-input-border);
+  border-radius: 8px;
+}
+
+.chat-contact-fields input[aria-invalid="true"] {
+  border-color: var(--bg-button-color-error, #c0392b);
+}
+
+.chat-contact-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.chat-contact-actions button[type="submit"] {
+  margin: 0;
+  padding: 6px 14px;
+}
+
+.chat-contact-error {
+  margin: 6px 0 0;
+  color: var(--bg-button-color-error, #c0392b);
+}
+
+.chat-contact-done {
+  margin: 0;
+  font-weight: 600;
+}
+
+/* ===== Privacy notice ===== */
+.chat-privacy {
+  margin: 0 0 8px;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 480px) {
   .chat-box {

@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { validateEmail, API_URL } from "../../Utils";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
+import { NavLink } from "react-router-dom";
+import { getVisitorContext } from "../../parts/visitor/visitorContext";
 
 const STATUS_DISPLAY_MS = 8000;
 
@@ -49,6 +51,7 @@ export default function ContactForm() {
           from_email: email,
           subject,
           message,
+          context: getVisitorContext(),
         }),
       });
 
@@ -166,6 +169,12 @@ export default function ContactForm() {
             </button>
           </fieldset>
         </form>
+        <p className="form-privacy">
+          <Trans
+            i18nKey="form.privacy"
+            components={{ privacyLink: <NavLink to="/privacy" /> }}
+          />
+        </p>
       </section>
 
       {/* Always rendered so screen readers announce status changes. */}

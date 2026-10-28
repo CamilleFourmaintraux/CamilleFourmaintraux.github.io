@@ -41,6 +41,15 @@ export default function Footer() {
           {" "}
           {t("footer.files")} <Icon />
         </NavLink>
+        <NavLink
+          to="privacy"
+          className={({ isActive }) =>
+            isActive ? "current navlink" : "navlink"
+          }
+        >
+          {" "}
+          {t("footer.privacy")} <i className="fas fa-shield-halved"></i>
+        </NavLink>
       </footer>
     </>
   );

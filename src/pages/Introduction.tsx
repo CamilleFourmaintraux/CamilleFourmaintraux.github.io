@@ -3,7 +3,8 @@ const myYoutubeChannel =
   "https://youtube.com/@camille-we8dx?si=hSlOW24EazkZ0QTH";
 const myYoutubeID = "@Camille-we8dx";
 const ytbVideoRef = "Zwbzhw_zF74";
-const ytbLink = "https://www.youtube.com/embed/";
+// Privacy-enhanced mode: no YouTube cookies until the video is played.
+const ytbLink = "https://www.youtube-nocookie.com/embed/";
 
 export default function IntroductionPage() {
   const { t } = useTranslation();

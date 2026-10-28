@@ -1,8 +1,10 @@
 import { NavLink } from "react-router";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { API_URL } from "../Utils";
 import BotText from "../parts/chatbot/BotText";
+import ContactRequest from "../parts/chatbot/ContactRequest";
+import { getVisitorContext } from "../parts/visitor/visitorContext";
 import { ChatError, streamChat, type ChatTurn } from "../parts/chatbot/chatApi";
 import {
   clearConversation,
@@ -82,6 +84,7 @@ export default function ChatbotPage() {
         from_email: "Back-end",
         subject: `Portfolio chatbot — ${finished.length} messages`,
         message: transcript,
+        context: getVisitorContext(),
       }),
       keepalive: true,
       credentials: "omit",
@@ -224,6 +227,30 @@ export default function ChatbotPage() {
       ),
     );
 
+  // Sends the conversation with the visitor's address so Camille can answer.
+  const requestContact = async (email: string, name: string) => {
+    const finished = messagesRef.current.filter((m) => !m.streaming);
+    const transcript = buildTranscript(finished);
+    const res = await fetch(`${API_URL}/mail-service`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        from_name: name || email,
+        from_email: email,
+        subject: `Demande de recontact (chatbot) — ${finished.length} messages`,
+        message: `Le visiteur souhaite être recontacté à : ${email}${
+          name ? ` (${name})` : ""
+        }\n\n${transcript}`,
+        context: getVisitorContext(),
+      }),
+      credentials: "omit",
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    // The transcript is already in this e-mail: do not send it again.
+    loggedSignatureRef.current = transcript;
+    persist();
+  };
+
   const resetConversation = () => {
     if (isBusy) return;
     flushConversation();
@@ -244,7 +271,7 @@ export default function ChatbotPage() {
   return (
     <div className="container">
       <h2>
-        <i className="fas fa-solid fa-robot"></i> {t("chatbot.title") + " v1.5"}
+        <i className="fas fa-solid fa-robot"></i> {t("chatbot.title") + " v1.6"}
       </h2>
       <p>{t("chatbot.main")}</p>
 
@@ -362,6 +389,10 @@ export default function ChatbotPage() {
           )}
         </div>
 
+        {messages.length > 0 && (
+          <ContactRequest onSubmit={requestContact} disabled={isBusy} />
+        )}
+
         <div className="chat-box-footer">
           <input
             ref={inputRef}
@@ -382,6 +413,14 @@ export default function ChatbotPage() {
           </button>
         </div>
       </div>
+
+      <p className="chat-privacy">
+        <i className="fas fa-shield-halved" aria-hidden="true"></i>{" "}
+        <Trans
+          i18nKey="chatbot.privacy-notice"
+          components={{ privacyLink: <NavLink to="/privacy" /> }}
+        />
+      </p>
 
       <NavLink to="/" className="chat-back-link">
         <i className="fas fa-arrow-left"></i> {t("chatbot.back")}
