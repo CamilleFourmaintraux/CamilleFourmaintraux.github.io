@@ -146,3 +146,41 @@ ul ul > img {
 .redText {
   color: red;
 }
+
+.form-privacy {
+  margin: 8px 0 0;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.privacy section {
+  margin-top: 20px;
+}
+
+.privacy h3 {
+  margin-bottom: 6px;
+}
+
+.privacy li {
+  margin: 6px 0;
+}
+
+.privacy-updated {
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+.privacy-optout {
+  margin-top: 10px;
+  padding: 10px 15px;
+  border-radius: 5px;
+  background-color: var(--bg-subcontainer-color);
+}
+
+.privacy-optout p {
+  margin: 0;
+}
+
+.privacy-optout button {
+  margin: 8px 0 0;
+}
