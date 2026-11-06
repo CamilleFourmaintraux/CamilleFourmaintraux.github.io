@@ -1,195 +1,137 @@
-import { useState, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+
+type Course = {
+  key: string;
+  // Logo in /img/cursus/competences/<picture>.png. Without one, the card shows
+  // the icon and the title instead.
+  picture?: string;
+  icon?: string;
+};
+
+const COURSES: Course[] = [
+  { key: "ocaml", icon: "fa-solid fa-code" },
+  { key: "rocq", icon: "fa-solid fa-square-check" },
+  { key: "gameengine", icon: "fa-solid fa-gamepad" },
+  { key: "springboot", picture: "spring-boot" },
+  { key: "math", picture: "modelisation-mathematique" },
+  { key: "nosql", picture: "mongodb" },
+  { key: "react", picture: "react" },
+  { key: "quality", picture: "qualite-de-code" },
+  { key: "ci", picture: "cicd" },
+  { key: "postman", picture: "postman" },
+  { key: "multimedia", picture: "programmation-multimedia" },
+  { key: "tools", picture: "git" },
+  { key: "softwareag", picture: "software-ag-designer" },
+  { key: "toeic", picture: "certification-toeic" },
+];
+
+const SKILLS = [
+  "language",
+  "programming",
+  "frontend",
+  "backend",
+  "sql",
+  "nosql",
+  "api",
+  "formal",
+  "games",
+  "tools",
+  "collab",
+  "ci",
+  "scrum",
+  "quality",
+  "math",
+  "media",
+];
 
 export default function Skills() {
   const { t } = useTranslation();
-
-  const tabTextPopup = [
-    {
-      title: t("courses.springboot_title"),
-      description: t("courses.springboot_desc"),
-      picture_file_name: "spring-boot",
-    },
-    {
-      title: t("courses.math_title"),
-      description: t("courses.math_desc"),
-      picture_file_name: "modelisation-mathematique",
-    },
-    {
-      title: t("courses.nosql_title"),
-      description: t("courses.nosql_desc"),
-      picture_file_name: "mongodb",
-    },
-    {
-      title: t("courses.react_title"),
-      description: t("courses.react_desc"),
-      picture_file_name: "react",
-    },
-    {
-      title: t("courses.quality_title"),
-      description: t("courses.quality_desc"),
-      picture_file_name: "qualite-de-code",
-    },
-    {
-      title: t("courses.ci_title"),
-      description: t("courses.ci_desc"),
-      picture_file_name: "cicd",
-    },
-    {
-      title: t("courses.postman_title"),
-      description: t("courses.postman_desc"),
-      picture_file_name: "postman",
-    },
-    {
-      title: t("courses.multimedia_title"),
-      description: t("courses.multimedia_desc"),
-      picture_file_name: "programmation-multimedia",
-    },
-    {
-      title: t("courses.tools_title"),
-      description: t("courses.tools_desc"),
-      picture_file_name: "git",
-    },
-    {
-      title: t("courses.softwareag_title"),
-      description: t("courses.softwareag_desc"),
-      picture_file_name: "software-ag-designer",
-    },
-    {
-      title: t("courses.toeic_title"),
-      description: t("courses.toeic_desc"),
-      picture_file_name: "certification-toeic",
-    },
-  ];
-
-  const [popupData, setPopupData] = useState<{
-    title: string;
-    description: string;
-  }>({ title: "Erreur", description: "Une erreur est survenue." });
-
+  const [selected, setSelected] = useState<number | null>(null);
   const cardContainerRef = useRef<HTMLDivElement | null>(null);
-  const carouselRef = useRef<HTMLDivElement | null>(null);
-  const popupRef = useRef<HTMLDivElement | null>(null);
 
-  const handleCardClick = (index: number) => {
-    if (
-      !cardContainerRef.current ||
-      !carouselRef.current ||
-      !cardContainerRef.current.children[index] ||
-      !popupRef
-    ) {
-      console.log("Error! No Popup.");
-      return;
+  useEffect(() => {
+    if (selected === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setSelected(null);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [selected]);
+
+  const openCard = (index: number) => {
+    const container = cardContainerRef.current;
+    const card = container?.children[index] as HTMLElement | undefined;
+    if (container && card) {
+      container.scrollTo({
+        left:
+          card.offsetLeft - container.offsetWidth / 2 + card.offsetWidth / 2,
+        behavior: "smooth",
+      });
     }
-
-    const card = cardContainerRef.current.children[index] as HTMLElement;
-    const cardWidth = card.offsetWidth;
-    const carouselWidth = carouselRef.current.offsetWidth;
-    const cardOffset = card.offsetLeft;
-
-    cardContainerRef.current.scrollTo({
-      left: cardOffset - carouselWidth / 2 + cardWidth / 2,
-      behavior: "smooth",
-    });
-
-    setPopupData(tabTextPopup[index]);
-    /*
-    console.log(
-      "Test data : " +
-        popupData +
-        ". Autre test : {" +
-        tabTextPopup[index].title +
-        "," +
-        tabTextPopup[index].description +
-        "}"
-    );*/
-    showPopUp();
+    setSelected(index);
   };
 
-  function showPopUp() {
-    if (popupRef.current == null) {
-      console.log("Error! PopUpRef.current is null.");
-      return;
-    }
-    popupRef.current.style.display = "flex";
-  }
-
-  function hidePopUp() {
-    if (popupRef.current == null) {
-      console.log("Error! PopUpRef.current is null.");
-      return;
-    }
-    popupRef.current.style.display = "none";
-  }
+  const course = selected !== null ? COURSES[selected] : null;
 
   return (
     <div className="container" id="competences">
       <h2>{t("skills.title")}</h2>
       <ul>
-        <li>
-          <strong>{t("skills.language")}</strong> {t("skills.language_value")}
-        </li>
-        <li>
-          <strong>{t("skills.programming")}</strong>{" "}
-          {t("skills.programming_value")}
-        </li>
-        <li>
-          <strong>{t("skills.tools")}</strong> {t("skills.tools_value")}
-        </li>
-        <li>
-          <strong>{t("skills.web")}</strong> {t("skills.web_value")}
-        </li>
-        <li>
-          <strong>{t("skills.sql")}</strong> {t("skills.sql_value")}
-        </li>
-        <li>
-          <strong>{t("skills.nosql")}</strong> {t("skills.nosql_value")}
-        </li>
-        <li>
-          <strong>{t("skills.api")}</strong> {t("skills.api_value")}
-        </li>
-        <li>
-          <strong>{t("skills.collab")}</strong> {t("skills.collab_value")}
-        </li>
-        <li>
-          <strong>{t("skills.scrum")}</strong> {t("skills.scrum_value")}
-        </li>
-        <li>
-          <strong>{t("skills.ci")}</strong> {t("skills.ci_value")}
-        </li>
-        <li>
-          <strong>{t("skills.quality")}</strong> {t("skills.quality_value")}
-        </li>
-        <li>
-          <strong>{t("skills.math")}</strong> {t("skills.math_value")}
-        </li>
-        <li>
-          <strong>{t("skills.media")}</strong> {t("skills.media_value")}
-        </li>
+        {SKILLS.map((skill) => (
+          <li key={skill}>
+            <strong>{t(`skills.${skill}`)}</strong> {t(`skills.${skill}_value`)}
+          </li>
+        ))}
       </ul>
 
-      <div className="carousel" ref={carouselRef}>
+      <div className="carousel">
         <div className="card-container" ref={cardContainerRef}>
-          {tabTextPopup.map((item, index) => (
-            <div
-              key={index}
-              className="card"
-              onClick={() => handleCardClick(index)}
-            >
-              <img
-                src={`/img/cursus/competences/${item.picture_file_name}.png`}
-                alt={item.picture_file_name}
-                className="cardPicture"
-              />
-            </div>
-          ))}
+          {COURSES.map((item, index) => {
+            const title = t(`courses.${item.key}_title`);
+            return (
+              <div
+                key={item.key}
+                className={item.picture ? "card" : "card card-text"}
+                role="button"
+                tabIndex={0}
+                aria-label={title}
+                onClick={() => openCard(index)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    openCard(index);
+                  }
+                }}
+              >
+                {item.picture ? (
+                  <img
+                    src={`/img/cursus/competences/${item.picture}.png`}
+                    alt={title}
+                    className="cardPicture"
+                  />
+                ) : (
+                  <>
+                    <i className={item.icon} aria-hidden="true"></i>
+                    <span>{title}</span>
+                  </>
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
-      {popupData && (
-        <div className="popup" ref={popupRef} onClick={() => hidePopUp()}>
-          <div className="popup-content">
-            <h2>{popupData.title}</h2>
-            <p>{popupData.description}</p>
+
+      {course && (
+        <div className="popup open" onClick={() => setSelected(null)}>
+          <div
+            className="popup-content"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="skill-popup-title"
+          >
+            <h2 id="skill-popup-title">{t(`courses.${course.key}_title`)}</h2>
+            <p>{t(`courses.${course.key}_desc`)}</p>
           </div>
         </div>
       )}
