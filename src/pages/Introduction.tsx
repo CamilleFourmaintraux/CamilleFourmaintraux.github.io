@@ -1,7 +1,9 @@
 import { useTranslation } from "react-i18next";
-
-let ytbVideoRef = "EuAhIBpanhQ?si=NSjBc6L4-NPG9d3E";
-let ytbLink = "https://www.youtube.com/embed/";
+import YouTubeEmbed from "../parts/media/YouTubeEmbed";
+const myYoutubeChannel =
+  "https://youtube.com/@camille-we8dx?si=hSlOW24EazkZ0QTH";
+const myYoutubeID = "@Camille-we8dx";
+const ytbVideoRef = "Zwbzhw_zF74";
 
 export default function IntroductionPage() {
   const { t } = useTranslation();
@@ -15,6 +17,11 @@ export default function IntroductionPage() {
           {t("presentation.greeting")}
           <br />
           {t("presentation.intro")}
+          <br />
+          {t("presentation.career_path")}
+          <br />
+          <br />
+          {t("presentation.internship")}
           <br />
           <br />
           {t("presentation.motivation")}
@@ -33,7 +40,7 @@ export default function IntroductionPage() {
         </h2>
         <p>
           {t("cv.download")}{" "}
-          <a href="/files/resume.pdf" target="_blank" download>
+          <a href={t("footer.resume_filename")} target="_blank" download>
             {t("cv.here")}
           </a>
           .<br />
@@ -45,22 +52,11 @@ export default function IntroductionPage() {
         </h2>
         <p>
           {t("youtube.mychannel")}
-          <a href="https://youtube.com/@camille-we8dx?si=hSlOW24EazkZ0QTH">
-            @Camille-we8dx
-          </a>
+          <a href={myYoutubeChannel}>{myYoutubeID}</a>
         </p>
-        <iframe
-          width="666"
-          height="420"
-          src={ytbLink + ytbVideoRef}
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerPolicy="strict-origin-when-cross-origin"
-          allowFullScreen
-        ></iframe>
+        <YouTubeEmbed videoId={ytbVideoRef} title={t("youtube.title")} />
       </div>
-      <div className="container">
+      {/* <div className="container">
         <h2>
           <i className="fas fa-hand-holding-dollar"></i> {t("donation.title")}
         </h2>
@@ -71,7 +67,12 @@ export default function IntroductionPage() {
         </p>
 
         <img
-          src="/img/qr-code.png"
+          src="/img/qr-code_gofundme1.png"
+          alt={t("donation.img.alt")}
+          title={t("donation.img.alt")}
+        />
+        <img
+          src="/img/qr-code_gofundme2.png"
           alt={t("donation.img.alt")}
           title={t("donation.img.alt")}
         />
@@ -83,7 +84,7 @@ export default function IntroductionPage() {
           defer
           src="https://www.gofundme.com/static/js/embed.js"
         ></script>
-      </div>
+      </div> */}
 
       <div className="container">
         <h2>

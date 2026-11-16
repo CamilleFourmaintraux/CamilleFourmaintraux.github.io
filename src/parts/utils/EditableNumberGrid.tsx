@@ -40,6 +40,8 @@ const EditableNumberGrid: React.FC<EditableNumberGridProps> = ({
             <input
               className="matrix_inputs"
               key={colIndex}
+              name={`cell-${rowIndex}-${colIndex}`}
+              aria-label={`${rowIndex + 1}, ${colIndex + 1}`}
               type="number"
               value={cell}
               step={inputStep}

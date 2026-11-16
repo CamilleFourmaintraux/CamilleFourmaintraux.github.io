@@ -12,12 +12,20 @@ export default function Pagil2() {
           <h4>{t(`${translationsPath}.presentation`)}</h4>
         </li>
         <p>{t(`${translationsPath}.presentationDescription`)}</p>
-        <img src="/img/portfolio/codeSwipe.gif" alt="TOTO" title="TODO" />
+        <img
+          src="/img/portfolio/codeSwipe.gif"
+          alt={t(`${translationsPath}.alt1`)}
+          title={t(`${translationsPath}.alt1`)}
+        />
         <li>
           <h4>{t(`${translationsPath}.role`)}</h4>
         </li>
         <p>{t(`${translationsPath}.roleDescription`)}</p>
-        <img src="/img/portfolio/tabScrum2.jpg" alt="TOTO" title="TODO" />
+        <img
+          src="/img/portfolio/tabScrum2.jpg"
+          alt={t(`${translationsPath}.alt2`)}
+          title={t(`${translationsPath}.alt2`)}
+        />
         <li>
           <h4>{t(`${projectsWorkPath}.know_how`)}</h4>
         </li>

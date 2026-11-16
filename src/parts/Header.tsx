@@ -17,12 +17,10 @@ export default function Header() {
   const [hp, setHp] = useState(5); // Compteur de clics
 
   const handleClick = () => {
-    console.log("CLICK : " + hp);
     if (hp <= 0) {
       return;
     } else {
       setHp(hp - 1);
-      console.log(hp);
       hurtAudio.currentTime = 0;
       hurtAudio.play();
       setImageSrc("/img/header/me_red.jpg"); // Change l'image après le clic

@@ -39,7 +39,7 @@ export default function DocumentsPage() {
             </tr>
             <tr>
               <td>
-                <strong>{t("documents.attestation_dut")}</strong>
+                <strong>{t("documents.dut_certificate")}</strong>
               </td>
               <td>
                 <a href="/files/DutCertificate.pdf" target="_blank" download>
@@ -49,7 +49,21 @@ export default function DocumentsPage() {
             </tr>
             <tr>
               <td>
-                <strong>{t("documents.rapport_stage")}</strong>
+                <strong>{t("documents.internship_report") + " 2025"}</strong>
+              </td>
+              <td>
+                <a
+                  href="/files/InternshipReportEmothep2025.pdf"
+                  target="_blank"
+                  download
+                >
+                  {t("documents.download")}
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>{t("documents.internship_report") + " 2024"}</strong>
               </td>
               <td>
                 <a

@@ -1,0 +1,510 @@
+:root[data-theme="light"] {
+  --steam-card-bg: #f4f6fa;
+  --steam-card-border: #dde2ea;
+  --steam-card-hover: #e8edf5;
+  --steam-muted: #5b6475;
+  --steam-accent: #1f6fb2;
+  --steam-track: #d3e3f3;
+  --steam-online: #2d7fc1;
+  --steam-in-game: #4f8a24;
+  --steam-offline: #7d838c;
+}
+
+:root[data-theme="dark"] {
+  --steam-card-bg: #161a2b;
+  --steam-card-border: #2a3046;
+  --steam-card-hover: #1f2438;
+  --steam-muted: #a3abbd;
+  --steam-accent: #5aa6e6;
+  --steam-track: #23384f;
+  --steam-online: #57b3f0;
+  --steam-in-game: #8cc84b;
+  --steam-offline: #9097a3;
+}
+
+.steam-muted {
+  color: var(--steam-muted);
+}
+
+/* Profile */
+.steam-profile {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  background: var(--steam-card-bg);
+  border: 1px solid var(--steam-card-border);
+  border-radius: 10px;
+}
+
+.steam-profile .steam-avatar {
+  display: inline-block;
+  max-width: none;
+  margin: 0;
+  border-radius: 8px;
+}
+
+.steam-profile-text {
+  flex: 1;
+  min-width: 200px;
+}
+
+.steam-profile-text p {
+  margin: 4px 0;
+}
+
+.steam-profile-name {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.steam-profile-name h3 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.steam-level {
+  padding: 2px 10px;
+  border: 2px solid var(--steam-accent);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.steam-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.steam-status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--steam-offline);
+}
+
+.steam-status.online .steam-status-dot {
+  background: var(--steam-online);
+}
+
+.steam-status.in-game .steam-status-dot {
+  background: var(--steam-in-game);
+}
+
+a.steam-profile-link,
+a.steam-profile-link:link,
+a.steam-profile-link:visited {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 6px;
+  background: var(--bg-button-color);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+a.steam-profile-link:hover {
+  color: #fff;
+  background: var(--bg-buttonhover-color);
+}
+
+/* Stat tiles */
+.steam-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.steam-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px;
+  background: var(--steam-card-bg);
+  border: 1px solid var(--steam-card-border);
+  border-radius: 10px;
+}
+
+.steam-stat-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.steam-stat-label {
+  color: var(--steam-muted);
+  font-size: 0.9rem;
+}
+
+/* Progress meter: track is a lighter step of the fill's hue */
+.steam-meter {
+  display: block;
+  width: 100%;
+  height: 6px;
+  overflow: hidden;
+  border-radius: 3px;
+  background: var(--steam-track);
+}
+
+.steam-meter > * {
+  display: block;
+  height: 100%;
+  border-radius: 3px;
+  background: var(--steam-accent);
+}
+
+.steam-progress-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+/* Game cards */
+.steam-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.steam-controls input[type="text"] {
+  flex: 1;
+  min-width: 200px;
+  width: auto;
+  margin: 0;
+}
+
+.steam-sort {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: auto;
+}
+
+.steam-sort select {
+  padding: 9px 10px;
+  color: #1a1d2e;
+  background-color: rgba(255, 255, 255, 0.92);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font: inherit;
+}
+
+.steam-games {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.steam-games-recent {
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+.steam-game {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+  padding: 0 0 12px;
+  overflow: hidden;
+  text-align: left;
+  font-size: 0.9rem;
+  color: inherit;
+  background: var(--steam-card-bg);
+  border: 1px solid var(--steam-card-border);
+  border-radius: 10px;
+  transition:
+    transform 0.15s,
+    background-color 0.15s;
+}
+
+.steam-game:hover {
+  background: var(--steam-card-hover);
+  transform: translateY(-2px);
+}
+
+.steam-game:focus-visible {
+  outline: 3px solid var(--steam-accent);
+  outline-offset: 2px;
+}
+
+.steam-game > span {
+  padding: 0 12px;
+}
+
+.steam-game .steam-game-image {
+  display: block;
+  width: 100%;
+  max-width: none;
+  aspect-ratio: 460 / 215;
+  margin: 0 0 6px;
+  object-fit: cover;
+}
+
+.steam-game .steam-game-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 460 / 215;
+  margin-bottom: 6px;
+  padding: 0;
+  background: var(--steam-track);
+}
+
+.steam-game-fallback img {
+  margin: 0;
+  border-radius: 6px;
+}
+
+.steam-game-name {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.steam-game-achievements {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 6px;
+}
+
+.steam-show-all {
+  display: block;
+  margin: 20px auto 0;
+}
+
+.steam-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 20px;
+  font-weight: 600;
+}
+
+/* Workshop */
+.steam-workshop-totals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  font-weight: 600;
+}
+
+.steam-workshop {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 14px;
+}
+
+a.steam-workshop-item,
+a.steam-workshop-item:link,
+a.steam-workshop-item:visited {
+  display: flex;
+  gap: 14px;
+  padding: 12px;
+  color: inherit;
+  font-weight: normal;
+  text-decoration: none;
+  background: var(--steam-card-bg);
+  border: 1px solid var(--steam-card-border);
+  border-radius: 10px;
+  transition:
+    transform 0.15s,
+    background-color 0.15s;
+}
+
+a.steam-workshop-item:hover {
+  color: inherit;
+  background: var(--steam-card-hover);
+  transform: translateY(-2px);
+}
+
+a.steam-workshop-item:focus-visible {
+  outline: 3px solid var(--steam-accent);
+  outline-offset: 2px;
+}
+
+.steam-workshop-item img,
+.steam-workshop-placeholder {
+  flex-shrink: 0;
+  width: 112px;
+  height: 112px;
+  max-width: none;
+  margin: 0;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.steam-workshop-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  background: var(--steam-track);
+}
+
+.steam-workshop-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  font-size: 0.9rem;
+}
+
+.steam-workshop-description {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+.steam-workshop-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+}
+
+.steam-workshop-updated {
+  font-size: 0.8rem;
+}
+
+/* Achievements */
+.steam-achievements {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+}
+
+.steam-achievement {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--steam-card-border);
+}
+
+.steam-achievement:last-child {
+  border-bottom: none;
+}
+
+.steam-achievement img {
+  flex-shrink: 0;
+  margin: 0;
+  max-width: none;
+  border-radius: 6px;
+}
+
+.steam-achievement.locked img {
+  opacity: 0.6;
+}
+
+.steam-achievement-text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.steam-achievement-game {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.steam-achievement-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  text-align: right;
+}
+
+/* Dialog */
+.steam-dialog {
+  width: min(720px, calc(100vw - 32px));
+  max-height: calc(100vh - 64px);
+  padding: 0;
+  overflow: auto;
+  color: var(--text-color);
+  background: var(--bg-color);
+  border: 1px solid var(--steam-card-border);
+  border-radius: 12px;
+}
+
+.steam-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.steam-dialog-content {
+  padding: 0 24px 20px;
+}
+
+.steam-dialog .steam-dialog-header {
+  display: block;
+  width: calc(100% + 48px);
+  max-width: none;
+  max-height: 220px;
+  margin: 0 -24px 12px;
+  aspect-ratio: 460 / 215;
+  object-fit: cover;
+}
+
+.steam-dialog-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 12px;
+}
+
+.steam-dialog-title h3 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.steam-icon-button {
+  margin: 0;
+  padding: 6px 10px;
+}
+
+@media (max-width: 600px) {
+  .steam-workshop {
+    grid-template-columns: 1fr;
+  }
+
+  .steam-workshop-item img,
+  .steam-workshop-placeholder {
+    width: 80px;
+    height: 80px;
+  }
+
+  .steam-profile {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .steam-achievement {
+    flex-wrap: wrap;
+  }
+
+  .steam-achievement-meta {
+    flex-direction: row;
+    gap: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    padding-left: 62px;
+    align-items: flex-start;
+    text-align: left;
+  }
+}

@@ -12,12 +12,20 @@ export default function Sae202() {
           <h4>{t(`${translationsPath}.presentation`)}</h4>
         </li>
         <p>{t(`${translationsPath}.presentationDescription`)}</p>
-        <img src="/img/portfolio/sae_IHM_code.png" alt="TOTO" title="TODO" />
+        <img
+          src="/img/portfolio/sae_IHM_code.png"
+          alt={t(`${translationsPath}.alt1`)}
+          title={t(`${translationsPath}.alt1`)}
+        />
         <li>
           <h4>{t(`${translationsPath}.interface`)}</h4>
         </li>
         <p>{t(`${translationsPath}.interface_description`)}</p>
-        <img src="/img/portfolio/saeIHM.png" alt="TOTO" title="TODO" />
+        <img
+          src="/img/portfolio/saeIHM.png"
+          alt={t(`${translationsPath}.alt2`)}
+          title={t(`${translationsPath}.alt2`)}
+        />
         <li>
           <h4>{t(`${projectsWorkPath}.skills`)}</h4>
         </li>

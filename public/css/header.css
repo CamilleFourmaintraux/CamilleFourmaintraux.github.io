@@ -16,6 +16,7 @@ header {
   width: 100px;
   height: 100px;
   object-fit: cover;
+  display: inline-block; /* stay inline so the header's text-align centers it */
   margin: 0px;
   padding: 0px;
 }

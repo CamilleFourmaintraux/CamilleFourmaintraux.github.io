@@ -6,7 +6,7 @@ export default function ChatbotSwitcher() {
 
   function togglechat() {
     if (match) {
-      navigate(`/home`);
+      navigate(`/`);
     } else {
       navigate(`/chatbot`);
     }

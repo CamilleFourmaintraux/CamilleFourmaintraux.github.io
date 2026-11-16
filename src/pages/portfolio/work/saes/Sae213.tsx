@@ -12,9 +12,17 @@ export default function Sae213() {
           <h4>{t(`${translationsPath}.presentation`)}</h4>
         </li>
         <p>{t(`${translationsPath}.presentationDescription`)}</p>
-        <img src="/img/portfolio/trello.png" alt="TOTO" title="TODO" />
+        <img
+          src="/img/portfolio/trello.png"
+          alt={t(`${translationsPath}.alt1`)}
+          title={t(`${translationsPath}.alt1`)}
+        />
         <p>{t(`${translationsPath}.text1`)}</p>
-        <img src="/img/portfolio/escapeGame.png" alt="TOTO" title="TODO" />
+        <img
+          src="/img/portfolio/escapeGame.png"
+          alt={t(`${translationsPath}.alt2`)}
+          title={t(`${translationsPath}.alt2`)}
+        />
         <p>{t(`${translationsPath}.text2`)}</p>
         <li>
           <h4>{t(`${projectsWorkPath}.skills`)}</h4>

@@ -7,8 +7,21 @@ export default function Education() {
         <h2>{t("formation.title")}</h2>
         <ul>
           <li>
+            <strong>{t("formation.since_2025")}</strong>
+            <ul>
+              <li>
+                {t("formation.current.degree")} - {t("formation.polytech")}
+              </li>
+              <li>{t("formation.current.year")}</li>
+              <li>{t("formation.current.courses")}</li>
+            </ul>
+          </li>
+          <li>
             <strong>2025</strong>
             <ul>
+              <li>
+                {t("formation.2025.but")} - {t("formation.iut")}
+              </li>
               <li>
                 <a href="/files/StudiesNotice.pdf" target="_blank">
                   {t("formation.2025.notice")}
