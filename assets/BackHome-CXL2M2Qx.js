@@ -1,0 +1,1 @@
+import{j as s,L as t}from"./react-GDcWO7ke.js";import{I as a,e as r}from"./index-DpBf_Ms8.js";import{u as n}from"./i18n-DJwdehTO.js";function m(){const{t:o}=n();return s.jsx("p",{className:"page-actions",children:s.jsxs(t,{to:"/",className:"button",children:[s.jsx(a,{icon:r}),o("test.back")]})})}export{m as B};

@@ -1,1 +1,0 @@
-import{j as t}from"./react-WH49PM3I.js";import{E as m}from"./EmbeddedGame-DOv737uQ.js";import"./index-BnChw-S-.js";import"./i18n-Cpom4KxJ.js";import"./BackHome-Cmp-yaeB.js";import"./Page-vk-uTn9A.js";function n(){return t.jsx(m,{title:"PacMan",game:"pacman",width:342,height:490})}export{n as default};
