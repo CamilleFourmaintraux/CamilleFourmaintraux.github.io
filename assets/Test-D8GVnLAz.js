@@ -1,0 +1,1 @@
+import{j as t}from"./react-WH49PM3I.js";import{ad as o}from"./index-BnChw-S-.js";import{B as r}from"./BackHome-Cmp-yaeB.js";import{P as s}from"./Page-vk-uTn9A.js";import{u as e}from"./i18n-Cpom4KxJ.js";function p(){const{t:a}=e();return t.jsx(s,{title:a("test.title"),icon:o,lead:t.jsx("p",{children:a("test.main")}),children:t.jsx(r,{})})}export{p as default};

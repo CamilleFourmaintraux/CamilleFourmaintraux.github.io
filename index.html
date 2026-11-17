@@ -1,22 +1,97 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/vnd.icon" href="/img/favicon.ico" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Oswald&family=Roboto:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/css/all.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Camille Fourmaintraux</title>
-    <script type="module" crossorigin src="/assets/index-2eEMoqsz.js"></script>
+    <meta
+      name="description"
+      content="Portfolio de Camille Fourmaintraux, étudiant ingénieur en informatique à Polytech Grenoble. Parcours, projets, compétences et contact."
+    />
+    <meta name="author" content="Camille Fourmaintraux" />
+    <meta name="theme-color" content="#f3f5ee" />
+    <meta name="color-scheme" content="light dark" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Camille Fourmaintraux" />
+    <meta
+      property="og:description"
+      content="Étudiant ingénieur en informatique à Polytech Grenoble. Parcours, projets, compétences et contact."
+    />
+    <meta property="og:url" content="https://camillefourmaintraux.github.io/" />
+    <link rel="icon" type="image/vnd.microsoft.icon" href="/img/favicon.ico" />
+    <style>:root[data-ui=legacy]{--lightningcss-light:initial;--lightningcss-dark: ;color-scheme:light}</style>
+    <script>
+      // Runs before the first paint: theme, language and design version are
+      // known immediately, so the page never flashes with the wrong ones.
+      (function () {
+        var root = document.documentElement;
+        var stored = function (key) {
+          try {
+            return localStorage.getItem(key);
+          } catch (error) {
+            return null;
+          }
+        };
+        var theme = stored("theme");
+        if (theme !== "light" && theme !== "dark") {
+          theme = matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light";
+        }
+        root.setAttribute("data-theme", theme);
+        if (theme === "dark") {
+          document
+            .querySelector('meta[name="theme-color"]')
+            .setAttribute("content", "#101b17");
+        }
+        var language = stored("lang") || navigator.language || "fr";
+        root.lang = /^fr/i.test(language) ? "fr" : "en";
+        var path = location.hash
+          .replace(/^#/, "")
+          .split(/[?#]/)[0]
+          .replace(/\/+$/, "");
+        var legacy = path === "/old" || /-old$/.test(path);
+        root.setAttribute("data-ui", legacy ? "legacy" : "v2");
+        if (legacy) return;
+        // Preloads what the first screen needs (the list is filled at build time).
+        var preload = function (href, as, type) {
+          var link = document.createElement("link");
+          link.rel = "preload";
+          link.href = href;
+          link.as = as;
+          if (type) link.type = type;
+          if (as === "font") link.crossOrigin = "anonymous";
+          document.head.appendChild(link);
+        };
+        ["/assets/bricolage-grotesque-latin-wght-normal-DLoelf7F.woff2","/assets/atkinson-hyperlegible-next-latin-wght-normal-BcXVPD7q.woff2"].forEach(function (font) {
+          preload(font, "font", "font/woff2");
+        });
+        if (
+          /^\/?(index|home|welcome|reception|bienvenue|accueil)?$/.test(path)
+        ) {
+          preload("/media/header/me_green-480.webp", "image", "image/webp");
+        }
+      })();
+    </script>
+    <script type="module" crossorigin src="/assets/index-BnChw-S-.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/react-WH49PM3I.js">
+    <link rel="modulepreload" crossorigin href="/assets/i18n-Cpom4KxJ.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-TB85IMK4.css">
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <p
+        style="
+          max-width: 40rem;
+          margin: 3rem auto;
+          padding: 0 1rem;
+          font-family: sans-serif;
+        "
+      >
+        Ce site a besoin de JavaScript pour s'afficher. This website needs
+        JavaScript to be displayed.
+      </p>
+    </noscript>
   </body>
 </html>
