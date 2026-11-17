@@ -101,6 +101,8 @@ const ROUTES: PageRoute[] = [
   },
 ];
 
+// Hidden page: full screen, without the site layout or an "-old" twin.
+const Miku = lazy(() => import("./pages/miku/Miku"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const LegacyNotFound = lazy(() => import("./legacy/pages/Redirection"));
 const LegacyLayout = lazy(() => import("./legacy/LegacyLayout"));
@@ -111,6 +113,8 @@ const legacyAddress = (path: string) =>
 export default function AppRoutes() {
   return (
     <Routes>
+      <Route path="/miku" element={<Miku />} />
+
       <Route element={<Layout />}>
         {ROUTES.flatMap(({ paths, page: Page }) =>
           paths.map((path) => (

@@ -1,3 +1,4 @@
+import type { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import type { Tags } from "@/lib/tags";
 
 export type Tag = (typeof Tags)[keyof typeof Tags];
@@ -18,6 +19,8 @@ export type Block =
       image?: ProjectImage;
     }
   | { kind: "text"; text: string }
+  /** YouTube video, with the translation key of its title. */
+  | { kind: "video"; videoId: string; title: string }
   | { kind: "list"; title?: string; bullets: Bullet[]; plain?: boolean }
   | {
       kind: "link";
@@ -35,5 +38,7 @@ export type Project = {
   start: Date;
   end: Date;
   tags: Tag[];
+  /** Shown in the summary of a project that has no picture. */
+  icon?: IconDefinition;
   blocks: Block[];
 };

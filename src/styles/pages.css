@@ -652,6 +652,9 @@
   .project-list {
     max-width: 68ch;
   }
+  .project-video > * + * {
+    margin-top: var(--space-3);
+  }
   .project-bullets li::marker {
     color: var(--primary);
   }

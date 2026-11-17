@@ -664,5 +664,167 @@
     "height": 272,
     "video": "/media/portfolio/versionFinale.mp4",
     "poster": "/media/portfolio/versionFinale-poster.webp"
+  },
+  "miku/crying.png": {
+    "width": 1440,
+    "height": 1076,
+    "variants": [
+      {
+        "width": 480,
+        "src": "/media/miku/crying-480.webp"
+      },
+      {
+        "width": 960,
+        "src": "/media/miku/crying-960.webp"
+      },
+      {
+        "width": 1440,
+        "src": "/media/miku/crying-1440.webp"
+      }
+    ]
+  },
+  "miku/curious.png": {
+    "width": 1440,
+    "height": 1076,
+    "variants": [
+      {
+        "width": 480,
+        "src": "/media/miku/curious-480.webp"
+      },
+      {
+        "width": 960,
+        "src": "/media/miku/curious-960.webp"
+      },
+      {
+        "width": 1440,
+        "src": "/media/miku/curious-1440.webp"
+      }
+    ]
+  },
+  "miku/empty.png": {
+    "width": 1440,
+    "height": 1076,
+    "variants": [
+      {
+        "width": 480,
+        "src": "/media/miku/empty-480.webp"
+      },
+      {
+        "width": 960,
+        "src": "/media/miku/empty-960.webp"
+      },
+      {
+        "width": 1440,
+        "src": "/media/miku/empty-1440.webp"
+      }
+    ]
+  },
+  "miku/excited.png": {
+    "width": 1440,
+    "height": 1076,
+    "variants": [
+      {
+        "width": 480,
+        "src": "/media/miku/excited-480.webp"
+      },
+      {
+        "width": 960,
+        "src": "/media/miku/excited-960.webp"
+      },
+      {
+        "width": 1440,
+        "src": "/media/miku/excited-1440.webp"
+      }
+    ]
+  },
+  "miku/faceless.png": {
+    "width": 1440,
+    "height": 1076,
+    "variants": [
+      {
+        "width": 480,
+        "src": "/media/miku/faceless-480.webp"
+      },
+      {
+        "width": 960,
+        "src": "/media/miku/faceless-960.webp"
+      },
+      {
+        "width": 1440,
+        "src": "/media/miku/faceless-1440.webp"
+      }
+    ]
+  },
+  "miku/happy.png": {
+    "width": 1440,
+    "height": 1076,
+    "variants": [
+      {
+        "width": 480,
+        "src": "/media/miku/happy-480.webp"
+      },
+      {
+        "width": 960,
+        "src": "/media/miku/happy-960.webp"
+      },
+      {
+        "width": 1440,
+        "src": "/media/miku/happy-1440.webp"
+      }
+    ]
+  },
+  "miku/heartened.png": {
+    "width": 1440,
+    "height": 1076,
+    "variants": [
+      {
+        "width": 480,
+        "src": "/media/miku/heartened-480.webp"
+      },
+      {
+        "width": 960,
+        "src": "/media/miku/heartened-960.webp"
+      },
+      {
+        "width": 1440,
+        "src": "/media/miku/heartened-1440.webp"
+      }
+    ]
+  },
+  "miku/sad.png": {
+    "width": 1440,
+    "height": 1076,
+    "variants": [
+      {
+        "width": 480,
+        "src": "/media/miku/sad-480.webp"
+      },
+      {
+        "width": 960,
+        "src": "/media/miku/sad-960.webp"
+      },
+      {
+        "width": 1440,
+        "src": "/media/miku/sad-1440.webp"
+      }
+    ]
+  },
+  "miku/shy.png": {
+    "width": 1440,
+    "height": 1076,
+    "variants": [
+      {
+        "width": 480,
+        "src": "/media/miku/shy-480.webp"
+      },
+      {
+        "width": 960,
+        "src": "/media/miku/shy-960.webp"
+      },
+      {
+        "width": 1440,
+        "src": "/media/miku/shy-1440.webp"
+      }
+    ]
   }
 }

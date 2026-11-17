@@ -1,3 +1,4 @@
+import { faMemory, faMicrochip } from "@fortawesome/free-solid-svg-icons";
 import { GITHUB_URL } from "@/lib/links";
 import { Tags } from "@/lib/tags";
 import type { Block, Bullet, Project } from "./types";
@@ -70,6 +71,40 @@ function project(
 
 // Months start at 0, as in the Date constructor.
 const projects: Project[] = [
+  {
+    ...project(
+      "morse_stm32",
+      "morse_stm32",
+      [2025, 10, 1],
+      [2025, 11, 19],
+      [Tags.SYSTEMS, Tags.HARDWARE, Tags.C],
+      (b) => [
+        section(b, "presentation", "presentationDescription"),
+        {
+          kind: "list",
+          title: `${b}.modes`,
+          bullets: pairs(b, ["mode1", "mode2"]),
+        },
+        { kind: "video", videoId: "HpIkzpsNZ2k", title: `${b}.demo` },
+        skills(keys(b, ["skill1", "skill2", "skill3", "skill4"])),
+      ],
+    ),
+    icon: faMicrochip,
+  },
+  {
+    ...project(
+      "memory_allocator",
+      "memory_allocator",
+      [2025, 10, 1],
+      [2025, 11, 19],
+      [Tags.C],
+      (b) => [
+        section(b, "presentation", "presentationDescription"),
+        skills(keys(b, ["skill1", "skill2", "skill3"])),
+      ],
+    ),
+    icon: faMemory,
+  },
   project(
     "2d_game_engine",
     "2d_game_engine",

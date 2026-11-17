@@ -51,6 +51,23 @@
     "filterByTag": "Filtrer par thème",
     "resetFilters": "Réinitialiser les filtres"
   },
+  "miku": {
+    "title": "Miku",
+    "back": "Retour à l'accueil",
+    "character": "Personnage à l'écran",
+    "help": "Le personnage réagit à la souris. Approchez le curseur, caressez doucement son visage, cliquez, restez appuyé, agitez la souris ou éloignez-vous pour découvrir ses réactions. Au clavier, placez le focus sur le personnage puis appuyez sur Entrée.",
+    "emotions": {
+      "empty": "Écran vide",
+      "curious": "Curiosité",
+      "heartened": "Attendrissement",
+      "shy": "Timidité",
+      "happy": "Joie",
+      "excited": "Excitation",
+      "faceless": "Visage effacé",
+      "sad": "Tristesse",
+      "crying": "Larmes"
+    }
+  },
   "redirection": {
     "title": "Redirection",
     "sorry": "Désolé, cette page n'existe pas. :/",
@@ -381,6 +398,29 @@
         "link": "dépôt GitHub",
         "skills": "Savoir-faire acquis",
         "know_how": "Savoir-être acquis",
+        "morse_stm32": {
+          "title": "Jeu de morse sur carte Nucleo STM32",
+          "presentation": "Présentation du projet",
+          "presentationDescription": "Projet de fin de premier semestre, réalisé en binôme sur une carte Nucleo STM32. Nous avons programmé la carte en C pour qu'elle transmette un message en morse à la fois par le son et par la lumière, grâce au clignotement de ses LED.",
+          "modes": "Deux modes d'utilisation",
+          "mode1": "Mode traduction. ",
+          "mode1_text": "Le texte saisi dans un terminal est converti en morse par la carte.",
+          "mode2": "Mode jeu. ",
+          "mode2_text": "La carte émet un code morse. Le joueur doit le comprendre puis saisir sa traduction dans le terminal.",
+          "demo": "Vidéo de démonstration",
+          "skill1": "Programmation embarquée en C sur microcontrôleur STM32",
+          "skill2": "Pilotage de sorties lumineuses et sonores (LED et son)",
+          "skill3": "Échange de texte entre la carte et un terminal",
+          "skill4": "Travail en binôme"
+        },
+        "memory_allocator": {
+          "title": "Recréation d'un allocateur mémoire en C",
+          "presentation": "Présentation du projet",
+          "presentationDescription": "Projet de fin de premier semestre, mené en parallèle du jeu de morse sur carte STM32. L'objectif était de recréer en C un allocateur mémoire, sur le modèle des fonctions malloc et free de la bibliothèque standard.",
+          "skill1": "Langage C",
+          "skill2": "Gestion manuelle de la mémoire et manipulation de pointeurs",
+          "skill3": "Compréhension du fonctionnement interne de l'allocation dynamique"
+        },
         "2d_game_engine": {
           "title": "Moteur de jeu 2D",
           "presentation": "Conception et développement d'un moteur de jeu 2D en Java",
@@ -811,7 +851,7 @@
   },
   "privacy": {
     "title": "Confidentialité",
-    "updated": "Dernière mise à jour : 16 novembre 2026",
+    "updated": "Dernière mise à jour : 17 novembre 2026",
     "intro": "Ce site est mon portfolio personnel. Cette page explique quelles données sont collectées quand vous l'utilisez, pourquoi, et ce que vous pouvez demander.",
     "who": {
       "title": "Qui est responsable ?",
@@ -856,7 +896,7 @@
       "items": {
         "ip": "mon serveur garde votre adresse IP en mémoire pendant une heure au maximum pour limiter les abus (nombre de messages par heure). Elle n'est ni enregistrée ni transmise.",
         "hosting": "le site est hébergé par GitHub Pages et le serveur par Render, qui peuvent conserver des journaux techniques (dont l'adresse IP) pour leur sécurité.",
-        "resources": "votre navigateur charge les images de la page Steam depuis les serveurs de Steam et la miniature de la vidéo de l'accueil depuis les serveurs de YouTube. Le lecteur YouTube, en mode de confidentialité renforcée, n'est chargé que si vous cliquez sur la vidéo. Les polices et les icônes sont hébergées sur ce site. Seules les pages de l'ancienne version les chargent encore depuis Google Fonts et cdnjs."
+        "resources": "votre navigateur charge les images de la page Steam depuis les serveurs de Steam et les miniatures des vidéos (accueil et projets) depuis les serveurs de YouTube. Le lecteur YouTube, en mode de confidentialité renforcée, n'est chargé que si vous cliquez sur une vidéo. Les polices et les icônes sont hébergées sur ce site. Seules les pages de l'ancienne version les chargent encore depuis Google Fonts et cdnjs."
       }
     },
     "storage": {

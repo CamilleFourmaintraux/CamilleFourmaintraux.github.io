@@ -5,6 +5,7 @@ import { faChevronDown, faCubes } from "@fortawesome/free-solid-svg-icons";
 import ExternalLink from "@/ui/ExternalLink";
 import Icon from "@/ui/Icon";
 import Figure, { Picture } from "@/ui/Media";
+import YouTubeEmbed from "@/ui/YouTubeEmbed";
 import type { Block, Bullet, Project, Tag } from "./types";
 
 const dateLocale = (language: string) =>
@@ -37,7 +38,7 @@ function Bullets({ bullets, plain }: { bullets: Bullet[]; plain?: boolean }) {
   );
 }
 
-function ProjectBlock({ block }: { block: Block }) {
+function ProjectBlock({ block, title }: { block: Block; title: string }) {
   const { t } = useTranslation();
   switch (block.kind) {
     case "section":
@@ -63,6 +64,16 @@ function ProjectBlock({ block }: { block: Block }) {
       );
     case "text":
       return <p className="project-text">{t(block.text)}</p>;
+    case "video":
+      return (
+        <div className="project-video">
+          <h4>{t(block.title)}</h4>
+          <YouTubeEmbed
+            videoId={block.videoId}
+            title={`${t(block.title)}, ${title}`}
+          />
+        </div>
+      );
     case "list":
       return (
         <div className="project-list">
@@ -121,7 +132,7 @@ export default function ProjectCard({
           {cover?.image ? (
             <Picture src={cover.image.src} alt="" sizes="9rem" />
           ) : (
-            <Icon icon={faCubes} />
+            <Icon icon={project.icon ?? faCubes} />
           )}
         </div>
         <div className="project-summary">
@@ -176,7 +187,7 @@ export default function ProjectCard({
           {rendered && (
             <div className="project-details">
               {project.blocks.map((block, index) => (
-                <ProjectBlock key={index} block={block} />
+                <ProjectBlock key={index} block={block} title={title} />
               ))}
             </div>
           )}

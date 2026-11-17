@@ -51,6 +51,23 @@
     "filterByTag": "Filter by topic",
     "resetFilters": "Reset filters"
   },
+  "miku": {
+    "title": "Miku",
+    "back": "Back to home",
+    "character": "Character on the screen",
+    "help": "The character reacts to the mouse. Bring the pointer closer, gently stroke its face, click, hold the button down, shake the mouse or move away to discover its reactions. With a keyboard, focus the character, then press Enter.",
+    "emotions": {
+      "empty": "Empty screen",
+      "curious": "Curiosity",
+      "heartened": "Tenderness",
+      "shy": "Shyness",
+      "happy": "Joy",
+      "excited": "Excitement",
+      "faceless": "Face erased",
+      "sad": "Sadness",
+      "crying": "Tears"
+    }
+  },
   "redirection": {
     "title": "Redirection",
     "sorry": "Sorry, this page doesn't exist. :/",
@@ -381,6 +398,29 @@
         "link": "GitHub repository",
         "skills": "Hard skills acquired",
         "know_how": "Soft skills acquired",
+        "morse_stm32": {
+          "title": "Morse code game on an STM32 Nucleo board",
+          "presentation": "Project overview",
+          "presentationDescription": "End-of-semester project carried out in pairs on an STM32 Nucleo board. We programmed the board in C to send a Morse code message with both sound and light, by blinking its LEDs.",
+          "modes": "Two modes",
+          "mode1": "Translation mode. ",
+          "mode1_text": "Text typed in a terminal is converted to Morse code by the board.",
+          "mode2": "Game mode. ",
+          "mode2_text": "The board plays a Morse code message. The player has to understand it, then type its translation in the terminal.",
+          "demo": "Demo video",
+          "skill1": "Embedded programming in C on an STM32 microcontroller",
+          "skill2": "Driving light and sound outputs (LEDs and sound)",
+          "skill3": "Exchanging text between the board and a terminal",
+          "skill4": "Pair work"
+        },
+        "memory_allocator": {
+          "title": "Recreating a memory allocator in C",
+          "presentation": "Project overview",
+          "presentationDescription": "End-of-semester project, carried out alongside the Morse code game on the STM32 board. The goal was to recreate a memory allocator in C, modelled on the malloc and free functions of the standard library.",
+          "skill1": "C language",
+          "skill2": "Manual memory management and pointer handling",
+          "skill3": "Understanding how dynamic allocation works internally"
+        },
         "2d_game_engine": {
           "title": "2D Game Engine",
           "presentation": "Design and development of a 2D game engine in Java",
@@ -811,7 +851,7 @@
   },
   "privacy": {
     "title": "Privacy",
-    "updated": "Last updated: November 16, 2026",
+    "updated": "Last updated: November 17, 2026",
     "intro": "This website is my personal portfolio. This page explains what data is collected when you use it, why, and what you can ask for.",
     "who": {
       "title": "Who is responsible?",
@@ -856,7 +896,7 @@
       "items": {
         "ip": "my server keeps your IP address in memory for at most one hour to limit abuse (number of messages per hour). It is neither stored nor shared.",
         "hosting": "the website is hosted by GitHub Pages and the server by Render, which may keep technical logs (including IP addresses) for security.",
-        "resources": "your browser loads the images of the Steam page from Steam's servers and the thumbnail of the home page video from YouTube's servers. The YouTube player, in privacy-enhanced mode, is only loaded if you click the video. Fonts and icons are hosted on this website. Only the pages of the previous version still load them from Google Fonts and cdnjs."
+        "resources": "your browser loads the images of the Steam page from Steam's servers and video thumbnails (home page and projects) from YouTube's servers. The YouTube player, in privacy-enhanced mode, is only loaded if you click a video. Fonts and icons are hosted on this website. Only the pages of the previous version still load them from Google Fonts and cdnjs."
       }
     },
     "storage": {

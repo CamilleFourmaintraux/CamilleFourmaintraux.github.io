@@ -1,0 +1,112 @@
+@keyframes miku-switch {
+  0% {
+    opacity: 0.4;
+    transform: translateY(-0.5%);
+  }
+  50% {
+    opacity: 0.85;
+    transform: translateY(0.4%);
+  }
+}
+@keyframes miku-glow {
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* The page owns the whole window while it is displayed. */
+:root[data-ui="v2"][data-page="miku"] {
+  color-scheme: dark;
+  background: #000;
+  scrollbar-gutter: auto;
+
+  body {
+    background: #000;
+    overflow: hidden;
+  }
+}
+
+:root[data-ui="v2"] {
+  .miku {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    min-height: 0;
+    background: #000;
+    color: #d5dbd6;
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+    /* Fingers stroke the character instead of scrolling. Zoom stays available. */
+    touch-action: pinch-zoom;
+  }
+
+  .miku-back {
+    position: absolute;
+    top: max(0.75rem, env(safe-area-inset-top));
+    left: max(0.75rem, env(safe-area-inset-left));
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    min-height: 2.75rem;
+    padding: 0 0.8rem;
+    color: #aab3ad;
+    font-size: var(--step--1);
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: var(--radius-m);
+    transition: color 0.2s;
+  }
+  .miku-back:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
+  .miku-back:focus-visible,
+  .miku-screen:focus-visible {
+    outline: 3px solid #f0b354;
+  }
+
+  .miku-screen {
+    position: relative;
+    width: min(92vw, 46rem, (100dvh - 7rem) * 1446 / 1080);
+    aspect-ratio: 1446 / 1080;
+    padding: 0;
+    background: none;
+    border: 0;
+    border-radius: 5% / 7%;
+    cursor: default;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .miku-screen:focus-visible {
+    outline-offset: 8px;
+  }
+  /* Light of the screen spilling on the darkness around it. */
+  .miku-screen::before {
+    content: "";
+    position: absolute;
+    inset: -22%;
+    background: radial-gradient(
+      closest-side,
+      rgb(196 206 255 / 0.16),
+      transparent
+    );
+    pointer-events: none;
+    animation: miku-glow 5s ease-in-out infinite;
+  }
+  .miku-screen img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    /* Trims the rough outer pixels of the captures. */
+    clip-path: inset(0.4% 0.3% 0.9% 0.3% round 4.5% / 6%);
+  }
+  .miku-screen img.is-shown {
+    opacity: 1;
+    animation: miku-switch 0.16s steps(2, jump-none);
+  }
+}

@@ -55,7 +55,7 @@ src/legacy/           Previous design
 - **Icons.** `<Icon icon={faHouse} />` draws an inline SVG from the Font Awesome path data. No icon
   font is downloaded.
 - **Projects.** `src/pages/projects/workData.ts` and `passionData.ts` describe each project as data
-  (sections, lists, links, pictures). One component renders them all.
+  (sections, lists, links, pictures, videos). One component renders them all.
 - **Texts.** Everything visible comes from `src/locales/*.json`. Interface texts added for the
   current design are under the `ui` key.
 - **Colors.** The tokens live at the top of `src/styles/base.css`. Run `npm run check:a11y` after

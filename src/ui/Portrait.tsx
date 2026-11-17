@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 const MAX_HP = 5;
@@ -21,6 +22,7 @@ function play(audio: HTMLAudioElement) {
 /** Portrait of the home page, with its hidden mini-game: five hits and it is gone. */
 export default function Portrait() {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const [hp, setHp] = useState(MAX_HP);
   const [hurt, setHurt] = useState(false);
   const sounds = useRef<{
@@ -43,7 +45,11 @@ export default function Portrait() {
   };
 
   const hit = () => {
-    if (hp <= 0) return;
+    if (hp <= 0) {
+      // Insisting once nobody is left leads to the hidden page.
+      if (!hurt) navigate("/miku");
+      return;
+    }
     warmUp();
     const remaining = hp - 1;
     setHp(remaining);

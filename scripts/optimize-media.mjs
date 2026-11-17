@@ -23,7 +23,7 @@ const sourceDir = join(root, "public/img");
 const outputDir = join(root, "public/media");
 const manifestFile = join(root, "src/data/media.json");
 
-const FOLDERS = ["cursus", "portfolio", "passions"];
+const FOLDERS = ["cursus", "portfolio", "passions", "miku"];
 const EXTRA_FILES = [
   "header/me_green.jpg",
   "header/me_red.jpg",
