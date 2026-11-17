@@ -541,3 +541,10 @@
     font-size: 0.9rem;
   }
 }
+
+/* Fields filled in by the browser keep the chat colors (see form.css). */
+.chat-box-footer input:-webkit-autofill,
+.chat-contact-fields input:-webkit-autofill {
+  -webkit-text-fill-color: var(--chat-input-text);
+  caret-color: var(--chat-input-text);
+}

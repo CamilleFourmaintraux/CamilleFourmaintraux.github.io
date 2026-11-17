@@ -1,7 +1,7 @@
 {
   "header": {
     "subtitle_sentence": "Étudiant à Polytech Grenoble",
-    "me_img_alt": "Il s'agit d'un portrait en plan rapproché d'un jeune homme aux cheveux et à la barbe bruns. L'image présente un plan moyen d'un jeune homme aux cheveux bruns ondulés lui arrivant aux épaules, arborant une barbe et une moustache bien visibles. Il porte des lunettes rondes à monture métallique fine. Ses yeux sont bruns et il regarde directement l'objectif. Un léger sourire se dessine sur son visage. Il porte un sweat-à-capuche bleu foncé, la capuche relevée ; les cordons de serrage sont visibles, terminés par des embouts métalliques. L'arrière-plan est constitué d'un mur uni de couleur claire, présentant une texture subtile. L'éclairage est doux et semble provenir de face. L'atmosphère générale de l'image est spontanée et détendue, teintée d'une pointe de timidité chez le sujet. Les couleurs sont naturelles et douces ; le bleu dominant du sweat apporte une touche de couleur qui tranche avec la neutralité du fond et les tons de la peau.",
+    "me_img_alt": "Il s'agit d'un portrait en plan rapproché d'un jeune homme aux cheveux et à la barbe bruns. L'image présente un plan moyen d'un jeune homme aux cheveux bruns ondulés lui arrivant aux épaules, arborant une barbe et une moustache bien visibles. Il porte des lunettes rondes à monture métallique fine. Ses yeux sont bruns et il regarde directement l'objectif. Un léger sourire se dessine sur son visage. Il porte un sweat-à-capuche vert foncé, la capuche relevée ; les cordons de serrage sont visibles, terminés par des embouts métalliques. L'arrière-plan est constitué d'un mur uni de couleur claire, présentant une texture subtile. L'éclairage est doux et semble provenir de face. L'atmosphère générale de l'image est spontanée et détendue, teintée d'une pointe de timidité chez le sujet. Les couleurs sont naturelles et douces ; le vert dominant du sweat apporte une touche de couleur qui tranche avec la neutralité du fond et les tons de la peau.",
     "mainnav": {
       "home": "Accueil",
       "career": "Cursus",
@@ -25,6 +25,31 @@
     "github": "GitHub",
     "files": "Documents",
     "privacy": "Confidentialité"
+  },
+  "ui": {
+    "skipToContent": "Aller au contenu",
+    "mainNav": "Navigation principale",
+    "footerNav": "Liens utiles",
+    "sectionNav": "Sections de la page",
+    "menu": "Menu",
+    "themeDark": "Activer le thème sombre",
+    "themeLight": "Activer le thème clair",
+    "newTab": "nouvel onglet",
+    "loading": "Chargement…",
+    "close": "Fermer",
+    "oldVersion": "Ancienne version de cette page",
+    "oldVersionShort": "ancienne version",
+    "oldVersionNotice": "Vous consultez l'ancienne version de cette page.",
+    "backToCurrent": "Voir la version actuelle",
+    "playAnimation": "Lire l'animation",
+    "pauseAnimation": "Mettre l'animation en pause",
+    "scrollLeft": "Faire défiler vers la gauche",
+    "scrollRight": "Faire défiler vers la droite",
+    "portraitAlt": "Portrait de Camille Fourmaintraux, cheveux bruns ondulés, barbe, lunettes rondes et sweat à capuche vert",
+    "moreFilters": "Plus de filtres",
+    "fewerFilters": "Moins de filtres",
+    "filterByTag": "Filtrer par thème",
+    "resetFilters": "Réinitialiser les filtres"
   },
   "redirection": {
     "title": "Redirection",
@@ -108,8 +133,8 @@
       "alt": "QR Code vers la campagne GoFundMe"
     }
   },
-  "secret": {
-    "title": "Page secrète ?",
+  "documents_intro": {
+    "title": "Mes documents",
     "description": "Cette page regroupe l'ensemble des documents téléchargeables du site. Les liens étant initialement répartis dans leurs sections respectives, cet espace permet d'y accéder plus rapidement."
   },
   "documents": {
@@ -376,7 +401,7 @@
           "skill1": "Introduction à l'apprentissage par renforcement (Reinforcement Learning)",
           "skill2": "Compréhension approfondie des architectures d'IA",
           "skill3": "Autonomie dans le choix stack/langage (Java retenu) ; conception intégrale de la structure logicielle.",
-          "alt1": "Configuration d'une machine virtuelle dans VirtualBox"
+          "alt1": "Sortie console de l'apprentissage par renforcement, avec les états du drone (position, batterie, zones visitées) et la valeur de chaque action"
         },
         "pagil1": {
           "title": "Jeu en console & Méthodologie Agile SCRUM",
@@ -786,7 +811,7 @@
   },
   "privacy": {
     "title": "Confidentialité",
-    "updated": "Dernière mise à jour : 28 octobre 2026",
+    "updated": "Dernière mise à jour : 16 novembre 2026",
     "intro": "Ce site est mon portfolio personnel. Cette page explique quelles données sont collectées quand vous l'utilisez, pourquoi, et ce que vous pouvez demander.",
     "who": {
       "title": "Qui est responsable ?",
@@ -831,7 +856,7 @@
       "items": {
         "ip": "mon serveur garde votre adresse IP en mémoire pendant une heure au maximum pour limiter les abus (nombre de messages par heure). Elle n'est ni enregistrée ni transmise.",
         "hosting": "le site est hébergé par GitHub Pages et le serveur par Render, qui peuvent conserver des journaux techniques (dont l'adresse IP) pour leur sécurité.",
-        "resources": "votre navigateur charge les polices depuis Google Fonts, les icônes depuis cdnjs, les images de la page Steam depuis les serveurs de Steam et la miniature de la vidéo de l'accueil depuis les serveurs de YouTube. Le lecteur YouTube, en mode de confidentialité renforcée, n'est chargé que si vous cliquez sur la vidéo."
+        "resources": "votre navigateur charge les images de la page Steam depuis les serveurs de Steam et la miniature de la vidéo de l'accueil depuis les serveurs de YouTube. Le lecteur YouTube, en mode de confidentialité renforcée, n'est chargé que si vous cliquez sur la vidéo. Les polices et les icônes sont hébergées sur ce site. Seules les pages de l'ancienne version les chargent encore depuis Google Fonts et cdnjs."
       }
     },
     "storage": {

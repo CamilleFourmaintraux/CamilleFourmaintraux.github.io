@@ -1,5 +1,5 @@
 {
-  "homepage": "https://camillefourmaintrauxetu.github.io/",
+  "homepage": "https://camillefourmaintraux.github.io/",
   "name": "portfolio",
   "private": true,
   "version": "0.1.0",
@@ -10,14 +10,15 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "media": "node scripts/optimize-media.mjs",
+    "check:a11y": "node scripts/check-contrast.mjs"
   },
   "dependencies": {
-    "@emailjs/browser": "^4.4.1",
-    "@emailjs/nodejs": "^5.0.2",
-    "cors": "^2.8.6",
-    "dotenv": "^17.4.2",
-    "express": "^5.2.1",
+    "@fontsource-variable/atkinson-hyperlegible-next": "^5.3.0",
+    "@fontsource-variable/bricolage-grotesque": "^5.3.0",
+    "@fortawesome/free-brands-svg-icons": "^7.3.1",
+    "@fortawesome/free-solid-svg-icons": "^7.3.1",
     "i18next": "^24.2.3",
     "motion": "^12.4.10",
     "react": "^19.0.0",
@@ -32,19 +33,20 @@
     "@types/node": "^25.9.0",
     "@types/react": "19.2.13",
     "@types/react-dom": "^19.0.4",
-    "@types/react-i18next": "^7.8.3",
     "@vitejs/plugin-react": "4.7.0",
+    "browserslist": "^4.29.6",
     "eslint": "^9.21.0",
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "gh-pages": "^6.3.0",
     "globals": "^15.15.0",
+    "lightningcss": "^1.33.0",
     "prettier": "3.8.1",
+    "sharp": "^0.35.5",
     "typescript-eslint": "^8.24.1",
     "vite": "^6.2.0"
   },
-  "description": "Mon nouveau portfolio mis à jour en React.",
-  "main": "eslint.config.js",
+  "description": "Portfolio de Camille Fourmaintraux (React, TypeScript, Vite).",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/CamilleFourmaintraux/CamilleFourmaintraux.github.io.git"

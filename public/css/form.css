@@ -27,6 +27,9 @@ input[type="date"],
 input[type="email"],
 textarea {
   background-color: rgba(255, 255, 255, 0.92);
+  /* The background is light in both themes, so the text is always dark. */
+  color: #101418;
+  caret-color: #101418;
   width: 95%;
   padding: 10px;
   margin: 5px 0;
@@ -52,6 +55,27 @@ textarea:focus {
   border-color: #0a0321;
   box-shadow: 0 0 5px rgba(0, 0, 42, 0.5);
 }
+input::placeholder,
+textarea::placeholder {
+  color: #5b6168;
+  opacity: 1;
+}
+
+/* Fields filled in by the browser keep the look of the other fields: the
+   endless transition stops Chrome from repainting their background. */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus {
+  -webkit-text-fill-color: #101418;
+  caret-color: #101418;
+  transition:
+    background-color 600000s 0s,
+    color 600000s 0s;
+}
+
 /* Buttons */
 button {
   background: var(--bg-button-color);

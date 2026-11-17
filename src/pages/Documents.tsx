@@ -1,134 +1,73 @@
 import { useTranslation } from "react-i18next";
+import {
+  faCircleInfo,
+  faDownload,
+  faFileCircleQuestion,
+  faFilePdf,
+  faFolderOpen,
+} from "@fortawesome/free-solid-svg-icons";
+import Icon from "@/ui/Icon";
+import Page, { Section } from "@/ui/Page";
+import Reveal from "@/ui/Reveal";
 
-export default function DocumentsPage() {
+// label: translation key, with an optional suffix such as the year.
+const DOCUMENTS: { label: string; suffix?: string; file: string }[] = [
+  { label: "resume_english", file: "resume_internship.pdf" },
+  { label: "resume_french", file: "resume_stage.pdf" },
+  { label: "dut_certificate", file: "DutCertificate.pdf" },
+  {
+    label: "internship_report",
+    suffix: " 2025",
+    file: "InternshipReportEmothep2025.pdf",
+  },
+  {
+    label: "internship_report",
+    suffix: " 2024",
+    file: "InternshipReportEmothep2024.pdf",
+  },
+  { label: "kaplan", file: "kaplanCertificate.pdf" },
+  { label: "pix", file: "pixCertificate.pdf" },
+  { label: "studies_notice", file: "StudiesNotice.pdf" },
+  // Lighter copy of ToeicCertification.pdf (1.3 MB instead of 19 MB).
+  { label: "toeic", file: "ToeicCertification_web.pdf" },
+];
+
+export default function Documents() {
   const { t } = useTranslation();
   return (
-    <>
-      <div className="container">
-        <h2>
-          <i className="fas fa-user-secret"></i> {t("secret.title")}
-        </h2>
-        <p>{t("secret.description")}</p>
-      </div>
+    <Page title={t("footer.files")} icon={faFolderOpen}>
+      <Section title={t("documents_intro.title")} icon={faCircleInfo}>
+        <p>{t("documents_intro.description")}</p>
+      </Section>
 
-      <div className="container" id="documents">
-        <h2>
-          <i className="fas fa-download"></i> {t("documents.title")}
-        </h2>
-        <table>
-          <tbody>
-            <tr>
-              <td>
-                <strong>{t("documents.resume_english")}</strong>
-              </td>
-              <td>
-                <a href="/files/resume_internship.pdf" target="_blank" download>
-                  {t("documents.download")}
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <strong>{t("documents.resume_french")}</strong>
-              </td>
-              <td>
-                <a href="/files/resume_stage.pdf" target="_blank" download>
-                  {t("documents.download")}
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <strong>{t("documents.dut_certificate")}</strong>
-              </td>
-              <td>
-                <a href="/files/DutCertificate.pdf" target="_blank" download>
-                  {t("documents.download")}
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <strong>{t("documents.internship_report") + " 2025"}</strong>
-              </td>
-              <td>
+      <Section title={t("documents.title")} icon={faDownload}>
+        <ul className="document-list">
+          {DOCUMENTS.map(({ label, suffix = "", file }, index) => {
+            const name = t(`documents.${label}`) + suffix;
+            return (
+              <Reveal as="li" key={file} index={index}>
+                <Icon icon={faFilePdf} className="document-icon" />
+                <span className="document-name">{name}</span>
                 <a
-                  href="/files/InternshipReportEmothep2025.pdf"
+                  className="button button-small"
+                  href={`/files/${file}`}
                   target="_blank"
+                  rel="noopener"
                   download
                 >
+                  <Icon icon={faDownload} />
                   {t("documents.download")}
+                  <span className="sr-only">, {name} (PDF)</span>
                 </a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <strong>{t("documents.internship_report") + " 2024"}</strong>
-              </td>
-              <td>
-                <a
-                  href="/files/InternshipReportEmothep2024.pdf"
-                  target="_blank"
-                  download
-                >
-                  {t("documents.download")}
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <strong>{t("documents.kaplan")}</strong>
-              </td>
-              <td>
-                <a href="/files/kaplanCertificate.pdf" target="_blank" download>
-                  {t("documents.download")}
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <strong>{t("documents.pix")}</strong>
-              </td>
-              <td>
-                <a href="/files/pixCertificate.pdf" target="_blank" download>
-                  {t("documents.download")}
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <strong>{t("documents.studies_notice")}</strong>
-              </td>
-              <td>
-                <a href="/files/StudiesNotice.pdf" target="_blank" download>
-                  {t("documents.download")}
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <strong>{t("documents.toeic")}</strong>
-              </td>
-              <td>
-                <a
-                  href="/files/ToeicCertification.pdf"
-                  target="_blank"
-                  download
-                >
-                  {t("documents.download")}
-                </a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+              </Reveal>
+            );
+          })}
+        </ul>
+      </Section>
 
-      <div className="container">
-        <h2>
-          <i className="fas fa-file-excel"></i> {t("pending.title")}
-        </h2>
+      <Section title={t("pending.title")} icon={faFileCircleQuestion}>
         <p>{t("pending.description")}</p>
-      </div>
-    </>
+      </Section>
+    </Page>
   );
 }

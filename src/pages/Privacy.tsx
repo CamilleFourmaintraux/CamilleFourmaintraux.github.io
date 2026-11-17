@@ -1,8 +1,10 @@
+import { Link } from "react-router-dom";
 import { Trans, useTranslation } from "react-i18next";
-import { NavLink } from "react-router-dom";
-import VisitStatsToggle from "../parts/visitor/VisitStatsToggle";
-
-const EMAIL = "fourmaintrauxcamille2004@gmail.com";
+import { faShieldHalved } from "@fortawesome/free-solid-svg-icons";
+import { EMAIL } from "@/lib/links";
+import ExternalLink from "@/ui/ExternalLink";
+import Page, { Section } from "@/ui/Page";
+import VisitStatsToggle from "@/ui/VisitStatsToggle";
 
 const SECTIONS: { key: string; items?: string[] }[] = [
   { key: "who" },
@@ -29,29 +31,25 @@ const SECTIONS: { key: string; items?: string[] }[] = [
 
 const links = {
   mailLink: <a href={`mailto:${EMAIL}`} />,
-  contactLink: <NavLink to="/contact" />,
-  cnilLink: (
-    <a
-      href="https://www.cnil.fr/fr/plaintes"
-      target="_blank"
-      rel="noopener noreferrer"
-    />
-  ),
+  contactLink: <Link to="/contact" className="nowrap" />,
+  cnilLink: <ExternalLink href="https://www.cnil.fr/fr/plaintes" />,
 };
 
-export default function PrivacyPage() {
+export default function Privacy() {
   const { t } = useTranslation();
   return (
-    <div className="container privacy">
-      <h2>
-        <i className="fas fa-shield-halved"></i> {t("privacy.title")}
-      </h2>
-      <p className="privacy-updated">{t("privacy.updated")}</p>
-      <p>{t("privacy.intro")}</p>
-
+    <Page
+      title={t("privacy.title")}
+      icon={faShieldHalved}
+      lead={
+        <>
+          <p>{t("privacy.intro")}</p>
+          <p className="note">{t("privacy.updated")}</p>
+        </>
+      }
+    >
       {SECTIONS.map(({ key, items }) => (
-        <section key={key}>
-          <h3>{t(`privacy.${key}.title`)}</h3>
+        <Section key={key} title={t(`privacy.${key}.title`)}>
           <p>
             <Trans
               i18nKey={`privacy.${key}.text`}
@@ -72,8 +70,8 @@ export default function PrivacyPage() {
             </ul>
           )}
           {key === "context" && <VisitStatsToggle />}
-        </section>
+        </Section>
       ))}
-    </div>
+    </Page>
   );
 }

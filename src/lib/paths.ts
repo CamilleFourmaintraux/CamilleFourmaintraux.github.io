@@ -1,0 +1,26 @@
+// The previous design stays reachable: every route also exists with this
+// suffix (/cursus-old, /portfolio-old...). The home page is /old.
+export const LEGACY_SUFFIX = "-old";
+export const LEGACY_HOME = "/old";
+
+/** "/cursus#experiences" -> "/cursus-old#experiences". */
+export function legacyPath(path: string): string {
+  const [pathname, hash] = path.split("#");
+  const clean = pathname.replace(/\/+$/, "");
+  const target = clean === "" ? LEGACY_HOME : `${clean}${LEGACY_SUFFIX}`;
+  return hash ? `${target}#${hash}` : target;
+}
+
+export function isLegacyPath(pathname: string): boolean {
+  const clean = pathname.replace(/\/+$/, "");
+  return clean === LEGACY_HOME || clean.endsWith(LEGACY_SUFFIX);
+}
+
+/** "/cursus-old" -> "/cursus". */
+export function currentPath(pathname: string): string {
+  const clean = pathname.replace(/\/+$/, "");
+  if (clean === LEGACY_HOME) return "/";
+  return clean.endsWith(LEGACY_SUFFIX)
+    ? clean.slice(0, -LEGACY_SUFFIX.length)
+    : clean || "/";
+}
