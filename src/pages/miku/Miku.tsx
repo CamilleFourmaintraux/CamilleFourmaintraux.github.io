@@ -7,16 +7,13 @@ import Icon from "@/ui/Icon";
 import { usePageTitle } from "@/ui/usePageTitle";
 import {
   EMOTIONS,
-  arrive,
+  advance,
+  clickPicture,
   createMood,
+  drift,
   emotionOf,
-  enterZone,
-  fade,
   leave,
-  move,
-  poke,
-  press,
-  release,
+  point,
   type Emotion,
   type Zone,
 } from "./emotion";
@@ -29,22 +26,24 @@ const media = manifest as Record<
 >;
 
 const TICK_MS = 100;
-// Face of the character inside the picture, as fractions of its size.
-const FACE = { x: 0.52, y: 0.55, radiusX: 0.26, radiusY: 0.44 };
-const NEAR_MARGIN = 0.12;
+// The pointer is "near" within this distance of the center of the
+// picture, in widths of the picture.
+const NEAR_RADIUS = 1.2;
+// Smallest change of distance, in pixels, that counts as a direction.
+const DRIFT_STEP = 6;
 
 function zoneOf(x: number, y: number, rect: DOMRect): Zone {
-  const nx = (x - rect.left) / rect.width;
-  const ny = (y - rect.top) / rect.height;
-  const dx = (nx - FACE.x) / FACE.radiusX;
-  const dy = (ny - FACE.y) / FACE.radiusY;
-  if (dx * dx + dy * dy <= 1) return "face";
-  const near =
-    nx > -NEAR_MARGIN &&
-    nx < 1 + NEAR_MARGIN &&
-    ny > -NEAR_MARGIN &&
-    ny < 1 + NEAR_MARGIN;
-  return near ? "near" : "far";
+  if (x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom) {
+    return "on";
+  }
+  return distanceTo(x, y, rect) < rect.width * NEAR_RADIUS ? "near" : "far";
+}
+
+function distanceTo(x: number, y: number, rect: DOMRect): number {
+  return Math.hypot(
+    x - (rect.left + rect.width / 2),
+    y - (rect.top + rect.height / 2),
+  );
 }
 
 /** Hidden page: a character on an old screen who reacts to the pointer. */
@@ -71,67 +70,75 @@ export default function Miku() {
     const screen = screenRef.current;
     if (!screen) return;
 
-    const mood = createMood(performance.now());
+    const mood = createMood();
+    // Without a mouse, nobody hovers: the visitor is simply there, at a distance.
+    const hover = window.matchMedia("(hover: hover)").matches;
+    if (!hover) point(mood, "far", performance.now());
+
     let rect = screen.getBoundingClientRect();
-    let last = { x: 0, y: 0, at: 0 };
-    let speed = 0;
-    let lastTick = performance.now();
+    let anchor: number | null = null;
     let byKeyboard = false;
 
-    const refresh = () => setEmotion(emotionOf(mood, performance.now()));
+    const refresh = () => {
+      const now = performance.now();
+      advance(mood, now);
+      setEmotion(emotionOf(mood, now));
+    };
     const measure = () => {
       rect = screen.getBoundingClientRect();
     };
 
+    const track = (x: number, y: number) => {
+      point(mood, zoneOf(x, y, rect), performance.now());
+      // Direction of the pointer, ignoring tiny hand tremors.
+      const distance = distanceTo(x, y, rect);
+      if (anchor === null) anchor = distance;
+      if (Math.abs(distance - anchor) >= DRIFT_STEP) {
+        drift(mood, distance - anchor);
+        anchor = distance;
+      }
+    };
+
     const onMove = (event: PointerEvent) => {
-      const now = performance.now();
       byKeyboard = false;
-      arrive(mood, now);
-      enterZone(mood, zoneOf(event.clientX, event.clientY, rect), now);
-      const elapsed = now - last.at;
-      const distance =
-        Math.hypot(event.clientX - last.x, event.clientY - last.y) / rect.width;
-      // Smoothed, and ignored after a pause or a jump from outside.
-      speed =
-        elapsed > 0 && elapsed < 120
-          ? speed * 0.7 + (distance / elapsed) * 300
-          : 0;
-      if (elapsed < 120) move(mood, distance, speed, now);
-      else move(mood, 0, 0, now);
-      last = { x: event.clientX, y: event.clientY, at: now };
+      track(event.clientX, event.clientY);
       refresh();
     };
 
     const onDown = (event: PointerEvent) => {
-      const now = performance.now();
-      arrive(mood, now);
-      enterZone(mood, zoneOf(event.clientX, event.clientY, rect), now);
-      last = { x: event.clientX, y: event.clientY, at: now };
-      speed = 0;
-      press(mood, now);
+      track(event.clientX, event.clientY);
+      if (
+        event.button === 0 &&
+        zoneOf(event.clientX, event.clientY, rect) === "on"
+      ) {
+        clickPicture(mood, performance.now());
+      }
       refresh();
     };
 
     const onUp = (event: PointerEvent) => {
-      const now = performance.now();
-      release(mood, now);
-      // A finger that lifts is a visitor going away.
-      if (event.pointerType !== "mouse") leave(mood, now);
+      if (event.pointerType === "mouse") return;
+      // A lifted finger leaves the visitor in the room, at a distance.
+      anchor = null;
+      point(mood, "far", performance.now());
       refresh();
     };
 
     const onLeave = () => {
-      leave(mood, performance.now());
+      anchor = null;
+      if (hover) leave(mood, performance.now());
+      else point(mood, "far", performance.now());
       refresh();
     };
+    const onMouseOut = (event: MouseEvent) => {
+      if (!event.relatedTarget) onLeave();
+    };
 
-    // The keyboard stands in for the pointer: focus is a visit, Enter a poke.
+    // The keyboard stands in for the pointer: focus is a visit, Enter a click.
     const onFocus = () => {
       if (!screen.matches(":focus-visible")) return;
-      const now = performance.now();
       byKeyboard = true;
-      arrive(mood, now);
-      enterZone(mood, "near", now);
+      if (!mood.inside) point(mood, "far", performance.now());
       refresh();
     };
     const onBlur = () => {
@@ -142,9 +149,7 @@ export default function Miku() {
     const onClick = (event: MouseEvent) => {
       // Pointer clicks are already handled by the pointer events.
       if (event.detail !== 0) return;
-      const now = performance.now();
-      arrive(mood, now);
-      poke(mood, now);
+      clickPicture(mood, performance.now());
       refresh();
     };
 
@@ -152,20 +157,17 @@ export default function Miku() {
       if (document.hidden) onLeave();
     };
 
-    const timer = window.setInterval(() => {
-      const now = performance.now();
-      fade(mood, now - lastTick, now);
-      lastTick = now;
-      refresh();
-    }, TICK_MS);
+    const timer = window.setInterval(refresh, TICK_MS);
 
     const root = document.documentElement;
     window.addEventListener("pointermove", onMove, { passive: true });
     window.addEventListener("pointerdown", onDown, { passive: true });
     window.addEventListener("pointerup", onUp, { passive: true });
-    window.addEventListener("pointercancel", onLeave, { passive: true });
+    window.addEventListener("pointercancel", onUp, { passive: true });
     window.addEventListener("resize", measure);
+    window.addEventListener("scroll", measure, { passive: true });
     root.addEventListener("pointerleave", onLeave);
+    document.addEventListener("mouseout", onMouseOut);
     document.addEventListener("visibilitychange", onVisibility);
     screen.addEventListener("focus", onFocus);
     screen.addEventListener("blur", onBlur);
@@ -176,9 +178,11 @@ export default function Miku() {
       window.removeEventListener("pointermove", onMove);
       window.removeEventListener("pointerdown", onDown);
       window.removeEventListener("pointerup", onUp);
-      window.removeEventListener("pointercancel", onLeave);
+      window.removeEventListener("pointercancel", onUp);
       window.removeEventListener("resize", measure);
+      window.removeEventListener("scroll", measure);
       root.removeEventListener("pointerleave", onLeave);
+      document.removeEventListener("mouseout", onMouseOut);
       document.removeEventListener("visibilitychange", onVisibility);
       screen.removeEventListener("focus", onFocus);
       screen.removeEventListener("blur", onBlur);
@@ -214,7 +218,7 @@ export default function Miku() {
               className={name === emotion ? "is-shown" : undefined}
               src={variants[variants.length - 1]?.src}
               srcSet={variants.map((v) => `${v.src} ${v.width}w`).join(", ")}
-              sizes="(min-width: 48rem) 46rem, 92vw"
+              sizes="min(11rem, 23vw)"
               width={1446}
               height={1080}
               alt=""

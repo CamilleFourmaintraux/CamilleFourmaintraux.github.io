@@ -55,7 +55,7 @@
     "title": "Miku",
     "back": "Retour à l'accueil",
     "character": "Personnage à l'écran",
-    "help": "Le personnage réagit à la souris. Approchez le curseur, caressez doucement son visage, cliquez, restez appuyé, agitez la souris ou éloignez-vous pour découvrir ses réactions. Au clavier, placez le focus sur le personnage puis appuyez sur Entrée.",
+    "help": "Le personnage réagit à la position de la souris et aux clics. Il est timide, il faut parfois savoir garder ses distances et prendre son temps. Au clavier, placez le focus sur le personnage puis appuyez sur Entrée.",
     "emotions": {
       "empty": "Écran vide",
       "curious": "Curiosité",
@@ -65,7 +65,8 @@
       "excited": "Excitation",
       "faceless": "Visage effacé",
       "sad": "Tristesse",
-      "crying": "Larmes"
+      "crying": "Larmes",
+      "faceless_curious": "Visage effacé, curieuse"
     }
   },
   "redirection": {

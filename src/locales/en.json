@@ -55,7 +55,7 @@
     "title": "Miku",
     "back": "Back to home",
     "character": "Character on the screen",
-    "help": "The character reacts to the mouse. Bring the pointer closer, gently stroke its face, click, hold the button down, shake the mouse or move away to discover its reactions. With a keyboard, focus the character, then press Enter.",
+    "help": "The character reacts to where the mouse is and to clicks. It is shy, so sometimes you need to keep your distance and take your time. With a keyboard, focus the character, then press Enter.",
     "emotions": {
       "empty": "Empty screen",
       "curious": "Curiosity",
@@ -65,7 +65,8 @@
       "excited": "Excitement",
       "faceless": "Face erased",
       "sad": "Sadness",
-      "crying": "Tears"
+      "crying": "Tears",
+      "faceless_curious": "Face erased, peeking"
     }
   },
   "redirection": {

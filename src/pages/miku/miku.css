@@ -70,7 +70,8 @@
 
   .miku-screen {
     position: relative;
-    width: min(92vw, 46rem, (100dvh - 7rem) * 1446 / 1080);
+    /* A small screen lost in the dark. */
+    width: min(11rem, 23vw);
     aspect-ratio: 1446 / 1080;
     padding: 0;
     background: none;
@@ -80,13 +81,13 @@
     -webkit-tap-highlight-color: transparent;
   }
   .miku-screen:focus-visible {
-    outline-offset: 8px;
+    outline-offset: 6px;
   }
   /* Light of the screen spilling on the darkness around it. */
   .miku-screen::before {
     content: "";
     position: absolute;
-    inset: -22%;
+    inset: -45%;
     background: radial-gradient(
       closest-side,
       rgb(196 206 255 / 0.16),

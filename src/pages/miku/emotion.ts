@@ -1,179 +1,187 @@
+// Behavior of the character of the hidden page, as a pure state machine:
+// events change the mood, and emotionOf() tells which face to show at a
+// given time. Durations are in milliseconds.
+
 export const EMOTIONS = [
   "empty",
   "curious",
-  "heartened",
   "shy",
-  "happy",
+  "heartened",
   "excited",
-  "faceless",
   "sad",
+  "happy",
   "crying",
+  "faceless",
+  "faceless_curious",
 ] as const;
 
 export type Emotion = (typeof EMOTIONS)[number];
 
-/** Where the pointer is, relative to the character. */
-export type Zone = "face" | "near" | "far";
+/** Where the pointer is: on the picture, close to it or far from it. */
+export type Zone = "on" | "near" | "far";
 
-// Durations in milliseconds.
-const APPEAR_AFTER = 900;
-const PEEK = 900;
-const HOLD_TO_ERASE = 250;
-const SAD_WHEN_FAR_AFTER = 600;
-const SAD_WHEN_IDLE_AFTER = 12_000;
-const CRY_WHEN_IDLE_AFTER = 25_000;
-const CRY_WHEN_ALONE_AFTER = 1_500;
-const WATCH_WHEN_ALONE_AFTER = 7_000;
-const HIDE_WHEN_ALONE_AFTER = 11_000;
-const AFFECTION_LIFETIME = 9_000;
+/**
+ * 1. She peeks while the visitor keeps away.
+ * 2. She shows herself, shyly, hides when clicked and is sad when left alone.
+ * 3. She reacts to every move, until clicked too fast.
+ * 4. She is gone until the page is reloaded.
+ */
+export type Phase = 1 | 2 | 3 | 4;
 
-const TAP_EXCITEMENT = 900;
-const SHAKE_EXCITEMENT = 700;
-// Speed of a "shake", in screen widths of the character per second.
-const SHAKE_SPEED = 3;
-// Pointer travel on the face that fills the affection, in widths.
-const STROKE_TO_FILL = 2;
-const WARM = 0.25;
-const DELIGHTED = 0.6;
+// Phases 1 and 2: time spent at a distance before the next phase.
+const NEXT_PHASE_AFTER = 15_000;
+// Phase 2: curious face between the hiding after a click and the shy one.
+const REVEAL = 1_000;
+// Phase 3.
+const HAPPY = 1_500;
+const CRYING = 2_500;
+const LOOKING_BACK = 1_500;
+const RAPID_CLICKS = 4;
+const RAPID_WINDOW = 1_000;
+const FACELESS = 4_000;
+const FACELESS_CURIOUS = 1_500;
 
-/** Everything the character knows about the visitor. Times come from performance.now(). */
 export type Mood = {
-  startedAt: number;
-  /** The pointer is in the window, or the keyboard focus is on the character. */
-  present: boolean;
-  everPresent: boolean;
-  arrivedAt: number;
-  /** The character was out of sight when the visitor came (back). */
-  wasHidden: boolean;
-  leftAt: number;
+  phase: Phase;
+  /** The pointer is in the window, or a touch or keyboard visitor is there. */
+  inside: boolean;
   zone: Zone;
-  farSince: number;
-  lastActivityAt: number;
-  pressed: boolean;
-  pressedAt: number;
-  excitedUntil: number;
-  /** From 0 to 1: grows when the face is stroked, fades with time. */
-  affection: number;
+  /** Phases 1 and 2: since when the visitor keeps away. */
+  farSince: number | null;
+  /** Phase 2: hidden after a click, until the pointer moves away. */
+  hiddenByClick: boolean;
+  /** Phase 2: end of the curious face shown when she comes back. */
+  revealUntil: number;
+  /** Phase 3: last direction of the pointer, relative to the picture. */
+  trend: "closer" | "away" | null;
+  leftAt: number | null;
+  happyUntil: number;
+  clicks: number[];
+  brokenAt: number | null;
 };
 
-export function createMood(now: number): Mood {
+export function createMood(): Mood {
   return {
-    startedAt: now,
-    present: false,
-    everPresent: false,
-    arrivedAt: 0,
-    wasHidden: true,
-    leftAt: 0,
+    phase: 1,
+    inside: false,
     zone: "far",
-    farSince: 0,
-    lastActivityAt: now,
-    pressed: false,
-    pressedAt: 0,
-    excitedUntil: 0,
-    affection: 0,
+    farSince: null,
+    hiddenByClick: false,
+    revealUntil: 0,
+    trend: null,
+    leftAt: null,
+    happyUntil: 0,
+    clicks: [],
+    brokenAt: null,
   };
 }
 
-/** The emotion to show right now. Pure: the same mood always gives the same face. */
-export function emotionOf(mood: Mood, now: number): Emotion {
-  if (now < mood.excitedUntil) return "excited";
+const keepsAway = (mood: Mood) =>
+  mood.inside && mood.zone === "far" && mood.farSince !== null;
 
-  if (!mood.present) {
-    // Nobody yet: the screen stays empty, then she peeks and waits.
-    if (!mood.everPresent) {
-      return now - mood.startedAt < APPEAR_AFTER ? "empty" : "curious";
-    }
-    // Left alone: sad, in tears, watching for a return, then gone.
-    const alone = now - mood.leftAt;
-    if (alone < CRY_WHEN_ALONE_AFTER) return "sad";
-    if (alone < WATCH_WHEN_ALONE_AFTER) return "crying";
-    if (alone < HIDE_WHEN_ALONE_AFTER) return "curious";
-    return "empty";
-  }
-
-  if (mood.wasHidden && now - mood.arrivedAt < PEEK) return "curious";
-
-  // Holding the button on her face covers it.
-  if (
-    mood.pressed &&
-    mood.zone === "face" &&
-    now - mood.pressedAt > HOLD_TO_ERASE
-  ) {
-    return "faceless";
-  }
-
-  const idle = now - mood.lastActivityAt;
-  if (idle > CRY_WHEN_IDLE_AFTER) return "crying";
-  if (idle > SAD_WHEN_IDLE_AFTER) return "sad";
-
-  if (mood.zone === "far") {
-    return now - mood.farSince > SAD_WHEN_FAR_AFTER ? "sad" : "heartened";
-  }
-  if (mood.affection >= DELIGHTED) return "happy";
-  // Pointed at directly she is shy, until a few strokes reassure her.
-  if (mood.zone === "face" && mood.affection < WARM) return "shy";
-  return "heartened";
+/** Since when the visitor keeps away and she watches, if they do. */
+function watchedSince(mood: Mood): number | null {
+  if (!keepsAway(mood)) return null;
+  return mood.phase === 2
+    ? Math.max(mood.farSince!, mood.revealUntil)
+    : mood.farSince;
 }
 
-export function arrive(mood: Mood, now: number) {
-  if (mood.present) return;
-  mood.wasHidden = emotionOf(mood, now) === "empty";
-  mood.present = true;
-  mood.everPresent = true;
-  mood.arrivedAt = now;
-  mood.lastActivityAt = now;
+/** Moves to the next phase when its time has come. Call it regularly. */
+export function advance(mood: Mood, now: number) {
+  if (mood.phase === 1 || mood.phase === 2) {
+    const since = watchedSince(mood);
+    if (since === null || now - since < NEXT_PHASE_AFTER) return;
+    if (mood.phase === 1) {
+      mood.phase = 2;
+      mood.farSince = now;
+    } else {
+      mood.phase = 3;
+      mood.trend = null;
+    }
+  } else if (mood.phase === 3 && mood.brokenAt !== null) {
+    if (now - mood.brokenAt >= FACELESS + FACELESS_CURIOUS) mood.phase = 4;
+  }
+}
+
+export function emotionOf(mood: Mood, now: number): Emotion {
+  switch (mood.phase) {
+    case 1:
+      return keepsAway(mood) ? "curious" : "empty";
+
+    case 2:
+      if (mood.hiddenByClick) return "empty";
+      if (!mood.inside) return "sad";
+      if (mood.zone !== "far" || now < mood.revealUntil) return "curious";
+      return "shy";
+
+    case 3: {
+      if (mood.brokenAt !== null) {
+        return now - mood.brokenAt < FACELESS ? "faceless" : "faceless_curious";
+      }
+      if (now < mood.happyUntil) return "happy";
+      if (!mood.inside) {
+        if (mood.leftAt === null) return "empty";
+        const gone = now - mood.leftAt;
+        if (gone < CRYING) return "crying";
+        if (gone < CRYING + LOOKING_BACK) return "curious";
+        return "empty";
+      }
+      if (mood.zone === "on") return "heartened";
+      return mood.trend === "away" ? "sad" : "excited";
+    }
+
+    case 4:
+      return "empty";
+  }
+}
+
+/** The pointer is in the window, in the given zone. */
+export function point(mood: Mood, zone: Zone, now: number) {
+  const wasAway = keepsAway(mood);
+  mood.inside = true;
+  mood.leftAt = null;
+  mood.zone = zone;
+  if (zone !== "far") {
+    mood.farSince = null;
+  } else {
+    if (mood.hiddenByClick) {
+      // Moving away after a click lets her come back, curious for a moment.
+      mood.hiddenByClick = false;
+      mood.revealUntil = now + REVEAL;
+    }
+    if (!wasAway) mood.farSince = now;
+  }
+}
+
+/** The pointer moved by this much towards (< 0) or away from (> 0) the picture. */
+export function drift(mood: Mood, delta: number) {
+  if (mood.phase !== 3 || delta === 0) return;
+  mood.trend = delta < 0 ? "closer" : "away";
 }
 
 export function leave(mood: Mood, now: number) {
-  if (!mood.present) return;
-  mood.present = false;
-  mood.pressed = false;
-  mood.leftAt = now;
+  if (!mood.inside) return;
+  mood.inside = false;
+  mood.farSince = null;
+  mood.hiddenByClick = false;
+  mood.trend = null;
+  if (mood.phase === 3) mood.leftAt = now;
 }
 
-export function enterZone(mood: Mood, zone: Zone, now: number) {
-  if (zone === "far" && mood.zone !== "far") mood.farSince = now;
-  mood.zone = zone;
-}
-
-/** A pointer movement, measured in widths of the character. */
-export function move(mood: Mood, distance: number, speed: number, now: number) {
-  mood.lastActivityAt = now;
-  if (mood.zone === "far") return;
-  if (speed > SHAKE_SPEED) {
-    mood.excitedUntil = Math.max(mood.excitedUntil, now + SHAKE_EXCITEMENT);
-  } else if (mood.zone === "face" && !mood.pressed) {
-    mood.affection = Math.min(1, mood.affection + distance / STROKE_TO_FILL);
+/** A click (or a tap, or the Enter key) on the picture. */
+export function clickPicture(mood: Mood, now: number) {
+  if (mood.phase === 2) {
+    mood.hiddenByClick = true;
+    mood.revealUntil = 0;
+    mood.farSince = null;
+  } else if (mood.phase === 3 && mood.brokenAt === null) {
+    mood.clicks = [...mood.clicks.filter((at) => now - at < RAPID_WINDOW), now];
+    if (mood.clicks.length >= RAPID_CLICKS) {
+      mood.brokenAt = now;
+      mood.happyUntil = 0;
+    } else {
+      mood.happyUntil = now + HAPPY;
+    }
   }
-}
-
-export function press(mood: Mood, now: number) {
-  mood.pressed = true;
-  mood.pressedAt = now;
-  mood.lastActivityAt = now;
-}
-
-export function release(mood: Mood, now: number) {
-  if (!mood.pressed) return;
-  mood.pressed = false;
-  mood.lastActivityAt = now;
-  if (mood.zone !== "face") return;
-  if (now - mood.pressedAt <= HOLD_TO_ERASE) poke(mood, now);
-  // Having her face covered makes her shy again.
-  else mood.affection = 0;
-}
-
-/** A click, a tap or the Enter key. */
-export function poke(mood: Mood, now: number) {
-  mood.lastActivityAt = now;
-  mood.excitedUntil = now + TAP_EXCITEMENT;
-  mood.affection = Math.min(1, mood.affection + 0.1);
-}
-
-/** Lets the affection fade when she is not being stroked. */
-export function fade(mood: Mood, elapsed: number, now: number) {
-  const stroked =
-    mood.present && mood.zone === "face" && now - mood.lastActivityAt < 1_500;
-  if (!stroked)
-    mood.affection = Math.max(0, mood.affection - elapsed / AFFECTION_LIFETIME);
 }

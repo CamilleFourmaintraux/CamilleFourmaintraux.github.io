@@ -28,7 +28,9 @@
   .hero-text {
     position: relative;
     isolation: isolate;
-    justify-self: start;
+    /* The name is sized after the width of its column (see h1 below). */
+    container-type: inline-size;
+    min-width: 0;
   }
   /* Soft halo that keeps the text readable above the maze. */
   .hero-text::before {
@@ -42,7 +44,10 @@
     opacity: 0.92;
   }
   .hero h1 {
-    font-size: clamp(2.1rem, 9.4vw, 5.6rem);
+    /* The last name is about 8.5 em wide: it always fits in its column,
+       so the portrait beside it never covers it. */
+    font-size: clamp(2rem, 6.5vw, 5.6rem);
+    font-size: min(5.6rem, 11.4cqi);
     line-height: 0.92;
     letter-spacing: -0.035em;
   }
