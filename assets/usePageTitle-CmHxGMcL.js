@@ -1,1 +1,0 @@
-import{r as o}from"./react-GDcWO7ke.js";import{ao as a}from"./index-DiadIjBx.js";const t="Camille Fourmaintraux";function s(e){const r=o.useRef(null);return o.useEffect(()=>{document.title=e?`${e} | ${t}`:t},[e]),o.useEffect(()=>{a()&&!window.location.hash.includes("#",1)&&r.current?.focus({preventScroll:!0})},[]),r}export{s as u};

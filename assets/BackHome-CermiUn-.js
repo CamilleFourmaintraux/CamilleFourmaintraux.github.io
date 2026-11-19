@@ -1,0 +1,1 @@
+import{j as s,L as t}from"./react-CR_Y_126.js";import{I as a,g as r}from"./index-BrPvuTBb.js";import{u as n}from"./i18n-Cj98gOED.js";function m(){const{t:o}=n();return s.jsx("p",{className:"page-actions",children:s.jsxs(t,{to:"/",className:"button",children:[s.jsx(a,{icon:r}),o("test.back")]})})}export{m as B};
