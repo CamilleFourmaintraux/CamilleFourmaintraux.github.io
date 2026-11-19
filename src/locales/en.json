@@ -49,7 +49,8 @@
     "moreFilters": "More filters",
     "fewerFilters": "Fewer filters",
     "filterByTag": "Filter by topic",
-    "resetFilters": "Reset filters"
+    "resetFilters": "Reset filters",
+    "cvGenerator": "CV generator"
   },
   "miku": {
     "title": "Miku",
@@ -67,6 +68,253 @@
       "sad": "Sadness",
       "crying": "Tears",
       "faceless_curious": "Face erased, peeking"
+    }
+  },
+  "cvgen": {
+    "title": "CV generator",
+    "lead": "This form builds a one-page CV from the template of my own CV. Change the content and the layout, then open the result in Overleaf or download its LaTeX code. The starting values reproduce my generic CV.",
+    "privacy": "Everything stays in your browser. The draft is saved on this device, and nothing is sent until you click “Open in Overleaf”.",
+    "cancel": "Cancel",
+    "saveError": "The draft could not be saved on this device. Storage may be full or disabled. Remember to save the form to a file.",
+    "start": {
+      "title": "Starting point",
+      "label": "Template",
+      "load": "Load this template",
+      "confirmTitle": "Replace the current CV?",
+      "confirmText": "The current content of the form will be replaced by the template “{{preset}}”.",
+      "confirm": "Replace"
+    },
+    "presets": {
+      "generic-fr": "Camille's generic CV, in French",
+      "generic-en": "Camille's generic CV, in English",
+      "blank": "Blank CV"
+    },
+    "header": {
+      "title": "Header",
+      "name": "Name",
+      "headline": "Headline",
+      "language": "Language of the CV",
+      "languageHint": "The language sets hyphenation, punctuation and the text read by recruitment software. The content is not translated."
+    },
+    "lang": {
+      "fr": "French",
+      "en": "English"
+    },
+    "layout": {
+      "title": "Layout",
+      "sidebar": "Sidebar",
+      "left": "On the left",
+      "right": "On the right",
+      "width": "Width of the sidebar",
+      "sidebarColor": "Sidebar background",
+      "accentColor": "Link color",
+      "hex": "Hexadecimal code, {{name}}",
+      "textAuto": "The sidebar text is written in {{color}} to stay readable on this background.",
+      "black": "black",
+      "white": "white",
+      "lowContrast": "Links only have a {{ratio}}:1 contrast {{background}}. Aim for at least 4.5:1 to keep them readable.",
+      "onSidebar": "on the sidebar background",
+      "onWhite": "on the white background"
+    },
+    "photo": {
+      "title": "Photo",
+      "choose": "Choose a photo (JPEG, PNG or WebP)",
+      "remove": "Remove the photo",
+      "none": "No photo.",
+      "shape": "Shape",
+      "round": "Round",
+      "square": "Square",
+      "zoom": "Zoom",
+      "x": "Horizontal framing",
+      "y": "Vertical framing",
+      "error": "This picture could not be read. Try a JPEG or PNG file.",
+      "preview": "Photo as it will appear on the CV"
+    },
+    "sections": {
+      "title": "Sections",
+      "hint": "In texts, wrap a word in **two stars** for bold, *one star* for italics and ^carets^ for superscript (1^st^). An empty section does not appear on the CV.",
+      "main": "Main column",
+      "side": "Sidebar",
+      "empty": "No section in this column.",
+      "kinds": {
+        "text": "Text",
+        "entries": "List of entries",
+        "skills": "Skills",
+        "list": "List of words",
+        "contact": "Contact details",
+        "portfolio": "Link and QR code"
+      },
+      "defaultTitles": {
+        "text": "New section",
+        "entries": "New list",
+        "skills": "Skills",
+        "list": "New list",
+        "contact": "Links",
+        "portfolio": "Portfolio"
+      },
+      "add": "Add the section",
+      "addKind": "Type of the new section",
+      "addColumn": "Column of the new section"
+    },
+    "section": {
+      "untitled": "Untitled section",
+      "titleField": "Section title (leave empty to hide it)",
+      "hiddenBadge": "hidden",
+      "moveUp": "Move the section {{title}} up",
+      "moveDown": "Move the section {{title}} down",
+      "toSide": "Move the section {{title}} to the sidebar",
+      "toMain": "Move the section {{title}} to the main column",
+      "hide": "Hide the section {{title}}",
+      "show": "Show the section {{title}}",
+      "remove": "Delete the section {{title}}",
+      "confirmTitle": "Delete the section {{title}}?",
+      "confirmText": "Its content will be lost.",
+      "confirm": "Delete"
+    },
+    "text": {
+      "body": "Text",
+      "hint": "Leave an empty line to start a new paragraph."
+    },
+    "entries": {
+      "numbered": "Number the entries",
+      "name": {
+        "experience": "Experience",
+        "projects": "Project",
+        "education": "Education",
+        "generic": "Entry"
+      },
+      "add": {
+        "experience": "Add an experience",
+        "projects": "Add a project",
+        "education": "Add an education entry",
+        "generic": "Add an entry"
+      },
+      "detail": {
+        "experience": "Task",
+        "projects": "Achievement",
+        "education": "Detail",
+        "generic": "Point"
+      },
+      "addDetail": {
+        "experience": "Add a task",
+        "projects": "Add an achievement",
+        "education": "Add a detail",
+        "generic": "Add a point"
+      },
+      "fields": {
+        "experience": {
+          "title": "Position, company and dates",
+          "text": "Text after the title",
+          "tools": "Tools (in italics, between parentheses)",
+          "subtitle": "Company description (in italics, on its own line)",
+          "details": "Tasks"
+        },
+        "projects": {
+          "title": "Project name",
+          "text": "Text after the title",
+          "tools": "Tools used (in italics, between parentheses)",
+          "subtitle": "Subtitle (in italics, on its own line)",
+          "details": "Achievements"
+        },
+        "education": {
+          "title": "Date (in bold)",
+          "text": "Degree and school",
+          "tools": "Tools (in italics, between parentheses)",
+          "subtitle": "Subtitle (in italics, on its own line)",
+          "details": "Details"
+        },
+        "generic": {
+          "title": "Title (in bold)",
+          "text": "Text after the title",
+          "tools": "Details (in italics, between parentheses)",
+          "subtitle": "Subtitle (in italics, on its own line)",
+          "details": "Points"
+        }
+      }
+    },
+    "skills": {
+      "group": "Category {{n}}",
+      "name": "Category name",
+      "items": "Skills",
+      "itemsHint": "Start a new line to do the same on the CV.",
+      "add": "Add a category"
+    },
+    "list": {
+      "item": "Item",
+      "add": "Add an item",
+      "hint": "Items are written one after the other, separated by commas."
+    },
+    "contact": {
+      "line": "Contact detail {{n}}",
+      "icon": "Icon",
+      "label": "Name of the contact detail",
+      "labelHint": "Invisible on the CV, it replaces the icon for software that reads CVs.",
+      "value": "Shown text",
+      "href": "Link (optional)",
+      "emailHint": "Left empty, the link to the email address is made automatically.",
+      "add": "Add a contact detail",
+      "icons": {
+        "phone": "Phone",
+        "email": "Email",
+        "website": "Website",
+        "linkedin": "LinkedIn",
+        "github": "GitHub",
+        "gitlab": "GitLab",
+        "address": "Address",
+        "link": "Link",
+        "youtube": "YouTube",
+        "discord": "Discord",
+        "calendar": "Calendar",
+        "car": "Car",
+        "language": "Languages",
+        "user": "Person"
+      }
+    },
+    "portfolio": {
+      "description": "Description",
+      "url": "Link",
+      "qr": "Show a QR code",
+      "qrLink": "The QR code leads to",
+      "qrHint": "If the link has a src parameter, the QR code adds _qr-code to it, to tell a scan from a click."
+    },
+    "item": {
+      "moveUp": "Move {{name}} up",
+      "moveDown": "Move {{name}} down",
+      "remove": "Delete {{name}}"
+    },
+    "export": {
+      "title": "Export",
+      "overleaf": "Open in Overleaf",
+      "overleafHint": "Overleaf compiles the CV to PDF with pdfLaTeX. A free account is enough.",
+      "tex": "Download the .tex",
+      "zip": "Download the .zip with the photo",
+      "print": "Print the preview",
+      "printHint": "Printing makes a PDF from the preview, with the fonts of your device. For the exact result, use Overleaf.",
+      "save": "Save the form",
+      "load": "Open a saved form",
+      "loadError": "This file is not a form saved by the CV generator.",
+      "code": "Show the LaTeX code",
+      "hideCode": "Hide the LaTeX code",
+      "unsupported": "These characters will be removed from the LaTeX file, as pdfLaTeX cannot write them ({{chars}})."
+    },
+    "preview": {
+      "title": "Preview",
+      "note": "The final PDF is typeset by LaTeX, with a very close result.",
+      "overflow": "The content goes beyond one A4 page. Shorten a text, remove an item or widen the main column.",
+      "label": "Preview of the CV, showing the content of the form"
+    },
+    "status": {
+      "added": "Item added.",
+      "removed": "Item deleted.",
+      "moved": "Item moved to position {{position}} of {{count}}.",
+      "main": "Section moved to the main column.",
+      "side": "Section moved to the sidebar.",
+      "sectionAdded": "Section added.",
+      "sectionRemoved": "Section deleted.",
+      "presetLoaded": "Template loaded.",
+      "photoAdded": "Photo added.",
+      "photoRemoved": "Photo removed.",
+      "imported": "Form loaded."
     }
   },
   "redirection": {
@@ -852,7 +1100,7 @@
   },
   "privacy": {
     "title": "Privacy",
-    "updated": "Last updated: November 17, 2026",
+    "updated": "Last updated: November 19, 2026",
     "intro": "This website is my personal portfolio. This page explains what data is collected when you use it, why, and what you can ask for.",
     "who": {
       "title": "Who is responsible?",
@@ -897,14 +1145,14 @@
       "items": {
         "ip": "my server keeps your IP address in memory for at most one hour to limit abuse (number of messages per hour). It is neither stored nor shared.",
         "hosting": "the website is hosted by GitHub Pages and the server by Render, which may keep technical logs (including IP addresses) for security.",
-        "resources": "your browser loads the images of the Steam page from Steam's servers and video thumbnails (home page and projects) from YouTube's servers. The YouTube player, in privacy-enhanced mode, is only loaded if you click a video. Fonts and icons are hosted on this website. Only the pages of the previous version still load them from Google Fonts and cdnjs."
+        "resources": "your browser loads the images of the Steam page from Steam's servers and video thumbnails (home page and projects) from YouTube's servers. The YouTube player, in privacy-enhanced mode, is only loaded if you click a video. Fonts and icons are hosted on this website. Only the pages of the previous version still load them from Google Fonts and cdnjs. The CV generator sends nothing, unless you choose to open your CV in Overleaf, which then receives it."
       }
     },
     "storage": {
       "title": "Storage in your browser",
       "text": "This website sets no cookies and uses no third-party analytics (such as Google Analytics) or advertising tools. It only stores in your browser:",
       "items": {
-        "local": "your theme, your language and your choice to turn off visit measurement, if any (local storage), to keep them for your next visit",
+        "local": "your theme, your language, your choice to turn off visit measurement, if any, and the draft of the CV generator (local storage), to keep them for your next visit",
         "session": "the current chatbot conversation, the visit context and a random visit identifier (session storage), cleared when you close the tab"
       }
     },

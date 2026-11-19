@@ -49,7 +49,8 @@
     "moreFilters": "Plus de filtres",
     "fewerFilters": "Moins de filtres",
     "filterByTag": "Filtrer par thème",
-    "resetFilters": "Réinitialiser les filtres"
+    "resetFilters": "Réinitialiser les filtres",
+    "cvGenerator": "Générateur de CV"
   },
   "miku": {
     "title": "Miku",
@@ -67,6 +68,253 @@
       "sad": "Tristesse",
       "crying": "Larmes",
       "faceless_curious": "Visage effacé, curieuse"
+    }
+  },
+  "cvgen": {
+    "title": "Générateur de CV",
+    "lead": "Ce formulaire compose un CV d'une page à partir du modèle de mon propre CV. Modifiez le contenu et la mise en page, puis ouvrez le résultat dans Overleaf ou téléchargez son code LaTeX. Les valeurs de départ reproduisent mon CV générique.",
+    "privacy": "Tout reste dans votre navigateur. Le brouillon est enregistré sur cet appareil, et rien n'est envoyé tant que vous ne cliquez pas sur « Ouvrir dans Overleaf ».",
+    "cancel": "Annuler",
+    "saveError": "Le brouillon n'a pas pu être enregistré sur cet appareil. Le stockage est peut-être plein ou désactivé. Pensez à enregistrer le formulaire en fichier.",
+    "start": {
+      "title": "Point de départ",
+      "label": "Modèle",
+      "load": "Charger ce modèle",
+      "confirmTitle": "Remplacer le CV en cours ?",
+      "confirmText": "Le contenu actuel du formulaire sera remplacé par le modèle « {{preset}} ».",
+      "confirm": "Remplacer"
+    },
+    "presets": {
+      "generic-fr": "CV générique de Camille, en français",
+      "generic-en": "CV générique de Camille, en anglais",
+      "blank": "CV vierge"
+    },
+    "header": {
+      "title": "En-tête",
+      "name": "Nom",
+      "headline": "Intitulé",
+      "language": "Langue du CV",
+      "languageHint": "La langue règle la césure, la ponctuation et le texte lu par les logiciels de recrutement. Le contenu n'est pas traduit."
+    },
+    "lang": {
+      "fr": "Français",
+      "en": "Anglais"
+    },
+    "layout": {
+      "title": "Mise en page",
+      "sidebar": "Colonne latérale",
+      "left": "À gauche",
+      "right": "À droite",
+      "width": "Largeur de la colonne latérale",
+      "sidebarColor": "Fond de la colonne latérale",
+      "accentColor": "Couleur des liens",
+      "hex": "Code hexadécimal, {{name}}",
+      "textAuto": "Le texte de la colonne latérale s'écrit en {{color}} pour rester lisible sur ce fond.",
+      "black": "noir",
+      "white": "blanc",
+      "lowContrast": "Les liens n'ont qu'un contraste de {{ratio}}:1 {{background}}. Visez au moins 4,5:1 pour qu'ils restent lisibles.",
+      "onSidebar": "sur le fond de la colonne latérale",
+      "onWhite": "sur le fond blanc"
+    },
+    "photo": {
+      "title": "Photo",
+      "choose": "Choisir une photo (JPEG, PNG ou WebP)",
+      "remove": "Retirer la photo",
+      "none": "Pas de photo.",
+      "shape": "Forme",
+      "round": "Ronde",
+      "square": "Carrée",
+      "zoom": "Zoom",
+      "x": "Cadrage horizontal",
+      "y": "Cadrage vertical",
+      "error": "Cette image n'a pas pu être lue. Essayez un fichier JPEG ou PNG.",
+      "preview": "Photo telle qu'elle apparaîtra sur le CV"
+    },
+    "sections": {
+      "title": "Sections",
+      "hint": "Dans les textes, entourez un mot de **deux étoiles** pour le mettre en gras, d'*une étoile* pour l'italique et de ^chapeaux^ pour l'exposant (1^re^). Une section vide n'apparaît pas sur le CV.",
+      "main": "Colonne principale",
+      "side": "Colonne latérale",
+      "empty": "Aucune section dans cette colonne.",
+      "kinds": {
+        "text": "Texte",
+        "entries": "Liste d'entrées",
+        "skills": "Compétences",
+        "list": "Liste de mots",
+        "contact": "Coordonnées",
+        "portfolio": "Lien et QR code"
+      },
+      "defaultTitles": {
+        "text": "Nouvelle section",
+        "entries": "Nouvelle liste",
+        "skills": "Compétences",
+        "list": "Nouvelle liste",
+        "contact": "Liens",
+        "portfolio": "Portfolio"
+      },
+      "add": "Ajouter la section",
+      "addKind": "Type de la nouvelle section",
+      "addColumn": "Colonne de la nouvelle section"
+    },
+    "section": {
+      "untitled": "Section sans titre",
+      "titleField": "Titre de la section (vide pour ne pas en afficher)",
+      "hiddenBadge": "masquée",
+      "moveUp": "Monter la section {{title}}",
+      "moveDown": "Descendre la section {{title}}",
+      "toSide": "Déplacer la section {{title}} dans la colonne latérale",
+      "toMain": "Déplacer la section {{title}} dans la colonne principale",
+      "hide": "Masquer la section {{title}}",
+      "show": "Afficher la section {{title}}",
+      "remove": "Supprimer la section {{title}}",
+      "confirmTitle": "Supprimer la section {{title}} ?",
+      "confirmText": "Son contenu sera perdu.",
+      "confirm": "Supprimer"
+    },
+    "text": {
+      "body": "Texte",
+      "hint": "Laissez une ligne vide pour commencer un nouveau paragraphe."
+    },
+    "entries": {
+      "numbered": "Numéroter les entrées",
+      "name": {
+        "experience": "Expérience",
+        "projects": "Projet",
+        "education": "Formation",
+        "generic": "Entrée"
+      },
+      "add": {
+        "experience": "Ajouter une expérience",
+        "projects": "Ajouter un projet",
+        "education": "Ajouter une formation",
+        "generic": "Ajouter une entrée"
+      },
+      "detail": {
+        "experience": "Mission",
+        "projects": "Réalisation",
+        "education": "Détail",
+        "generic": "Point"
+      },
+      "addDetail": {
+        "experience": "Ajouter une mission",
+        "projects": "Ajouter une réalisation",
+        "education": "Ajouter un détail",
+        "generic": "Ajouter un point"
+      },
+      "fields": {
+        "experience": {
+          "title": "Poste, entreprise et dates",
+          "text": "Texte après le titre",
+          "tools": "Outils (en italique, entre parenthèses)",
+          "subtitle": "Description de l'entreprise (en italique, à la ligne)",
+          "details": "Missions"
+        },
+        "projects": {
+          "title": "Nom du projet",
+          "text": "Texte après le titre",
+          "tools": "Outils utilisés (en italique, entre parenthèses)",
+          "subtitle": "Sous-titre (en italique, à la ligne)",
+          "details": "Réalisations"
+        },
+        "education": {
+          "title": "Date (en gras)",
+          "text": "Diplôme et établissement",
+          "tools": "Outils (en italique, entre parenthèses)",
+          "subtitle": "Sous-titre (en italique, à la ligne)",
+          "details": "Détails"
+        },
+        "generic": {
+          "title": "Titre (en gras)",
+          "text": "Texte après le titre",
+          "tools": "Précisions (en italique, entre parenthèses)",
+          "subtitle": "Sous-titre (en italique, à la ligne)",
+          "details": "Points"
+        }
+      }
+    },
+    "skills": {
+      "group": "Catégorie {{n}}",
+      "name": "Nom de la catégorie",
+      "items": "Compétences",
+      "itemsHint": "Allez à la ligne pour faire de même sur le CV.",
+      "add": "Ajouter une catégorie"
+    },
+    "list": {
+      "item": "Élément",
+      "add": "Ajouter un élément",
+      "hint": "Les éléments s'affichent à la suite, séparés par des virgules."
+    },
+    "contact": {
+      "line": "Coordonnée {{n}}",
+      "icon": "Icône",
+      "label": "Nom de la coordonnée",
+      "labelHint": "Invisible sur le CV, il remplace l'icône pour les logiciels qui lisent les CV.",
+      "value": "Texte affiché",
+      "href": "Lien (facultatif)",
+      "emailHint": "Laissé vide, le lien vers l'adresse e-mail se crée tout seul.",
+      "add": "Ajouter une coordonnée",
+      "icons": {
+        "phone": "Téléphone",
+        "email": "E-mail",
+        "website": "Site web",
+        "linkedin": "LinkedIn",
+        "github": "GitHub",
+        "gitlab": "GitLab",
+        "address": "Adresse",
+        "link": "Lien",
+        "youtube": "YouTube",
+        "discord": "Discord",
+        "calendar": "Calendrier",
+        "car": "Voiture",
+        "language": "Langues",
+        "user": "Personne"
+      }
+    },
+    "portfolio": {
+      "description": "Description",
+      "url": "Lien",
+      "qr": "Afficher un QR code",
+      "qrLink": "Le QR code mène à",
+      "qrHint": "Si le lien contient un paramètre src, le QR code y ajoute _qr-code pour distinguer un scan d'un clic."
+    },
+    "item": {
+      "moveUp": "Monter {{name}}",
+      "moveDown": "Descendre {{name}}",
+      "remove": "Supprimer {{name}}"
+    },
+    "export": {
+      "title": "Exporter",
+      "overleaf": "Ouvrir dans Overleaf",
+      "overleafHint": "Overleaf compile le CV en PDF avec pdfLaTeX. Un compte gratuit suffit.",
+      "tex": "Télécharger le .tex",
+      "zip": "Télécharger le .zip avec la photo",
+      "print": "Imprimer l'aperçu",
+      "printHint": "L'impression produit un PDF à partir de l'aperçu, avec les polices de votre appareil. Pour le rendu exact, passez par Overleaf.",
+      "save": "Enregistrer le formulaire",
+      "load": "Ouvrir un formulaire enregistré",
+      "loadError": "Ce fichier n'est pas un formulaire enregistré par le générateur de CV.",
+      "code": "Voir le code LaTeX",
+      "hideCode": "Masquer le code LaTeX",
+      "unsupported": "Ces caractères seront retirés du fichier LaTeX, car pdfLaTeX ne sait pas les écrire ({{chars}})."
+    },
+    "preview": {
+      "title": "Aperçu",
+      "note": "Le PDF final est composé par LaTeX, avec un rendu très proche.",
+      "overflow": "Le contenu dépasse une page A4. Raccourcissez un texte, retirez un élément ou élargissez la colonne principale.",
+      "label": "Aperçu du CV, qui reprend le contenu du formulaire"
+    },
+    "status": {
+      "added": "Élément ajouté.",
+      "removed": "Élément supprimé.",
+      "moved": "Élément déplacé en position {{position}} sur {{count}}.",
+      "main": "Section déplacée dans la colonne principale.",
+      "side": "Section déplacée dans la colonne latérale.",
+      "sectionAdded": "Section ajoutée.",
+      "sectionRemoved": "Section supprimée.",
+      "presetLoaded": "Modèle chargé.",
+      "photoAdded": "Photo ajoutée.",
+      "photoRemoved": "Photo retirée.",
+      "imported": "Formulaire chargé."
     }
   },
   "redirection": {
@@ -852,7 +1100,7 @@
   },
   "privacy": {
     "title": "Confidentialité",
-    "updated": "Dernière mise à jour : 17 novembre 2026",
+    "updated": "Dernière mise à jour : 19 novembre 2026",
     "intro": "Ce site est mon portfolio personnel. Cette page explique quelles données sont collectées quand vous l'utilisez, pourquoi, et ce que vous pouvez demander.",
     "who": {
       "title": "Qui est responsable ?",
@@ -897,14 +1145,14 @@
       "items": {
         "ip": "mon serveur garde votre adresse IP en mémoire pendant une heure au maximum pour limiter les abus (nombre de messages par heure). Elle n'est ni enregistrée ni transmise.",
         "hosting": "le site est hébergé par GitHub Pages et le serveur par Render, qui peuvent conserver des journaux techniques (dont l'adresse IP) pour leur sécurité.",
-        "resources": "votre navigateur charge les images de la page Steam depuis les serveurs de Steam et les miniatures des vidéos (accueil et projets) depuis les serveurs de YouTube. Le lecteur YouTube, en mode de confidentialité renforcée, n'est chargé que si vous cliquez sur une vidéo. Les polices et les icônes sont hébergées sur ce site. Seules les pages de l'ancienne version les chargent encore depuis Google Fonts et cdnjs."
+        "resources": "votre navigateur charge les images de la page Steam depuis les serveurs de Steam et les miniatures des vidéos (accueil et projets) depuis les serveurs de YouTube. Le lecteur YouTube, en mode de confidentialité renforcée, n'est chargé que si vous cliquez sur une vidéo. Les polices et les icônes sont hébergées sur ce site. Seules les pages de l'ancienne version les chargent encore depuis Google Fonts et cdnjs. Le générateur de CV n'envoie rien, sauf si vous choisissez d'ouvrir votre CV dans Overleaf, qui le reçoit alors."
       }
     },
     "storage": {
       "title": "Stockage dans votre navigateur",
       "text": "Ce site ne dépose aucun cookie et n'utilise aucun service tiers de mesure d'audience (comme Google Analytics) ni de publicité. Il enregistre seulement dans votre navigateur :",
       "items": {
-        "local": "votre thème, votre langue et votre éventuel refus de la mesure des visites (stockage local), pour les retrouver à votre prochaine visite",
+        "local": "votre thème, votre langue, votre éventuel refus de la mesure des visites et le brouillon du générateur de CV (stockage local), pour les retrouver à votre prochaine visite",
         "session": "la conversation en cours avec le chatbot, le contexte de visite et un identifiant de visite aléatoire (stockage de session), effacés à la fermeture de l'onglet"
       }
     },

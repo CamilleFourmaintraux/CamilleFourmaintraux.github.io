@@ -103,6 +103,14 @@ const ROUTES: PageRoute[] = [
 
 // Hidden page: full screen, without the site layout or an "-old" twin.
 const Miku = lazy(() => import("./pages/miku/Miku"));
+// Pages added with the current design: they have no "-old" version.
+const NEW_PAGES: { paths: string[]; page: Page }[] = [
+  {
+    paths: ["cv-generator", "generateur-cv", "cv"],
+    page: lazy(() => import("./pages/cv/CvGenerator")),
+  },
+];
+
 const NotFound = lazy(() => import("./pages/NotFound"));
 const LegacyNotFound = lazy(() => import("./legacy/pages/Redirection"));
 const LegacyLayout = lazy(() => import("./legacy/LegacyLayout"));
@@ -117,6 +125,11 @@ export default function AppRoutes() {
 
       <Route element={<Layout />}>
         {ROUTES.flatMap(({ paths, page: Page }) =>
+          paths.map((path) => (
+            <Route key={path} path={`/${path}`} element={<Page />} />
+          )),
+        )}
+        {NEW_PAGES.flatMap(({ paths, page: Page }) =>
           paths.map((path) => (
             <Route key={path} path={`/${path}`} element={<Page />} />
           )),

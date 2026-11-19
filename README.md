@@ -60,6 +60,11 @@ src/legacy/           Previous design
   current design are under the `ui` key.
 - **Colors.** The tokens live at the top of `src/styles/base.css`. Run `npm run check:a11y` after
   changing one.
+- **CV generator.** `#/cv-generator` builds a one-page CV from a form. The code lives in
+  `src/pages/cv/`. `model.ts` describes the CV as data, `presets.ts` holds the starting points,
+  `latex.ts` writes the LaTeX file and `Preview.tsx` draws the on-screen preview. The preview uses
+  Carlito with the LaTeX spacing, so check both after changing one of them. Exports never leave the
+  browser, except the "Open in Overleaf" button, which posts the zip to Overleaf.
 
 ## Accessibility
 

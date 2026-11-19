@@ -24,3 +24,10 @@ export function currentPath(pathname: string): string {
     ? clean.slice(0, -LEGACY_SUFFIX.length)
     : clean || "/";
 }
+
+// Pages of the current design that have no previous version to link to.
+const WITHOUT_LEGACY = ["/cv-generator", "/generateur-cv", "/cv", "/miku"];
+
+export function hasLegacyVersion(pathname: string): boolean {
+  return !WITHOUT_LEGACY.includes(pathname.replace(/\/+$/, ""));
+}

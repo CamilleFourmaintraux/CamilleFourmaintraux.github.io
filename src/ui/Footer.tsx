@@ -3,12 +3,13 @@ import { useTranslation } from "react-i18next";
 import {
   faClockRotateLeft,
   faEnvelope,
+  faFileLines,
   faFilePdf,
   faFolderOpen,
   faShieldHalved,
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import { legacyPath } from "@/lib/paths";
+import { hasLegacyVersion, legacyPath } from "@/lib/paths";
 import { GITHUB_URL, LINKEDIN_URL } from "@/lib/links";
 import ExternalLink from "./ExternalLink";
 import Icon from "./Icon";
@@ -48,17 +49,24 @@ export default function Footer() {
               </NavLink>
             </li>
             <li>
+              <NavLink to="/cv-generator">
+                <Icon icon={faFileLines} /> {t("ui.cvGenerator")}
+              </NavLink>
+            </li>
+            <li>
               <NavLink to="/privacy">
                 <Icon icon={faShieldHalved} /> {t("footer.privacy")}
               </NavLink>
             </li>
           </ul>
         </nav>
-        <p className="footer-legacy">
-          <NavLink to={legacyPath(pathname)}>
-            <Icon icon={faClockRotateLeft} /> {t("ui.oldVersion")}
-          </NavLink>
-        </p>
+        {hasLegacyVersion(pathname) && (
+          <p className="footer-legacy">
+            <NavLink to={legacyPath(pathname)}>
+              <Icon icon={faClockRotateLeft} /> {t("ui.oldVersion")}
+            </NavLink>
+          </p>
+        )}
       </div>
     </footer>
   );

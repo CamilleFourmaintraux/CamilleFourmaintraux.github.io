@@ -1,0 +1,698 @@
+/* Carlito, the Calibri-compatible font of the LaTeX CV: the preview and its
+   print take the same room as the final PDF. Loaded only on this page. */
+@font-face {
+  font-family: "Carlito CV";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url("@fontsource/carlito/files/carlito-latin-400-normal.woff2")
+    format("woff2");
+}
+@font-face {
+  font-family: "Carlito CV";
+  font-style: italic;
+  font-display: swap;
+  font-weight: 400;
+  src: url("@fontsource/carlito/files/carlito-latin-400-italic.woff2")
+    format("woff2");
+}
+@font-face {
+  font-family: "Carlito CV";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url("@fontsource/carlito/files/carlito-latin-700-normal.woff2")
+    format("woff2");
+}
+@font-face {
+  font-family: "Carlito CV";
+  font-style: italic;
+  font-display: swap;
+  font-weight: 700;
+  src: url("@fontsource/carlito/files/carlito-latin-700-italic.woff2")
+    format("woff2");
+}
+
+/* CV generator: form on one side, A4 preview on the other. */
+:root[data-ui="v2"] {
+  .cvgen {
+    display: grid;
+    gap: var(--space-6);
+    padding-top: var(--space-6);
+  }
+  @media (min-width: 70rem) {
+    .cvgen {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+      align-items: start;
+    }
+    .cvgen-preview {
+      position: sticky;
+      top: calc(var(--topbar-height) + var(--space-4));
+      max-height: calc(100dvh - var(--topbar-height) - var(--space-6));
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
+  }
+
+  .cvgen-form {
+    display: grid;
+    gap: var(--space-5);
+    min-width: 0;
+  }
+  .cvgen-group {
+    min-width: 0;
+    margin: 0;
+    padding: var(--space-5);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-l);
+    display: grid;
+    gap: var(--space-4);
+  }
+  .cvgen-group > legend,
+  .cvgen-group-title {
+    padding: 0 var(--space-2);
+    margin-left: calc(var(--space-2) * -1);
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    font-weight: 700;
+  }
+  .cvgen-group-title {
+    padding: 0;
+    margin: 0;
+  }
+  .cvgen-hint {
+    color: var(--ink-2);
+    font-size: var(--step--1);
+  }
+  .cvgen-row {
+    display: grid;
+    gap: var(--space-4);
+  }
+  @media (min-width: 36rem) {
+    .cvgen-row {
+      grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    }
+  }
+
+  .cvgen .field label {
+    font-size: var(--step--1);
+  }
+  .cvgen .field input,
+  .cvgen .field textarea,
+  .cvgen .field select {
+    min-height: 2.75rem;
+  }
+  .cvgen .field textarea {
+    min-height: 0;
+    resize: vertical;
+  }
+  .cvgen select,
+  .cvgen input[type="file"] {
+    width: 100%;
+    min-height: 2.75rem;
+    padding: 0.5rem 0.75rem;
+    background: var(--surface);
+    color: var(--ink);
+    border: 1.5px solid var(--line-strong);
+    border-radius: var(--radius-m);
+  }
+  .cvgen input[type="file"] {
+    padding: 0.45rem;
+  }
+  .cvgen input[type="file"]::file-selector-button {
+    margin-right: 0.75rem;
+    padding: 0.35rem 0.8rem;
+    background: var(--surface-2);
+    color: var(--ink);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-s);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .cvgen-choice {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-5);
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  .cvgen-choice legend {
+    padding: 0;
+    margin-bottom: var(--space-2);
+    font-size: var(--step--1);
+    font-weight: 700;
+  }
+  .cvgen-choice label,
+  .cvgen-check {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 2.75rem;
+    cursor: pointer;
+  }
+  .cvgen input[type="radio"],
+  .cvgen input[type="checkbox"] {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin: 0;
+    accent-color: var(--primary);
+    cursor: pointer;
+  }
+  .cvgen input[type="range"] {
+    width: 100%;
+    min-height: 2.75rem;
+    accent-color: var(--primary);
+  }
+
+  .cvgen-color {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+  .cvgen-color input[type="color"] {
+    width: 3rem;
+    height: 2.75rem;
+    flex: none;
+    padding: 0.2rem;
+    background: var(--surface);
+    border: 1.5px solid var(--line-strong);
+    border-radius: var(--radius-m);
+    cursor: pointer;
+  }
+  .cvgen-color input[type="text"] {
+    width: 7.5rem;
+    font-variant-numeric: tabular-nums;
+    text-transform: uppercase;
+  }
+  .cvgen-warning {
+    display: flex;
+    gap: 0.5em;
+    align-items: baseline;
+    padding: var(--space-2) var(--space-3);
+    background: var(--accent-soft);
+    color: var(--ink);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 var(--radius-s) var(--radius-s) 0;
+    font-size: var(--step--1);
+  }
+  .cvgen-warning .icon {
+    color: var(--accent);
+    translate: 0 0.1em;
+  }
+
+  /* Compact buttons for the many small actions of the form. */
+  .cvgen-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .cvgen-tool {
+    display: inline-grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    flex: none;
+    padding: 0;
+    background: var(--surface);
+    color: var(--ink);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-m);
+    transition:
+      background-color 0.15s,
+      transform 0.15s var(--ease);
+  }
+  .cvgen-tool:hover:not(:disabled) {
+    background: var(--surface-2);
+  }
+  .cvgen-tool:active:not(:disabled) {
+    transform: scale(0.92);
+  }
+  .cvgen-tool:disabled {
+    opacity: 0.35;
+  }
+  .cvgen-tool.is-danger:hover:not(:disabled) {
+    background: var(--danger-soft);
+    color: var(--danger);
+    border-color: var(--danger);
+  }
+  .cvgen-add {
+    justify-self: start;
+  }
+
+  /* Sections of the CV, grouped by column. */
+  .cvgen-column {
+    display: grid;
+    gap: var(--space-3);
+  }
+  .cvgen-column-title {
+    font-size: var(--step-0);
+    font-weight: 700;
+    color: var(--ink-2);
+  }
+  .cvgen-sections {
+    display: grid;
+    gap: var(--space-3);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .cvgen-sections > li {
+    margin: 0;
+  }
+  .cvgen-section {
+    background: var(--bg);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-m);
+  }
+  .cvgen-section.is-hidden {
+    border-style: dashed;
+  }
+  .cvgen-section.is-hidden .cvgen-section-name {
+    color: var(--ink-2);
+    text-decoration: line-through;
+  }
+  .cvgen-section-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2);
+  }
+  .cvgen-section-toggle {
+    display: flex;
+    flex: 1 1 12rem;
+    align-items: center;
+    gap: 0.6rem;
+    min-height: 2.75rem;
+    padding: 0.3rem 0.6rem;
+    background: none;
+    color: var(--ink);
+    border: 0;
+    border-radius: var(--radius-s);
+    font-weight: 700;
+    text-align: left;
+  }
+  .cvgen-section-toggle:hover {
+    background: var(--surface-2);
+  }
+  .cvgen-section-toggle .icon {
+    transition: rotate 0.25s var(--ease);
+  }
+  .cvgen-section-toggle[aria-expanded="true"] .icon {
+    rotate: 90deg;
+  }
+  .cvgen-section-kind {
+    color: var(--ink-2);
+    font-size: var(--step--1);
+    font-weight: 500;
+  }
+  .cvgen-section-body {
+    display: grid;
+    gap: var(--space-4);
+    padding: var(--space-4);
+    border-top: 1px solid var(--line);
+  }
+  .cvgen-section-body[hidden] {
+    display: none;
+  }
+
+  .cvgen-items {
+    display: grid;
+    gap: var(--space-3);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .cvgen-items > li {
+    margin: 0;
+  }
+  .cvgen-item {
+    display: flex;
+    align-items: end;
+    gap: var(--space-2);
+  }
+  .cvgen-item > .field {
+    flex: 1;
+    min-width: 0;
+  }
+  .cvgen-card {
+    display: grid;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-m);
+  }
+  .cvgen-card-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+  }
+  .cvgen-card-head h4 {
+    font-size: var(--step-0);
+  }
+  .cvgen-sublist {
+    display: grid;
+    gap: var(--space-2);
+    padding-left: var(--space-3);
+    border-left: 3px solid var(--line);
+  }
+  .cvgen-sublist-title {
+    font-size: var(--step--1);
+    font-weight: 700;
+  }
+  .cvgen-photo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-4);
+  }
+  .cvgen-photo img {
+    width: 6rem;
+    height: 6rem;
+    border: 2px solid var(--ink);
+    object-fit: cover;
+  }
+  .cvgen-photo img.is-round {
+    border-radius: 50%;
+  }
+
+  .cvgen-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+  .cvgen-code {
+    max-height: 22rem;
+    overflow: auto;
+    padding: var(--space-4);
+    background: var(--surface-2);
+    border-radius: var(--radius-m);
+    font-family:
+      ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, monospace;
+    font-size: 0.8rem;
+    line-height: 1.45;
+    white-space: pre;
+    tab-size: 2;
+  }
+
+  /* ---------- Preview ---------- */
+  .cvgen-preview {
+    display: grid;
+    gap: var(--space-3);
+    min-width: 0;
+  }
+  .cvgen-preview-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-2);
+  }
+  .cvgen-preview-head h2 {
+    font-size: var(--step-1);
+  }
+  .cvgen-stage {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-s);
+    box-shadow: 6px 6px 0 var(--shadow);
+    background: #fff;
+  }
+  .cvgen-scale {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: top left;
+  }
+  .cvgen-page-break {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 0;
+    border-top: 2px dashed #c62828;
+    pointer-events: none;
+  }
+}
+
+/* ---------- The CV page itself, on screen and in print ---------- */
+/* Nested under :root[data-ui] so that the site's own list and paragraph
+   rules do not reach the page. */
+:root[data-ui] {
+  .cv-paper {
+    --cv-width: 210mm;
+    --cv-height: 297mm;
+    --cv-gap: 12.5mm;
+    --cv-avail: calc(190mm - var(--cv-gap));
+    --cv-pad: 6mm;
+    position: relative;
+    box-sizing: border-box;
+    width: var(--cv-width);
+    min-height: var(--cv-height);
+    padding: 10mm 8mm 8mm 12mm;
+    background: #fff;
+    color: #000;
+    font-family: "Carlito CV", Carlito, Calibri, "Segoe UI", Arial, sans-serif;
+    font-size: 10pt;
+    /* LaTeX metrics: 12 pt between lines. Spaces and letters tighten a
+       little, as microtype and the shrinkable spaces of TeX do. */
+    line-height: 1.2;
+    word-spacing: -0.07em;
+    letter-spacing: -0.008em;
+    text-align: left;
+    overflow-wrap: break-word;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .cv-paper[data-sidebar="left"] {
+    padding: 10mm 12mm 8mm 8mm;
+  }
+  .cv-paper::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: calc(
+      12mm + (1 - var(--cv-side-ratio)) * var(--cv-avail) + var(--cv-gap) -
+        var(--cv-pad)
+    );
+    background: var(--cv-side-bg);
+  }
+  .cv-paper[data-sidebar="left"]::before {
+    left: 0;
+    right: auto;
+    width: calc(8mm + var(--cv-side-ratio) * var(--cv-avail) + var(--cv-pad));
+  }
+  .cv-paper * {
+    box-sizing: border-box;
+  }
+  .cv-paper p,
+  .cv-paper ul,
+  .cv-paper ol {
+    margin: 0;
+  }
+  .cv-paper strong {
+    font-weight: 700;
+  }
+  .cv-paper sup {
+    font-size: 0.7em;
+    line-height: 0;
+  }
+  .cv-columns {
+    position: relative;
+    display: grid;
+    grid-template-columns:
+      calc((1 - var(--cv-side-ratio)) * var(--cv-avail))
+      calc(var(--cv-side-ratio) * var(--cv-avail));
+    column-gap: var(--cv-gap);
+    align-items: start;
+  }
+  .cv-paper[data-sidebar="left"] .cv-columns {
+    grid-template-columns:
+      calc(var(--cv-side-ratio) * var(--cv-avail))
+      calc((1 - var(--cv-side-ratio)) * var(--cv-avail));
+  }
+  .cv-main,
+  .cv-side {
+    min-width: 0;
+  }
+  .cv-main {
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+  }
+  .cv-side {
+    color: var(--cv-side-text);
+    font-size: 9pt;
+    line-height: 1.22;
+  }
+  .cv-name {
+    font-family:
+      "URW Gothic", "Century Gothic", "Avant Garde", Futura, "Trebuchet MS",
+      sans-serif;
+    font-size: 27pt;
+    line-height: 1.15;
+  }
+  .cv-name-rule {
+    display: block;
+    width: 30%;
+    height: 3pt;
+    margin: 1pt 0 8pt;
+    background: #000;
+  }
+  .cv-headline,
+  .cv-section-title {
+    font-size: 14.5pt;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+  .cv-headline {
+    margin-bottom: 2pt;
+  }
+  .cv-main .cv-section {
+    margin-top: 10pt;
+  }
+  .cv-main .cv-section-title {
+    padding-bottom: 3pt;
+    margin-bottom: 1pt;
+    border-bottom: 0.6pt solid #3c3c3c;
+  }
+  /* Padding rather than margin, so the space adds to the one left by the
+     previous section, as \vspace does in LaTeX. */
+  .cv-side .cv-section {
+    padding-top: 8.4pt;
+  }
+  .cv-side > .cv-section:first-child {
+    padding-top: 0;
+  }
+  .cv-side .cv-section-title {
+    margin-bottom: 4pt;
+  }
+  .cv-side .cv-paragraph,
+  .cv-side .cv-indent,
+  .cv-main .cv-indent {
+    padding-left: 0.6em;
+  }
+  .cv-main .cv-indent {
+    padding-left: 0;
+  }
+  .cv-entries {
+    padding-left: 1.1em;
+    list-style: none;
+  }
+  .cv-entries > li {
+    position: relative;
+    margin-top: 2.5pt;
+  }
+  .cv-entries > li::before {
+    content: "\2022";
+    position: absolute;
+    left: -1.1em;
+  }
+  ol.cv-entries {
+    padding-left: 1.4em;
+    counter-reset: cv;
+  }
+  ol.cv-entries > li {
+    counter-increment: cv;
+  }
+  ol.cv-entries > li::before {
+    content: counter(cv) ".";
+    left: -1.4em;
+  }
+  .cv-details {
+    padding-left: 1.6em;
+    list-style: none;
+  }
+  .cv-details > li {
+    position: relative;
+    margin-top: 0.5pt;
+  }
+  .cv-details > li::before {
+    content: "\2013";
+    position: absolute;
+    left: -1.1em;
+  }
+  .cv-skill {
+    margin-bottom: 3.5pt;
+  }
+  .cv-skill-name {
+    font-weight: 700;
+  }
+  .cv-contact {
+    display: grid;
+    grid-template-columns: 1.7em minmax(0, 1fr);
+    margin-bottom: 5pt;
+  }
+  .cv-contact-icon {
+    font-size: 1.2em;
+    line-height: 1;
+  }
+  .cv-contact-icon .icon {
+    vertical-align: -0.1em;
+  }
+  .cv-link {
+    color: var(--cv-accent);
+    overflow-wrap: anywhere;
+  }
+  .cv-portfolio {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3mm;
+  }
+  .cv-qr {
+    width: 21mm;
+    height: 21mm;
+    flex: none;
+    color: var(--cv-accent);
+  }
+  .cv-paper[data-dark-side="true"] .cv-side .cv-qr {
+    padding: 2pt;
+    background: #fff;
+    color: #000;
+  }
+  .cv-photo {
+    display: block;
+    width: 33mm;
+    height: 33mm;
+    margin: 0 auto -1.2pt;
+    border: 1.5pt solid #fff;
+  }
+  .cv-photo.is-round {
+    border-radius: 50%;
+  }
+}
+
+/* Printing from the page gives the CV alone, at its real size. */
+.cv-print-root {
+  display: none;
+}
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  body:has(> .cv-print-root) > #root {
+    display: none !important;
+  }
+  .cv-print-root {
+    display: block;
+  }
+  html:has(.cv-print-root),
+  html:has(.cv-print-root) body {
+    background: #fff !important;
+  }
+  .cv-print-root .cv-paper {
+    min-height: 0;
+    height: auto;
+  }
+}
