@@ -65,6 +65,12 @@ src/legacy/           Previous design
   `latex.ts` writes the LaTeX file and `Preview.tsx` draws the on-screen preview. The preview uses
   Carlito with the LaTeX spacing, so check both after changing one of them. Exports never leave the
   browser, except the "Open in Overleaf" button, which posts the zip to Overleaf.
+- **QR code generator.** `#/qr-code-generator` lives in `src/pages/qr/`. `qr.ts` encodes the
+  content, builds the matrix with `qrcode-generator` and draws the SVG. After each change the page
+  reads the picture back with jsQR (loaded on demand) to warn about styles that stop it from
+  scanning. A link is an address plus a list of query parameters: a pasted link gives its own
+  parameters to the list, and a `src` value can get `_qr-code` to tell scans from clicks. The form
+  styles shared with the CV generator are in `src/pages/cv/form.css`.
 
 ## Accessibility
 

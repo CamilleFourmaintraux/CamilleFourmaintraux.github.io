@@ -1,0 +1,152 @@
+/* QR code generator: the form styles come from ../cv/form.css. */
+:root[data-ui="v2"] {
+  .qrgen-stage {
+    display: grid;
+    place-items: center;
+    width: min(100%, 26rem);
+    aspect-ratio: 1;
+    margin-inline: auto;
+    padding: var(--space-4);
+    background: var(--surface-2);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-m);
+    box-shadow: 6px 6px 0 var(--shadow);
+  }
+  /* A checkerboard shows which parts are see-through. */
+  .qrgen-stage.is-transparent {
+    background-color: #fff;
+    background-image:
+      linear-gradient(45deg, #d9d9d9 25%, transparent 25%),
+      linear-gradient(-45deg, #d9d9d9 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #d9d9d9 75%),
+      linear-gradient(-45deg, transparent 75%, #d9d9d9 75%);
+    background-size: 16px 16px;
+    background-position:
+      0 0,
+      0 8px,
+      8px -8px,
+      -8px 0;
+  }
+  .qrgen-code {
+    width: 100%;
+  }
+  .qrgen-code svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .qrgen-empty {
+    max-width: 18rem;
+    color: var(--ink-2);
+    text-align: center;
+  }
+  .qrgen-reading {
+    display: flex;
+    gap: 0.5em;
+    align-items: baseline;
+    min-height: 1.5em;
+    margin: 0;
+    font-weight: 600;
+  }
+  .qrgen-reading.is-checking {
+    color: var(--ink-2);
+    font-weight: 400;
+  }
+  .qrgen-reading.is-ok .icon {
+    color: var(--primary);
+  }
+  .qrgen-reading.is-fail .icon {
+    color: var(--danger);
+  }
+  .qrgen-encoded {
+    display: grid;
+    gap: var(--space-2);
+  }
+  .qrgen-encoded h3 {
+    font-size: var(--step-0);
+  }
+  .qrgen-encoded pre {
+    max-height: 10rem;
+    margin: 0;
+    overflow: auto;
+    padding: var(--space-3);
+    background: var(--surface-2);
+    border-radius: var(--radius-m);
+    font-family:
+      ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, monospace;
+    font-size: 0.8rem;
+    line-height: 1.45;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+  .qrgen-export {
+    display: grid;
+    gap: var(--space-3);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--line);
+  }
+  .qrgen-export .field {
+    max-width: 16rem;
+  }
+  .qrgen-logo-thumb {
+    object-fit: contain;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+  }
+}
+
+:root[data-ui="v2"] {
+  .qrgen-params {
+    display: grid;
+    gap: var(--space-3);
+    margin: 0;
+    padding: var(--space-3);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-m);
+  }
+  .qrgen-params legend {
+    padding-inline: var(--space-1);
+    font-weight: 600;
+  }
+  .qrgen-param-list {
+    display: grid;
+    gap: var(--space-3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  /* Name and value side by side, the tools after them. */
+  .qrgen-param {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+    gap: var(--space-2);
+    align-items: end;
+  }
+  @media (max-width: 30rem) {
+    .qrgen-param {
+      grid-template-columns: minmax(0, 1fr);
+      padding-bottom: var(--space-3);
+      border-bottom: 1px solid var(--line);
+    }
+  }
+  .qrgen-final {
+    display: grid;
+    gap: var(--space-2);
+  }
+  .qrgen-final-title {
+    margin: 0;
+    font-weight: 700;
+  }
+  .qrgen-final a {
+    display: block;
+    padding: var(--space-3);
+    background: var(--surface-2);
+    border-radius: var(--radius-m);
+    font-family:
+      ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, monospace;
+    font-size: 0.85rem;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+  }
+}

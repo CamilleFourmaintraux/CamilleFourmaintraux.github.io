@@ -1,5 +1,6 @@
 // Files produced in the browser: the LaTeX source, a zip archive with the
-// photo, and the project sent to Overleaf. Nothing goes through a server.
+// photo, the project sent to Overleaf and the QR code pictures. Nothing goes
+// through a server.
 
 let crcTable: Uint32Array | null = null;
 
@@ -90,11 +91,12 @@ export function zip(files: ZipFile[]): Uint8Array {
 }
 
 export function download(
-  data: Uint8Array | string,
+  data: Uint8Array | string | Blob,
   name: string,
   type: string,
 ) {
-  const blob = new Blob([data as BlobPart], { type });
+  const blob =
+    data instanceof Blob ? data : new Blob([data as BlobPart], { type });
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
   link.href = url;

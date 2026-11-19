@@ -21,6 +21,7 @@
     "@fortawesome/free-brands-svg-icons": "^7.3.1",
     "@fortawesome/free-solid-svg-icons": "^7.3.1",
     "i18next": "^24.2.3",
+    "jsqr": "^1.4.0",
     "motion": "^12.4.10",
     "qrcode-generator": "^2.0.4",
     "react": "^19.0.0",

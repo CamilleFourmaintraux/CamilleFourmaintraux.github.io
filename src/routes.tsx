@@ -109,6 +109,10 @@ const NEW_PAGES: { paths: string[]; page: Page }[] = [
     paths: ["cv-generator", "generateur-cv", "cv"],
     page: lazy(() => import("./pages/cv/CvGenerator")),
   },
+  {
+    paths: ["qr-code-generator", "generateur-qr-code", "qr-code", "qr"],
+    page: lazy(() => import("./pages/qr/QrGenerator")),
+  },
 ];
 
 const NotFound = lazy(() => import("./pages/NotFound"));

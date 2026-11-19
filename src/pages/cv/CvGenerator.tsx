@@ -16,8 +16,8 @@ import { normalizeLanguage } from "@/i18n";
 import Dialog from "@/ui/Dialog";
 import Icon from "@/ui/Icon";
 import Page from "@/ui/Page";
-import { contrast, isHexColor, MIN_CONTRAST, sidebarTextColor } from "./colors";
-import { Choice, Field } from "./controls";
+import { contrast, MIN_CONTRAST, sidebarTextColor } from "./colors";
+import { Choice, ColorField, Field } from "./controls";
 import { announce, focusMoved, focusSoon } from "./listActions";
 import { download, fileBase, openInOverleaf, zip, type ZipFile } from "./files";
 import { PHOTO_FILE, toLatex, unsupportedCharacters } from "./latex";
@@ -40,6 +40,7 @@ import {
 } from "./presets";
 import Preview from "./Preview";
 import SectionEditor, { type SectionActions } from "./SectionEditor";
+import "./form.css";
 import "./cv.css";
 
 const STORAGE_KEY = "cv-generator";
@@ -368,48 +369,6 @@ export default function CvGenerator() {
     },
   ];
 
-  // A typed color applies on Enter or when the field loses focus.
-  const applyHex = (
-    key: "sidebarColor" | "accentColor",
-    input: HTMLInputElement,
-  ) => {
-    const value = input.value.trim();
-    const hex = value.startsWith("#") ? value : `#${value}`;
-    if (isHexColor(hex)) patchLayout({ [key]: hex.toLowerCase() });
-    else input.value = cv.layout[key];
-  };
-
-  const colorField = (key: "sidebarColor" | "accentColor") => {
-    const id = `cv-${key}`;
-    return (
-      <div className="field">
-        <label htmlFor={id}>{t(`cvgen.layout.${key}`)}</label>
-        <div className="cvgen-color">
-          <input
-            type="color"
-            id={id}
-            value={cv.layout[key]}
-            onChange={(event) => patchLayout({ [key]: event.target.value })}
-          />
-          <input
-            type="text"
-            aria-label={t("cvgen.layout.hex", {
-              name: t(`cvgen.layout.${key}`),
-            })}
-            defaultValue={cv.layout[key]}
-            key={cv.layout[key]}
-            maxLength={7}
-            spellCheck={false}
-            onBlur={(event) => applyHex(key, event.currentTarget)}
-            onKeyDown={(event) => {
-              if (event.key === "Enter") applyHex(key, event.currentTarget);
-            }}
-          />
-        </div>
-      </div>
-    );
-  };
-
   return (
     <Page
       title={t("cvgen.title")}
@@ -519,8 +478,18 @@ export default function CvGenerator() {
               />
             </div>
             <div className="cvgen-row">
-              {colorField("sidebarColor")}
-              {colorField("accentColor")}
+              {(["sidebarColor", "accentColor"] as const).map((key) => (
+                <ColorField
+                  key={key}
+                  id={`cv-${key}`}
+                  label={t(`cvgen.layout.${key}`)}
+                  hexLabel={t("cvgen.layout.hex", {
+                    name: t(`cvgen.layout.${key}`),
+                  })}
+                  value={cv.layout[key]}
+                  onChange={(value) => patchLayout({ [key]: value })}
+                />
+              ))}
             </div>
             <p className="cvgen-hint">
               {t("cvgen.layout.textAuto", {

@@ -50,7 +50,8 @@
     "fewerFilters": "Fewer filters",
     "filterByTag": "Filter by topic",
     "resetFilters": "Reset filters",
-    "cvGenerator": "CV generator"
+    "cvGenerator": "CV generator",
+    "qrGenerator": "QR code generator"
   },
   "miku": {
     "title": "Miku",
@@ -315,6 +316,180 @@
       "photoAdded": "Photo added.",
       "photoRemoved": "Photo removed.",
       "imported": "Form loaded."
+    }
+  },
+  "qrgen": {
+    "title": "QR code generator",
+    "lead": "Turn a link, some text, an email address, a phone number, a Wi-Fi network or a contact card into a QR code. Choose its shapes, its colors and a logo in the middle, then download it as PNG or SVG.",
+    "privacy": "Everything happens in your browser. Nothing is sent, not even your logo.",
+    "decimal": ".",
+    "content": {
+      "title": "Content",
+      "kind": "Content type",
+      "kinds": {
+        "link": "Link",
+        "text": "Text",
+        "email": "Email",
+        "phone": "Phone",
+        "wifi": "Wi-Fi network",
+        "contact": "Contact card (vCard)"
+      },
+      "link": "Link address",
+      "linkHint": "You can paste a full link. Its parameters, after the \"?\", move to the list below.",
+      "params": "Link parameters",
+      "noParams": "No parameters.",
+      "paramName": "Parameter {{n}}",
+      "paramKey": "Name",
+      "paramValue": "Value",
+      "addParam": "Add a parameter",
+      "paramsTaken_one": "{{count}} parameter added to the list.",
+      "paramsTaken_other": "{{count}} parameters added to the list.",
+      "sourceSuffix": "Add _qr-code to the src value, to tell scans from clicks on the same document",
+      "finalLink": "Final link",
+      "newTab": "(opens in a new tab)",
+      "noLink": "Enter an address to see the final link.",
+      "text": "Text",
+      "emailTo": "Recipient",
+      "emailSubject": "Subject (optional)",
+      "emailBody": "Message (optional)",
+      "phone": "Phone number",
+      "ssid": "Network name (SSID)",
+      "security": "Security",
+      "securities": {
+        "WPA": "WPA, WPA2 or WPA3",
+        "WEP": "WEP",
+        "nopass": "None (open network)"
+      },
+      "password": "Password",
+      "hidden": "Hidden network",
+      "contactFields": {
+        "firstName": "First name",
+        "lastName": "Last name",
+        "organization": "Company or school",
+        "title": "Job title",
+        "phone": "Phone",
+        "email": "Email",
+        "url": "Website"
+      }
+    },
+    "shape": {
+      "title": "Shapes",
+      "modules": "Dot shape",
+      "moduleStyles": {
+        "square": "Squares",
+        "rounded": "Rounded",
+        "dots": "Dots",
+        "leaf": "Leaves"
+      },
+      "eyeFrame": "Corner marker frame",
+      "eyeCenter": "Corner marker center",
+      "eyeStyles": {
+        "square": "Square",
+        "rounded": "Rounded",
+        "circle": "Round"
+      },
+      "margin": "Margin around the code",
+      "modulesCount_one": "{{count}} module",
+      "modulesCount_other": "{{count}} modules",
+      "marginHint_one": "{{count}} module. Readers need a light margin, at least 2 modules on a plain light background, 4 otherwise.",
+      "marginHint_other": "{{count}} modules. Readers need a light margin, at least 2 modules on a plain light background, 4 otherwise.",
+      "roundedCorners": "Rounded background corners (depends on the margin)",
+      "correction": "Error correction",
+      "corrections": {
+        "auto": "Automatic",
+        "L": "Low (L, 7%)",
+        "M": "Medium (M, 15%)",
+        "Q": "High (Q, 25%)",
+        "H": "Highest (H, 30%)"
+      },
+      "correctionHint": "Stronger correction lets readers decode a damaged code or one covered by a logo, but makes the code denser. Automatic means medium without a logo and highest with one."
+    },
+    "colors": {
+      "title": "Colors",
+      "foreground": "Dot color",
+      "background": "Background color",
+      "hex": "Hexadecimal code, {{name}}",
+      "transparent": "Transparent background",
+      "customEyes": "Different color for the corner markers",
+      "eyeColor": "Corner marker color",
+      "lowContrast": "The contrast is only {{ratio}}:1. Aim for at least 4:1 so that every reader can decode it.",
+      "inverted": "Light dots on a dark background are not read by every reader. Prefer dark dots on a light background.",
+      "transparentNote": "With a transparent background, place the code on a plain light background."
+    },
+    "logo": {
+      "title": "Logo in the middle",
+      "kind": "Logo",
+      "kinds": {
+        "none": "None",
+        "icon": "Icon",
+        "image": "Picture"
+      },
+      "icon": "Icon",
+      "iconColor": "Icon color",
+      "icons": {
+        "link": "Link",
+        "globe": "Globe (website)",
+        "envelope": "Envelope (email)",
+        "phone": "Phone",
+        "wifi": "Wi-Fi",
+        "user": "Person",
+        "location": "Place",
+        "linkedin": "LinkedIn",
+        "github": "GitHub",
+        "gitlab": "GitLab",
+        "youtube": "YouTube",
+        "discord": "Discord",
+        "instagram": "Instagram",
+        "x": "X (Twitter)",
+        "whatsapp": "WhatsApp",
+        "steam": "Steam"
+      },
+      "choose": "Choose a picture (PNG, JPEG, WebP or SVG)",
+      "noImage": "No picture yet.",
+      "preview": "Chosen logo",
+      "remove": "Remove the picture",
+      "added": "Logo added.",
+      "removed": "Logo removed.",
+      "error": "This picture could not be read. Try a PNG or JPEG file.",
+      "size": "Logo size",
+      "shape": "Logo area",
+      "shapes": {
+        "square": "Square",
+        "circle": "Round"
+      },
+      "clear": "Remove the dots under the logo",
+      "lowLevel": "With a logo, choose high (Q) or highest (H) correction, or the code may stop reading."
+    },
+    "preview": {
+      "title": "Preview",
+      "alt": "QR code, {{content}}",
+      "empty": "Fill in the content to see the QR code.",
+      "tooLong": "This content is too long for a QR code ({{count}} characters). Shorten it or lower the error correction.",
+      "info": "Version {{version}}, {{count}} × {{count}} modules, level {{level}} error correction.",
+      "encoded": "Encoded text"
+    },
+    "reading": {
+      "checking": "Checking that it reads...",
+      "ok": "The code reads correctly.",
+      "fail": "The built-in reader cannot decode this code. Raise the error correction, shrink the logo, increase the contrast or try another shape, then test it with your phone."
+    },
+    "export": {
+      "size": "PNG size",
+      "pixels": "{{size}} × {{size}} pixels",
+      "png": "Download as PNG",
+      "svg": "Download as SVG",
+      "copy": "Copy the picture",
+      "downloaded": "Download started.",
+      "copied": "Picture copied.",
+      "copyFailed": "The picture could not be copied. Download it instead."
+    },
+    "reset": {
+      "button": "Reset",
+      "confirmTitle": "Reset everything?",
+      "confirmText": "The content, shapes, colors and logo will go back to their starting values.",
+      "confirm": "Reset",
+      "cancel": "Cancel",
+      "done": "Form reset."
     }
   },
   "redirection": {
@@ -1145,14 +1320,14 @@
       "items": {
         "ip": "my server keeps your IP address in memory for at most one hour to limit abuse (number of messages per hour). It is neither stored nor shared.",
         "hosting": "the website is hosted by GitHub Pages and the server by Render, which may keep technical logs (including IP addresses) for security.",
-        "resources": "your browser loads the images of the Steam page from Steam's servers and video thumbnails (home page and projects) from YouTube's servers. The YouTube player, in privacy-enhanced mode, is only loaded if you click a video. Fonts and icons are hosted on this website. Only the pages of the previous version still load them from Google Fonts and cdnjs. The CV generator sends nothing, unless you choose to open your CV in Overleaf, which then receives it."
+        "resources": "your browser loads the images of the Steam page from Steam's servers and video thumbnails (home page and projects) from YouTube's servers. The YouTube player, in privacy-enhanced mode, is only loaded if you click a video. Fonts and icons are hosted on this website. Only the pages of the previous version still load them from Google Fonts and cdnjs. The QR code generator sends nothing. Neither does the CV generator, unless you choose to open your CV in Overleaf, which then receives it."
       }
     },
     "storage": {
       "title": "Storage in your browser",
       "text": "This website sets no cookies and uses no third-party analytics (such as Google Analytics) or advertising tools. It only stores in your browser:",
       "items": {
-        "local": "your theme, your language, your choice to turn off visit measurement, if any, and the draft of the CV generator (local storage), to keep them for your next visit",
+        "local": "your theme, your language, your choice to turn off visit measurement, if any, and the drafts of the CV and QR code generators (local storage), to keep them for your next visit",
         "session": "the current chatbot conversation, the visit context and a random visit identifier (session storage), cleared when you close the tab"
       }
     },

@@ -9,11 +9,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Icon from "@/ui/Icon";
 import { useListActions } from "./listActions";
+import { isHexColor } from "./colors";
 import { item, type Item } from "./model";
 
 type FieldProps = {
   id: string;
-  label: string;
+  label: React.ReactNode;
   value: string;
   onChange: (value: string) => void;
   hint?: string;
@@ -22,6 +23,8 @@ type FieldProps = {
   type?: string;
   autoComplete?: string;
   placeholder?: string;
+  /** Extra attributes and handlers for a single-line field. */
+  inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
 };
 
 export function Field({
@@ -35,6 +38,7 @@ export function Field({
   type = "text",
   autoComplete = "off",
   placeholder,
+  inputProps,
 }: FieldProps) {
   const hintId = hint ? `${id}-hint` : undefined;
   const common = {
@@ -56,7 +60,12 @@ export function Field({
           {...common}
         />
       ) : (
-        <input type={type} autoComplete={autoComplete} {...common} />
+        <input
+          type={type}
+          autoComplete={autoComplete}
+          {...inputProps}
+          {...common}
+        />
       )}
       {hint && (
         <p className="cvgen-hint" id={hintId}>
@@ -248,5 +257,60 @@ export function Choice<T extends string>({
         </label>
       ))}
     </fieldset>
+  );
+}
+
+type ColorFieldProps = {
+  id: string;
+  label: string;
+  /** Accessible name of the hexadecimal text field. */
+  hexLabel: string;
+  value: string;
+  onChange: (value: string) => void;
+  disabled?: boolean;
+};
+
+/** Color picker with a hexadecimal field. A typed color applies on Enter or
+ * when the field loses focus. */
+export function ColorField({
+  id,
+  label,
+  hexLabel,
+  value,
+  onChange,
+  disabled,
+}: ColorFieldProps) {
+  const apply = (input: HTMLInputElement) => {
+    const typed = input.value.trim();
+    const hex = typed.startsWith("#") ? typed : `#${typed}`;
+    if (isHexColor(hex)) onChange(hex.toLowerCase());
+    else input.value = value;
+  };
+  return (
+    <div className="field">
+      <label htmlFor={id}>{label}</label>
+      <div className="cvgen-color">
+        <input
+          type="color"
+          id={id}
+          value={value}
+          disabled={disabled}
+          onChange={(event) => onChange(event.target.value)}
+        />
+        <input
+          type="text"
+          aria-label={hexLabel}
+          defaultValue={value}
+          key={value}
+          maxLength={7}
+          spellCheck={false}
+          disabled={disabled}
+          onBlur={(event) => apply(event.currentTarget)}
+          onKeyDown={(event) => {
+            if (event.key === "Enter") apply(event.currentTarget);
+          }}
+        />
+      </div>
+    </div>
   );
 }

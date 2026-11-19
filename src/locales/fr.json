@@ -50,7 +50,8 @@
     "fewerFilters": "Moins de filtres",
     "filterByTag": "Filtrer par thème",
     "resetFilters": "Réinitialiser les filtres",
-    "cvGenerator": "Générateur de CV"
+    "cvGenerator": "Générateur de CV",
+    "qrGenerator": "Générateur de QR code"
   },
   "miku": {
     "title": "Miku",
@@ -315,6 +316,180 @@
       "photoAdded": "Photo ajoutée.",
       "photoRemoved": "Photo retirée.",
       "imported": "Formulaire chargé."
+    }
+  },
+  "qrgen": {
+    "title": "Générateur de QR code",
+    "lead": "Transformez un lien, un texte, une adresse e-mail, un numéro de téléphone, un réseau Wi-Fi ou une carte de contact en QR code. Choisissez ses formes, ses couleurs et un logo au centre, puis téléchargez-le en PNG ou en SVG.",
+    "privacy": "Tout se passe dans votre navigateur. Rien n'est envoyé, pas même votre logo.",
+    "decimal": ",",
+    "content": {
+      "title": "Contenu",
+      "kind": "Type de contenu",
+      "kinds": {
+        "link": "Lien",
+        "text": "Texte",
+        "email": "E-mail",
+        "phone": "Téléphone",
+        "wifi": "Réseau Wi-Fi",
+        "contact": "Carte de contact (vCard)"
+      },
+      "link": "Adresse du lien",
+      "linkHint": "Vous pouvez coller un lien complet. Ses paramètres, après le « ? », passent dans la liste ci-dessous.",
+      "params": "Paramètres du lien",
+      "noParams": "Aucun paramètre.",
+      "paramName": "Paramètre {{n}}",
+      "paramKey": "Nom",
+      "paramValue": "Valeur",
+      "addParam": "Ajouter un paramètre",
+      "paramsTaken_one": "{{count}} paramètre ajouté à la liste.",
+      "paramsTaken_other": "{{count}} paramètres ajoutés à la liste.",
+      "sourceSuffix": "Ajouter _qr-code à la valeur de src, pour distinguer les scans des clics sur un même document",
+      "finalLink": "Lien final",
+      "newTab": "(s'ouvre dans un nouvel onglet)",
+      "noLink": "Saisissez une adresse pour voir le lien final.",
+      "text": "Texte",
+      "emailTo": "Destinataire",
+      "emailSubject": "Objet (facultatif)",
+      "emailBody": "Message (facultatif)",
+      "phone": "Numéro de téléphone",
+      "ssid": "Nom du réseau (SSID)",
+      "security": "Sécurité",
+      "securities": {
+        "WPA": "WPA, WPA2 ou WPA3",
+        "WEP": "WEP",
+        "nopass": "Aucune (réseau ouvert)"
+      },
+      "password": "Mot de passe",
+      "hidden": "Réseau masqué",
+      "contactFields": {
+        "firstName": "Prénom",
+        "lastName": "Nom",
+        "organization": "Entreprise ou école",
+        "title": "Fonction",
+        "phone": "Téléphone",
+        "email": "E-mail",
+        "url": "Site web"
+      }
+    },
+    "shape": {
+      "title": "Formes",
+      "modules": "Forme des points",
+      "moduleStyles": {
+        "square": "Carrés",
+        "rounded": "Arrondis",
+        "dots": "Ronds",
+        "leaf": "Feuilles"
+      },
+      "eyeFrame": "Contour des repères d'angle",
+      "eyeCenter": "Centre des repères d'angle",
+      "eyeStyles": {
+        "square": "Carré",
+        "rounded": "Arrondi",
+        "circle": "Rond"
+      },
+      "margin": "Marge autour du code",
+      "modulesCount_one": "{{count}} module",
+      "modulesCount_other": "{{count}} modules",
+      "marginHint_one": "{{count}} module. Les lecteurs ont besoin d'une marge claire, d'au moins 2 modules si le fond autour est uni et clair, sinon 4.",
+      "marginHint_other": "{{count}} modules. Les lecteurs ont besoin d'une marge claire, d'au moins 2 modules si le fond autour est uni et clair, sinon 4.",
+      "roundedCorners": "Coins du fond arrondis (selon la marge)",
+      "correction": "Correction d'erreurs",
+      "corrections": {
+        "auto": "Automatique",
+        "L": "Faible (L, 7 %)",
+        "M": "Moyenne (M, 15 %)",
+        "Q": "Élevée (Q, 25 %)",
+        "H": "Maximale (H, 30 %)"
+      },
+      "correctionHint": "Une correction plus forte permet de lire un code abîmé ou couvert par un logo, mais rend le code plus dense. En automatique, elle est moyenne sans logo et maximale avec."
+    },
+    "colors": {
+      "title": "Couleurs",
+      "foreground": "Couleur des points",
+      "background": "Couleur du fond",
+      "hex": "Code hexadécimal, {{name}}",
+      "transparent": "Fond transparent",
+      "customEyes": "Couleur différente pour les repères d'angle",
+      "eyeColor": "Couleur des repères d'angle",
+      "lowContrast": "Le contraste n'est que de {{ratio}}:1. Visez au moins 4:1 pour que tous les lecteurs y arrivent.",
+      "inverted": "Des points clairs sur un fond foncé ne sont pas lus par tous les lecteurs. Préférez des points foncés sur un fond clair.",
+      "transparentNote": "Avec un fond transparent, placez le code sur un fond clair et uni."
+    },
+    "logo": {
+      "title": "Logo au centre",
+      "kind": "Logo",
+      "kinds": {
+        "none": "Aucun",
+        "icon": "Icône",
+        "image": "Image"
+      },
+      "icon": "Icône",
+      "iconColor": "Couleur de l'icône",
+      "icons": {
+        "link": "Lien",
+        "globe": "Globe (site web)",
+        "envelope": "Enveloppe (e-mail)",
+        "phone": "Téléphone",
+        "wifi": "Wi-Fi",
+        "user": "Personne",
+        "location": "Lieu",
+        "linkedin": "LinkedIn",
+        "github": "GitHub",
+        "gitlab": "GitLab",
+        "youtube": "YouTube",
+        "discord": "Discord",
+        "instagram": "Instagram",
+        "x": "X (Twitter)",
+        "whatsapp": "WhatsApp",
+        "steam": "Steam"
+      },
+      "choose": "Choisir une image (PNG, JPEG, WebP ou SVG)",
+      "noImage": "Pas encore d'image.",
+      "preview": "Logo choisi",
+      "remove": "Retirer l'image",
+      "added": "Logo ajouté.",
+      "removed": "Logo retiré.",
+      "error": "Cette image n'a pas pu être lue. Essayez un fichier PNG ou JPEG.",
+      "size": "Taille du logo",
+      "shape": "Zone du logo",
+      "shapes": {
+        "square": "Carrée",
+        "circle": "Ronde"
+      },
+      "clear": "Effacer les points sous le logo",
+      "lowLevel": "Avec un logo, choisissez une correction élevée (Q) ou maximale (H), sinon le code risque de ne plus être lu."
+    },
+    "preview": {
+      "title": "Aperçu",
+      "alt": "QR code, {{content}}",
+      "empty": "Remplissez le contenu pour voir le QR code.",
+      "tooLong": "Ce contenu est trop long pour un QR code ({{count}} caractères). Raccourcissez-le ou baissez la correction d'erreurs.",
+      "info": "Version {{version}}, {{count}} × {{count}} modules, correction de niveau {{level}}.",
+      "encoded": "Texte encodé"
+    },
+    "reading": {
+      "checking": "Vérification de la lecture...",
+      "ok": "Le code se lit correctement.",
+      "fail": "Le lecteur intégré n'arrive pas à lire ce code. Augmentez la correction d'erreurs, réduisez le logo, renforcez le contraste ou essayez une autre forme, puis testez avec votre téléphone."
+    },
+    "export": {
+      "size": "Taille du PNG",
+      "pixels": "{{size}} × {{size}} pixels",
+      "png": "Télécharger en PNG",
+      "svg": "Télécharger en SVG",
+      "copy": "Copier l'image",
+      "downloaded": "Téléchargement lancé.",
+      "copied": "Image copiée.",
+      "copyFailed": "L'image n'a pas pu être copiée. Téléchargez-la plutôt."
+    },
+    "reset": {
+      "button": "Réinitialiser",
+      "confirmTitle": "Tout réinitialiser ?",
+      "confirmText": "Le contenu, les formes, les couleurs et le logo reprendront leurs valeurs de départ.",
+      "confirm": "Réinitialiser",
+      "cancel": "Annuler",
+      "done": "Formulaire réinitialisé."
     }
   },
   "redirection": {
@@ -1145,14 +1320,14 @@
       "items": {
         "ip": "mon serveur garde votre adresse IP en mémoire pendant une heure au maximum pour limiter les abus (nombre de messages par heure). Elle n'est ni enregistrée ni transmise.",
         "hosting": "le site est hébergé par GitHub Pages et le serveur par Render, qui peuvent conserver des journaux techniques (dont l'adresse IP) pour leur sécurité.",
-        "resources": "votre navigateur charge les images de la page Steam depuis les serveurs de Steam et les miniatures des vidéos (accueil et projets) depuis les serveurs de YouTube. Le lecteur YouTube, en mode de confidentialité renforcée, n'est chargé que si vous cliquez sur une vidéo. Les polices et les icônes sont hébergées sur ce site. Seules les pages de l'ancienne version les chargent encore depuis Google Fonts et cdnjs. Le générateur de CV n'envoie rien, sauf si vous choisissez d'ouvrir votre CV dans Overleaf, qui le reçoit alors."
+        "resources": "votre navigateur charge les images de la page Steam depuis les serveurs de Steam et les miniatures des vidéos (accueil et projets) depuis les serveurs de YouTube. Le lecteur YouTube, en mode de confidentialité renforcée, n'est chargé que si vous cliquez sur une vidéo. Les polices et les icônes sont hébergées sur ce site. Seules les pages de l'ancienne version les chargent encore depuis Google Fonts et cdnjs. Le générateur de QR code n'envoie rien. Le générateur de CV non plus, sauf si vous choisissez d'ouvrir votre CV dans Overleaf, qui le reçoit alors."
       }
     },
     "storage": {
       "title": "Stockage dans votre navigateur",
       "text": "Ce site ne dépose aucun cookie et n'utilise aucun service tiers de mesure d'audience (comme Google Analytics) ni de publicité. Il enregistre seulement dans votre navigateur :",
       "items": {
-        "local": "votre thème, votre langue, votre éventuel refus de la mesure des visites et le brouillon du générateur de CV (stockage local), pour les retrouver à votre prochaine visite",
+        "local": "votre thème, votre langue, votre éventuel refus de la mesure des visites et les brouillons des générateurs de CV et de QR code (stockage local), pour les retrouver à votre prochaine visite",
         "session": "la conversation en cours avec le chatbot, le contexte de visite et un identifiant de visite aléatoire (stockage de session), effacés à la fermeture de l'onglet"
       }
     },

@@ -26,7 +26,16 @@ export function currentPath(pathname: string): string {
 }
 
 // Pages of the current design that have no previous version to link to.
-const WITHOUT_LEGACY = ["/cv-generator", "/generateur-cv", "/cv", "/miku"];
+const WITHOUT_LEGACY = [
+  "/cv-generator",
+  "/generateur-cv",
+  "/cv",
+  "/qr-code-generator",
+  "/generateur-qr-code",
+  "/qr-code",
+  "/qr",
+  "/miku",
+];
 
 export function hasLegacyVersion(pathname: string): boolean {
   return !WITHOUT_LEGACY.includes(pathname.replace(/\/+$/, ""));

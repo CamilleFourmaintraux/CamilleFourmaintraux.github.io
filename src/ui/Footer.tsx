@@ -6,6 +6,7 @@ import {
   faFileLines,
   faFilePdf,
   faFolderOpen,
+  faQrcode,
   faShieldHalved,
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
@@ -51,6 +52,11 @@ export default function Footer() {
             <li>
               <NavLink to="/cv-generator">
                 <Icon icon={faFileLines} /> {t("ui.cvGenerator")}
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/qr-code-generator">
+                <Icon icon={faQrcode} /> {t("ui.qrGenerator")}
               </NavLink>
             </li>
             <li>
