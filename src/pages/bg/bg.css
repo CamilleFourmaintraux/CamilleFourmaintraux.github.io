@@ -1,0 +1,175 @@
+/* Background remover: the form styles come from ../cv/form.css. */
+:root[data-ui="v2"] {
+  .bgr-drop {
+    display: grid;
+    gap: var(--space-3);
+    justify-items: center;
+    padding: var(--space-5) var(--space-4);
+    text-align: center;
+    border: 2px dashed var(--line-strong);
+    border-radius: var(--radius-m);
+    background: var(--surface-2);
+  }
+  .bgr-drop > .icon {
+    font-size: 2rem;
+    color: var(--primary);
+  }
+  .bgr-drop p {
+    margin: 0;
+    max-width: 30ch;
+  }
+  .bgr-drop.is-dragging {
+    border-color: var(--primary);
+    background: color-mix(in srgb, var(--primary) 10%, var(--surface-2));
+  }
+
+  .bgr-methods {
+    display: grid;
+    gap: var(--space-2);
+  }
+  .bgr-method {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-3);
+    align-items: start;
+    padding: var(--space-3);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-m);
+    cursor: pointer;
+  }
+  .bgr-method:has(input:checked) {
+    border-color: var(--primary);
+    box-shadow: inset 0 0 0 1px var(--primary);
+  }
+  /* The whole card shows the keyboard focus of its radio button. */
+  .bgr-method:has(input:focus-visible) {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+  }
+  .bgr-method input:focus-visible {
+    outline: none;
+  }
+  .bgr-method input {
+    margin-top: 0.3em;
+  }
+  .bgr-method.is-disabled {
+    cursor: not-allowed;
+    color: var(--ink-2);
+  }
+  .bgr-method-body,
+  .bgr-method-body > span:last-child {
+    display: grid;
+    gap: var(--space-1);
+  }
+  .bgr-method-name {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    align-items: baseline;
+    font-weight: 700;
+  }
+  .bgr-badge {
+    padding: 0.05em 0.5em;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+  }
+  .bgr-method-text {
+    font-size: 0.95rem;
+  }
+  .bgr-method-note {
+    color: var(--ink-2);
+    font-size: 0.85rem;
+  }
+
+  .bgr-run,
+  .bgr-cache {
+    display: grid;
+    gap: var(--space-2);
+    justify-items: start;
+  }
+  .bgr-progress {
+    display: grid;
+    gap: var(--space-1);
+    width: 100%;
+  }
+  .bgr-progress progress {
+    width: 100%;
+    height: 0.75rem;
+    accent-color: var(--primary);
+  }
+  .bgr-color-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    align-items: end;
+  }
+  .bgr-value {
+    font-weight: 400;
+    color: var(--ink-2);
+  }
+
+  /* Before and after, one over the other. --ratio is width / height. */
+  .bgr-viewer {
+    position: relative;
+    width: min(100%, calc(60dvh * var(--ratio)));
+    aspect-ratio: var(--ratio);
+    margin-inline: auto;
+    overflow: hidden;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-s);
+    box-shadow: 6px 6px 0 var(--shadow);
+  }
+  .bgr-viewer canvas {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .bgr-viewer.is-picking {
+    cursor: crosshair;
+  }
+  .bgr-after {
+    position: absolute;
+    inset: 0;
+  }
+  .bgr-viewer.is-white .bgr-after {
+    background: #fff;
+  }
+  .bgr-viewer.is-black .bgr-after {
+    background: #000;
+  }
+  .bgr-viewer.is-checker .bgr-after {
+    background-color: #fff;
+    background-image:
+      linear-gradient(45deg, #d9d9d9 25%, transparent 25%),
+      linear-gradient(-45deg, #d9d9d9 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #d9d9d9 75%),
+      linear-gradient(-45deg, transparent 75%, #d9d9d9 75%);
+    background-size: 16px 16px;
+    background-position:
+      0 0,
+      0 8px,
+      8px -8px,
+      -8px 0;
+  }
+  .bgr-divider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    margin-left: -1px;
+    background: #fff;
+    box-shadow: 0 0 0 1px rgb(0 0 0 / 0.5);
+    pointer-events: none;
+  }
+  .bgr-empty {
+    padding: var(--space-6) var(--space-4);
+    color: var(--ink-2);
+    text-align: center;
+    border: 2px dashed var(--line);
+    border-radius: var(--radius-m);
+  }
+}

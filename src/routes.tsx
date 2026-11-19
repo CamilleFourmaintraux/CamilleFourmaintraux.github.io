@@ -113,6 +113,10 @@ const NEW_PAGES: { paths: string[]; page: Page }[] = [
     paths: ["qr-code-generator", "generateur-qr-code", "qr-code", "qr"],
     page: lazy(() => import("./pages/qr/QrGenerator")),
   },
+  {
+    paths: ["background-remover", "retirer-le-fond", "detourage"],
+    page: lazy(() => import("./pages/bg/BackgroundRemover")),
+  },
 ];
 
 const NotFound = lazy(() => import("./pages/NotFound"));

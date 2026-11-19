@@ -5,6 +5,7 @@ import {
   faEnvelope,
   faFileLines,
   faFilePdf,
+  faEraser,
   faFolderOpen,
   faQrcode,
   faShieldHalved,
@@ -57,6 +58,11 @@ export default function Footer() {
             <li>
               <NavLink to="/qr-code-generator">
                 <Icon icon={faQrcode} /> {t("ui.qrGenerator")}
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/background-remover">
+                <Icon icon={faEraser} /> {t("ui.backgroundRemover")}
               </NavLink>
             </li>
             <li>

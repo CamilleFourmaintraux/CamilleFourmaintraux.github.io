@@ -24,7 +24,7 @@ const SECTIONS: { key: string; items?: string[] }[] = [
     ],
   },
   { key: "technical", items: ["ip", "hosting", "resources"] },
-  { key: "storage", items: ["local", "session"] },
+  { key: "storage", items: ["local", "session", "models"] },
   { key: "retention" },
   { key: "rights" },
 ];

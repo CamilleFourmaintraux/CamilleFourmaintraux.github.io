@@ -33,6 +33,11 @@ export default defineConfig({
   resolve: {
     alias: { "@": fileURLToPath(new URL("./src", import.meta.url)) },
   },
+  // onnxruntime-web finds its .wasm file next to itself: pre-bundling would
+  // move it away during development.
+  optimizeDeps: { exclude: ["onnxruntime-web"] },
+  // The background remover worker loads its libraries as ES modules.
+  worker: { format: "es" },
   css: {
     transformer: "lightningcss",
     lightningcss: { targets: cssTargets },

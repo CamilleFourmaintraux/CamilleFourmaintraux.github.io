@@ -51,7 +51,8 @@
     "filterByTag": "Filtrer par thème",
     "resetFilters": "Réinitialiser les filtres",
     "cvGenerator": "Générateur de CV",
-    "qrGenerator": "Générateur de QR code"
+    "qrGenerator": "Générateur de QR code",
+    "backgroundRemover": "Retirer le fond d'une image"
   },
   "miku": {
     "title": "Miku",
@@ -490,6 +491,145 @@
       "confirm": "Réinitialiser",
       "cancel": "Annuler",
       "done": "Formulaire réinitialisé."
+    }
+  },
+  "bgr": {
+    "title": "Retirer le fond d'une image",
+    "lead": "Déposez une image, choisissez une méthode, et récupérez-la sans son fond, en PNG transparent ou sur la couleur de votre choix.",
+    "privacy": "Votre image ne quitte jamais votre appareil. Les modèles d'IA tournent dans votre navigateur. Ils sont téléchargés une seule fois depuis Hugging Face, puis gardés en cache.",
+    "image": {
+      "title": "Image",
+      "drop": "Déposez une image ici, collez-la avec Ctrl+V, ou choisissez un fichier.",
+      "choose": "Choisir une image",
+      "sample": "Essayer avec un exemple",
+      "size": "Image de {{width}} × {{height}} pixels.",
+      "reduced": "Image réduite à {{width}} × {{height}} pixels (au lieu de {{fromWidth}} × {{fromHeight}}) pour ne pas saturer la mémoire."
+    },
+    "methods": {
+      "title": "Méthode",
+      "isnet": {
+        "name": "ISNet",
+        "badge": "Polyvalent, recommandé",
+        "text": "Bon sur les objets, les logos, les animaux et les personnes. Il tourne sur le processeur, comptez de quelques secondes à une minute selon l'appareil."
+      },
+      "birefnet": {
+        "name": "BiRefNet lite",
+        "badge": "Meilleure qualité",
+        "text": "Le détourage le plus précis, cheveux et petits détails compris, quel que soit le sujet. Il est lourd, demande WebGPU et une bonne carte graphique, et peut échouer sur mobile."
+      },
+      "ormbg": {
+        "name": "ORMBG",
+        "badge": "Personnes",
+        "text": "Entraîné sur des photos de personnes. Très bon sur les portraits et les silhouettes, moins bon sur les objets et les logos."
+      },
+      "modnet": {
+        "name": "MODNet",
+        "badge": "Portraits, rapide",
+        "text": "Petit et rapide, mais fait uniquement pour les portraits. Il donne de mauvais résultats sur les objets et les logos."
+      },
+      "color": {
+        "name": "Fond uni",
+        "badge": "Sans IA, instantané",
+        "text": "Retire une couleur de fond unie en partant des bords de l'image. Idéal pour les logos, les captures d'écran et les objets sur fond blanc.",
+        "size": "Rien à télécharger."
+      },
+      "size": "{{size}} Mo à télécharger la première fois, licence {{license}}.",
+      "cached": "Déjà téléchargé.",
+      "needsWebgpu": "Indisponible, ce modèle demande WebGPU.",
+      "detecting": "Détection de l'accélération graphique...",
+      "webgpuYes": "Votre navigateur prend en charge WebGPU. Les modèles qui le peuvent utiliseront la carte graphique.",
+      "webgpuNo": "Votre navigateur ne prend pas en charge WebGPU. Les modèles tourneront sur le processeur, plus lentement."
+    },
+    "actions": {
+      "run": "Retirer le fond",
+      "download": "Télécharger le modèle ({{size}} Mo) et retirer le fond",
+      "cancel": "Annuler",
+      "noImage": "Ajoutez d'abord une image."
+    },
+    "status": {
+      "loaded": "Image chargée, {{width}} × {{height}} pixels.",
+      "started": "Détourage lancé.",
+      "download": "Téléchargement du modèle, {{loaded}} sur {{total}} Mo.",
+      "loading": "Préparation du modèle sur {{device}}...",
+      "running": "Détourage en cours sur {{device}}...",
+      "fallback": "WebGPU n'a pas fonctionné avec ce modèle. Le détourage a été refait sur le processeur.",
+      "done": "Fond retiré.",
+      "cancelled": "Détourage annulé."
+    },
+    "devices": {
+      "webgpu": "la carte graphique (WebGPU)",
+      "wasm": "le processeur"
+    },
+    "errors": {
+      "file": "Cette image n'a pas pu être lue. Essayez un fichier PNG, JPEG ou WebP.",
+      "download": "Le modèle n'a pas pu être téléchargé. Vérifiez votre connexion, puis réessayez.",
+      "storage": "Le modèle n'a pas pu être enregistré sur cet appareil.",
+      "webgpu": "Ce modèle n'a pas fonctionné avec la carte graphique de cet appareil. Essayez ISNet, qui tourne sur le processeur.",
+      "unsupported": "Votre navigateur ne permet pas ce traitement. Essayez une version récente de Chrome, Edge, Firefox ou Safari.",
+      "run": "Le détourage a échoué, probablement par manque de mémoire. Essayez une image plus petite ou un modèle plus léger.",
+      "no-image": "Ajoutez d'abord une image."
+    },
+    "models": {
+      "stored": "Modèles gardés sur cet appareil, {{size}} Mo.",
+      "clear": "Supprimer les modèles téléchargés",
+      "cleared": "Modèles supprimés de cet appareil."
+    },
+    "adjust": {
+      "title": "Réglages",
+      "cleanup": "Nettoyage du fond",
+      "cleanupHint": "Efface les restes de fond pâles. Trop fort, il ronge aussi les bords du sujet.",
+      "hardness": "Netteté des bords",
+      "hardnessHint": "À 0, les bords restent doux, ce qui convient aux cheveux. Plus haut, ils deviennent nets, mieux pour les logos et les objets."
+    },
+    "color": {
+      "color": "Couleur du fond à retirer",
+      "hex": "Code hexadécimal, couleur du fond à retirer",
+      "detect": "Détecter depuis les bords",
+      "pickHint": "Vous pouvez aussi cliquer sur l'image pour choisir la couleur.",
+      "picked": "Couleur {{color}} choisie.",
+      "tolerance": "Tolérance",
+      "toleranceHint": "Plus elle est haute, plus les couleurs proches du fond sont retirées.",
+      "softness": "Douceur des bords",
+      "connected": "Retirer seulement le fond relié aux bords (garde les zones de la même couleur à l'intérieur du sujet)"
+    },
+    "output": {
+      "title": "Résultat",
+      "fill": "Fond du résultat",
+      "fills": {
+        "transparent": "Transparent",
+        "color": "Couleur unie"
+      },
+      "fillColor": "Couleur du nouveau fond",
+      "fillHex": "Code hexadécimal, couleur du nouveau fond",
+      "crop": "Recadrer autour du sujet",
+      "margin": "Marge autour du sujet"
+    },
+    "preview": {
+      "title": "Aperçu",
+      "empty": "Ajoutez une image pour commencer.",
+      "before": "Image d'origine",
+      "after": "Image sans son fond",
+      "compare": "Comparer avec l'image d'origine",
+      "compareValue": "{{value}} % de l'image d'origine visible à gauche",
+      "doneAi": "Fond retiré avec {{model}} en {{seconds}} s, sur {{device}}.",
+      "doneColor": "Fond uni retiré.",
+      "cropped": "Le fichier sera recadré à {{width}} × {{height}} pixels.",
+      "background": "Fond de l'aperçu",
+      "backgrounds": {
+        "checker": "Damier",
+        "white": "Blanc",
+        "black": "Noir"
+      }
+    },
+    "export": {
+      "png": "Télécharger en PNG",
+      "copy": "Copier l'image",
+      "qr": "Utiliser comme logo de QR code",
+      "suffix": "sans-fond",
+      "downloaded": "Téléchargement lancé.",
+      "copied": "Image copiée.",
+      "copyFailed": "L'image n'a pas pu être copiée. Téléchargez-la plutôt.",
+      "qrFailed": "L'image n'a pas pu être transmise au générateur de QR code. Téléchargez-la, puis ajoutez-la comme logo."
     }
   },
   "redirection": {
@@ -1320,15 +1460,16 @@
       "items": {
         "ip": "mon serveur garde votre adresse IP en mémoire pendant une heure au maximum pour limiter les abus (nombre de messages par heure). Elle n'est ni enregistrée ni transmise.",
         "hosting": "le site est hébergé par GitHub Pages et le serveur par Render, qui peuvent conserver des journaux techniques (dont l'adresse IP) pour leur sécurité.",
-        "resources": "votre navigateur charge les images de la page Steam depuis les serveurs de Steam et les miniatures des vidéos (accueil et projets) depuis les serveurs de YouTube. Le lecteur YouTube, en mode de confidentialité renforcée, n'est chargé que si vous cliquez sur une vidéo. Les polices et les icônes sont hébergées sur ce site. Seules les pages de l'ancienne version les chargent encore depuis Google Fonts et cdnjs. Le générateur de QR code n'envoie rien. Le générateur de CV non plus, sauf si vous choisissez d'ouvrir votre CV dans Overleaf, qui le reçoit alors."
+        "resources": "votre navigateur charge les images de la page Steam depuis les serveurs de Steam et les miniatures des vidéos (accueil et projets) depuis les serveurs de YouTube. Le lecteur YouTube, en mode de confidentialité renforcée, n'est chargé que si vous cliquez sur une vidéo. Les polices et les icônes sont hébergées sur ce site. Seules les pages de l'ancienne version les chargent encore depuis Google Fonts et cdnjs. Le générateur de QR code n'envoie rien. L'outil pour retirer le fond n'envoie pas vos images. Quand vous lancez un modèle d'IA pour la première fois, votre navigateur le télécharge depuis Hugging Face, qui voit alors votre adresse IP. Le générateur de CV non plus, sauf si vous choisissez d'ouvrir votre CV dans Overleaf, qui le reçoit alors."
       }
     },
     "storage": {
       "title": "Stockage dans votre navigateur",
       "text": "Ce site ne dépose aucun cookie et n'utilise aucun service tiers de mesure d'audience (comme Google Analytics) ni de publicité. Il enregistre seulement dans votre navigateur :",
       "items": {
-        "local": "votre thème, votre langue, votre éventuel refus de la mesure des visites et les brouillons des générateurs de CV et de QR code (stockage local), pour les retrouver à votre prochaine visite",
-        "session": "la conversation en cours avec le chatbot, le contexte de visite et un identifiant de visite aléatoire (stockage de session), effacés à la fermeture de l'onglet"
+        "local": "votre thème, votre langue, votre éventuel refus de la mesure des visites et les brouillons des générateurs de CV et de QR code et les réglages de l'outil pour retirer le fond (stockage local), pour les retrouver à votre prochaine visite",
+        "session": "la conversation en cours avec le chatbot, le contexte de visite et un identifiant de visite aléatoire (stockage de session), effacés à la fermeture de l'onglet",
+        "models": "les modèles d'IA de l'outil pour retirer le fond, si vous en téléchargez un (cache du navigateur). Vous pouvez les supprimer depuis cette page."
       }
     },
     "retention": {

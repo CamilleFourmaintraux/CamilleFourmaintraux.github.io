@@ -34,6 +34,9 @@ const WITHOUT_LEGACY = [
   "/generateur-qr-code",
   "/qr-code",
   "/qr",
+  "/background-remover",
+  "/retirer-le-fond",
+  "/detourage",
   "/miku",
 ];
 

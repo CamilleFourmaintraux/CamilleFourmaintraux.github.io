@@ -51,7 +51,8 @@
     "filterByTag": "Filter by topic",
     "resetFilters": "Reset filters",
     "cvGenerator": "CV generator",
-    "qrGenerator": "QR code generator"
+    "qrGenerator": "QR code generator",
+    "backgroundRemover": "Background remover"
   },
   "miku": {
     "title": "Miku",
@@ -490,6 +491,145 @@
       "confirm": "Reset",
       "cancel": "Cancel",
       "done": "Form reset."
+    }
+  },
+  "bgr": {
+    "title": "Remove an image background",
+    "lead": "Drop a picture, choose a method, and get it back without its background, as a transparent PNG or on the color of your choice.",
+    "privacy": "Your picture never leaves your device. The AI models run in your browser. They are downloaded once from Hugging Face, then kept in the cache.",
+    "image": {
+      "title": "Picture",
+      "drop": "Drop a picture here, paste it with Ctrl+V, or choose a file.",
+      "choose": "Choose a picture",
+      "sample": "Try with an example",
+      "size": "Picture of {{width}} × {{height}} pixels.",
+      "reduced": "Picture reduced to {{width}} × {{height}} pixels (instead of {{fromWidth}} × {{fromHeight}}) to spare memory."
+    },
+    "methods": {
+      "title": "Method",
+      "isnet": {
+        "name": "ISNet",
+        "badge": "All-round, recommended",
+        "text": "Good on objects, logos, animals and people. It runs on the processor, from a few seconds to a minute depending on the device."
+      },
+      "birefnet": {
+        "name": "BiRefNet lite",
+        "badge": "Best quality",
+        "text": "The most precise cut-out, hair and small details included, whatever the subject. It is heavy, needs WebGPU and a good graphics card, and may fail on mobile."
+      },
+      "ormbg": {
+        "name": "ORMBG",
+        "badge": "People",
+        "text": "Trained on photos of people. Very good on portraits and figures, weaker on objects and logos."
+      },
+      "modnet": {
+        "name": "MODNet",
+        "badge": "Portraits, fast",
+        "text": "Small and fast, but made for portraits only. It gives poor results on objects and logos."
+      },
+      "color": {
+        "name": "Plain background",
+        "badge": "No AI, instant",
+        "text": "Removes a plain background color, starting from the edges of the picture. Ideal for logos, screenshots and objects on white.",
+        "size": "Nothing to download."
+      },
+      "size": "{{size}} MB to download the first time, {{license}} license.",
+      "cached": "Already downloaded.",
+      "needsWebgpu": "Unavailable, this model needs WebGPU.",
+      "detecting": "Detecting graphics acceleration...",
+      "webgpuYes": "Your browser supports WebGPU. The models that can will use the graphics card.",
+      "webgpuNo": "Your browser does not support WebGPU. The models will run on the processor, more slowly."
+    },
+    "actions": {
+      "run": "Remove the background",
+      "download": "Download the model ({{size}} MB) and remove the background",
+      "cancel": "Cancel",
+      "noImage": "Add a picture first."
+    },
+    "status": {
+      "loaded": "Picture loaded, {{width}} × {{height}} pixels.",
+      "started": "Background removal started.",
+      "download": "Downloading the model, {{loaded}} of {{total}} MB.",
+      "loading": "Preparing the model on {{device}}...",
+      "running": "Removing the background on {{device}}...",
+      "fallback": "WebGPU did not work with this model. The background was removed on the processor instead.",
+      "done": "Background removed.",
+      "cancelled": "Background removal cancelled."
+    },
+    "devices": {
+      "webgpu": "the graphics card (WebGPU)",
+      "wasm": "the processor"
+    },
+    "errors": {
+      "file": "This picture could not be read. Try a PNG, JPEG or WebP file.",
+      "download": "The model could not be downloaded. Check your connection, then try again.",
+      "storage": "The model could not be saved on this device.",
+      "webgpu": "This model did not work with the graphics card of this device. Try ISNet, which runs on the processor.",
+      "unsupported": "Your browser cannot do this. Try a recent version of Chrome, Edge, Firefox or Safari.",
+      "run": "The background removal failed, probably for lack of memory. Try a smaller picture or a lighter model.",
+      "no-image": "Add a picture first."
+    },
+    "models": {
+      "stored": "Models kept on this device, {{size}} MB.",
+      "clear": "Delete the downloaded models",
+      "cleared": "Models deleted from this device."
+    },
+    "adjust": {
+      "title": "Adjustments",
+      "cleanup": "Background cleanup",
+      "cleanupHint": "Erases faint leftovers of background. Too strong, it also eats into the edges of the subject.",
+      "hardness": "Edge sharpness",
+      "hardnessHint": "At 0, edges stay soft, which suits hair. Higher, they become sharp, better for logos and objects."
+    },
+    "color": {
+      "color": "Background color to remove",
+      "hex": "Hexadecimal code, background color to remove",
+      "detect": "Detect from the edges",
+      "pickHint": "You can also click on the picture to pick the color.",
+      "picked": "Color {{color}} picked.",
+      "tolerance": "Tolerance",
+      "toleranceHint": "The higher it is, the more colors close to the background are removed.",
+      "softness": "Edge softness",
+      "connected": "Only remove the background connected to the edges (keeps areas of the same color inside the subject)"
+    },
+    "output": {
+      "title": "Result",
+      "fill": "Result background",
+      "fills": {
+        "transparent": "Transparent",
+        "color": "Plain color"
+      },
+      "fillColor": "New background color",
+      "fillHex": "Hexadecimal code, new background color",
+      "crop": "Crop around the subject",
+      "margin": "Margin around the subject"
+    },
+    "preview": {
+      "title": "Preview",
+      "empty": "Add a picture to start.",
+      "before": "Original picture",
+      "after": "Picture without its background",
+      "compare": "Compare with the original picture",
+      "compareValue": "{{value}}% of the original picture visible on the left",
+      "doneAi": "Background removed with {{model}} in {{seconds}} s, on {{device}}.",
+      "doneColor": "Plain background removed.",
+      "cropped": "The file will be cropped to {{width}} × {{height}} pixels.",
+      "background": "Preview background",
+      "backgrounds": {
+        "checker": "Checkerboard",
+        "white": "White",
+        "black": "Black"
+      }
+    },
+    "export": {
+      "png": "Download as PNG",
+      "copy": "Copy the picture",
+      "qr": "Use as a QR code logo",
+      "suffix": "no-background",
+      "downloaded": "Download started.",
+      "copied": "Picture copied.",
+      "copyFailed": "The picture could not be copied. Download it instead.",
+      "qrFailed": "The picture could not be passed to the QR code generator. Download it, then add it as a logo."
     }
   },
   "redirection": {
@@ -1320,15 +1460,16 @@
       "items": {
         "ip": "my server keeps your IP address in memory for at most one hour to limit abuse (number of messages per hour). It is neither stored nor shared.",
         "hosting": "the website is hosted by GitHub Pages and the server by Render, which may keep technical logs (including IP addresses) for security.",
-        "resources": "your browser loads the images of the Steam page from Steam's servers and video thumbnails (home page and projects) from YouTube's servers. The YouTube player, in privacy-enhanced mode, is only loaded if you click a video. Fonts and icons are hosted on this website. Only the pages of the previous version still load them from Google Fonts and cdnjs. The QR code generator sends nothing. Neither does the CV generator, unless you choose to open your CV in Overleaf, which then receives it."
+        "resources": "your browser loads the images of the Steam page from Steam's servers and video thumbnails (home page and projects) from YouTube's servers. The YouTube player, in privacy-enhanced mode, is only loaded if you click a video. Fonts and icons are hosted on this website. Only the pages of the previous version still load them from Google Fonts and cdnjs. The QR code generator sends nothing. The background remover does not send your pictures. When you run an AI model for the first time, your browser downloads it from Hugging Face, which then sees your IP address. Neither does the CV generator, unless you choose to open your CV in Overleaf, which then receives it."
       }
     },
     "storage": {
       "title": "Storage in your browser",
       "text": "This website sets no cookies and uses no third-party analytics (such as Google Analytics) or advertising tools. It only stores in your browser:",
       "items": {
-        "local": "your theme, your language, your choice to turn off visit measurement, if any, and the drafts of the CV and QR code generators (local storage), to keep them for your next visit",
-        "session": "the current chatbot conversation, the visit context and a random visit identifier (session storage), cleared when you close the tab"
+        "local": "your theme, your language, your choice to turn off visit measurement, if any, and the drafts of the CV and QR code generators and the settings of the background remover (local storage), to keep them for your next visit",
+        "session": "the current chatbot conversation, the visit context and a random visit identifier (session storage), cleared when you close the tab",
+        "models": "the AI models of the background remover, if you download one (browser cache). You can delete them from that page."
       }
     },
     "retention": {

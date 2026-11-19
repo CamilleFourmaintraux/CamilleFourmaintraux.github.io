@@ -71,6 +71,13 @@ src/legacy/           Previous design
   scanning. A link is an address plus a list of query parameters: a pasted link gives its own
   parameters to the list, and a `src` value can get `_qr-code` to tell scans from clicks. The form
   styles shared with the CV generator are in `src/pages/cv/form.css`.
+- **Background remover.** `#/background-remover` lives in `src/pages/bg/`. Everything runs in the
+  browser, in a Web Worker (`worker.ts`). The AI models run with `onnxruntime-web` (WebGPU when the
+  browser has it, WebAssembly otherwise). Their files are listed in `models.ts`, downloaded from
+  Hugging Face at pinned revisions on first use, and kept in the Cache Storage. To add or swap a
+  model, add an entry there with its repository, commit, file per backend, input size and
+  normalization. `mask.ts` holds the pixel work, including the plain background method, which needs
+  no model. `onnxruntime-web` and its `.wasm` file load only when an AI model runs.
 
 ## Accessibility
 
