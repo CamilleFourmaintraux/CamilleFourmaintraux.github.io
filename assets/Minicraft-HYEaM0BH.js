@@ -1,0 +1,1 @@
+import{j as t}from"./react-BZRXQ4JV.js";import{E as i}from"./EmbeddedGame-_h5Czl0n.js";import"./index-BEgOs96y.js";import"./i18n-C9PJyFWO.js";import"./BackHome-CrDmsKph.js";import"./Page-C56pC1AA.js";import"./usePageTitle-CK604NQa.js";function n(){return t.jsx(i,{title:"Minecraft?",game:"minicraft",width:480,height:555})}export{n as default};
