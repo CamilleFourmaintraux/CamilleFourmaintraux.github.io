@@ -18,17 +18,26 @@
       content="Étudiant ingénieur en informatique à Polytech Grenoble. Parcours, projets, compétences et contact."
     />
     <meta property="og:url" content="https://camillefourmaintraux.github.io/" />
+    <!-- The tab icon follows the theme of the site: the script below swaps
+         each href for its data-icon-dark one in dark mode. -->
     <link
       rel="icon"
-      sizes="any"
-      type="image/vnd.microsoft.icon"
-      href="/img/favicon.ico"
+      sizes="32x32"
+      href="/img/favicon-light.ico"
+      data-icon-dark="/img/favicon-dark.ico"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/img/favicon-light.svg"
+      data-icon-dark="/img/favicon-dark.svg"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="192x192"
       href="/img/icon-192.png"
+      data-icon-dark="/img/icon-dark-192.png"
     />
     <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
     <style>
@@ -56,6 +65,27 @@
             : "light";
         }
         root.setAttribute("data-theme", theme);
+        // Tab icon in the colors of the theme, now and after each switch.
+        var icons = document.querySelectorAll("link[data-icon-dark]");
+        var setIcons = function () {
+          var dark = root.getAttribute("data-theme") === "dark";
+          for (var i = 0; i < icons.length; i++) {
+            var link = icons[i];
+            if (!link.hasAttribute("data-icon-light")) {
+              link.setAttribute("data-icon-light", link.getAttribute("href"));
+            }
+            var href = link.getAttribute(
+              dark ? "data-icon-dark" : "data-icon-light",
+            );
+            if (link.getAttribute("href") !== href)
+              link.setAttribute("href", href);
+          }
+        };
+        setIcons();
+        new MutationObserver(setIcons).observe(root, {
+          attributes: true,
+          attributeFilter: ["data-theme"],
+        });
         if (theme === "dark") {
           document
             .querySelector('meta[name="theme-color"]')

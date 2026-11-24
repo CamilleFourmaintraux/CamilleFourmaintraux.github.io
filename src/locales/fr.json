@@ -642,6 +642,44 @@
     "main": "Ceci est une page de test.",
     "back": "Retour à l'accueil"
   },
+  "pong": {
+    "title": "Pong",
+    "lead": "Le Pong classique, à deux sur le même clavier ou contre une IA du niveau de votre choix. Le score est gardé sur cet appareil.",
+    "start": "Appuyez sur une touche de jeu ou touchez le terrain pour jouer",
+    "paused": "Pause",
+    "play": "Jouer",
+    "pause": "Mettre en pause",
+    "resume": "Reprendre",
+    "reset": "Remettre le score à zéro",
+    "resetDone": "Score remis à zéro.",
+    "sides": {
+      "left": "Raquette gauche",
+      "right": "Raquette droite"
+    },
+    "levels": {
+      "human": "Joueur (pas d'IA)",
+      "noob": "IA débutante",
+      "good": "Bonne IA",
+      "pro": "IA pro",
+      "invincible": "IA invincible"
+    },
+    "keys": {
+      "left": "Touches E pour monter et D pour descendre.",
+      "right": "Flèches haut et bas."
+    },
+    "hints": {
+      "noob": "Rate souvent la balle, idéale pour débuter.",
+      "good": "Joue bien, mais fait des erreurs de temps en temps.",
+      "pro": "Rate rarement. Il faudra de la persévérance pour la battre.",
+      "invincible": "Ne rate jamais la balle. Impossible à battre."
+    },
+    "point": {
+      "left": "Point pour la gauche, {{left}} à {{right}}.",
+      "right": "Point pour la droite, {{left}} à {{right}}."
+    },
+    "field": "Terrain de Pong. Score de {{left}} pour la gauche et {{right}} pour la droite.",
+    "help": "Sur un écran tactile, faites glisser un doigt dans la moitié du terrain de votre raquette. Le jeu se met en pause quand vous quittez la fenêtre."
+  },
   "chatbot": {
     "title": "CamilleGPT",
     "main": "Cette page est une expérimentation avec l'IA générative afin d'entraîner un agent sur mon parcours et mes projets pour qu'il puisse répondre en mon nom. Le premier message prend du temps.",
@@ -1467,7 +1505,7 @@
       "title": "Stockage dans votre navigateur",
       "text": "Ce site ne dépose aucun cookie et n'utilise aucun service tiers de mesure d'audience (comme Google Analytics) ni de publicité. Il enregistre seulement dans votre navigateur :",
       "items": {
-        "local": "votre thème, votre langue, votre éventuel refus de la mesure des visites et les brouillons des générateurs de CV et de QR code et les réglages de l'outil pour retirer le fond (stockage local), pour les retrouver à votre prochaine visite",
+        "local": "votre thème, votre langue, votre éventuel refus de la mesure des visites, les brouillons des générateurs de CV et de QR code, les réglages de l'outil pour retirer le fond et le score du Pong (stockage local), pour les retrouver à votre prochaine visite",
         "session": "la conversation en cours avec le chatbot, le contexte de visite et un identifiant de visite aléatoire (stockage de session), effacés à la fermeture de l'onglet",
         "models": "les modèles d'IA de l'outil pour retirer le fond, si vous en téléchargez un (cache du navigateur). Vous pouvez les supprimer depuis cette page."
       }

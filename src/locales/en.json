@@ -642,6 +642,44 @@
     "main": "This is a test page.",
     "back": "Back to main page"
   },
+  "pong": {
+    "title": "Pong",
+    "lead": "Classic Pong, for two players on the same keyboard or against an AI of the level you choose. The score is kept on this device.",
+    "start": "Press a game key or touch the field to play",
+    "paused": "Paused",
+    "play": "Play",
+    "pause": "Pause",
+    "resume": "Resume",
+    "reset": "Reset the score",
+    "resetDone": "Score reset.",
+    "sides": {
+      "left": "Left paddle",
+      "right": "Right paddle"
+    },
+    "levels": {
+      "human": "Player (no AI)",
+      "noob": "Noob AI",
+      "good": "Good AI",
+      "pro": "Pro AI",
+      "invincible": "Invincible AI"
+    },
+    "keys": {
+      "left": "E to go up, D to go down.",
+      "right": "Up and down arrows."
+    },
+    "hints": {
+      "noob": "Often misses the ball, ideal to start with.",
+      "good": "Plays well, but makes mistakes now and then.",
+      "pro": "Rarely misses. Beating it takes perseverance.",
+      "invincible": "Never misses the ball. Impossible to beat."
+    },
+    "point": {
+      "left": "Point for the left, {{left}} to {{right}}.",
+      "right": "Point for the right, {{left}} to {{right}}."
+    },
+    "field": "Pong field. Score of {{left}} for the left and {{right}} for the right.",
+    "help": "On a touch screen, slide a finger in the half of the field of your paddle. The game pauses when you leave the window."
+  },
   "chatbot": {
     "title": "CamilleGPT",
     "main": "This page is an experiment with generative AI to let an agent learn about me and my projects so it can speak on my behalf. The first message takes some time.",
@@ -1467,7 +1505,7 @@
       "title": "Storage in your browser",
       "text": "This website sets no cookies and uses no third-party analytics (such as Google Analytics) or advertising tools. It only stores in your browser:",
       "items": {
-        "local": "your theme, your language, your choice to turn off visit measurement, if any, and the drafts of the CV and QR code generators and the settings of the background remover (local storage), to keep them for your next visit",
+        "local": "your theme, your language, your choice to turn off visit measurement, if any, the drafts of the CV and QR code generators, the settings of the background remover and the Pong score (local storage), to keep them for your next visit",
         "session": "the current chatbot conversation, the visit context and a random visit identifier (session storage), cleared when you close the tab",
         "models": "the AI models of the background remover, if you download one (browser cache). You can delete them from that page."
       }
