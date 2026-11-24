@@ -658,6 +658,7 @@
     },
     "levels": {
       "human": "Joueur (pas d'IA)",
+      "online": "Joueur en ligne",
       "noob": "IA débutante",
       "good": "Bonne IA",
       "pro": "IA pro",
@@ -665,9 +666,11 @@
     },
     "keys": {
       "left": "Touches E pour monter et D pour descendre.",
-      "right": "Flèches haut et bas."
+      "right": "Flèches haut et bas.",
+      "online": "C'est vous. Touches E et D ou flèches haut et bas."
     },
     "hints": {
+      "online": "Un autre joueur, sur son propre appareil, trouvé par le serveur du site.",
       "noob": "Rate souvent la balle, idéale pour débuter.",
       "good": "Joue bien, mais fait des erreurs de temps en temps.",
       "pro": "Rate rarement. Il faudra de la persévérance pour la battre.",
@@ -678,7 +681,40 @@
       "right": "Point pour la droite, {{left}} à {{right}}."
     },
     "field": "Terrain de Pong. Score de {{left}} pour la gauche et {{right}} pour la droite.",
-    "help": "Sur un écran tactile, faites glisser un doigt dans la moitié du terrain de votre raquette. Le jeu se met en pause quand vous quittez la fenêtre."
+    "help": "Sur un écran tactile, faites glisser un doigt dans la moitié du terrain de votre raquette. Le jeu se met en pause quand vous quittez la fenêtre.",
+    "online": {
+      "short": {
+        "connecting": "Connexion au serveur...",
+        "waking": "Réveil du serveur...",
+        "waiting": "En attente d'un adversaire...",
+        "busy": "Partie en ligne déjà en cours",
+        "opponent-left": "Adversaire parti",
+        "idle": "Partie arrêtée",
+        "lost": "Connexion perdue",
+        "unreachable": "Serveur injoignable"
+      },
+      "long": {
+        "connecting": "Connexion au serveur du site...",
+        "waking": "Le serveur du site se réveille, cela peut prendre jusqu'à une minute.",
+        "waiting": "En attente d'un adversaire. La partie commence dès qu'un autre joueur choisit « Joueur en ligne ».",
+        "playing": "Partie en ligne en cours. Vous êtes la raquette de {{side}}.",
+        "busy": "Deux joueurs sont déjà en ligne. Réessayez un peu plus tard.",
+        "opponent-left": "Votre adversaire a quitté la partie.",
+        "idle": "La partie s'est arrêtée après trois minutes sans mouvement.",
+        "lost": "La connexion avec le serveur a été perdue.",
+        "unreachable": "Le serveur ne répond pas. Réessayez plus tard."
+      },
+      "sides": {
+        "left": "gauche",
+        "right": "droite"
+      },
+      "field": "Partie de Pong en ligne. Score de {{me}} pour vous et {{them}} pour votre adversaire.",
+      "pointMe": "Point pour vous, {{me}} à {{them}}.",
+      "pointThem": "Point pour votre adversaire, {{me}} à {{them}}.",
+      "again": "Chercher un adversaire",
+      "quit": "Quitter la partie",
+      "cancel": "Annuler la recherche"
+    }
   },
   "chatbot": {
     "title": "CamilleGPT",
@@ -1453,7 +1489,7 @@
   },
   "privacy": {
     "title": "Confidentialité",
-    "updated": "Dernière mise à jour : 19 novembre 2026",
+    "updated": "Dernière mise à jour : 24 novembre 2026",
     "intro": "Ce site est mon portfolio personnel. Cette page explique quelles données sont collectées quand vous l'utilisez, pourquoi, et ce que vous pouvez demander.",
     "who": {
       "title": "Qui est responsable ?",
@@ -1498,7 +1534,7 @@
       "items": {
         "ip": "mon serveur garde votre adresse IP en mémoire pendant une heure au maximum pour limiter les abus (nombre de messages par heure). Elle n'est ni enregistrée ni transmise.",
         "hosting": "le site est hébergé par GitHub Pages et le serveur par Render, qui peuvent conserver des journaux techniques (dont l'adresse IP) pour leur sécurité.",
-        "resources": "votre navigateur charge les images de la page Steam depuis les serveurs de Steam et les miniatures des vidéos (accueil et projets) depuis les serveurs de YouTube. Le lecteur YouTube, en mode de confidentialité renforcée, n'est chargé que si vous cliquez sur une vidéo. Les polices et les icônes sont hébergées sur ce site. Seules les pages de l'ancienne version les chargent encore depuis Google Fonts et cdnjs. Le générateur de QR code n'envoie rien. L'outil pour retirer le fond n'envoie pas vos images. Quand vous lancez un modèle d'IA pour la première fois, votre navigateur le télécharge depuis Hugging Face, qui voit alors votre adresse IP. Le générateur de CV non plus, sauf si vous choisissez d'ouvrir votre CV dans Overleaf, qui le reçoit alors."
+        "resources": "votre navigateur charge les images de la page Steam depuis les serveurs de Steam et les miniatures des vidéos (accueil et projets) depuis les serveurs de YouTube. Le lecteur YouTube, en mode de confidentialité renforcée, n'est chargé que si vous cliquez sur une vidéo. Les polices et les icônes sont hébergées sur ce site. Seules les pages de l'ancienne version les chargent encore depuis Google Fonts et cdnjs. Le générateur de QR code n'envoie rien. Le générateur de CV non plus, sauf si vous choisissez d'ouvrir votre CV dans Overleaf, qui le reçoit alors. L'outil pour retirer le fond n'envoie pas vos images. Quand vous lancez un modèle d'IA pour la première fois, votre navigateur le télécharge depuis Hugging Face, qui voit alors votre adresse IP. Le Pong en ligne ne contacte le serveur du site, hébergé chez Render, que si vous choisissez « Joueur en ligne ». Il n'échange alors que la position des raquettes, celle de la balle et le score."
       }
     },
     "storage": {

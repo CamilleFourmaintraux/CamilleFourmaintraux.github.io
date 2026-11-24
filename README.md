@@ -71,6 +71,11 @@ src/legacy/           Previous design
   scanning. A link is an address plus a list of query parameters: a pasted link gives its own
   parameters to the list, and a `src` value can get `_qr-code` to tell scans from clicks. The form
   styles shared with the CV generator are in `src/pages/cv/form.css`.
+- **Pong.** `#/pong` lives in `src/pages/games/Pong.tsx`, with its rules in
+  `src/pages/games/pong/engine.ts` (no drawing, so tests can simulate whole matches) and the online
+  mode in `pong/online.ts`. Online games run on the back end, which uses a copy of the same engine:
+  after changing `engine.ts`, regenerate `pong/engine.js` in the back end with
+  `npx esbuild src/pages/games/pong/engine.ts --format=esm --platform=neutral --outfile=engine.js`.
 - **Background remover.** `#/background-remover` lives in `src/pages/bg/`. Everything runs in the
   browser, in a Web Worker (`worker.ts`). The AI models run with `onnxruntime-web` (WebGPU when the
   browser has it, WebAssembly otherwise). Their files are listed in `models.ts`, downloaded from

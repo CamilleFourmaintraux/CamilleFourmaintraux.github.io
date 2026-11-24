@@ -1537,6 +1537,12 @@
     margin: 0;
     text-align: center;
   }
+  /* Where the online search or game stands. */
+  .pong-online {
+    margin: 0;
+    font-weight: 700;
+    text-align: center;
+  }
   .embed-scroll,
   .embed-console {
     margin-top: var(--space-7);

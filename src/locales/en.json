@@ -658,6 +658,7 @@
     },
     "levels": {
       "human": "Player (no AI)",
+      "online": "Online player",
       "noob": "Noob AI",
       "good": "Good AI",
       "pro": "Pro AI",
@@ -665,9 +666,11 @@
     },
     "keys": {
       "left": "E to go up, D to go down.",
-      "right": "Up and down arrows."
+      "right": "Up and down arrows.",
+      "online": "This is you. E and D keys or up and down arrows."
     },
     "hints": {
+      "online": "Another player, on their own device, found by the site server.",
       "noob": "Often misses the ball, ideal to start with.",
       "good": "Plays well, but makes mistakes now and then.",
       "pro": "Rarely misses. Beating it takes perseverance.",
@@ -678,7 +681,40 @@
       "right": "Point for the right, {{left}} to {{right}}."
     },
     "field": "Pong field. Score of {{left}} for the left and {{right}} for the right.",
-    "help": "On a touch screen, slide a finger in the half of the field of your paddle. The game pauses when you leave the window."
+    "help": "On a touch screen, slide a finger in the half of the field of your paddle. The game pauses when you leave the window.",
+    "online": {
+      "short": {
+        "connecting": "Connecting to the server...",
+        "waking": "Waking the server...",
+        "waiting": "Waiting for an opponent...",
+        "busy": "Online game already running",
+        "opponent-left": "Opponent left",
+        "idle": "Game stopped",
+        "lost": "Connection lost",
+        "unreachable": "Server unreachable"
+      },
+      "long": {
+        "connecting": "Connecting to the site server...",
+        "waking": "The site server is waking up, this can take up to a minute.",
+        "waiting": "Waiting for an opponent. The game starts as soon as another player chooses \"Online player\".",
+        "playing": "Online game in progress. You are the {{side}} paddle.",
+        "busy": "Two players are already online. Try again a bit later.",
+        "opponent-left": "Your opponent left the game.",
+        "idle": "The game stopped after three minutes without any movement.",
+        "lost": "The connection with the server was lost.",
+        "unreachable": "The server does not answer. Try again later."
+      },
+      "sides": {
+        "left": "left",
+        "right": "right"
+      },
+      "field": "Online Pong game. Score of {{me}} for you and {{them}} for your opponent.",
+      "pointMe": "Point for you, {{me}} to {{them}}.",
+      "pointThem": "Point for your opponent, {{me}} to {{them}}.",
+      "again": "Look for an opponent",
+      "quit": "Leave the game",
+      "cancel": "Cancel the search"
+    }
   },
   "chatbot": {
     "title": "CamilleGPT",
@@ -1453,7 +1489,7 @@
   },
   "privacy": {
     "title": "Privacy",
-    "updated": "Last updated: November 19, 2026",
+    "updated": "Last updated: November 24, 2026",
     "intro": "This website is my personal portfolio. This page explains what data is collected when you use it, why, and what you can ask for.",
     "who": {
       "title": "Who is responsible?",
@@ -1498,7 +1534,7 @@
       "items": {
         "ip": "my server keeps your IP address in memory for at most one hour to limit abuse (number of messages per hour). It is neither stored nor shared.",
         "hosting": "the website is hosted by GitHub Pages and the server by Render, which may keep technical logs (including IP addresses) for security.",
-        "resources": "your browser loads the images of the Steam page from Steam's servers and video thumbnails (home page and projects) from YouTube's servers. The YouTube player, in privacy-enhanced mode, is only loaded if you click a video. Fonts and icons are hosted on this website. Only the pages of the previous version still load them from Google Fonts and cdnjs. The QR code generator sends nothing. The background remover does not send your pictures. When you run an AI model for the first time, your browser downloads it from Hugging Face, which then sees your IP address. Neither does the CV generator, unless you choose to open your CV in Overleaf, which then receives it."
+        "resources": "your browser loads the images of the Steam page from Steam's servers and video thumbnails (home page and projects) from YouTube's servers. The YouTube player, in privacy-enhanced mode, is only loaded if you click a video. Fonts and icons are hosted on this website. Only the pages of the previous version still load them from Google Fonts and cdnjs. The QR code generator sends nothing. Neither does the CV generator, unless you choose to open your CV in Overleaf, which then receives it. The background remover does not send your pictures. When you run an AI model for the first time, your browser downloads it from Hugging Face, which then sees your IP address. Online Pong only contacts the site server, hosted by Render, when you choose \"Online player\". It then only exchanges the position of the paddles, the position of the ball and the score."
       }
     },
     "storage": {
