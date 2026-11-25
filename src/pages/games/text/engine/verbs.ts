@@ -36,6 +36,7 @@ import {
   loadTier,
   move,
   nameKey,
+  nameState,
   patch,
   peopleIn,
   ref,
@@ -50,7 +51,7 @@ import {
 } from "./world";
 import { scope } from "./parser";
 import { TIERS, needsOf, swallow, tier, tooMuch } from "./needs";
-import { PEOPLE_VERBS } from "./actions";
+import { PEOPLE_VERBS, demandHere, wrapTorch } from "./actions";
 import { bleedAt, bloodAt, WEAK_BLOOD } from "./health";
 import {
   describePerson,
@@ -177,12 +178,17 @@ const examine: Verb = {
       const who = has(g, x, "actor") ? "examine.darkPerson" : "examine.dark";
       return say(ctx, who, { x: ref(g, x) });
     }
-    const key = `${nameKey(g, x)}.desc`;
+    // A description per state when there is one: a spent torch is a stick.
+    const burn = comp(g, x, "burn");
+    const state =
+      burn?.wrapped && fuelLeft(g, x) > 0 ? "wrapped" : nameState(g, x);
+    const base = `${nameKey(g, x)}.desc`;
+    const key =
+      state && text(g, `${base}.${state}`) ? `${base}.${state}` : base;
     if (!has(g, x, "part"))
       say(ctx, text(g, key) ? key : "examine.default", { x: ref(g, x) });
     if (has(g, x, "actor") && x !== g.st.player) return describePerson(ctx, x);
-    const burn = comp(g, x, "burn");
-    if (burn && burn.rate > 0) {
+    if (burn && burn.rate > 0 && key === base) {
       const fuel = fuelLeft(g, x);
       const tier =
         fuel <= 0
@@ -308,6 +314,21 @@ function grab(ctx: Ctx, x: Id, wanted?: Id): number {
   }
   const loc = g.st.ent[x].loc!;
   if (isPlayersHand(g, loc)) {
+    // "Put the torch in my left hand": from one hand to the other.
+    if (wanted && wanted !== loc && isPlayersHand(g, wanted)) {
+      const there = heldIn(g, wanted);
+      if (physical.grip === "two") {
+        say(ctx, "take.already", { x: ref(g, x) });
+        return 0;
+      }
+      if (there) {
+        say(ctx, "hand.full", { hand: bare(g, wanted), x: ref(g, there) });
+        return 0;
+      }
+      move(g, x, wanted);
+      say(ctx, "hand.switch", { x: ref(g, x), hand: bare(g, wanted) });
+      return 1;
+    }
     say(ctx, "take.already", { x: ref(g, x) });
     return 0;
   }
@@ -451,7 +472,16 @@ const put: Verb = {
         continue;
       }
       const why = misfit(g, x, c);
+      // A strip of cloth, or the shirt, around a torch.
+      if (why && comp(g, x, "cloth") && PEOPLE_VERBS.wrap) {
+        if (wrapTorch(ctx, x, c)) continue;
+      }
       if (why === "put.notContainer" && givesFire(g, c)) {
+        // A torch held to the embers catches.
+        if (comp(g, x, "burn")) {
+          lightVerb.run(ctx, { verb: "light", obj: [x], ind: c });
+          continue;
+        }
         if (has(g, x, "destructible")) {
           say(ctx, "fire.burns", { x: ref(g, x) });
           destroy(g, x);
@@ -521,7 +551,9 @@ const inventory: Verb = {
         list: refs(g, inside),
       });
     }
-    say(ctx, `load.${loadTier(g, player)}`);
+    // The load is told only when it slows you down ("weight" tells it always).
+    if (loadTier(g, player) !== "light")
+      say(ctx, `load.${loadTier(g, player)}`);
   },
 };
 
@@ -533,6 +565,12 @@ function waitFor(ctx: Ctx, intent: Intent, rest: boolean) {
   if (hostilesHere(g).length > 0) {
     say(ctx, "wait.notNow");
     return void advance(ctx, { minutes: 1 });
+  }
+  // A robber waiting for the purse does not wait half an hour with you.
+  const robber = demandHere(g);
+  if (robber) {
+    say(ctx, "wait.stare", { x: ref(g, robber) });
+    return void advance(ctx, { minutes: 2 });
   }
   const minutes =
     intent.until !== undefined
@@ -633,7 +671,9 @@ const status: Verb = {
         }
       }
     }
-    say(ctx, `load.${loadTier(g, player)}`);
+    // The load is told only when it slows you down ("weight" tells it always).
+    if (loadTier(g, player) !== "light")
+      say(ctx, `load.${loadTier(g, player)}`);
     if (fine) say(ctx, "status.fine");
   },
 };
@@ -732,6 +772,9 @@ const destroyVerb: Verb = {
   run(ctx, intent) {
     const g = ctx.g;
     const x = intent.obj![0];
+    // "Rip the shirt": cloth tears into strips.
+    if (comp(g, x, "cloth") && PEOPLE_VERBS.tear)
+      return PEOPLE_VERBS.tear.run(ctx, { ...intent, verb: "tear" });
     if (!has(g, x, "destructible")) {
       say(ctx, "destroy.cannot", { x: ref(g, x) });
       return void advance(ctx, { minutes: 1 });
@@ -781,7 +824,66 @@ const close: Verb = {
   },
 };
 
+/** "Weight", "how much do I carry". */
+const load: Verb = {
+  run(ctx) {
+    say(ctx, `load.${loadTier(ctx.g, ctx.g.st.player)}`);
+  },
+};
+
+/** "Use the torch": what using a thing means depends on the thing. */
+const use: Verb = {
+  run(ctx, intent) {
+    const g = ctx.g;
+    const x = intent.obj![0];
+    const y = intent.ind;
+    const runs = (verb: string, i: Partial<Intent>) =>
+      VERB_RUNNERS[verb].run(ctx, { verb, ...i });
+    const player = g.st.player;
+    if (y) {
+      if (comp(g, x, "burn") && givesFire(g, y))
+        return runs("light", { obj: [x], ind: y });
+      if (givesFire(g, x) && comp(g, y, "burn"))
+        return runs("light", { obj: [y], ind: x });
+      if (comp(g, x, "cloth") && wrapTorch(ctx, x, y)) return;
+      if (comp(g, y, "cloth") && wrapTorch(ctx, y, x)) return;
+      // Into the fire: the letter burns, the blade gets hot.
+      const [thing, fire] = givesFire(g, y) ? [x, y] : [y, x];
+      if (givesFire(g, fire) && !givesFire(g, thing))
+        return runs("put", { obj: [thing], ind: fire });
+      if (has(g, y, "actor")) return runs("give", { obj: [x], ind: y });
+      return say(ctx, "use.how", { x: ref(g, x) });
+    }
+    const burn = comp(g, x, "burn");
+    if (burn && burn.rate > 0) {
+      if (isLit(g, x)) return say(ctx, "use.lit", { x: ref(g, x) });
+      return runs("light", { obj: [x] });
+    }
+    if (givesFire(g, x)) {
+      const torch = subtree(g, player).find(
+        (id) => comp(g, id, "burn") && !isLit(g, id),
+      );
+      if (torch) return runs("light", { obj: [torch], ind: x });
+      say(ctx, "use.warm", { x: ref(g, x) });
+      return void advance(ctx, { minutes: 5 });
+    }
+    if (has(g, x, "edible")) return runs("eat", { obj: [x] });
+    if (has(g, x, "drinkable")) return runs("drink", { obj: [x] });
+    if (comp(g, x, "cloth")) return runs("bandage", {});
+    if (has(g, x, "wearable") && g.st.ent[x].loc !== player)
+      return runs("wear", { obj: [x] });
+    if (comp(g, x, "weapon")) {
+      if (!within(g, x, player)) return runs("take", { obj: [x] });
+      return say(ctx, "use.weapon", { x: ref(g, x) });
+    }
+    if (has(g, x, "container")) return runs("examine", { obj: [x] });
+    say(ctx, "use.how", { x: ref(g, x) });
+  },
+};
+
 export const VERB_RUNNERS: Record<string, Verb> = {
+  load,
+  use,
   ...PEOPLE_VERBS,
   look,
   examine,

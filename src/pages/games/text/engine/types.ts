@@ -189,6 +189,8 @@ export interface Burn {
   since: number;
   /** Bumped at every change so that stale scheduled events are ignored. */
   gen: number;
+  /** A spent torch given a new life with a strip of cloth. */
+  wrapped?: boolean;
 }
 
 export interface Wearable {

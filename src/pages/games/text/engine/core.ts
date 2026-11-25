@@ -28,6 +28,8 @@ export interface Ctx {
   interrupted: boolean;
   /** The player went to another place this turn (autosave point). */
   placeChanged: boolean;
+  /** Someone already woke the player up this turn, and said so. */
+  wokeUp?: boolean;
 }
 
 export function newCtx(g: Game): Ctx {

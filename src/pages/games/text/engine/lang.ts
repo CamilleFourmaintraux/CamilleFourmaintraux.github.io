@@ -79,6 +79,8 @@ export interface LangData {
   moods: Record<string, string[]>;
   /** Drinking a lot, or a little. */
   lots: string[];
+  /** "to" in "use the brazier to light the torch". */
+  purpose: string[];
   sip: string[];
 }
 

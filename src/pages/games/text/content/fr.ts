@@ -163,11 +163,12 @@ export const fr: LangData = {
 
     "status.nauseous": "Votre estomac se tord, vous avez la nausée.",
     "status.fine": "Pour le reste, vous vous sentez bien.",
-    help: "Écrivez ce que vous voulez faire, en phrases courtes. Pour explorer, « regarder », « examiner la torche », « regarder le ciel », « aller au nord » ou simplement « n », « sorties », « revenir ». Pour les objets, « prendre la pomme et la pierre », « ranger la pomme dans ma poche », « mettre le gilet », « inventaire ». Pour les gens, « parler au tanneur », « demander au tanneur à propos de la taverne », « menacer », « mentir », « supplier », « s’excuser », « donner la bourse ». Pour se battre, « attaquer le bandit à la tête », « se défendre », « fuir », « lancer la pierre sur le bandit », « panser ma blessure », « cautériser ». Pour vivre, « manger », « boire à la fontaine », « dormir », « attendre 30 minutes », « heure », « état ». Quand le jeu vous pose une question, répondez « oui » ou « non ».",
+    help: "Écrivez ce que vous voulez faire, en phrases courtes. Pour explorer, « regarder », « examiner la torche », « regarder le ciel », « aller au nord » ou simplement « n », « sorties », « revenir ». Pour les objets, « prendre la pomme et la pierre », « ranger la pomme dans ma poche », « mettre le gilet », « inventaire ». Pour les gens, « parler au tanneur », « demander au tanneur à propos de la taverne », « menacer », « mentir », « supplier », « s’excuser », « donner la bourse ». Pour se battre, « attaquer le bandit à la tête », « se défendre », « fuir », « lancer la pierre sur le bandit », « panser ma blessure », « cautériser ». Pour vivre, « manger », « boire à la fontaine », « dormir », « attendre 30 minutes », « heure », « état ». Pour se débrouiller, « déchirer la chemise », « enrouler la bande autour de la torche », « utiliser le brasero », « changer de main », « poids ». Plusieurs commandes peuvent se suivre, comme « prendre la pomme, puis la manger ». Quand le jeu vous pose une question, répondez « oui » ou « non ».",
 
     "light.cannot": "Vous approchez une flamme {x:of}. Ça ne prend pas.",
     "light.already": "C’est déjà allumé.",
-    "light.spent": "Il ne reste plus rien à brûler sur {x:the}.",
+    "light.spent":
+      "{x:The} n’est plus qu’un bâton noirci. Avec une bande de tissu enroulée au bout, elle pourrait encore brûler un peu.",
     "light.noFire": "Vous n’avez rien sous la main pour allumer {x:the}.",
     "light.done": "Vous allumez {x:the} {from:to}.",
     "light.reveals": "La lumière repousse l’obscurité.",
@@ -734,6 +735,55 @@ export const fr: LangData = {
     "burn.noFire": "Il n’y a pas de feu ici pour brûler {x:the}.",
     "burn.cannot": "Vous approchez {x:the} du feu un moment. Rien ne prend.",
     "ask.burn": "Que voulez-vous brûler ?",
+    "robber.demand.asleep":
+      "Un homme se tient au-dessus de vous, {w:a} à la main, et vous pousse du bout de sa botte. « Debout. Ta bourse, et vite. Je le répéterai pas. »",
+    "robber.demandUnarmed.asleep":
+      "Un homme se tient au-dessus de vous et vous pousse du bout de sa botte. « Debout. Ta bourse, et vite. Je le répéterai pas. »",
+    "robber.demand.approach":
+      "Un homme sort de l’ombre et s’avance vers vous, {w:a} à la main. « Ta bourse, et vite. Je le répéterai pas. »",
+    "robber.demandUnarmed.approach":
+      "Un homme sort de l’ombre et s’avance vers vous. « Ta bourse, et vite. Je le répéterai pas. »",
+    "sleep.ignore":
+      "Vous tournez le dos {x:to} et fermez les yeux, comme s’il n’était pas là.",
+    "hand.switch": "Vous passez {x:the} dans votre {hand:name}.",
+    "hand.full": "Votre {hand:name} tient déjà {x:the}.",
+    "tear.done":
+      "Vous déchirez une longue bande {cloth:of}. Le tissu cède dans un craquement sec.",
+    "tear.drop":
+      "Vous déchirez une bande {cloth:of}. Vos mains sont prises, alors vous la laissez tomber à vos pieds.",
+    "tear.nothing": "Vous n’avez rien sur vous qui se déchire en bandes.",
+    "tear.small": "{x:The} est déjà bien assez petite.",
+    "wrap.done":
+      "Vous enroulez {x:the} bien serrée autour du bout {y:of} et la nouez. Elle devrait brûler un petit moment.",
+    "wrap.notNeeded": "{y:The} a encore largement de quoi brûler.",
+    "wrap.noCloth": "Vous n’avez rien à enrouler autour {y:of}.",
+    "wrap.how": "Vous ne voyez pas autour de quoi enrouler {x:the}.",
+    "swap.done": "Vous passez ce que vous tenez d’une main à l’autre.",
+    "swap.empty": "Vous avez les mains vides.",
+    "swap.both": "Vous tenez {x:the} à deux mains.",
+    "swap.cannot": "Vous n’avez pas de mains à échanger.",
+    "bandage.strip":
+      "Vous serrez la bande de tissu autour de votre {part:name}.",
+    "bandage.stripThem":
+      "Vous pansez la blessure {x:of} {part:to} avec la bande de tissu.",
+    "torch.desc.spent":
+      "Un bâton noirci, tout ce qui reste de la torche. La poix a entièrement brûlé.",
+    "torch.desc.wrapped":
+      "Un bâton noirci, avec une bande de tissu nouée au bout.",
+    "strip.desc":
+      "Une longue bande arrachée à une chemise. De quoi faire un pansement, ou l’enrouler autour de quelque chose.",
+    "use.how":
+      "Comment voulez-vous utiliser {x:the} ? Dites ce que vous voulez en faire.",
+    "use.lit": "{x:The} éclaire votre chemin.",
+    "use.warm":
+      "Vous tendez les mains au-dessus {x:of} et laissez la chaleur gagner vos doigts.",
+    "use.weapon":
+      "Vous serrez {x:the} dans votre main. Dites qui vous voulez attaquer.",
+    "ask.use": "Que voulez-vous utiliser ?",
+    "ask.wrap": "Qu’est-ce que vous voulez enrouler ?",
+    "mood.surprised": "Vous laissez échapper un sifflement.",
+    "mood.seen.surprised": "{x:The} vous lance un regard intrigué.",
+    "wait.stare": "Vous restez planté là sans un mot, à fixer {x:the}.",
   },
   names: {
     alley: { n: "ruelle sombre", g: "f", w: ["ruelle", "impasse"] },
@@ -825,6 +875,11 @@ export const fr: LangData = {
     },
     planks: { n: "planches", g: "f", pl: true, w: ["planche", "bois", "sol"] },
     "apple-core": { n: "trognon de pomme", g: "m", w: ["trognon"] },
+    strip: {
+      n: "bande de tissu",
+      g: "f",
+      w: ["bande", "tissu", "chiffon", "lambeau", "pansement"],
+    },
   },
   verbs: {
     look: [
@@ -943,6 +998,9 @@ export const fr: LangData = {
       "mes affaires",
       "qu’est-ce que je porte",
       "qu’est-ce que j’ai",
+      "équipement",
+      "equipement",
+      "affaires",
     ],
     wait: [
       "attendre",
@@ -1252,6 +1310,9 @@ export const fr: LangData = {
       "sauve qui peut",
       "courir",
       "cours",
+      "sprinter",
+      "filer",
+      "file",
     ],
     spare: [
       "épargner",
@@ -1323,6 +1384,46 @@ export const fr: LangData = {
       "incendier",
       "mettre le feu à",
       "faire brûler",
+    ],
+    tear: [
+      "déchirer une bande",
+      "arracher une bande",
+      "faire une bande",
+      "faire un pansement",
+      "découper une bande",
+    ],
+    wrap: [
+      "enrouler",
+      "enroule",
+      "enroulez",
+      "nouer",
+      "noue",
+      "attacher",
+      "attache",
+      "entourer",
+      "entoure",
+    ],
+    swap: [
+      "changer de main",
+      "change de main",
+      "changer les mains",
+      "échanger les mains",
+      "inverser les mains",
+    ],
+    load: [
+      "poids",
+      "charge",
+      "encombrement",
+      "combien je porte",
+      "combien je transporte",
+    ],
+    use: [
+      "utiliser",
+      "utilise",
+      "utilisez",
+      "se servir de",
+      "me servir de",
+      "servir",
     ],
   },
   dirs: {
@@ -1580,6 +1681,7 @@ export const fr: LangData = {
   ],
   andWords: ["et"],
   moods: {
+    surprised: ["oulala", "ohlala", "oh là là", "waouh", "ouah", "mazette"],
     sad: ["triste", "soupir", "soupire", "snif", "déprimé", "déprimée", "bof"],
     happy: [
       "mdr",
@@ -1618,9 +1720,10 @@ export const fr: LangData = {
       "pige",
     ],
     cry: ["pleurer", "pleure", "sanglote", "sangloter"],
-    pain: ["aïe", "ouille", "ouch", "aie"],
+    pain: ["aïe", "ouille", "ouch", "aie", "douleur", "argh", "aïe aïe"],
     never: ["tant", "oublie", "laisse", "rien", "peu", "importe"],
   },
   lots: ["beaucoup", "plein", "entier", "entière", "fond", "litres"],
   sip: ["gorgée", "peu", "goutte", "lampée"],
+  purpose: ["pour", "afin"],
 };

@@ -6,7 +6,9 @@ import {
   comp,
   children,
   conscious,
+  hands,
   has,
+  heldIn,
   nameKey,
   nameState,
   placeOf,
@@ -78,6 +80,11 @@ export const VERBS: Record<
   sleep: {},
   cauterize: { obj: "one", aim: true, optional: true },
   burn: { obj: "one" },
+  tear: { obj: "one", optional: true },
+  wrap: { obj: "one", ind: true },
+  swap: {},
+  load: {},
+  use: { obj: "one", ind: true },
   heat: { obj: "one", ind: true, optional: true },
   meta: {},
 };
@@ -639,6 +646,14 @@ export function parse(g: Game, lang: Lang, text: string): Parsed {
     return parseGo(g, w, tokens);
   if (tokens.length === 1 && findDir(L, tokens)) return parseGo(g, w, tokens);
 
+  // "La manger", "le prendre": a French pronoun comes before its verb.
+  if (
+    tokens.length > 1 &&
+    isPronoun(L, tokens[0]) &&
+    startsWithVerb(L, tokens.slice(1))
+  ) {
+    return parse(g, lang, [...tokens.slice(1), tokens[0]].join(" "));
+  }
   let found = findVerb(L, tokens);
   if (!found) {
     const special = specialWords(g, w, tokens);
@@ -653,7 +668,8 @@ export function parse(g: Game, lang: Lang, text: string): Parsed {
       needs.people ||
       needs.dir ||
       needs.duration;
-    if (fixed && (tokens.length > 1 || alone))
+    // A longer word cut or mistyped ("htrow") is a verb all the same.
+    if (fixed && (tokens.length > 1 || alone || tokens[0].length >= 5))
       found = findVerb(L, fixed.tokens);
   }
   // "You still there, tanner?": a question mark makes it a question.
@@ -666,6 +682,27 @@ export function parse(g: Game, lang: Lang, text: string): Parsed {
   if (!found) return fallback(g, w, tokens);
   let { verb } = found;
   let { rest } = found;
+  rest = fixNouns(g, w, rest);
+  // "Use the brazier to light the torch": the second verb says what to do,
+  // and the first thing is what to do it with.
+  if (verb === "use") {
+    const to = rest.findIndex((t) => L.some((l) => l.purpose.includes(t)));
+    const after = to >= 0 ? rest.slice(to + 1) : [];
+    const words =
+      after.length === 0 || findVerb(L, after)
+        ? after
+        : (corrected(g, w, after)?.tokens ?? after);
+    const then = to >= 0 ? findVerb(L, words) : undefined;
+    if (then) {
+      const tool = rest.slice(0, to);
+      const inner = parse(g, lang, words.join(" "));
+      if (inner.kind === "intent" && tool.length > 0) {
+        const found = resolve(g, w, tool, scope(g));
+        if ("ok" in found && !inner.intent.ind) inner.intent.ind = found.ok[0];
+      }
+      return inner;
+    }
+  }
   const spec = VERBS[verb] ?? {};
 
   if (spec.dir) return parseGo(g, w, rest);
@@ -746,6 +783,29 @@ export function parse(g: Game, lang: Lang, text: string): Parsed {
         return { kind: "intent", intent: { ...trial, prep: "from" } };
       }
     }
+  }
+  // "Throw like Donkey Kong": with one thing in hand, that is what flies.
+  if (
+    first &&
+    verb === "throw" &&
+    ["notHere", "unknownWord"].includes(first.kind)
+  ) {
+    const inHand = Object.values(hands(g, g.st.player))
+      .map((hand) => (hand ? heldIn(g, hand) : undefined))
+      .filter((id): id is Id => !!id);
+    const unique = [...new Set(inHand)];
+    if (unique.length === 1) {
+      return { kind: "intent", intent: { ...intent, obj: unique } };
+    }
+  }
+  // "Take a strip", "get some cloth": none is lying about, so tear one.
+  if (
+    first &&
+    ["take", "use"].includes(verb) &&
+    ["notHere", "unknownWord"].includes(first.kind) &&
+    obj.some((t) => stripWords(L).has(stem(t)))
+  ) {
+    return { kind: "intent", intent: { verb: "tear" } };
   }
   if (first) {
     if (first.kind === "which" || first.kind === "what") intent.indWords = ind;
@@ -852,6 +912,7 @@ function corrected(
 ): { tokens: string[]; verb: string } | undefined {
   const L = w.L;
   const first = tokens[0];
+  if (!first) return undefined;
   // A word the game knows is no typo ("back" is not "pack").
   if (first.length < 4 || knownWords(g, w).has(stem(first))) return undefined;
   // The language of the interface first; a word cut short ("threat")
@@ -879,6 +940,83 @@ function corrected(
   return undefined;
 }
 
+/** Words for a strip of cloth, which can be torn when none exists. */
+function stripWords(L: LangData[]): Set<string> {
+  const words = L.flatMap((l) => [
+    l.names.strip?.n ?? "",
+    ...(l.names.strip?.w ?? []),
+  ]);
+  return new Set(
+    words
+      .filter(Boolean)
+      .flatMap((word) => tokenize(L, word))
+      .map(stem),
+  );
+}
+
+/** Mistyped names of things around ("brzier") become the right ones. */
+function fixNouns(g: Game, w: Words, tokens: string[]): string[] {
+  const known = vocabulary(w);
+  const near = [...new Set(scope(g).flatMap((id) => [...namesOf(g, w.L, id)]))];
+  return tokens.map((t) => {
+    if (t.length < 5 || known.has(stem(t)) || knownWords(g, w).has(stem(t)))
+      return t;
+    const close = near.filter(
+      (word) => word.length >= 4 && distance(t, word, 3) <= allowed(word),
+    );
+    return close.length === 1 ? close[0] : t;
+  });
+}
+
+/** "torch brazier": two things here, each named on its own. */
+function pairOf(g: Game, w: Words, content: string[]): [Id, Id] | undefined {
+  if (content.length < 2 || content.length > 4) return undefined;
+  for (let cut = 1; cut < content.length; cut++) {
+    const a = resolve(g, w, content.slice(0, cut), scope(g));
+    const b = resolve(g, w, content.slice(cut), scope(g));
+    if ("ok" in a && "ok" in b && a.ok[0] !== b.ok[0])
+      return [a.ok[0], b.ok[0]];
+  }
+  return undefined;
+}
+
+/**
+ * Splits "take a strip, put it on the torch" into two commands. A comma or
+ * "and" splits only when a verb follows; "then", ";" and full stops always.
+ */
+export function splitCommands(g: Game, lang: Lang, text: string): string[] {
+  const L = langsFor(g, lang);
+  // A question stays whole: "Do I wear it like a hat?" is not two orders.
+  if (text.includes("?")) return [text];
+  const pieces = text
+    .split(/[;.]+|\b(?:and then|then|et puis|puis|ensuite)\b/i)
+    .map((s) => s.trim())
+    .filter(Boolean);
+  const out: string[] = [];
+  for (const piece of pieces) {
+    const parts = piece.split(/(,|\band\b|\bet\b)/i);
+    let current = parts[0];
+    for (let i = 1; i < parts.length; i += 2) {
+      const next = parts[i + 1] ?? "";
+      if (startsWithVerb(L, tokenize(L, next))) {
+        out.push(current.trim());
+        current = next;
+      } else current += parts[i] + next;
+    }
+    out.push(current.trim());
+  }
+  return out.filter(Boolean);
+}
+
+/** The first real word is a verb ("put it on", not "the stone"). */
+function startsWithVerb(L: LangData[], tokens: string[]): boolean {
+  if (tokens.length > 1 && isPronoun(L, tokens[0]))
+    return startsWithVerb(L, tokens.slice(1));
+  const found = findVerb(L, tokens);
+  if (!found) return false;
+  return found.rest.length < tokens.length;
+}
+
 /** Words that are not verbs but still mean something. */
 function specialWords(g: Game, w: Words, tokens: string[]): Parsed | undefined {
   const L = w.L;
@@ -896,8 +1034,8 @@ function specialWords(g: Game, w: Words, tokens: string[]): Parsed | undefined {
   if (has((l) => l.questions, first)) return question(g, w, words);
   for (const lang of L) {
     for (const [mood, list] of Object.entries(lang.moods)) {
-      if (words.slice(0, 2).some((t) => list.includes(t)))
-        return { kind: "mood", mood };
+      const head = words.length <= 4 ? words : words.slice(0, 2);
+      if (head.some((t) => list.includes(t))) return { kind: "mood", mood };
     }
   }
   if (has((l) => l.later, first)) return { kind: "notYet", word: first };
@@ -959,8 +1097,20 @@ function fallback(g: Game, w: Words, tokens: string[]): Parsed {
   if (L.some((l) => l.back.includes(first))) return parseGo(g, w, tokens);
   // A bare name, and nothing else the game does not know: look at the
   // thing, or walk to the place. A whole sentence is not a bare name.
-  const content = words.filter((t) => !glue.has(t));
+  const content = fixNouns(
+    g,
+    w,
+    words.filter((t) => !glue.has(t)),
+  );
   const known = vocabulary(w);
+  // Two things named side by side, "torch brazier": use one with the other.
+  const pair = pairOf(g, w, content);
+  if (pair) {
+    return {
+      kind: "intent",
+      intent: { verb: "use", obj: [pair[0]], ind: pair[1] },
+    };
+  }
   if (
     content.length > 0 &&
     content.length <= 3 &&

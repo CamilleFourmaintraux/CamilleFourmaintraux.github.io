@@ -97,7 +97,8 @@ src/legacy/           Previous design
   arrive later. Hunger, thirst, sleep and breath are in `needs.ts`: they are computed from the time
   elapsed, like bleeding, and only the moments worth a message are scheduled. Words the parser
   does not take as commands (moods, questions, "quit", impossible feats) are lists in the language
-  files, and a question goes to the person present when there is one. To play in a terminal
+  files, and a question goes to the person present when there is one. Several commands typed
+  together ("take a strip, put it on the torch") run one after the other, see `splitCommands`. To play in a terminal
   without the browser, run `npm run play:text` (add `-- en` for English), or pipe commands into
   it. The full design is in the "Jeu textuel médiéval fantastique" document.
 

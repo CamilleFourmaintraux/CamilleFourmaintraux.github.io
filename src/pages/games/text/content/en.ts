@@ -159,11 +159,12 @@ export const en: LangData = {
 
     "status.nauseous": "Your stomach churns. You feel sick.",
     "status.fine": "Otherwise, you feel fine.",
-    help: 'Type what you want to do, in short sentences. To explore, "look", "examine the torch", "look at the sky", "go north" or just "n", "exits", "go back". For things, "take the apple and the stone", "put the apple in my pocket", "wear the jerkin", "inventory". For people, "talk to the tanner", "ask the tanner about the tavern", "threaten", "lie", "beg", "apologize", "give the purse". To fight, "attack the bandit in the head", "defend", "flee", "throw the stone at the bandit", "bandage my wound", "cauterize". To get by, "eat", "drink from the fountain", "sleep", "wait 30 minutes", "time", "status". When the game asks you something, answer "yes" or "no".',
+    help: 'Type what you want to do, in short sentences. To explore, "look", "examine the torch", "look at the sky", "go north" or just "n", "exits", "go back". For things, "take the apple and the stone", "put the apple in my pocket", "wear the jerkin", "inventory". For people, "talk to the tanner", "ask the tanner about the tavern", "threaten", "lie", "beg", "apologize", "give the purse". To fight, "attack the bandit in the head", "defend", "flee", "throw the stone at the bandit", "bandage my wound", "cauterize". To get by, "eat", "drink from the fountain", "sleep", "wait 30 minutes", "time", "status". To make do, "tear the shirt", "wrap the strip around the torch", "use the brazier", "switch hands", "weight". Several commands can follow one another, like "take the apple, then eat it". When the game asks you something, answer "yes" or "no".',
 
     "light.cannot": "You hold a flame to {x:the}. It does not catch.",
     "light.already": "It is already burning.",
-    "light.spent": "There is nothing left to burn on {x:the}.",
+    "light.spent":
+      "{x:The} is nothing but a blackened stick now. With a strip of cloth wrapped around its end, it might still burn a little.",
     "light.noFire": "You have nothing at hand to light {x:the} with.",
     "light.done": "You light {x:the} from {from:the}.",
     "light.reveals": "Light pushes the darkness back.",
@@ -696,6 +697,53 @@ export const en: LangData = {
     "burn.cannot":
       "You hold {x:the} to the fire for a moment. It does not catch.",
     "ask.burn": "What do you want to burn?",
+    "robber.demand.asleep":
+      'A man stands over you, {w:a} in hand, and nudges you with his boot. "Up you get. Your purse, quick. I won\'t say it twice."',
+    "robber.demandUnarmed.asleep":
+      'A man stands over you and nudges you with his boot. "Up you get. Your purse, quick. I won\'t say it twice."',
+    "robber.demand.approach":
+      'A man steps out of the shadows and walks up to you, {w:a} in hand. "Your purse, quick. I won\'t say it twice."',
+    "robber.demandUnarmed.approach":
+      'A man steps out of the shadows and walks up to you. "Your purse, quick. I won\'t say it twice."',
+    "sleep.ignore":
+      "You turn your back on {x:the} and close your eyes, as if he were not there.",
+    "hand.switch": "You pass {x:the} into your {hand:name}.",
+    "hand.full": "Your {hand:name} already holds {x:the}.",
+    "tear.done":
+      "You tear a long strip {cloth:of}. It comes away with a dry rip.",
+    "tear.drop":
+      "You tear a strip {cloth:of}. Your hands are full, so you let it drop at your feet.",
+    "tear.nothing": "You have nothing on you that would tear into strips.",
+    "tear.small": "{x:The} is already as small as it gets.",
+    "wrap.done":
+      "You wrap {x:the} tightly around the end {y:of} and knot it. It should burn for a little while.",
+    "wrap.notNeeded": "{y:The} still has plenty left to burn.",
+    "wrap.noCloth": "You have nothing to wrap around {y:the}.",
+    "wrap.how": "You can't see what to wrap {x:the} around.",
+    "swap.done": "You pass what you hold from one hand to the other.",
+    "swap.empty": "Your hands are empty.",
+    "swap.both": "You are holding {x:the} with both hands.",
+    "swap.cannot": "You have no hands to swap.",
+    "bandage.strip": "You wrap the strip of cloth tight around {part:your}.",
+    "bandage.stripThem":
+      "You bind the wound of {x:the} with the strip of cloth, on the {part:name}.",
+    "torch.desc.spent":
+      "A blackened stick, all that is left of the torch. The pitch has burnt away.",
+    "torch.desc.wrapped":
+      "A blackened stick with a strip of cloth knotted around its end.",
+    "strip.desc":
+      "A long strip torn from a shirt. Good for a bandage, or to wrap around something.",
+    "use.how":
+      "How do you want to use {x:the}? Say what you want to do with it.",
+    "use.lit": "{x:The} lights your way.",
+    "use.warm":
+      "You hold your hands over {x:the} and let the warmth seep into your fingers.",
+    "use.weapon": "You grip {x:the}. Say whom you want to attack with it.",
+    "ask.use": "What do you want to use?",
+    "ask.wrap": "What do you want to wrap?",
+    "mood.surprised": "You let out a low whistle.",
+    "mood.seen.surprised": "{x:The} gives you a curious look.",
+    "wait.stare": "You stand there and say nothing, staring at {x:the}.",
   },
   names: {
     alley: { n: "dark alley", w: ["alley", "lane"] },
@@ -787,6 +835,10 @@ export const en: LangData = {
       w: ["plank", "wood", "boards", "ground", "floor"],
     },
     "apple-core": { n: "apple core", w: ["core"] },
+    strip: {
+      n: "strip of cloth",
+      w: ["strip", "rag", "cloth", "band", "bandage"],
+    },
   },
   verbs: {
     look: [
@@ -841,6 +893,11 @@ export const en: LangData = {
       "items",
       "what do i have",
       "what am i carrying",
+      "equipment",
+      "equipement",
+      "gear",
+      "stuff",
+      "belongings",
     ],
     wait: ["wait", "z", "pause"],
     rest: ["rest", "sit", "sit down", "relax"],
@@ -901,7 +958,16 @@ export const en: LangData = {
       "what can i do",
       "what now",
     ],
-    light: ["light", "relight", "ignite", "kindle"],
+    light: [
+      "light",
+      "relight",
+      "ignite",
+      "kindle",
+      "lit",
+      "lite",
+      "set alight",
+      "set light to",
+    ],
     extinguish: ["extinguish", "put out", "snuff", "douse", "blow out"],
     eat: ["eat", "devour", "swallow", "bite"],
     destroy: ["destroy", "tear", "tear up", "rip", "break", "smash", "crush"],
@@ -978,6 +1044,9 @@ export const en: LangData = {
       "bolt",
       "get away",
       "scram",
+      "sprint",
+      "dash",
+      "run off",
     ],
     spare: [
       "spare",
@@ -1009,6 +1078,26 @@ export const en: LangData = {
     cauterize: ["cauterize", "cauterise", "sear"],
     heat: ["heat", "heat up", "warm"],
     burn: ["burn", "set fire to", "set on fire"],
+    tear: [
+      "tear a strip",
+      "tear off a strip",
+      "rip a strip",
+      "tear off",
+      "make a strip",
+      "make a bandage",
+    ],
+    wrap: ["wrap", "wind", "tie", "knot"],
+    swap: ["switch hands", "swap hands", "change hands", "switch hand", "swap"],
+    load: [
+      "weight",
+      "load",
+      "burden",
+      "carry",
+      "how much do i carry",
+      "how heavy",
+      "encumbrance",
+    ],
+    use: ["use", "utilize", "make use of", "apply"],
   },
   dirs: {
     n: ["north", "n"],
@@ -1218,6 +1307,7 @@ export const en: LangData = {
   ],
   andWords: ["and", "plus"],
   moods: {
+    surprised: ["oulala", "ohlala", "whoa", "woah", "omg", "yikes"],
     sad: ["sad", "sigh", "depressed", "bored", "sadly"],
     happy: [
       "lol",
@@ -1246,7 +1336,7 @@ export const en: LangData = {
       "weird",
     ],
     cry: ["cry", "weep", "sob"],
-    pain: ["ouch", "ow", "aie"],
+    pain: ["ouch", "ow", "aie", "pain", "oof", "argh", "ugh"],
     never: ["nevermind", "forget", "whatever", "nothing"],
   },
   lots: [
@@ -1260,4 +1350,5 @@ export const en: LangData = {
     "liters",
   ],
   sip: ["sip", "little", "drop", "mouthful"],
+  purpose: ["to"],
 };

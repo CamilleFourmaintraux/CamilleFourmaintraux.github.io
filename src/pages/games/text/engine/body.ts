@@ -180,7 +180,7 @@ export function noteVital(g: Game, id: Id, vital: Vital) {
   g.st.flags[`vital.${id}`] = vital;
 }
 
-const lastVital = (g: Game, id: Id) =>
+export const lastVital = (g: Game, id: Id) =>
   (g.st.flags[`vital.${id}`] as Vital | undefined) ?? "ok";
 
 onScheduled("body.check", (ctx) => {

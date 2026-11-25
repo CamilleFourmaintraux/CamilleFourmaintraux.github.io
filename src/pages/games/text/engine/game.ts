@@ -9,7 +9,14 @@
 
 import { drain, newCtx, say, type Ctx } from "./core";
 import { answerPerson, awakeHere, npcRound, passOut } from "./npc";
-import { answer, parse, tokenize, langsFor, type Parsed } from "./parser";
+import {
+  answer,
+  parse,
+  splitCommands,
+  tokenize,
+  langsFor,
+  type Parsed,
+} from "./parser";
 import { startSystems } from "./systems";
 import { VERB_RUNNERS, describePlace, misfit, stores } from "./verbs";
 import { newState, ref, refs, vital, type Content, type Game } from "./world";
@@ -164,6 +171,25 @@ const same = (g: Game, lang: Lang, a: string, b: string) => {
 };
 
 /** Plays one command. Returns the turn and whether to autosave. */
+/**
+ * "Take a strip, put it on the torch": each command in turn, as long as the
+ * game does not stop to ask something. A piece that means nothing is
+ * passed over when another one makes sense.
+ */
+function chain(ctx: Ctx, lang: Lang, parts: string[], raw: string) {
+  const g = ctx.g;
+  let done = 0;
+  for (const part of parts) {
+    const parsed = parse(g, lang, part);
+    if (parsed.kind === "unknownVerb" || parsed.kind === "empty") continue;
+    handle(ctx, parsed, part);
+    drain(ctx);
+    done++;
+    if (g.st.pending || g.st.flags.dead) break;
+  }
+  if (done === 0) handle(ctx, parse(g, lang, raw), raw);
+}
+
 export function play(
   g: Game,
   lang: Lang,
@@ -204,7 +230,9 @@ export function play(
       if (failed) g.st.pending = pending;
     }
   } else {
-    handle(ctx, parse(g, lang, raw), raw);
+    const parts = splitCommands(g, lang, raw);
+    if (parts.length > 1) chain(ctx, lang, parts, raw);
+    else handle(ctx, parse(g, lang, raw), raw);
   }
 
   drain(ctx);

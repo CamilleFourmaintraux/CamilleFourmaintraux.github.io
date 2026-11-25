@@ -3,7 +3,9 @@
 // so the social verbs (threaten, persuade, lie, beg, insult, give) work in
 // all of them and can turn one into another.
 
-import { worstWound } from "./body";
+import { announce, lastVital, noteVital, worstWound } from "./body";
+import { setNeeds } from "./needs";
+import { playerAsleep } from "./systems";
 import { advance, emit, on, onScheduled, say, type Ctx } from "./core";
 import { escapes, outruns, rating, strike, wielded } from "./combat";
 import { runInt, runRandom } from "./rng";
@@ -116,8 +118,9 @@ function flee(ctx: Ctx, person: Id) {
 // Roles: how each kind of person behaves.
 
 interface Role {
-  /** When the player and this person meet. */
-  meet?: (ctx: Ctx, person: Id) => void;
+  /** When the player and this person meet: the player came in, or the
+   *  person arrived. */
+  meet?: (ctx: Ctx, person: Id, how?: "arrive") => void;
   /** Each round the player acts near this person. */
   act?: (ctx: Ctx, person: Id) => void;
   /** Answer to yes or no, when this person asked something. */
@@ -160,7 +163,7 @@ function rob(ctx: Ctx, person: Id, items: Id[]) {
 
 const ROLES: Record<string, Role> = {
   robber: {
-    meet(ctx, person) {
+    meet(ctx, person, how) {
       const g = ctx.g;
       const mind = mindOf(g, person)!;
       const w = wielded(g, person).item;
@@ -175,7 +178,16 @@ const ROLES: Record<string, Role> = {
         patience: 2,
         fresh: true,
       };
-      say(ctx, w ? "robber.demand" : "robber.demandUnarmed", {
+      // He does not leap out to block a sleeper's way: he wakes him up.
+      // Nor a man who stands still: he walks up to him.
+      let variant = "";
+      if (playerAsleep(g)) {
+        setNeeds(g, g.st.player, { mode: "awake" });
+        say(ctx, "sleep.wake.event");
+        ctx.wokeUp = true;
+        variant = ".asleep";
+      } else if (how === "arrive") variant = ".approach";
+      say(ctx, `${w ? "robber.demand" : "robber.demandUnarmed"}${variant}`, {
         x: ref(g, person),
         w: w ? ref(g, w) : "",
       });
@@ -283,7 +295,7 @@ onScheduled("arrive", (ctx, event) => {
   move(g, event.target, event.to);
   if (event.to === here(g)) {
     ctx.interrupted = true;
-    roleOf(g, event.target).meet?.(ctx, event.target);
+    roleOf(g, event.target).meet?.(ctx, event.target, "arrive");
   }
 });
 
@@ -330,7 +342,14 @@ export function passOut(ctx: Ctx) {
     step: 5,
   });
   if (g.st.flags.dead) return;
-  if (vital(g, g.st.player) === "down") return;
+  const now = vital(g, g.st.player);
+  if (now === "down") return;
+  // Coming to is told at once, not at the next check of the body.
+  const was = lastVital(g, g.st.player);
+  if (was === "down") {
+    noteVital(g, g.st.player, now);
+    announce(ctx, g.st.player, was, now);
+  }
   if (robbed) say(ctx, "you.robbed");
 }
 

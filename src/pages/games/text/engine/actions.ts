@@ -39,7 +39,9 @@ import {
   freeHands,
   givesFire,
   hands,
+  fuelLeft,
   has,
+  heldIn,
   move,
   nameKey,
   peopleIn,
@@ -47,6 +49,8 @@ import {
   subtree,
   within,
   worn,
+  placeOf,
+  spawn,
   type Game,
 } from "./world";
 import type { Id, Intent } from "./types";
@@ -128,12 +132,115 @@ const throwVerb: Verb = {
   },
 };
 
-/** Tearing cloth into a strip: a worn or carried shirt will do. */
+/** Cloth for a bandage: a strip already torn, or a worn or carried shirt. */
 function clothFor(g: Game): Id | undefined {
-  return subtree(g, g.st.player).find(
+  const mine = subtree(g, g.st.player).filter(
     (id) => (comp(g, id, "cloth")?.strips ?? 0) > 0,
   );
+  return mine.find((id) => isStrip(g, id)) ?? mine[0];
 }
+
+const isStrip = (g: Game, id: Id) => g.st.ent[id]?.tpl === "strip";
+
+/** Tears a strip from a piece of cloth, into a free hand or at your feet. */
+export function tearStrip(ctx: Ctx, cloth: Id): Id {
+  const g = ctx.g;
+  const player = g.st.player;
+  const strips = comp(g, cloth, "cloth")!.strips - 1;
+  const hand = freeHands(g, player)[0];
+  const strip = spawn(g, "strip", hand ?? playerPlace(g));
+  say(ctx, hand ? "tear.done" : "tear.drop", { cloth: bare(g, cloth) });
+  if (strips <= 0) {
+    say(ctx, "bandage.clothGone", { cloth: bare(g, cloth) });
+    for (const child of children(g, cloth)) move(g, child, playerPlace(g));
+    destroy(g, cloth);
+  } else {
+    g.st.ent[cloth].c.cloth = { strips };
+  }
+  g.st.it = [strip];
+  return strip;
+}
+
+/** "Tear the shirt", "take a strip": cloth for a bandage or a torch. */
+const tear: Verb = {
+  run(ctx, intent) {
+    const g = ctx.g;
+    const x =
+      intent.obj?.[0] ??
+      subtree(g, g.st.player).find(
+        (id) => !isStrip(g, id) && (comp(g, id, "cloth")?.strips ?? 0) > 0,
+      );
+    if (!x) return say(ctx, "tear.nothing");
+    if (isStrip(g, x)) return say(ctx, "tear.small", { x: ref(g, x) });
+    if (!comp(g, x, "cloth")) {
+      say(ctx, "destroy.cannot", { x: ref(g, x) });
+      return void advance(ctx, { minutes: 1 });
+    }
+    tearStrip(ctx, x);
+    advance(ctx, { minutes: 2 });
+  },
+};
+
+/** A spent torch wrapped in cloth burns again, for a little while. */
+export function wrapTorch(ctx: Ctx, cloth: Id, torch: Id): boolean {
+  const g = ctx.g;
+  const burn = comp(g, torch, "burn");
+  if (!burn || burn.rate === 0) return false;
+  if (fuelLeft(g, torch) > 0.3) {
+    say(ctx, "wrap.notNeeded", { y: ref(g, torch) });
+    return true;
+  }
+  const strip = isStrip(g, cloth) ? cloth : tearStrip(ctx, cloth);
+  say(ctx, "wrap.done", { x: bare(g, strip), y: bare(g, torch) });
+  destroy(g, strip);
+  g.st.ent[torch].c.burn = {
+    ...burn,
+    lit: false,
+    fuel: Math.max(0, fuelLeft(g, torch)) + 0.12,
+    since: g.st.clock,
+    gen: burn.gen + 1,
+    wrapped: true,
+  };
+  g.st.it = [torch];
+  advance(ctx, { minutes: 3 });
+  return true;
+}
+
+/** "Wrap the strip around the torch", or just "wrap the torch". */
+const wrap: Verb = {
+  run(ctx, intent) {
+    const g = ctx.g;
+    const x = intent.obj![0];
+    if (intent.ind && wrapTorch(ctx, x, intent.ind)) return;
+    if (comp(g, x, "burn")) {
+      const cloth = clothFor(g);
+      if (!cloth) return say(ctx, "wrap.noCloth", { y: ref(g, x) });
+      if (wrapTorch(ctx, cloth, x)) return;
+    }
+    say(ctx, "wrap.how", { x: ref(g, x) });
+  },
+};
+
+/** "Switch hands": what is in the right hand goes to the left. */
+const swap: Verb = {
+  run(ctx) {
+    const g = ctx.g;
+    const { left, right } = hands(g, g.st.player);
+    if (!left || !right) return say(ctx, "swap.cannot");
+    const inLeft = heldIn(g, left);
+    const inRight = heldIn(g, right);
+    if (!inLeft && !inRight) return say(ctx, "swap.empty");
+    if (inLeft && comp(g, inLeft, "physical")?.grip === "two")
+      return say(ctx, "swap.both", { x: ref(g, inLeft) });
+    if (inLeft) move(g, inLeft, right);
+    if (inRight) move(g, inRight, left);
+    say(ctx, "swap.done", {
+      x: inRight ? ref(g, inRight) : "",
+      y: inLeft ? ref(g, inLeft) : "",
+    });
+    advance(ctx, { minutes: 1 });
+  },
+};
 
 const bandage: Verb = {
   run(ctx, intent) {
@@ -142,6 +249,17 @@ const bandage: Verb = {
     const cloth = clothFor(g);
     if (!cloth) return say(ctx, "bandage.noCloth");
     const wound = treat(g, target);
+    // A strip already torn: it is used up, the shirt is left alone.
+    if (wound && isStrip(g, cloth)) {
+      say(ctx, target === g.st.player ? "bandage.strip" : "bandage.stripThem", {
+        x: ref(g, target),
+        part: { n: `part.${wound.part}` },
+      });
+      destroy(g, cloth);
+      return void advance(ctx, {
+        minutes: hostilesHere(g).length > 0 ? 2 : 8,
+      });
+    }
     if (!wound)
       return say(
         ctx,
@@ -404,7 +522,12 @@ const sleep: Verb = {
   risk(ctx) {
     const g = ctx.g;
     const place = comp(g, playerPlace(g), "place");
-    if (place?.town && place.outdoor && hostilesHere(g).length === 0) {
+    if (
+      place?.town &&
+      place.outdoor &&
+      hostilesHere(g).length === 0 &&
+      !demandHere(g)
+    ) {
       return { kind: "sleep-outside", warn: { k: "sleep.warnStreet" } };
     }
     return undefined;
@@ -415,6 +538,12 @@ const sleep: Verb = {
     if (hostilesHere(g).length > 0) {
       say(ctx, "sleep.notNow");
       return void advance(ctx, { minutes: 1 });
+    }
+    // A robber waits for an answer: lying down again is ignoring him.
+    const robber = demandHere(g);
+    if (robber) {
+      say(ctx, "sleep.ignore", { x: ref(g, robber) });
+      return void advance(ctx, { minutes: 2 });
     }
     const needs = needsOf(g, player)!;
     if (needs.sleep < 0.3) {
@@ -441,7 +570,7 @@ const sleep: Verb = {
     });
     ctx.interruptible = false;
     setNeeds(g, player, { mode: "awake" });
-    if (g.st.flags.dead) return;
+    if (g.st.flags.dead || ctx.wokeUp) return;
     say(ctx, `sleep.wake.${cause || "event"}`);
     say(ctx, "time.now", {
       day: { k: `weekday.${weekday(g.st.clock)}` },
@@ -450,6 +579,16 @@ const sleep: Verb = {
     if ((needsOf(g, player)?.sleep ?? 0) >= 0.4) say(ctx, "sleep.stillTired");
   },
 };
+
+/** Someone here waiting for the player to hand over the purse. */
+export function demandHere(g: Game): Id | undefined {
+  return Object.entries(g.st.enc).find(
+    ([id, enc]) =>
+      enc.mode === "talk" &&
+      enc.question === "purse" &&
+      placeOf(g, id) === playerPlace(g),
+  )?.[0];
+}
 
 /** Checked every quarter of an hour of sleep. Empty: sleep on. */
 function wakeReason(ctx: Ctx, g: Game, comfort: number, worst: string): string {
@@ -576,6 +715,9 @@ const burn: Verb = {
 };
 
 export const PEOPLE_VERBS: Record<string, Verb> = {
+  tear,
+  wrap,
+  swap,
   burn,
   flee,
   drink,

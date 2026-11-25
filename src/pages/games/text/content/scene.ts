@@ -155,6 +155,7 @@ export const templates: Record<string, Template> = {
     edible: { food: 0.15, leaves: "apple-core" },
   }),
   "apple-core": thing(0.02, 0.03, 5, "one", { edible: { food: 0.01 } }),
+  strip: thing(0.02, 0.02, 5, "one", { cloth: { strips: 1 } }),
   crate: thing(90, 80, 70, "two"),
   wall: { c: scenery },
   sky: { c: { ...scenery, sky: { yes: true } } },
