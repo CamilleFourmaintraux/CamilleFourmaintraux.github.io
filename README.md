@@ -98,7 +98,15 @@ src/legacy/           Previous design
   elapsed, like bleeding, and only the moments worth a message are scheduled. Words the parser
   does not take as commands (moods, questions, "quit", impossible feats) are lists in the language
   files, and a question goes to the person present when there is one. Several commands typed
-  together ("take a strip, put it on the torch") run one after the other, see `splitCommands`. To play in a terminal
+  together ("take a strip, put it on the torch") run one after the other, see `splitCommands`.
+  Blows add up as trauma (`traumaOf` in `health.ts`): past a point the body goes into shock, then
+  gives out, and a broken leg or hand stops working.
+  Every write to the world goes through `world.ts` (`move`, `patch`, `setComp`, `spawn`,
+  `destroy`), which keeps the children index up to date and notes what changed, so that a turn and
+  a save cost the same in a world of a hundred things or of half a million. An item has a
+  description (`<name>.desc`) that never depends on where it is, an optional `<name>.found` for
+  how it sits before anyone touches it, and the engine adds where it is now. The hints of "think"
+  live with the story (`hints` in `content/scene.ts`). To play in a terminal
   without the browser, run `npm run play:text` (add `-- en` for English), or pipe commands into
   it. The full design is in the "Jeu textuel médiéval fantastique" document.
 

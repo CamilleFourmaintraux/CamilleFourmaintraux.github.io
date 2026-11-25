@@ -79,6 +79,15 @@ export interface LangData {
   moods: Record<string, string[]>;
   /** Drinking a lot, or a little. */
   lots: string[];
+  /** Words that open a question by their place: "are you…", "est-ce…". */
+  questionLeads: string[];
+  /** "Me" in "give me the key". */
+  selfWords: string[];
+  /** Answers to "give, or be given?". */
+  giveWords: string[];
+  receiveWords: string[];
+  /** "The body", for someone lying senseless or dead. */
+  bodyWords: string[];
   /** "to" in "use the brazier to light the torch". */
   purpose: string[];
   sip: string[];

@@ -232,9 +232,8 @@ export const fr: LangData = {
     "brazier.desc":
       "Un brasero de fer plein de braises rougeoyantes. De quoi rallumer une torche.",
     "mushroom.desc":
-      "Un champignon au chapeau violacé, qui pousse entre deux planches pourries.",
-    "sword.desc":
-      "Une épée longue, simple et bien équilibrée, appuyée contre le mur. Qui a pu l’abandonner ici ?",
+      "Un champignon au chapeau violacé, à l’odeur de terre humide.",
+    "sword.desc": "Une épée longue, simple et bien équilibrée.",
     "torch.desc": "Une torche de bois enduite de poix.",
     "trousers.desc": "Un pantalon de toile, avec deux poches.",
     "shirt.desc": "Une chemise de lin usée.",
@@ -589,9 +588,10 @@ export const fr: LangData = {
     "status.broken.head": "Vous avez le crâne fêlé.",
     "status.broken.head.treated":
       "Vous avez le crâne fêlé, sous un bandage bien serré.",
-    "status.broken.neck": "Votre cou vous fait atrocement souffrir.",
+    "status.broken.neck":
+      "Votre cou est salement touché. Tourner la tête est un supplice.",
     "status.broken.neck.treated":
-      "Votre cou vous fait atrocement souffrir, malgré le bandage.",
+      "Votre cou est salement touché, maintenu par un bandage.",
     "status.broken.torso":
       "Vous avez une côte cassée. Chaque inspiration vous le rappelle.",
     "status.broken.torso.treated":
@@ -784,6 +784,154 @@ export const fr: LangData = {
     "mood.surprised": "Vous laissez échapper un sifflement.",
     "mood.seen.surprised": "{x:The} vous lance un regard intrigué.",
     "wait.stare": "Vous restez planté là sans un mot, à fixer {x:the}.",
+    "sev.blunt.4.head": "Le crâne s’enfonce sous le coup.",
+    "sev.blunt.4.neck": "Quelque chose craque net dans la nuque.",
+    "sev.blunt.4.torso":
+      "Des côtes cèdent, et quelque chose éclate à l’intérieur.",
+    "you.killed.head": "Votre crâne cède. Vous ne vous sentez même pas tomber.",
+    "you.killed.neck":
+      "Votre nuque se brise. Le monde s’éteint comme une chandelle soufflée.",
+    "you.killed.trauma":
+      "Votre corps a encaissé plus de coups qu’il ne peut en supporter. Tout devient noir, pour de bon.",
+    "go.crawl": "Vous vous traînez sur le sol, pouce après pouce.",
+    "go.limp": "Vous avancez en boitant, les dents serrées.",
+    "flee.legs":
+      "Vos jambes brisées ne vous portent plus. {x:The} a tout son temps.",
+    "status.shattered": "Vous avez {part:the} broyé{part:e}.",
+    "status.shattered.treated":
+      "Vous avez {part:the} broyé{part:e}, maintenu{part:e} par un bandage.",
+    "status.bruises": "Vous avez {part:the} couvert{part:e} de bleus.",
+    "status.trauma.1": "Chaque mouvement vous fait mal.",
+    "status.trauma.2":
+      "Votre corps entier n’est plus qu’une douleur. Vous tenez à peine debout.",
+    "status.legs.1": "Vous ne pouvez plus que boiter.",
+    "status.legs.0":
+      "Vos jambes ne vous portent plus. Vous ne pouvez que ramper.",
+    "status.hands.1": "Une seule de vos mains vous obéit encore.",
+    "status.hands.0": "Aucune de vos mains ne peut plus rien tenir.",
+    "hand.broken":
+      "Votre {hand:name} est cassée. Elle ne se referme plus sur rien.",
+    "take.handsBroken":
+      "Vous tendez la main vers {x:the}, mais vos mains brisées ne se referment pas dessus.",
+    "take.stow":
+      "Vos mains sont prises, alors vous glissez {x:the} dans {c:the}.",
+    "listen.quiet": "Vous tendez l’oreille. Rien que votre propre souffle.",
+    "listen.person": "Vous entendez {x:the} respirer tout près.",
+    "listen.hostile":
+      "Vous entendez {x:the} changer d’appui, tout près, prêt à frapper.",
+    "listen.down": "{x:The} respire par petits halètements mouillés.",
+    "alley.sound":
+      "L’eau goutte le long des murs. Quelque part derrière la porte de la taverne, un rire étouffé.",
+    "tanners.sound": "La fontaine murmure. Un volet claque au vent.",
+    "yard.sound":
+      "Le brasero crépite doucement. Un rat file entre les planches.",
+    "tavern.sound": "Des voix étouffées montent par la trappe.",
+    "hide.seen": "{x:The} est sur vous. Impossible de vous cacher.",
+    "hide.watched":
+      "{x:The} vous observe. Vous cacher maintenant aurait l’air bien étrange.",
+    "hide.light": "Il n’y a pas d’ombre assez épaisse pour s’y cacher ici.",
+    "hide.dark":
+      "Vous vous plaquez dans le coin le plus sombre et retenez votre souffle. Personne ne vient.",
+    "playDead.alone":
+      "Vous restez immobile un moment. Personne n’est dupe, puisqu’il n’y a personne.",
+    "playDead.fails":
+      "Vous vous laissez aller, inerte. {x:The} vous décoche un coup de pied dans les côtes. « Debout. Je t’ai vu respirer. »",
+    "playDead.works":
+      "Vous vous laissez aller et ne bougez plus. {x:The} vous pousse du bout de sa botte, grogne, puis se désintéresse de vous.",
+    "playDead.robbed": "Vous sentez {x:the} fouiller vos poches.",
+    "search.awake": "{x:The} ne vous laissera pas fouiller ses poches.",
+    "search.dark": "Vous fouillez les vêtements {x:of} à tâtons.",
+    "search.nothing": "Il n’y a personne à fouiller ici.",
+    "where.here": "Vous êtes dans {x:the}.",
+    "despair.done": "Vous serrez les dents. Pas comme ça. Pas ici.",
+    "pray.done":
+      "Vous marmonnez une prière. Les dieux, s’ils écoutent, gardent leur avis pour eux.",
+    "pray.fight":
+      "Vous marmonnez une prière entre deux coups. {x:The} ne semble pas impressionné.",
+    "pray.seen": "{x:The} vous regarde prier, mal à l’aise.",
+    "sing.done":
+      "Vous fredonnez quelques mesures d’une vieille chanson de taverne.",
+    "sing.fight":
+      "Vous tentez une chanson. {x:The} vous regarde comme si vous aviez perdu la tête.",
+    "sing.seen": "{x:The} bat la mesure du pied, malgré lui.",
+    "dance.done": "Vous esquissez quelques pas de danse maladroits.",
+    "dance.fight":
+      "Vous esquissez une petite gigue. {x:The} hésite, interdit, l’espace d’un instant.",
+    "dance.seen": "{x:The} vous fixe, bouche bée.",
+    "dance.legs": "Avec des jambes dans cet état, danser est hors de question.",
+    "status.internal":
+      "Quelque chose saigne en vous. Un bandage n’y fera pas grand-chose.",
+    "playDead.watched":
+      "Vous vous laissez tomber et ne bougez plus. Personne ici n’y croit une seconde.",
+    "go.farNamed":
+      "{x:The} n’est pas tout à côté. Il faudra y aller de proche en proche.",
+    "go.farWhich":
+      "Plusieurs endroits que vous connaissez portent ce nom, {list:or}. Lequel ?",
+    "mushroom.found": "Il pousse entre deux planches pourries.",
+    "sword.found":
+      "Elle est appuyée contre le mur. Qui irait laisser traîner une lame pareille ?",
+    "where.worn": "Vous l’avez sur vous.",
+    "where.ground": "Par terre, à vos pieds.",
+    "where.in": "Dans {c:the}.",
+    "nail.desc": "Un clou de fer carré, long comme un doigt.",
+    "give.which":
+      "Vous voulez donner quelque chose, ou qu’on vous donne quelque chose ?",
+    "ask.request": "Que voulez-vous qu’on vous donne ?",
+    "request.thing": "{x:The} ne peut rien vous donner.",
+    "request.hostile": "« Tu veux quelque chose ? Viens le chercher. »",
+    "request.notHave": "{x:The} écarte les mains. « J’ai pas ça. »",
+    "request.refuse": "{x:The} serre {y:the} contre lui. « Pas question. »",
+    "request.deny":
+      "{x:The} tapote ses poches d’un air innocent. « Moi ? J’ai rien de tout ça. »",
+    "request.gives": "{x:The} vous tend {y:the}.",
+    "request.dropped":
+      "Vos mains sont prises, alors {y:the} finit à vos pieds.",
+    "giveBack.nothing": "Vous n’avez rien donné à personne ces derniers temps.",
+    "giveBack.gone": "La personne à qui vous l’avez donné n’est plus là.",
+    "giveBack.forgot":
+      "{x:The} fronce les sourcils. « Rendre quoi ? Je vois pas de quoi tu parles. »",
+    "giveBack.noLonger": "{x:The} hausse les épaules. « Je l’ai plus. »",
+    "giveBack.refuse": "{x:The} garde {y:the}. « Ce qui est donné est donné. »",
+    "giveBack.done": "{x:The} grommelle, mais vous rend {y:the}.",
+    "stock.empty": "{x:The} est vide.",
+    "think.bleeding":
+      "Avant toute chose, vous perdez du sang. Il faudrait s’en occuper.",
+    "think.hurt":
+      "Tout votre corps vous fait mal. Un nouveau combat pourrait être le dernier.",
+    "think.thirst": "Votre gorge est sèche. De l’eau d’abord.",
+    "think.hunger":
+      "Vous avez le ventre creux. Il faudrait manger quelque chose.",
+    "think.sleep":
+      "Vous gardez à peine les yeux ouverts. Quelques heures de sommeil vous feraient du bien, dans un coin sûr.",
+    "think.dark": "Vous n’y voyez presque rien. Une lumière changerait tout.",
+    "think.nothing":
+      "Rien ne vous vient. Il faudrait peut-être regarder un peu mieux autour de vous.",
+    "hint.torch":
+      "Votre torche est morte. Des braises rougeoient encore dans l’arrière-cour, mais un bâton nu ne prendra pas. Le tissu, lui, brûle bien.",
+    "hint.letter":
+      "Celui qui vous a fait venir a peut-être laissé une trace dans cette ruelle.",
+    "hint.key":
+      "La clé que vous portez doit ouvrir quelque chose tout près d’ici.",
+    "hint.robber":
+      "L’homme qui a voulu vous détrousser semblait chez lui dans ces rues. Il porte peut-être plus qu’un gourdin.",
+    "hint.tanner":
+      "Quelqu’un du quartier en sait peut-être plus sur ce rendez-vous.",
+    "hint.door":
+      "Cette porte de taverne verrouillée vous trotte dans la tête. Quelqu’un dans le coin doit en avoir la clé.",
+    "hint.inside":
+      "La réserve de la taverne est ouverte. Quoi que cache ce rendez-vous, c’est par là.",
+    "tanner.idle.dark": "Quelque part dans le noir, quelqu’un a le hoquet.",
+    "status.allFine": "Vous vous sentez bien.",
+    "sleep.wake.ground.planks":
+      "La dureté des planches finit par vous réveiller, le dos raide.",
+    "sleep.wake.ground.cobbles":
+      "Le froid des pavés finit par vous réveiller, le dos en compote.",
+    "sleep.wake.ground.floor":
+      "La dureté du sol finit par vous réveiller, le dos raide.",
+    "sleep.wake.ground.dirt": "Le froid de la terre finit par vous réveiller.",
+    "sleep.wake.ground.bed": "Vous vous réveillez avec un torticolis.",
+    "request.down":
+      "{x:The} n’est pas en état de vous donner quoi que ce soit. Vous pourriez toujours vous servir.",
   },
   names: {
     alley: { n: "ruelle sombre", g: "f", w: ["ruelle", "impasse"] },
@@ -814,7 +962,7 @@ export const fr: LangData = {
     barrel: { n: "tonneau", g: "m", w: ["baril", "fût"] },
     letter: { n: "lettre froissée", g: "f", w: ["papier", "message"] },
     apple: { n: "pomme", g: "f", w: ["fruit"] },
-    crate: { n: "caisse de clous", g: "f" },
+    crate: { n: "caisse de clous", g: "f", w: ["caisse", "boîte"] },
     wall: { n: "murs", g: "m", pl: true, w: ["mur"] },
     cobbles: {
       n: "pavés",
@@ -880,6 +1028,7 @@ export const fr: LangData = {
       g: "f",
       w: ["bande", "tissu", "chiffon", "lambeau", "pansement"],
     },
+    nail: { n: "clou", g: "m", w: ["clous", "pointe"] },
   },
   verbs: {
     look: [
@@ -904,9 +1053,6 @@ export const fr: LangData = {
       "inspecter",
       "inspecte",
       "inspectez",
-      "fouiller",
-      "fouille",
-      "fouillez",
       "lire",
       "lis",
       "lisez",
@@ -934,7 +1080,18 @@ export const fr: LangData = {
       "dirige toi",
       "rejoindre",
     ],
-    exits: ["sorties", "sortie", "issues", "où aller"],
+    exits: [
+      "sorties",
+      "sortie",
+      "issues",
+      "où aller",
+      "où puis je aller",
+      "directions",
+      "direction",
+      "chemins",
+      "par où",
+      "réfléchir où aller",
+    ],
     take: [
       "prendre",
       "prends",
@@ -1011,6 +1168,13 @@ export const fr: LangData = {
       "patientez",
       "z",
       "pause",
+      "rester",
+      "reste",
+      "ne pas bouger",
+      "ne bouge pas",
+      "bouger pas",
+      "rester là",
+      "reste là",
     ],
     rest: [
       "se reposer",
@@ -1254,6 +1418,9 @@ export const fr: LangData = {
       "négocie",
       "calmer",
       "calme",
+      "écoute moi",
+      "écoutez moi",
+      "laisse moi expliquer",
     ],
     lie: [
       "mentir",
@@ -1313,6 +1480,11 @@ export const fr: LangData = {
       "sprinter",
       "filer",
       "file",
+      "ramper",
+      "rampe",
+      "s'éloigner",
+      "m'éloigner",
+      "se traîner",
     ],
     spare: [
       "épargner",
@@ -1424,6 +1596,97 @@ export const fr: LangData = {
       "se servir de",
       "me servir de",
       "servir",
+    ],
+    listen: [
+      "écouter",
+      "écoute",
+      "écoutez",
+      "tendre l'oreille",
+      "tends l'oreille",
+      "entendre",
+    ],
+    hide: [
+      "se cacher",
+      "me cacher",
+      "cache moi",
+      "cacher",
+      "se dissimuler",
+      "se planquer",
+    ],
+    playDead: [
+      "faire le mort",
+      "fais le mort",
+      "faire la morte",
+      "simuler la mort",
+      "faire semblant d'être mort",
+      "rester immobile",
+    ],
+    search: [
+      "fouiller",
+      "fouille",
+      "fouillez",
+      "dépouiller",
+      "détrousser",
+      "voler",
+      "vole",
+      "piller",
+      "chercher",
+    ],
+    where: [
+      "où suis je",
+      "où je suis",
+      "où sommes nous",
+      "où est ce que je suis",
+      "où suis",
+      "où sommes",
+    ],
+    despair: [
+      "tue moi",
+      "tuez moi",
+      "me suicider",
+      "suicide",
+      "mourir",
+      "laissez moi mourir",
+      "achevez moi",
+      "achève moi",
+    ],
+    pray: ["prier", "prie", "priez", "mon dieu", "pitié mon dieu"],
+    sing: [
+      "chanter",
+      "chante",
+      "fredonner",
+      "fredonne",
+      "siffler",
+      "siffloter",
+    ],
+    dance: ["danser", "danse", "dansez", "gigue"],
+    request: [
+      "réclamer",
+      "réclame",
+      "exiger",
+      "exige",
+      "passe moi",
+      "passez moi",
+      "file moi",
+    ],
+    giveBack: [
+      "rends le moi",
+      "rendez le moi",
+      "rends moi",
+      "rendez moi",
+      "redonne le moi",
+      "redonne moi",
+      "rendre",
+      "rends le",
+    ],
+    think: [
+      "réfléchir",
+      "réfléchis",
+      "penser",
+      "pense",
+      "indice",
+      "que faire",
+      "quoi faire",
     ],
   },
   dirs: {
@@ -1586,8 +1849,6 @@ export const fr: LangData = {
     "escalader",
     "crocheter",
     "crochète",
-    "voler",
-    "vole",
     "acheter",
     "achète",
     "vendre",
@@ -1600,9 +1861,6 @@ export const fr: LangData = {
     "tirer",
     "tire",
     "creuser",
-    "prier",
-    "chanter",
-    "danser",
     "pompes",
     "abdos",
     "entraîner",
@@ -1681,6 +1939,7 @@ export const fr: LangData = {
   ],
   andWords: ["et"],
   moods: {
+    ok: ["accord", "entendu", "parfait"],
     surprised: ["oulala", "ohlala", "oh là là", "waouh", "ouah", "mazette"],
     sad: ["triste", "soupir", "soupire", "snif", "déprimé", "déprimée", "bof"],
     happy: [
@@ -1721,9 +1980,34 @@ export const fr: LangData = {
     ],
     cry: ["pleurer", "pleure", "sanglote", "sangloter"],
     pain: ["aïe", "ouille", "ouch", "aie", "douleur", "argh", "aïe aïe"],
-    never: ["tant", "oublie", "laisse", "rien", "peu", "importe"],
+    never: [
+      "tant",
+      "oublie",
+      "laisse",
+      "rien",
+      "peu",
+      "importe",
+      "stop",
+      "arrête",
+      "annuler",
+    ],
   },
   lots: ["beaucoup", "plein", "entier", "entière", "fond", "litres"],
   sip: ["gorgée", "peu", "goutte", "lampée"],
   purpose: ["pour", "afin"],
+  bodyWords: ["corps", "cadavre", "dépouille"],
+  questionLeads: [
+    "est",
+    "es",
+    "êtes",
+    "peux",
+    "pouvez",
+    "sais",
+    "savez",
+    "connais",
+    "connaissez",
+  ],
+  selfWords: ["moi", "me"],
+  giveWords: ["donner", "donne", "je donne"],
+  receiveWords: ["recevoir", "reçois", "obtenir", "prendre", "avoir"],
 };

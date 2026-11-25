@@ -224,10 +224,8 @@ export const en: LangData = {
     "fountain.desc": "A stone fountain. The water tastes of iron.",
     "brazier.desc":
       "An iron brazier full of glowing embers. Enough to relight a torch.",
-    "mushroom.desc":
-      "A mushroom with a purplish cap, growing between two rotten planks.",
-    "sword.desc":
-      "A long sword, plain and well balanced, leaning against the wall. Who would leave it here?",
+    "mushroom.desc": "A mushroom with a purplish cap and a damp, earthy smell.",
+    "sword.desc": "A long sword, plain and well balanced.",
     "torch.desc": "A wooden torch coated with pitch.",
     "trousers.desc": "Canvas trousers with two pockets.",
     "shirt.desc": "A worn linen shirt.",
@@ -563,9 +561,9 @@ export const en: LangData = {
     "status.broken.head": "Your skull is cracked.",
     "status.broken.head.treated":
       "Your skull is cracked, under a tight bandage.",
-    "status.broken.neck": "Your neck hurts terribly.",
-    "status.broken.neck.treated":
-      "Your neck hurts terribly, despite the bandage.",
+    "status.broken.neck":
+      "Your neck is badly hurt. Turning your head is agony.",
+    "status.broken.neck.treated": "Your neck is badly hurt, held by a bandage.",
     "status.broken.torso": "You have a broken rib. Every breath reminds you.",
     "status.broken.torso.treated": "You have a broken rib, held by a bandage.",
     "status.broken.limb": "Your {part:name} is broken.",
@@ -744,6 +742,147 @@ export const en: LangData = {
     "mood.surprised": "You let out a low whistle.",
     "mood.seen.surprised": "{x:The} gives you a curious look.",
     "wait.stare": "You stand there and say nothing, staring at {x:the}.",
+    "sev.blunt.4.head": "The skull caves in under the blow.",
+    "sev.blunt.4.neck": "Something snaps in the neck.",
+    "sev.blunt.4.torso": "Ribs give way, and something bursts inside.",
+    "you.killed.head":
+      "Your skull gives way. You do not even feel yourself fall.",
+    "you.killed.neck":
+      "Your neck snaps. The world goes out like a blown candle.",
+    "you.killed.trauma":
+      "Your body has taken more blows than it can bear. Everything goes dark, for good.",
+    "go.crawl": "You drag yourself along the ground, inch by inch.",
+    "go.limp": "You limp along, gritting your teeth.",
+    "flee.legs":
+      "Your broken legs won't carry you. {x:The} has all the time in the world.",
+    "status.shattered": "Your {part:name} is shattered.",
+    "status.shattered.treated":
+      "Your {part:name} is shattered, held by a bandage.",
+    "status.bruises": "Your {part:name} is covered in bruises.",
+    "status.trauma.1": "Every movement hurts.",
+    "status.trauma.2":
+      "Your whole body is one great ache. You can barely stay on your feet.",
+    "status.legs.1": "You can only limp.",
+    "status.legs.0": "Your legs won't carry you any more. You can only crawl.",
+    "status.hands.1": "Only one of your hands still obeys you.",
+    "status.hands.0": "Neither of your hands can hold anything any more.",
+    "hand.broken":
+      "Your {hand:name} is broken. It won't close around anything.",
+    "take.handsBroken":
+      "You reach for {x:the}, but your broken hands won't close on it.",
+    "take.stow": "Your hands are full, so you slip {x:the} into {c:the}.",
+    "listen.quiet": "You listen. Nothing but your own breathing.",
+    "listen.person": "You hear {x:the} breathing nearby.",
+    "listen.hostile":
+      "You hear {x:the} shift his weight, close by, ready to strike.",
+    "listen.down": "{x:The} breathes in short, wet gasps.",
+    "alley.sound":
+      "Water drips down the walls. Somewhere behind the tavern door, a muffled laugh.",
+    "tanners.sound": "The fountain murmurs. A shutter bangs in the wind.",
+    "yard.sound":
+      "The brazier crackles softly. A rat scurries between the planks.",
+    "tavern.sound": "Muffled voices rise through the trapdoor.",
+    "hide.seen": "{x:The} is right on top of you. There is nowhere to hide.",
+    "hide.watched":
+      "{x:The} is watching you. Hiding now would only look strange.",
+    "hide.light": "There is no shadow deep enough to hide in here.",
+    "hide.dark":
+      "You press yourself into the darkest corner and hold your breath. Nobody comes.",
+    "playDead.alone":
+      "You lie still for a while. Nobody is fooled, since nobody is here.",
+    "playDead.fails":
+      'You go limp. {x:The} kicks you in the ribs. "Get up. I saw you breathe."',
+    "playDead.works":
+      "You go limp and stop moving. {x:The} prods you with his boot, grunts, and loses interest.",
+    "playDead.robbed": "You feel {x:the} go through your pockets.",
+    "search.awake": "{x:The} won't let you go through his pockets.",
+    "search.dark": "You go through the clothes {x:of} by touch.",
+    "search.nothing": "There is nobody here to search.",
+    "where.here": "You are in {x:the}.",
+    "despair.done": "You grit your teeth. Not like this. Not here.",
+    "pray.done":
+      "You mutter a prayer. The gods, if they listen, keep their own counsel.",
+    "pray.fight":
+      "You mutter a prayer between two blows. {x:The} does not seem impressed.",
+    "pray.seen": "{x:The} watches you pray, uneasy.",
+    "sing.done": "You hum a few bars of an old tavern song.",
+    "sing.fight":
+      "You try a song. {x:The} stares at you as if you had lost your mind.",
+    "sing.seen": "{x:The} taps a foot, despite himself.",
+    "dance.done": "You dance a few clumsy steps.",
+    "dance.fight":
+      "You dance a little jig. {x:The} hesitates, baffled, for a heartbeat.",
+    "dance.seen": "{x:The} stares at you, open-mouthed.",
+    "dance.legs": "With legs in that state, dancing is out of the question.",
+    "status.internal":
+      "Something is bleeding inside you. A bandage won't do much for that.",
+    "playDead.watched":
+      "You drop to the ground and lie still. Nobody here believes it for a moment.",
+    "go.farNamed":
+      "{x:The} is not right next to here. You will have to get there step by step.",
+    "go.farWhich":
+      "Several places you know go by that name: {list:or}. Which one?",
+    "mushroom.found": "It grows between two rotten planks.",
+    "sword.found":
+      "It leans against the wall. Who would leave a blade like this lying about?",
+    "where.worn": "You have it on.",
+    "where.ground": "On the ground, at your feet.",
+    "where.in": "In {c:the}.",
+    "nail.desc": "A square iron nail, a finger long.",
+    "give.which": "Do you want to give something, or to be given something?",
+    "ask.request": "What do you want to be given?",
+    "request.thing": "{x:The} cannot give you anything.",
+    "request.hostile": '"You want something? Come and take it."',
+    "request.notHave": '{x:The} spreads his hands. "I don\'t have that."',
+    "request.refuse": '{x:The} holds on to {y:the}. "Not a chance."',
+    "request.deny":
+      '{x:The} pats his pockets with an innocent air. "Me? I\'ve got nothing like that."',
+    "request.gives": "{x:The} hands you {y:the}.",
+    "request.dropped": "Your hands are full, so {y:the} ends up at your feet.",
+    "giveBack.nothing": "You haven't given anything to anyone lately.",
+    "giveBack.gone": "The person you gave it to is not here any more.",
+    "giveBack.forgot":
+      "{x:The} frowns. \"Give back what? I don't know what you're on about.\"",
+    "giveBack.noLonger": '{x:The} shrugs. "Don\'t have it any more."',
+    "giveBack.refuse": '{x:The} keeps {y:the}. "A gift is a gift."',
+    "giveBack.done": "{x:The} grumbles, but hands {y:the} back to you.",
+    "stock.empty": "{x:The} is empty.",
+    "think.bleeding":
+      "Before anything else, you are losing blood. That needs seeing to.",
+    "think.hurt": "Your body aches all over. Another fight could be your last.",
+    "think.thirst": "Your throat is dry. Water first.",
+    "think.hunger": "Your stomach is hollow. You should eat something.",
+    "think.sleep":
+      "You can hardly keep your eyes open. A few hours of sleep would do you good, somewhere safe.",
+    "think.dark":
+      "You can barely see a thing. A light would change everything.",
+    "think.nothing":
+      "Nothing comes to mind. Perhaps look around a little more.",
+    "hint.torch":
+      "Your torch is dead. Embers still glow in the back yard, but a bare stick will not catch. Cloth, though, burns well.",
+    "hint.letter":
+      "Whoever asked you here may have left some trace in this alley.",
+    "hint.key": "The key you carry must open something close by.",
+    "hint.robber":
+      "The man who tried to rob you looked very much at home in these streets. He might carry more than a cudgel.",
+    "hint.tanner":
+      "Someone in the neighbourhood might know more about this meeting.",
+    "hint.door":
+      "That locked tavern door keeps coming back to mind. Someone around here must have its key.",
+    "hint.inside":
+      "The tavern storeroom is open. Whatever this meeting was about, it lies beyond.",
+    "tanner.idle.dark": "Somewhere in the dark, someone hiccups.",
+    "status.allFine": "You feel fine.",
+    "sleep.wake.ground.planks":
+      "The hard planks wake you in the end, your back stiff.",
+    "sleep.wake.ground.cobbles":
+      "The cold of the cobbles wakes you in the end, your back in pieces.",
+    "sleep.wake.ground.floor":
+      "The hard floor wakes you in the end, your back stiff.",
+    "sleep.wake.ground.dirt": "The cold ground wakes you in the end.",
+    "sleep.wake.ground.bed": "You wake up with a stiff neck.",
+    "request.down":
+      "{x:The} is in no state to give you anything. You could always help yourself.",
   },
   names: {
     alley: { n: "dark alley", w: ["alley", "lane"] },
@@ -839,6 +978,7 @@ export const en: LangData = {
       n: "strip of cloth",
       w: ["strip", "rag", "cloth", "band", "bandage"],
     },
+    nail: { n: "nail", w: ["nails", "spike"] },
   },
   verbs: {
     look: [
@@ -857,13 +997,22 @@ export const en: LangData = {
       "inspect",
       "look at",
       "read",
-      "search",
       "check",
       "study",
       "look in",
     ],
     go: ["lets go", "go", "walk", "head", "move", "enter", "leave", "go to"],
-    exits: ["exits", "ways out", "where can i go"],
+    exits: [
+      "exits",
+      "ways out",
+      "where can i go",
+      "where to go",
+      "where should i go",
+      "directions",
+      "direction",
+      "which way",
+      "think where to go",
+    ],
     take: [
       "take",
       "get",
@@ -899,7 +1048,18 @@ export const en: LangData = {
       "stuff",
       "belongings",
     ],
-    wait: ["wait", "z", "pause"],
+    wait: [
+      "wait",
+      "z",
+      "pause",
+      "stay",
+      "stay put",
+      "stand still",
+      "stay immobile",
+      "don't move",
+      "do not move",
+      "stay here",
+    ],
     rest: ["rest", "sit", "sit down", "relax"],
     time: [
       "time",
@@ -949,15 +1109,7 @@ export const en: LangData = {
       "am tired",
       "am dying",
     ],
-    help: [
-      "help",
-      "commands",
-      "how to play",
-      "hint",
-      "hints",
-      "what can i do",
-      "what now",
-    ],
+    help: ["help", "commands", "how to play"],
     light: [
       "light",
       "relight",
@@ -1018,10 +1170,20 @@ export const en: LangData = {
       "hola",
       "good evening",
       "excuse me",
+      "tell",
     ],
     ask: ["ask", "question", "ask about", "inquire"],
     threaten: ["threaten", "intimidate", "menace", "threat"],
-    persuade: ["persuade", "convince", "reason with", "negotiate", "calm"],
+    persuade: [
+      "persuade",
+      "convince",
+      "reason with",
+      "negotiate",
+      "calm",
+      "hear me out",
+      "listen to me",
+      "let me explain",
+    ],
     lie: [
       "lie",
       "bluff",
@@ -1047,6 +1209,11 @@ export const en: LangData = {
       "sprint",
       "dash",
       "run off",
+      "go away",
+      "crawl",
+      "crawl away",
+      "drag myself away",
+      "limp away",
     ],
     spare: [
       "spare",
@@ -1098,6 +1265,81 @@ export const en: LangData = {
       "encumbrance",
     ],
     use: ["use", "utilize", "make use of", "apply"],
+    listen: [
+      "listen",
+      "hear",
+      "eavesdrop",
+      "listen carefully",
+      "prick up my ears",
+    ],
+    hide: ["hide", "take cover", "conceal myself", "duck"],
+    playDead: [
+      "play dead",
+      "act dead",
+      "pretend to be dead",
+      "feign death",
+      "fake death",
+      "pretend dead",
+      "play possum",
+      "lie still",
+    ],
+    search: [
+      "search",
+      "loot",
+      "frisk",
+      "rummage",
+      "go through",
+      "pat down",
+      "steal from",
+      "steal",
+      "rob",
+      "find",
+    ],
+    where: [
+      "where am i",
+      "where am",
+      "where are we",
+      "where is this",
+      "where am i now",
+    ],
+    despair: [
+      "kill me",
+      "kill myself",
+      "suicide",
+      "just die",
+      "die already",
+      "just die already",
+      "let me die",
+      "die",
+    ],
+    pray: [
+      "pray",
+      "pray to god",
+      "please god",
+      "god help me",
+      "pray to the gods",
+    ],
+    sing: ["sing", "hum", "whistle"],
+    dance: ["dance", "jig", "do a jig"],
+    request: ["ask for", "request", "demand", "hand me", "pass me"],
+    giveBack: [
+      "give back",
+      "give it back",
+      "give that back",
+      "give me back",
+      "return it",
+      "i want it back",
+    ],
+    think: [
+      "think",
+      "ponder",
+      "reflect",
+      "hint",
+      "clue",
+      "what should i do",
+      "what now",
+      "what next",
+    ],
   },
   dirs: {
     n: ["north", "n"],
@@ -1208,7 +1450,6 @@ export const en: LangData = {
     "swim",
     "climb",
     "pick",
-    "steal",
     "buy",
     "sell",
     "haggle",
@@ -1216,9 +1457,6 @@ export const en: LangData = {
     "push",
     "pull",
     "dig",
-    "pray",
-    "sing",
-    "dance",
     "train",
     "exercise",
     "pushups",
@@ -1307,6 +1545,7 @@ export const en: LangData = {
   ],
   andWords: ["and", "plus"],
   moods: {
+    ok: ["fine", "alright", "okay", "good"],
     surprised: ["oulala", "ohlala", "whoa", "woah", "omg", "yikes"],
     sad: ["sad", "sigh", "depressed", "bored", "sadly"],
     happy: [
@@ -1337,7 +1576,7 @@ export const en: LangData = {
     ],
     cry: ["cry", "weep", "sob"],
     pain: ["ouch", "ow", "aie", "pain", "oof", "argh", "ugh"],
-    never: ["nevermind", "forget", "whatever", "nothing"],
+    never: ["nevermind", "forget", "whatever", "nothing", "stop", "cancel"],
   },
   lots: [
     "lot",
@@ -1351,4 +1590,27 @@ export const en: LangData = {
   ],
   sip: ["sip", "little", "drop", "mouthful"],
   purpose: ["to"],
+  bodyWords: ["body", "corpse"],
+  questionLeads: [
+    "are",
+    "is",
+    "do",
+    "does",
+    "can",
+    "will",
+    "was",
+    "were",
+    "did",
+  ],
+  selfWords: ["me", "myself"],
+  giveWords: ["give", "giving", "give something", "to give"],
+  receiveWords: [
+    "receive",
+    "get",
+    "be given",
+    "given",
+    "take",
+    "have",
+    "to receive",
+  ],
 };

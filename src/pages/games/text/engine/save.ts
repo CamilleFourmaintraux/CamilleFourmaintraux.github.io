@@ -28,8 +28,35 @@ const MIGRATIONS: ((save: SaveData) => SaveData)[] = [
   (save) => ({ ...save, v: 2, state: { ...save.state, enc: {} } }),
 ];
 
+/** The starting world of a content, built once and never modified. */
+const STARTS = new WeakMap<Content, Record<Id, Entity>>();
+function startOf(content: Content): Record<Id, Entity> {
+  let start = STARTS.get(content);
+  if (!start) STARTS.set(content, (start = initialEntities(content)));
+  return start;
+}
+
+/**
+ * Only the entities noted as changed are looked at, so a save costs the
+ * same in a world of a hundred things or of a million.
+ */
 export function serialize(g: Game): string {
-  const initial = initialEntities(g.content);
+  const initial = startOf(g.content);
+  const changed: Record<Id, Entity | null> = {};
+  for (const id of g.changed ?? []) {
+    const entity = g.st.ent[id];
+    if (!entity) {
+      if (initial[id]) changed[id] = null;
+    } else if (JSON.stringify(entity) !== JSON.stringify(initial[id])) {
+      changed[id] = entity;
+    }
+  }
+  return pack(g, changed);
+}
+
+/** The slow way, comparing every entity: for tests of `serialize`. */
+export function serializeFull(g: Game): string {
+  const initial = startOf(g.content);
   const changed: Record<Id, Entity | null> = {};
   for (const [id, entity] of Object.entries(g.st.ent)) {
     if (JSON.stringify(entity) !== JSON.stringify(initial[id]))
@@ -38,6 +65,10 @@ export function serialize(g: Game): string {
   for (const id of Object.keys(initial)) {
     if (!g.st.ent[id]) changed[id] = null;
   }
+  return pack(g, changed);
+}
+
+function pack(g: Game, changed: Record<Id, Entity | null>): string {
   const { ent: _ent, ...state } = g.st;
   void _ent;
   const save: SaveData = {
@@ -59,7 +90,11 @@ export function deserialize(content: Content, text: string): Game {
     if (entity === null) delete ent[id];
     else ent[id] = entity;
   }
-  const g: Game = { content, st: { ...save.state, v: SAVE_VERSION, ent } };
+  const g: Game = {
+    content,
+    st: { ...save.state, v: SAVE_VERSION, ent },
+    changed: new Set(Object.keys(save.changed)),
+  };
   // Newer content: planned events that the old game never got, if their
   // time has not passed yet.
   if (save.cv !== content.version) {

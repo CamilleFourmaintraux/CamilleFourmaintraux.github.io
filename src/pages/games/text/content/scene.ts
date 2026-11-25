@@ -2,6 +2,7 @@
 // Templates hold what never changes; entities place instances in the world.
 
 import type { Components, Template } from "../engine/types";
+import { comp, fuelLeft, within, type Game } from "../engine/world";
 
 const START = 21 * 60; // Day 0 (Lundas), 9 pm.
 
@@ -134,14 +135,14 @@ export const templates: Record<string, Template> = {
       covers: ["torso", "armL", "armR"],
       protection: CLOTH,
     },
-    cloth: { strips: 3 },
+    cloth: { strips: 3, makes: "strip" },
   }),
   "pocket-left": pocket,
   "pocket-right": pocket,
   purse: thing(0.05, 0.2, 10, "one", {
     container: { kind: "bag", maxWeight: 1, maxVolume: 0.3, opening: 8 },
   }),
-  coins: thing(0.1, 0.02, 2),
+  coins: thing(0.1, 0.02, 2, "one", { money: { yes: true } }),
   torch: thing(0.6, 0.5, 50, "one", {
     burn: { lit: false, fuel: 1, rate: 0.25, since: 0, gen: 0 },
   }),
@@ -156,7 +157,10 @@ export const templates: Record<string, Template> = {
   }),
   "apple-core": thing(0.02, 0.03, 5, "one", { edible: { food: 0.01 } }),
   strip: thing(0.02, 0.02, 5, "one", { cloth: { strips: 1 } }),
-  crate: thing(90, 80, 70, "two"),
+  crate: thing(90, 80, 70, "two", { stock: { tpl: "nail", count: 200 } }),
+  nail: thing(0.01, 0.005, 6, "one", {
+    weapon: { type: "pierce", power: 1, skill: "shortBlades" },
+  }),
   wall: { c: scenery },
   sky: { c: { ...scenery, sky: { yes: true } } },
   roofs: { c: scenery },
@@ -342,3 +346,31 @@ export const SCENE = {
   worldSeed: 0x5eed1e55,
   version: 3,
 };
+
+/** "Think": what the character might do next in this scene, first match. */
+const doorLocked = (g: Game) => !!comp(g, "tavern-door", "door")?.locked;
+const hasKey = (g: Game) =>
+  !!g.st.ent["tavern-key"] && within(g, "tavern-key", g.st.player);
+export const hints: { key: string; when: (g: Game) => boolean }[] = [
+  {
+    key: "hint.torch",
+    when: (g) =>
+      !!g.st.ent.torch &&
+      within(g, "torch", g.st.player) &&
+      fuelLeft(g, "torch") <= 0 &&
+      (g.st.visited ?? []).includes("yard"),
+  },
+  { key: "hint.letter", when: (g) => !g.st.flags["seen.letter"] },
+  { key: "hint.key", when: (g) => doorLocked(g) && hasKey(g) },
+  {
+    key: "hint.robber",
+    when: (g) =>
+      doorLocked(g) &&
+      !!g.st.ent.bandit?.loc &&
+      !!g.st.ent["tavern-key"] &&
+      within(g, "tavern-key", "bandit"),
+  },
+  { key: "hint.tanner", when: (g) => !g.st.flags["talked.tanner"] },
+  { key: "hint.door", when: (g) => doorLocked(g) },
+  { key: "hint.inside", when: () => true },
+];

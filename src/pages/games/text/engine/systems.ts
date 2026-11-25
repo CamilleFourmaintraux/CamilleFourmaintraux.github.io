@@ -199,6 +199,8 @@ on("moved", (ctx, event) => {
   // The player walking into another place is an autosave point.
   if (event.target === ctx.g.st.player && has(ctx.g, event.to ?? "", "place")) {
     ctx.placeChanged = true;
+    const visited = (ctx.g.st.visited ??= []);
+    if (!visited.includes(event.to!)) visited.push(event.to!);
   }
 });
 

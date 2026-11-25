@@ -17,7 +17,7 @@ import type {
   Template,
 } from "./types";
 import type { LangData } from "./lang";
-import { vitalAt, type Vital } from "./health";
+import { handWorks, vitalAt, type Vital } from "./health";
 
 export interface Content {
   /** Version of the content. A new version may move the world seed. */
@@ -31,14 +31,30 @@ export interface Content {
   /** Events planned from the start: arrivals, departures. */
   schedule?: { at: number; type: string; target?: Id; to?: Id }[];
   langs: Record<Lang, LangData>;
+  /**
+   * What the character may think of next ("think"), first true one wins.
+   * Written with the story, so each region brings its own.
+   */
+  hints?: { key: string; when: (g: Game) => boolean }[];
 }
 
 /** A running game: the content (never changes) and the state (saved). */
 export interface Game {
   content: Content;
   st: State;
-  /** Cache of the children of each entity, rebuilt after a move. */
+  /** Children of each entity, built once and kept up to date by moves. */
   index?: Map<Id, Id[]>;
+  /**
+   * Entities that may differ from the starting world. Every write to the
+   * world goes through the functions of this file, which note it here, so
+   * that a save looks at these few and not at the whole world.
+   */
+  changed?: Set<Id>;
+}
+
+/** Notes that an entity may now differ from the starting world. */
+function touch(g: Game, id: Id) {
+  (g.changed ??= new Set()).add(id);
 }
 
 export const SAVE_VERSION = 2;
@@ -99,9 +115,22 @@ export function patch<K extends ComponentName>(
   const e = g.st.ent[id];
   const current = comp(g, id, key) ?? {};
   e.c[key] = { ...current, ...values } as Components[K];
+  touch(g, id);
 }
 
-export function children(g: Game, id: Id): Id[] {
+/** Replaces a component of an entity outright, or removes it. */
+export function setComp<K extends ComponentName>(
+  g: Game,
+  id: Id,
+  key: K,
+  value: Components[K] | undefined,
+) {
+  if (value === undefined) delete g.st.ent[id].c[key];
+  else g.st.ent[id].c[key] = value;
+  touch(g, id);
+}
+
+function indexed(g: Game): Map<Id, Id[]> {
   if (!g.index) {
     g.index = new Map();
     for (const e of Object.values(g.st.ent)) {
@@ -111,19 +140,44 @@ export function children(g: Game, id: Id): Id[] {
       else g.index.set(e.loc, [e.id]);
     }
   }
-  return g.index.get(id) ?? [];
+  return g.index;
+}
+
+function unlink(g: Game, id: Id) {
+  const loc = g.st.ent[id]?.loc;
+  if (!g.index || !loc) return;
+  const list = g.index.get(loc);
+  if (list) list.splice(list.indexOf(id), 1);
+}
+
+function link(g: Game, id: Id) {
+  const loc = g.st.ent[id].loc;
+  if (!g.index || !loc) return;
+  const list = g.index.get(loc);
+  if (list) list.push(id);
+  else g.index.set(loc, [id]);
+}
+
+export function children(g: Game, id: Id): Id[] {
+  return indexed(g).get(id) ?? [];
 }
 
 export function move(g: Game, id: Id, to: Id | null) {
-  g.st.ent[id].loc = to;
-  g.index = undefined;
+  unlink(g, id);
+  const e = g.st.ent[id];
+  e.loc = to;
+  if (!e.c.moved) e.c.moved = { yes: true };
+  link(g, id);
+  touch(g, id);
 }
 
 /** Removes an entity and everything inside it from the world. */
 export function destroy(g: Game, id: Id) {
   for (const child of [...children(g, id)]) destroy(g, child);
+  unlink(g, id);
+  g.index?.delete(id);
   delete g.st.ent[id];
-  g.index = undefined;
+  touch(g, id);
 }
 
 /** The entity itself, then everything inside it, depth first. */
@@ -238,8 +292,13 @@ export function freeHands(g: Game, actor: Id): Id[] {
     return item !== undefined && comp(g, item, "physical")?.grip === "two";
   });
   if (twoHanded) return [];
+  // A broken arm or hand holds nothing.
+  const body = comp(g, actor, "body");
+  const works = (hand: Id) =>
+    !body || handWorks(body, hand === left ? "left" : "right");
   return [right, left].filter(
-    (hand): hand is Id => !!hand && heldIn(g, hand) === undefined,
+    (hand): hand is Id =>
+      !!hand && heldIn(g, hand) === undefined && works(hand),
   );
 }
 
@@ -331,7 +390,8 @@ export function skill(g: Game, actor: Id, name: Skill): number {
 /** Creates a new entity from a template (what is left of an apple...). */
 export function spawn(g: Game, tpl: string, loc: Id): Id {
   const id = `${tpl}#${g.st.seq++}`;
-  g.st.ent[id] = { id, tpl, loc, c: {} };
-  g.index = undefined;
+  g.st.ent[id] = { id, tpl, loc, c: { moved: { yes: true } } };
+  link(g, id);
+  touch(g, id);
   return id;
 }

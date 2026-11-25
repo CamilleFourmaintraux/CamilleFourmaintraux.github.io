@@ -41,6 +41,7 @@ import {
   peopleIn,
   ref,
   refs,
+  vital,
   subtree,
   volumeUsed,
   weightInside,
@@ -51,14 +52,29 @@ import {
 } from "./world";
 import { scope } from "./parser";
 import { TIERS, needsOf, swallow, tier, tooMuch } from "./needs";
+import { PARTS } from "./body";
 import { PEOPLE_VERBS, demandHere, wrapTorch } from "./actions";
-import { bleedAt, bloodAt, WEAK_BLOOD } from "./health";
 import {
+  SHOCK_TRAUMA,
+  SORE_TRAUMA,
+  WEAK_BLOOD,
+  bleedAt,
+  bloodAt,
+  brokenAt,
+  handWorks,
+  legsLeft,
+  traumaOf,
+} from "./health";
+import {
+  awakeHere,
   describePerson,
   getAway,
   hostilesHere,
+  mindOf,
   personLine,
+  playDead,
   refuseByLeaving,
+  searchPerson,
 } from "./npc";
 import type { Id, Intent, Msg } from "./types";
 
@@ -172,6 +188,8 @@ const examine: Verb = {
     const g = ctx.g;
     const x = intent.obj![0];
     if (has(g, x, "place")) return describePlace(ctx);
+    // Remembered, for the hints of "think".
+    g.st.flags[`seen.${x}`] = true;
     if (has(g, x, "sky")) return say(ctx, skyKey(g));
     // In the dark, only what you carry can be looked at properly.
     if (isDark(g, playerPlace(g)) && !subtree(g, g.st.player).includes(x)) {
@@ -188,6 +206,7 @@ const examine: Verb = {
     if (!has(g, x, "part"))
       say(ctx, text(g, key) ? key : "examine.default", { x: ref(g, x) });
     if (has(g, x, "actor") && x !== g.st.player) return describePerson(ctx, x);
+    whereLine(ctx, x);
     if (burn && burn.rate > 0 && key === base) {
       const fuel = fuelLeft(g, x);
       const tier =
@@ -281,8 +300,15 @@ export const go: Verb = {
     }
     const tier = loadTier(g, g.st.player);
     if (tier === "overloaded") say(ctx, "go.strain");
-    if (isDark(g, playerPlace(g))) say(ctx, "go.grope");
-    advance(ctx, { minutes: exit.minutes * LOAD_SLOWDOWN[tier] });
+    // Limping on a broken leg, crawling on two.
+    const body = comp(g, g.st.player, "body");
+    const legs = body ? legsLeft(body) : 2;
+    if (legs < 2) say(ctx, legs === 0 ? "go.crawl" : "go.limp");
+    else if (isDark(g, playerPlace(g))) say(ctx, "go.grope");
+    advance(ctx, {
+      minutes: exit.minutes * LOAD_SLOWDOWN[tier] * [5, 2, 1][legs],
+    });
+    if (g.st.flags.dead) return;
     const from = g.st.ent[g.st.player].loc;
     g.st.flags.prev = from ?? "";
     move(g, g.st.player, exit.to);
@@ -362,9 +388,31 @@ function grab(ctx: Ctx, x: Id, wanted?: Id): number {
     say(ctx, "take.tooHeavy", { x: ref(g, x) });
     return 2;
   }
+  const body = comp(g, player, "body");
+  const brokenHand = (h: Id) =>
+    !!body && !handWorks(body, h === hands(g, player).left ? "left" : "right");
+  if (wanted && !free.includes(wanted) && brokenHand(wanted)) {
+    say(ctx, "hand.broken", { hand: bare(g, wanted) });
+    return 0;
+  }
   const hand = wanted && free.includes(wanted) ? wanted : free[0];
   if (!hand) {
-    say(ctx, "take.handsFull", { x: ref(g, x) });
+    // Hands full: a coin or a key still slips into a purse or a pocket.
+    const store = subtree(g, player).find(
+      (c) => c !== x && has(g, c, "container") && !misfit(g, x, c),
+    );
+    if (store && !within(g, x, player)) {
+      say(ctx, "take.stow", { x: ref(g, x), c: ref(g, store) });
+      move(g, x, store);
+      emit(ctx, { type: "moved", target: x, from: loc, to: store });
+      return 1;
+    }
+    const anyBroken = [hands(g, player).left, hands(g, player).right].some(
+      (h) => h && brokenHand(h),
+    );
+    say(ctx, anyBroken ? "take.handsBroken" : "take.handsFull", {
+      x: ref(g, x),
+    });
     return 0;
   }
   if (wanted && hand !== wanted)
@@ -601,64 +649,80 @@ const status: Verb = {
     const g = ctx.g;
     const player = g.st.player;
     const body = comp(g, player, "body");
+    const before = ctx.out.length;
     let fine = !isNauseous(g);
     if (body) {
-      // Two bruises on the same arm read as one line, not the same twice.
-      const said = new Set<string>();
-      const once = (key: string, p: Record<string, unknown>) => {
-        const id = key + JSON.stringify(p);
-        if (said.has(id)) return;
-        said.add(id);
-        say(ctx, key, p as never);
-      };
-      const ribs = body.wounds.filter(
-        (w) => w.type === "blunt" && w.sev >= 3 && w.part === "torso",
-      );
       const blood = bloodAt(body, g.st.clock);
       if (blood < WEAK_BLOOD) {
         say(ctx, "status.blood");
         fine = false;
       }
-      for (const w of body.wounds) {
-        // A broken bone is named for where it is: a cracked skull, a broken
-        // leg, not "a broken bone on the head".
-        if (w.type === "blunt" && w.sev >= 3) {
-          const group =
-            w.part === "head"
-              ? "head"
-              : w.part === "neck"
-                ? "neck"
-                : w.part === "torso"
-                  ? "torso"
-                  : "limb";
-          // Several ribs: one line, bandaged only once all of them are.
-          const many = group === "torso" && ribs.length > 1;
-          const treated = many ? ribs.every((r) => r.treated) : w.treated;
-          once(
-            `status.broken.${group}${many ? ".many" : ""}${treated ? ".treated" : ""}`,
-            {
-              part: { n: `part.${w.part}` },
-            },
+      // One line per part of the body, for its worst wound: a broken arm
+      // says it all, the bruises on it go without saying.
+      for (const part of PARTS) {
+        const here = body.wounds.filter((w) => w.part === part);
+        if (here.length === 0) continue;
+        fine = false;
+        if (brokenAt(body, part)) {
+          const broken = here.filter(
+            (w) => w.sev === 4 || (w.type === "blunt" && w.sev >= 3),
           );
-          fine = false;
+          const shattered = broken.some((w) => w.sev === 4);
+          const group =
+            part === "head" || part === "neck" || part === "torso"
+              ? part
+              : "limb";
+          // Several ribs: one line, bandaged only once all of them are.
+          const many =
+            group === "torso" && (broken.length > 1 || shattered)
+              ? ".many"
+              : "";
+          const treated = broken.every((w) => w.treated) ? ".treated" : "";
+          const key =
+            shattered && group === "limb"
+              ? `status.shattered${treated}`
+              : `status.broken.${group}${many}${treated}`;
+          say(ctx, key, { part: { n: `part.${part}` } });
+          // A burst inside bleeds where no bandage reaches.
+          if (
+            part === "torso" &&
+            broken.some((w) => bleedAt(w, g.st.clock) > 0.05)
+          )
+            say(ctx, "status.internal");
           continue;
         }
+        const w = [...here].sort(
+          (x, y) =>
+            bleedAt(y, g.st.clock) - bleedAt(x, g.st.clock) || y.sev - x.sev,
+        )[0];
         const bleeds = bleedAt(w, g.st.clock) > 0.05;
-        once(
+        say(
+          ctx,
           w.seared
             ? "status.wound.seared"
             : w.treated
               ? "status.wound.treated"
               : bleeds
                 ? "status.wound.bleeding"
-                : "status.wound",
+                : here.length > 1 && w.type === "blunt"
+                  ? "status.bruises"
+                  : "status.wound",
           {
             w: { k: `wound.${w.type}.${w.sev}` },
-            part: { n: `part.${w.part}` },
+            part: { n: `part.${part}` },
           },
         );
-        fine = false;
       }
+      // What all of it means: can you still stand, walk, hold a blade?
+      const trauma = traumaOf(body);
+      if (trauma >= SHOCK_TRAUMA) say(ctx, "status.trauma.2");
+      else if (trauma >= SORE_TRAUMA) say(ctx, "status.trauma.1");
+      const legs = legsLeft(body);
+      if (legs < 2) say(ctx, `status.legs.${legs}`);
+      const hands = (["left", "right"] as const).filter((side) =>
+        handWorks(body, side),
+      ).length;
+      if (hands < 2) say(ctx, `status.hands.${hands}`);
     }
     if (isNauseous(g)) say(ctx, "status.nauseous");
     const needs = needsOf(g, player);
@@ -674,7 +738,9 @@ const status: Verb = {
     // The load is told only when it slows you down ("weight" tells it always).
     if (loadTier(g, player) !== "light")
       say(ctx, `load.${loadTier(g, player)}`);
-    if (fine) say(ctx, "status.fine");
+    // "Otherwise, you feel fine" only after something else was said.
+    if (fine)
+      say(ctx, ctx.out.length > before ? "status.fine" : "status.allFine");
   },
 };
 
@@ -824,6 +890,118 @@ const close: Verb = {
   },
 };
 
+/**
+ * Where a thing is, told the same way for every thing: how it was first
+ * found (a mushroom growing between planks), until someone moves it; then
+ * the hand, pocket or container it is in, or the ground.
+ */
+function whereLine(ctx: Ctx, x: Id) {
+  const g = ctx.g;
+  if (
+    ["part", "actor", "scenery", "place", "door"].some((c) =>
+      has(g, x, c as never),
+    )
+  )
+    return;
+  const found = `${nameKey(g, x)}.found`;
+  if (!comp(g, x, "moved")) {
+    if (text(g, found)) say(ctx, found, { x: ref(g, x) });
+    return;
+  }
+  const loc = g.st.ent[x].loc;
+  if (!loc) return;
+  if (loc === g.st.player) return say(ctx, "where.worn");
+  if (has(g, loc, "place")) return say(ctx, "where.ground");
+  if (has(g, loc, "actor")) return;
+  const holder = has(g, loc, "part") ? g.st.ent[loc].loc : undefined;
+  if (holder && holder !== g.st.player) return;
+  say(ctx, "where.in", { c: ref(g, loc) });
+}
+
+/** "Listen": the sounds of the place, and the breathing of people near. */
+const listen: Verb = {
+  run(ctx) {
+    const g = ctx.g;
+    const place = playerPlace(g);
+    const key = `${nameKey(g, place)}.sound`;
+    say(ctx, text(g, key) ? key : "listen.quiet");
+    for (const person of peopleIn(g, place)) {
+      const v = vital(g, person);
+      if (v === "dead") continue;
+      const hostile = mindOf(g, person)?.hostile;
+      say(
+        ctx,
+        v === "down"
+          ? "listen.down"
+          : hostile
+            ? "listen.hostile"
+            : "listen.person",
+        { x: ref(g, person) },
+      );
+    }
+    advance(ctx, { minutes: 1 });
+  },
+};
+
+/** "Hide": only works where nobody sees you, and in the dark. */
+const hide: Verb = {
+  run(ctx) {
+    const g = ctx.g;
+    const foe = hostilesHere(g)[0];
+    if (foe) {
+      say(ctx, "hide.seen", { x: ref(g, foe) });
+      return void advance(ctx, { minutes: 1 });
+    }
+    const watcher = awakeHere(g)[0];
+    if (watcher) return say(ctx, "hide.watched", { x: ref(g, watcher) });
+    if (!isDark(g, playerPlace(g))) return say(ctx, "hide.light");
+    say(ctx, "hide.dark");
+    ctx.interruptible = true;
+    advance(ctx, { minutes: 10 });
+    ctx.interruptible = false;
+  },
+};
+
+/** "Search the body", "loot", "fouiller". */
+const search: Verb = {
+  run(ctx, intent) {
+    const g = ctx.g;
+    const x =
+      intent.obj?.[0] ??
+      peopleIn(g, playerPlace(g)).find((id) => !conscious(g, id));
+    if (!x) return say(ctx, "search.nothing");
+    if (has(g, x, "actor") && x !== g.st.player) return searchPerson(ctx, x);
+    return VERB_RUNNERS.examine.run(ctx, { verb: "examine", obj: [x] });
+  },
+};
+
+/** "Where am I?" */
+const where: Verb = {
+  run(ctx) {
+    say(ctx, "where.here", { x: ref(ctx.g, playerPlace(ctx.g)) });
+  },
+};
+
+/** Little things a character can do with nothing at hand. */
+const gesture = (key: string, minutes: number): Verb => ({
+  run(ctx) {
+    const g = ctx.g;
+    const body = comp(g, g.st.player, "body");
+    if (key === "dance" && body && legsLeft(body) < 2)
+      return say(ctx, "dance.legs");
+    const foe = hostilesHere(g)[0];
+    if (foe && key !== "despair") {
+      say(ctx, `${key}.fight`, { x: ref(g, foe) });
+      return void advance(ctx, { minutes: 1 });
+    }
+    say(ctx, `${key}.done`);
+    const witness = awakeHere(g)[0];
+    if (witness && key !== "despair")
+      say(ctx, `${key}.seen`, { x: ref(g, witness) });
+    if (minutes > 0) advance(ctx, { minutes });
+  },
+});
+
 /** "Weight", "how much do I carry". */
 const load: Verb = {
   run(ctx) {
@@ -852,6 +1030,8 @@ const use: Verb = {
       if (givesFire(g, fire) && !givesFire(g, thing))
         return runs("put", { obj: [thing], ind: fire });
       if (has(g, y, "actor")) return runs("give", { obj: [x], ind: y });
+      // "coin purse": the coin goes in the purse.
+      if (has(g, y, "container")) return runs("put", { obj: [x], ind: y });
       return say(ctx, "use.how", { x: ref(g, x) });
     }
     const burn = comp(g, x, "burn");
@@ -882,6 +1062,15 @@ const use: Verb = {
 };
 
 export const VERB_RUNNERS: Record<string, Verb> = {
+  listen,
+  hide,
+  search,
+  where,
+  playDead: { run: (ctx) => playDead(ctx) },
+  despair: gesture("despair", 0),
+  pray: gesture("pray", 2),
+  sing: gesture("sing", 2),
+  dance: gesture("dance", 2),
   load,
   use,
   ...PEOPLE_VERBS,

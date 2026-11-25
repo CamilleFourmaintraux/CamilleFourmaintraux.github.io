@@ -85,6 +85,18 @@ export const VERBS: Record<
   swap: {},
   load: {},
   use: { obj: "one", ind: true },
+  request: { obj: "one", ind: true, optional: true },
+  giveBack: {},
+  think: {},
+  listen: {},
+  hide: {},
+  search: { obj: "one", optional: true },
+  where: {},
+  playDead: {},
+  despair: {},
+  pray: {},
+  sing: {},
+  dance: {},
   heat: { obj: "one", ind: true, optional: true },
   meta: {},
 };
@@ -104,7 +116,10 @@ export type Parsed =
   | { kind: "meta" }
   | { kind: "mood"; mood: string }
   | { kind: "impossible" }
-  | { kind: "far" }
+  | { kind: "giveOrGet" }
+  | { kind: "askFor" }
+  | { kind: "far"; place?: Id }
+  | { kind: "farWhich"; places: Id[] }
   | { kind: "which"; intent: Intent; slot: "obj" | "ind"; options: Id[] }
   | { kind: "what"; intent: Intent; slot: "obj" | "ind" };
 
@@ -213,6 +228,9 @@ function namesOf(g: Game, L: LangData[], id: Id): Set<string> {
     words.push(def.n, ...(def.w ?? []));
     if (state && def.adj?.[state]) words.push(def.adj[state]);
   }
+  // Someone lying senseless or dead is also "the body".
+  if (has(g, id, "actor") && !conscious(g, id))
+    for (const lang of L) words.push(...lang.bodyWords);
   const stop = new Set(L.flatMap((lang) => lang.stop));
   return new Set([...wordSet(L, words)].filter((w) => !stop.has(w)));
 }
@@ -223,17 +241,21 @@ export function scope(g: Game): Id[] {
   const own = subtree(g, player);
   const place = placeOf(g, player);
   // In the dark, people nearby are still heard, and what lies on the
-  // ground can be found by feeling around. Not their belongings.
+  // ground can be found by feeling around, the pockets of someone lying
+  // there too. Not the belongings of someone standing.
   if (isDark(g, place)) {
-    return [
-      ...own,
-      ...children(g, place).filter(
-        (id) =>
-          id !== player &&
-          (has(g, id, "actor") ||
-            (!has(g, id, "scenery") && !has(g, id, "place"))),
-      ),
-    ];
+    const near = children(g, place).filter(
+      (id) =>
+        id !== player &&
+        (has(g, id, "actor") ||
+          (!has(g, id, "scenery") && !has(g, id, "place"))),
+    );
+    const onBodies = near
+      .filter((id) => has(g, id, "actor") && !conscious(g, id))
+      .flatMap((id) =>
+        subtree(g, id).filter((x) => x !== id && !has(g, x, "part")),
+      );
+    return [...own, ...near, ...onBodies];
   }
   const seen = new Set(own);
   const visit = (id: Id) => {
@@ -335,6 +357,9 @@ const isPronoun = (L: LangData[], t: string) =>
 /** Splits "the apple in the barrel" around its preposition. */
 function splitPrep(L: LangData[], tokens: string[]) {
   for (let i = 0; i < tokens.length; i++) {
+    // "take a nail": a first word that is also an article ("a", the French
+    // "à" once accents are folded away) is not a preposition.
+    if (i === 0 && L.some((lang) => lang.stop.includes(tokens[0]))) continue;
     for (const lang of L) {
       for (const [prep, words] of Object.entries(lang.preps)) {
         if (words.includes(tokens[i])) {
@@ -380,17 +405,39 @@ function close(word: string, name: string): boolean {
 }
 
 /** Every word that names something in the game, in both languages. */
-function vocabulary(w: Words): Set<string> {
-  return new Set(
-    w.L.flatMap((lang) =>
-      Object.values(lang.names).flatMap((def) => [
-        def.n,
-        ...(def.w ?? []),
-        ...Object.values(def.adj ?? {}),
-      ]),
-    )
-      .flatMap((word) => tokenize(w.L, word))
-      .map(stem),
+/** Something that knows whether it holds a word. */
+interface WordSet {
+  has(word: string): boolean;
+}
+
+/** Built once per language and kept: the names change only with content. */
+const VOCABULARY = new WeakMap<LangData, Set<string>>();
+const KNOWN = new WeakMap<LangData, Set<string>>();
+
+const union = (sets: Set<string>[]): WordSet => ({
+  has: (word) => sets.some((set) => set.has(word)),
+});
+
+/** Every word that names a thing, in the languages being read. */
+function vocabulary(w: Words): WordSet {
+  return union(
+    w.L.map((lang) => {
+      let set = VOCABULARY.get(lang);
+      if (!set) {
+        set = new Set(
+          Object.values(lang.names)
+            .flatMap((def) => [
+              def.n,
+              ...(def.w ?? []),
+              ...Object.values(def.adj ?? {}),
+            ])
+            .flatMap((word) => tokenize([lang], word))
+            .map(stem),
+        );
+        VOCABULARY.set(lang, set);
+      }
+      return set;
+    }),
   );
 }
 
@@ -545,6 +592,41 @@ function exitWords(g: Game, w: Words) {
   });
 }
 
+/**
+ * Places the player knows by name: those visited, and those seen from there
+ * (the ends of their exits). Never the whole world: in a city of hundreds of
+ * streets, "the street" means one of the few the player has walked.
+ */
+function knownPlaces(g: Game): Id[] {
+  const out = new Set<Id>();
+  for (const id of [...(g.st.visited ?? []), placeOf(g, g.st.player)]) {
+    out.add(id);
+    for (const exit of comp(g, id, "place")?.exits ?? []) {
+      out.add(exit.to);
+      if (exit.door) out.add(exit.door);
+    }
+  }
+  return [...out];
+}
+
+/** A known place named by these words, not next to here; or several. */
+function farOrNot(
+  g: Game,
+  w: Words,
+  wanted: string[],
+  otherwise: "noExit" | "notHere",
+): Parsed {
+  const matches = knownPlaces(g).filter(
+    (id) =>
+      g.st.ent[id] && wanted.every((word) => namesOf(g, w.L, id).has(word)),
+  );
+  if (matches.length === 1) return { kind: "far", place: matches[0] };
+  if (matches.length > 1) return { kind: "farWhich", places: matches };
+  return otherwise === "noExit"
+    ? { kind: "noExit" }
+    : { kind: "notHere", dark: isDark(g, placeOf(g, g.st.player)) };
+}
+
 function parseGo(g: Game, w: Words, tokens: string[]): Parsed {
   const exits = comp(g, placeOf(g, g.st.player), "place")?.exits ?? [];
   const dir = findDir(w.L, tokens);
@@ -581,9 +663,8 @@ function parseGo(g: Game, w: Words, tokens: string[]): Parsed {
   if (index < 0 && goingBack) {
     return { kind: "intent", intent: { verb: "go", dir: "back" } };
   }
-  return index < 0
-    ? { kind: "noExit" }
-    : { kind: "intent", intent: { verb: "go", exit: index } };
+  if (index < 0) return farOrNot(g, w, wanted, "noExit");
+  return { kind: "intent", intent: { verb: "go", exit: index } };
 }
 
 /** Fills the object or indirect slot of an intent from words. */
@@ -618,12 +699,36 @@ export function fillSlot(
   }
   const found = resolve(g, w, tokens, candidates);
   if ("ok" in found) {
-    if (slot === "obj") intent.obj = found.ok;
-    else intent.ind = found.ok[0];
+    if (slot === "obj") {
+      intent.obj = found.ok;
+      // "A nail" from the crate of nails: one from the stock, not the crate.
+      if (found.ok.length === 1 && fromStock(g, w, found.ok[0], tokens))
+        intent.stock = true;
+    } else intent.ind = found.ok[0];
     return undefined;
   }
-  if ("many" in found)
+  if ("many" in found) {
+    // "The nail" with a nail in hand and the crate of nails nearby: the
+    // nail in hand, unless taking one (then a fresh one from the crate).
+    const sources = found.many.filter((id) => fromStock(g, w, id, tokens));
+    if (slot === "obj" && sources.length === 1) {
+      const real = found.many.filter((id) => id !== sources[0]);
+      const choice =
+        intent.verb === "take"
+          ? real.filter((id) => !within(g, id, g.st.player))
+          : real;
+      if (choice.length === 0) {
+        intent.obj = sources;
+        intent.stock = true;
+        return undefined;
+      }
+      if (choice.length === 1) {
+        intent.obj = choice;
+        return undefined;
+      }
+    }
     return { kind: "which", intent, slot, options: found.many };
+  }
   if ("empty" in found) return { kind: "what", intent, slot };
   if (found.none === "unknown")
     return { kind: "unknownWord", word: found.word };
@@ -653,6 +758,19 @@ export function parse(g: Game, lang: Lang, text: string): Parsed {
     startsWithVerb(L, tokens.slice(1))
   ) {
     return parse(g, lang, [...tokens.slice(1), tokens[0]].join(" "));
+  }
+  // "Bandit, give me the key": a command addressed to someone.
+  const addressed = addressee(g, w, tokens);
+  if (addressed) {
+    const inner = parse(g, lang, addressed.rest.join(" "));
+    if (inner.kind === "intent") {
+      const it = inner.intent;
+      if (it.verb === "request" || it.verb === "give")
+        it.ind ??= addressed.person;
+      else if (VERBS[it.verb]?.people && !it.obj?.length)
+        it.obj = [addressed.person];
+    }
+    return inner;
   }
   let found = findVerb(L, tokens);
   if (!found) {
@@ -702,6 +820,11 @@ export function parse(g: Game, lang: Lang, text: string): Parsed {
       }
       return inner;
     }
+  }
+  // "Give the key": mine to give, or someone's to ask for.
+  if (verb === "give" || verb === "request") {
+    const giving = parseGive(g, w, rest, verb === "request");
+    if (giving) return giving;
   }
   const spec = VERBS[verb] ?? {};
 
@@ -762,7 +885,13 @@ export function parse(g: Game, lang: Lang, text: string): Parsed {
   const first = fillSlot(g, w, intent, "obj", obj);
   // Words that name nothing, after a verb that can do without an object,
   // mean the obvious target: "panser ma blessure", "fight back".
-  if (first && finalSpec.optional && first.kind === "unknownWord") {
+  // Not for a blow, though: "attack rack" must not hit whoever is nearest.
+  if (
+    first &&
+    finalSpec.optional &&
+    first.kind === "unknownWord" &&
+    verb !== "attack"
+  ) {
     delete intent.obj;
     return { kind: "intent", intent };
   }
@@ -818,6 +947,87 @@ export function parse(g: Game, lang: Lang, text: string): Parsed {
   return { kind: "intent", intent };
 }
 
+/** The words name what a stock holds ("nail"), not its box ("crate"). */
+function fromStock(g: Game, w: Words, id: Id, tokens: string[]): boolean {
+  const stock = comp(g, id, "stock");
+  if (!stock) return false;
+  const item = new Set(
+    w.L.flatMap((lang) => {
+      const def = lang.names[stock.tpl];
+      return def ? [def.n, ...(def.w ?? [])] : [];
+    })
+      .flatMap((word) => tokenize(w.L, word))
+      .map(stem),
+  );
+  const own = [...namesOf(g, w.L, id)].filter((word) => !item.has(word));
+  const words = tokens.map(stem);
+  return words.some((t) => item.has(t)) && !words.some((t) => own.includes(t));
+}
+
+/** "Rask, give me the key": a person's name, then a command. */
+function addressee(
+  g: Game,
+  w: Words,
+  tokens: string[],
+): { person: Id; rest: string[] } | undefined {
+  if (findVerb(w.L, tokens) && startsWithVerb(w.L, tokens)) return undefined;
+  // Anyone here, awake or not: speaking to a senseless man gets its answer.
+  const people = children(g, placeOf(g, g.st.player)).filter(
+    (id) => id !== g.st.player && has(g, id, "actor"),
+  );
+  if (people.length === 0) return undefined;
+  for (const cut of [1, 2]) {
+    const rest = tokens.slice(cut);
+    if (rest.length === 0 || !startsWithVerb(w.L, rest)) continue;
+    const found = resolve(g, w, tokens.slice(0, cut), people);
+    if ("ok" in found && found.ok.length === 1)
+      return { person: found.ok[0], rest };
+  }
+  return undefined;
+}
+
+/**
+ * "Give the apple" gives what the player has. "Give the key" when someone
+ * here has it, or "give me the key", asks them for it. "Give" alone asks
+ * which of the two is meant.
+ */
+function parseGive(
+  g: Game,
+  w: Words,
+  rest: string[],
+  asking = false,
+): Parsed | undefined {
+  const self = new Set(w.L.flatMap((l) => l.selfWords));
+  const forMe = asking || rest.some((t) => self.has(t));
+  const words = rest.filter((t) => !self.has(t) && !w.stop.has(t));
+  if (words.length === 0) {
+    return forMe ? { kind: "askFor" } : { kind: "giveOrGet" };
+  }
+  const { obj } = splitPrep(w.L, words);
+  if (!forMe) {
+    const mine = resolve(g, w, obj, subtree(g, g.st.player));
+    if ("ok" in mine) return undefined;
+  }
+  // Whoever here carries it, in sight or not: they will answer for it.
+  const here = children(g, placeOf(g, g.st.player)).filter(
+    (id) => id !== g.st.player && has(g, id, "actor"),
+  );
+  for (const person of here) {
+    const theirs = subtree(g, person).filter((id) => !has(g, id, "part"));
+    const found = resolve(g, w, obj, theirs);
+    if ("ok" in found && found.ok[0] !== person)
+      return {
+        kind: "intent",
+        intent: { verb: "request", obj: [found.ok[0]], ind: person },
+      };
+  }
+  if (!forMe) return undefined;
+  return {
+    kind: "intent",
+    intent: { verb: "request", words: obj.join(" ") },
+  };
+}
+
 /** Reading the answer to "Which one?" or "What do you want to take?". */
 export function answer(
   g: Game,
@@ -825,7 +1035,12 @@ export function answer(
   text: string,
   pending: Pending,
 ): Parsed | undefined {
-  if (pending.kind === "confirm") return undefined;
+  if (
+    pending.kind === "confirm" ||
+    pending.kind === "giveOrGet" ||
+    pending.kind === "prefix"
+  )
+    return undefined;
   const L = langsFor(g, lang);
   const w: Words = { L, stop: new Set(L.flatMap((l) => l.stop)) };
   const tokens = tokenize(L, text);
@@ -873,35 +1088,39 @@ export function answer(
 
 /** The first word with one typo fixed, if it then names a verb. */
 /** Every word the game knows, in names, directions and special lists. */
-function knownWords(g: Game, w: Words): Set<string> {
-  const known = new Set(vocabulary(w));
-  for (const lang of w.L) {
-    const lists = [
-      lang.stop,
-      lang.questions,
-      lang.later,
-      lang.relative,
-      lang.back,
-      lang.yes,
-      lang.no,
-      lang.all,
-      lang.pronouns,
-      lang.fillers,
-      lang.copulas,
-      lang.meta,
-      lang.impossible,
-      ...Object.values(lang.moods),
-    ];
-    for (const list of [
-      ...lists,
-      ...Object.values(lang.dirs),
-      ...Object.values(lang.topics),
-    ]) {
-      for (const word of list) known.add(stem(word));
-    }
-  }
+function knownWords(g: Game, w: Words): WordSet {
   void g;
-  return known;
+  const sets = w.L.map((lang) => {
+    let known = KNOWN.get(lang);
+    if (!known) {
+      known = new Set<string>();
+      const lists = [
+        lang.stop,
+        lang.questions,
+        lang.later,
+        lang.relative,
+        lang.back,
+        lang.yes,
+        lang.no,
+        lang.all,
+        lang.pronouns,
+        lang.fillers,
+        lang.copulas,
+        lang.meta,
+        lang.impossible,
+        ...Object.values(lang.moods),
+        ...Object.values(lang.dirs),
+        ...Object.values(lang.topics),
+      ];
+      for (const list of lists) for (const word of list) known.add(stem(word));
+      KNOWN.set(lang, known);
+    }
+    return known;
+  });
+  const names = vocabulary(w);
+  return {
+    has: (word) => names.has(word) || sets.some((set) => set.has(word)),
+  };
 }
 
 /** The first word with one typo fixed, if it then names a verb. */
@@ -957,15 +1176,40 @@ function stripWords(L: LangData[]): Set<string> {
 /** Mistyped names of things around ("brzier") become the right ones. */
 function fixNouns(g: Game, w: Words, tokens: string[]): string[] {
   const known = vocabulary(w);
-  const near = [...new Set(scope(g).flatMap((id) => [...namesOf(g, w.L, id)]))];
+  const ids = scope(g);
+  const near = [...new Set(ids.flatMap((id) => [...namesOf(g, w.L, id)]))];
+  const people = new Set(
+    ids
+      .filter((id) => has(g, id, "actor"))
+      .flatMap((id) => [...namesOf(g, w.L, id)]),
+  );
   return tokens.map((t) => {
-    if (t.length < 5 || known.has(stem(t)) || knownWords(g, w).has(stem(t)))
+    if (t.length < 4 || known.has(stem(t)) || knownWords(g, w).has(stem(t)))
       return t;
-    const close = near.filter(
-      (word) => word.length >= 4 && distance(t, word, 3) <= allowed(word),
-    );
+    // Short words are corrected only for two swapped letters ("ocin") or a
+    // person's name ("rack" for Rask): "kong" must not become "long".
+    const close = near.filter((word) => {
+      if (word.length < 4) return false;
+      const d = distance(t, word, 3);
+      if (t.length >= 5) return d <= allowed(word);
+      return d === 1 && (people.has(word) || swapped(t, word));
+    });
     return close.length === 1 ? close[0] : t;
   });
+}
+
+/** Same letters, two neighbours swapped. */
+function swapped(a: string, b: string): boolean {
+  if (a.length !== b.length) return false;
+  const diff = [...a]
+    .map((c, i) => (c !== b[i] ? i : -1))
+    .filter((i) => i >= 0);
+  return (
+    diff.length === 2 &&
+    diff[1] === diff[0] + 1 &&
+    a[diff[0]] === b[diff[1]] &&
+    a[diff[1]] === b[diff[0]]
+  );
 }
 
 /** "torch brazier": two things here, each named on its own. */
@@ -1032,6 +1276,15 @@ function specialWords(g: Game, w: Words, tokens: string[]): Parsed | undefined {
   if (tokens.some((t) => has((l) => l.meta, t)) && tokens.length <= 3)
     return { kind: "meta" };
   if (has((l) => l.questions, first)) return question(g, w, words);
+  // "Are you a ghost", "is he still there": a question by its word order,
+  // when someone is there to hear it.
+  const lead = words[0] ?? tokens[0];
+  if (
+    words.length >= 3 &&
+    has((l) => l.questionLeads, lead) &&
+    awakePeople(g).length > 0
+  )
+    return question(g, w, words);
   for (const lang of L) {
     for (const [mood, list] of Object.entries(lang.moods)) {
       const head = words.length <= 4 ? words : words.slice(0, 2);
@@ -1140,15 +1393,8 @@ function fallback(g: Game, w: Words, tokens: string[]): Parsed {
     const go = parseGo(g, w, content);
     if (go.kind === "intent") return go;
     // A place known but not next to here.
-    if (
-      Object.keys(g.st.ent).some(
-        (id) =>
-          has(g, id, "place") &&
-          content.every((t) => namesOf(g, L, id).has(stem(t))),
-      )
-    ) {
-      return { kind: "far" };
-    }
+    const far = farOrNot(g, w, content.map(stem), "notHere");
+    if (far.kind !== "notHere") return far;
     return { kind: "notHere", dark: isDark(g, placeOf(g, g.st.player)) };
   }
   return { kind: "unknownVerb", word: first };

@@ -2,8 +2,16 @@
 // dressing, and every way of talking to someone.
 
 import { sear, treat } from "./body";
-import { bleedAt } from "./health";
-import { exert, needsOf, setNeeds, swallow, tooMuch } from "./needs";
+import { SORE_TRAUMA, bleedAt, bleeding, traumaOf } from "./health";
+import {
+  TIERS,
+  exert,
+  needsOf,
+  setNeeds,
+  swallow,
+  tier,
+  tooMuch,
+} from "./needs";
 import { scope } from "./parser";
 import { runInt, runRandom } from "./rng";
 import { period, periodHalf, weekday } from "./time";
@@ -19,6 +27,9 @@ import {
   spare,
   thank,
   valuables,
+  askBack,
+  askFor,
+  awakeHere,
   defaultPerson,
   give,
   hostilesHere,
@@ -29,7 +40,7 @@ import {
   talk,
   threaten,
 } from "./npc";
-import { playerPlace, weatherNow } from "./systems";
+import { isDark, playerPlace, weatherNow } from "./systems";
 import {
   bare,
   children,
@@ -41,11 +52,14 @@ import {
   hands,
   fuelLeft,
   has,
+  isLit,
+  setComp,
   heldIn,
   move,
   nameKey,
   peopleIn,
   ref,
+  refs,
   subtree,
   within,
   worn,
@@ -71,8 +85,16 @@ function personFor(ctx: Ctx, intent: Intent, key: string): Id | undefined {
     return undefined;
   }
   const person = defaultPerson(g);
-  if (!person) say(ctx, "talk.nobody");
-  return person;
+  if (person) return person;
+  // Several people around: ask whom, and remember the question.
+  const awake = awakeHere(g);
+  if (awake.length > 1) {
+    g.st.pending = { kind: "which", intent, slot: "obj", options: awake };
+    say(ctx, "parse.which", { list: refs(g, awake) });
+    return undefined;
+  }
+  say(ctx, "talk.nobody");
+  return undefined;
 }
 
 const attack: Verb = {
@@ -140,7 +162,11 @@ function clothFor(g: Game): Id | undefined {
   return mine.find((id) => isStrip(g, id)) ?? mine[0];
 }
 
-const isStrip = (g: Game, id: Id) => g.st.ent[id]?.tpl === "strip";
+/** A strip already torn: cloth that cannot make more strips. */
+const isStrip = (g: Game, id: Id) => {
+  const cloth = comp(g, id, "cloth");
+  return !!cloth && !cloth.makes;
+};
 
 /** Tears a strip from a piece of cloth, into a free hand or at your feet. */
 export function tearStrip(ctx: Ctx, cloth: Id): Id {
@@ -148,14 +174,18 @@ export function tearStrip(ctx: Ctx, cloth: Id): Id {
   const player = g.st.player;
   const strips = comp(g, cloth, "cloth")!.strips - 1;
   const hand = freeHands(g, player)[0];
-  const strip = spawn(g, "strip", hand ?? playerPlace(g));
+  const strip = spawn(
+    g,
+    comp(g, cloth, "cloth")!.makes!,
+    hand ?? playerPlace(g),
+  );
   say(ctx, hand ? "tear.done" : "tear.drop", { cloth: bare(g, cloth) });
   if (strips <= 0) {
     say(ctx, "bandage.clothGone", { cloth: bare(g, cloth) });
     for (const child of children(g, cloth)) move(g, child, playerPlace(g));
     destroy(g, cloth);
   } else {
-    g.st.ent[cloth].c.cloth = { strips };
+    setComp(g, cloth, "cloth", { ...comp(g, cloth, "cloth")!, strips });
   }
   g.st.it = [strip];
   return strip;
@@ -172,7 +202,7 @@ const tear: Verb = {
       );
     if (!x) return say(ctx, "tear.nothing");
     if (isStrip(g, x)) return say(ctx, "tear.small", { x: ref(g, x) });
-    if (!comp(g, x, "cloth")) {
+    if (!comp(g, x, "cloth")?.makes) {
       say(ctx, "destroy.cannot", { x: ref(g, x) });
       return void advance(ctx, { minutes: 1 });
     }
@@ -193,14 +223,14 @@ export function wrapTorch(ctx: Ctx, cloth: Id, torch: Id): boolean {
   const strip = isStrip(g, cloth) ? cloth : tearStrip(ctx, cloth);
   say(ctx, "wrap.done", { x: bare(g, strip), y: bare(g, torch) });
   destroy(g, strip);
-  g.st.ent[torch].c.burn = {
+  setComp(g, torch, "burn", {
     ...burn,
     lit: false,
     fuel: Math.max(0, fuelLeft(g, torch)) + 0.12,
     since: g.st.clock,
     gen: burn.gen + 1,
     wrapped: true,
-  };
+  });
   g.st.it = [torch];
   advance(ctx, { minutes: 3 });
   return true;
@@ -277,7 +307,7 @@ const bandage: Verb = {
       for (const child of children(g, cloth)) move(g, child, playerPlace(g));
       destroy(g, cloth);
     } else {
-      g.st.ent[cloth].c.cloth = { strips };
+      setComp(g, cloth, "cloth", { ...comp(g, cloth, "cloth")!, strips });
     }
     advance(ctx, { minutes: hostilesHere(g).length > 0 ? 2 : 10 });
   },
@@ -361,6 +391,13 @@ const social = (key: string, act: (ctx: Ctx, person: Id) => void): Verb => ({
 
 const talkVerb: Verb = {
   run(ctx, intent) {
+    const g = ctx.g;
+    // "Both": a word for each of them.
+    const several = (intent.obj ?? []).filter((id) => isPerson(g, id));
+    if (several.length > 1) {
+      for (const person of several) talk(ctx, person, intent.topic);
+      return void advance(ctx, { minutes: 2 });
+    }
     const person = personFor(ctx, intent, "talk");
     if (person) talk(ctx, person, intent.topic);
     advance(ctx, { minutes: 2 });
@@ -447,7 +484,7 @@ const drink: Verb = {
     let litres = litresFor(g, intent);
     if (drinkable.litres !== undefined) {
       litres = Math.min(litres, drinkable.litres);
-      g.st.ent[source].c.drinkable = { litres: drinkable.litres - litres };
+      setComp(g, source, "drinkable", { litres: drinkable.litres - litres });
     }
     const key = `${nameKey(g, source)}.drink`;
     say(ctx, g.content.langs.fr.messages[key] ? key : "drink.done", {
@@ -571,7 +608,14 @@ const sleep: Verb = {
     ctx.interruptible = false;
     setNeeds(g, player, { mode: "awake" });
     if (g.st.flags.dead || ctx.wokeUp) return;
-    say(ctx, `sleep.wake.${cause || "event"}`);
+    // A hard floor wakes you in its own way: planks are not cobbles.
+    const floor = comp(g, playerPlace(g), "place")?.ground;
+    say(
+      ctx,
+      cause === "ground" && floor
+        ? `sleep.wake.ground.${floor}`
+        : `sleep.wake.${cause || "event"}`,
+    );
     say(ctx, "time.now", {
       day: { k: `weekday.${weekday(g.st.clock)}` },
       when: { k: `when.${period(g.st.clock)}.${periodHalf(g.st.clock)}` },
@@ -661,7 +705,7 @@ const heat: Verb = {
       return void advance(ctx, { minutes: 1 });
     }
     heatLine(ctx, x, fire);
-    g.st.ent[x].c.hot = { until: g.st.clock + 15 };
+    setComp(g, x, "hot", { until: g.st.clock + 15 });
     advance(ctx, { minutes: 5 });
   },
 };
@@ -691,7 +735,7 @@ const cauterize: Verb = {
       part: { n: `part.${wound.part}` },
     });
     exert(g, player, 0.15);
-    delete g.st.ent[blade].c.hot;
+    setComp(g, blade, "hot", undefined);
     advance(ctx, { minutes: 2 });
   },
 };
@@ -714,7 +758,63 @@ const burn: Verb = {
   },
 };
 
+/** "Give me the key", "ask for the key". */
+const request: Verb = {
+  run(ctx, intent) {
+    const g = ctx.g;
+    const item = intent.obj?.[0];
+    const holder = item
+      ? awakeHere(g).find((id) => within(g, item, id))
+      : undefined;
+    const person = isPerson(g, intent.ind) ? intent.ind : holder;
+    if (person) askFor(ctx, person, item);
+    else {
+      const asked = personFor(ctx, { ...intent, obj: [] }, "talk");
+      if (!asked) return;
+      askFor(ctx, asked, item);
+    }
+    advance(ctx, { minutes: 1 });
+  },
+};
+
+const giveBack: Verb = {
+  run(ctx) {
+    askBack(ctx);
+    advance(ctx, { minutes: 1 });
+  },
+};
+
+/**
+ * "Think": a nudge, never the answer. The body first (bleeding, darkness,
+ * hunger), then what the story says, first true hint wins.
+ */
+const think: Verb = {
+  run(ctx) {
+    const g = ctx.g;
+    const body = comp(g, g.st.player, "body");
+    const needs = needsOf(g, g.st.player);
+    const lit = subtree(g, g.st.player).some((id) => isLit(g, id));
+    const generic: [string, boolean][] = [
+      ["think.bleeding", !!body && bleeding(body, g.st.clock) > 0.3],
+      ["think.hurt", !!body && traumaOf(body) >= SORE_TRAUMA],
+      ["think.thirst", !!needs && tier(needs.thirst, TIERS.thirst) >= 2],
+      ["think.hunger", !!needs && tier(needs.hunger, TIERS.hunger) >= 2],
+      ["think.sleep", !!needs && tier(needs.sleep, TIERS.sleep) >= 2],
+      ["think.dark", isDark(g, playerPlace(g)) && !lit],
+    ];
+    const first =
+      generic.find(([, yes]) => yes)?.[0] ??
+      g.content.hints?.find((hint) => hint.when(g))?.key ??
+      "think.nothing";
+    say(ctx, first);
+    advance(ctx, { minutes: 1 });
+  },
+};
+
 export const PEOPLE_VERBS: Record<string, Verb> = {
+  request,
+  giveBack,
+  think,
   tear,
   wrap,
   swap,

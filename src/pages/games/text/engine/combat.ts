@@ -18,6 +18,8 @@ import {
   handSide,
 } from "./body";
 import { emit, say, type Ctx } from "./core";
+import { causeOf, handWorks, legsLeft, traumaOf, worsened } from "./health";
+import { has as hasText } from "./lang";
 import { exert, needsPenalty } from "./needs";
 import { runInt } from "./rng";
 import { isNauseous, isDark } from "./systems";
@@ -83,12 +85,21 @@ function hampered(g: Game, id: Id): number {
   if (id === g.st.player && isNauseous(g)) penalty += 1;
   penalty += needsPenalty(g, id);
   if (isDark(g, placeOf(g, id))) penalty += 3;
+  const body = comp(g, id, "body");
+  if (body) {
+    // Broken bones and bruises add up, and so does a useless arm.
+    penalty += Math.min(4, traumaOf(body) / 3);
+    if (!handWorks(body, "left")) penalty += 1;
+    if (!handWorks(body, "right")) penalty += 1;
+    penalty += [3, 1, 0][legsLeft(body)];
+  }
   return penalty;
 }
 
+/** Running on a broken leg is slow; on two, impossible. */
 function legPenalty(g: Game, id: Id): number {
-  const wounds = comp(g, id, "body")?.wounds ?? [];
-  return wounds.some((w) => w.sev >= 3 && /^(leg|foot)/.test(w.part)) ? 3 : 0;
+  const body = comp(g, id, "body");
+  return body ? [20, 4, 0][legsLeft(body)] : 0;
 }
 
 /** Rough fighting strength, to warn the player before a hopeless fight. */
@@ -223,6 +234,16 @@ export function strike(
   // A blow that kills or maims the player outright only comes from someone
   // clearly stronger: losing to bad luck against a weak foe is no fun.
   if (them && sev === 4 && rating(g, attacker) - rating(g, target) < 3) sev = 3;
+  // But a bone already broken gives way under the next heavy blow.
+  const targetBody = comp(g, target, "body");
+  if (sev > 0 && targetBody)
+    sev = worsened(
+      targetBody,
+      part,
+      weapon.type,
+      sev as 1 | 2 | 3 | 4,
+      runInt(g.st, 100) / 100,
+    );
   const p = { a, d, part: { n: `part.${part}` }, how };
   if (sev === 0) {
     if (outer)
@@ -237,7 +258,9 @@ export function strike(
 
   // 4. Wound.
   say(ctx, you ? "hit.you" : them ? "hit.them" : "hit.other", p);
-  say(ctx, `sev.${weapon.type}.${sev}`);
+  const sevKey = `sev.${weapon.type}.${sev}`;
+  const special = hasText(g.content.langs.fr, `${sevKey}.${part}`);
+  say(ctx, special ? `${sevKey}.${part}` : sevKey);
   const before = vital(g, target);
   const after = inflict(ctx, target, part, weapon.type, sev);
   if (item && blow.thrown) move(g, item, placeOf(g, target));
@@ -255,7 +278,8 @@ export function strike(
     if (them) {
       if (after === "dead") {
         g.st.flags.dead = true;
-        say(ctx, "you.killed");
+        const cause = causeOf(comp(g, target, "body")!, g.st.clock);
+        say(ctx, cause === "blood" ? "you.killed" : `you.killed.${cause}`);
       } else say(ctx, "you.knockedOut");
     } else
       say(ctx, after === "dead" ? "npc.dies" : "npc.faints", {

@@ -5,10 +5,13 @@
 import { emit, onScheduled, say, schedule, type Ctx } from "./core";
 import {
   NORMAL_BLOOD,
+  SHOCK_TRAUMA,
   WEAK_BLOOD,
   bleeding,
   bloodAt,
+  causeOf,
   settle,
+  traumaOf,
   vitalAt,
   type Vital,
 } from "./health";
@@ -124,15 +127,32 @@ export function inflict(
   if (part === "neck") bleed *= 2;
   const wound: Wound = { part, type, sev, bleed, at: clock };
   const next: Body = { ...body, wounds: [...body.wounds, wound] };
-  if (part === "head" && sev === 4) next.dead = true;
-  else if (part === "head" && sev === 3 && body.profile === "living") {
+  const living = body.profile === "living";
+  // A shattered skull or a broken neck: no coming back from that.
+  if ((part === "head" || part === "neck") && sev === 4) {
+    next.dead = true;
+    next.cause = part;
+  } else if (part === "head" && sev === 3 && living) {
     next.outUntil = clock + 10 + runInt(g.st, 25);
+  }
+  // Shock: past a point, the body shuts down for a while, and each new
+  // heavy blow may put it out again.
+  const before = traumaOf(body);
+  const after = traumaOf(next);
+  if (living && !next.dead && after >= SHOCK_TRAUMA) {
+    if (before < SHOCK_TRAUMA || (sev >= 2 && runRandom(g.st) < 0.4)) {
+      next.outUntil = Math.max(
+        next.outUntil ?? 0,
+        clock + 20 + runInt(g.st, 25),
+      );
+    }
   }
   patch(g, target, "body", next);
   emit(ctx, { type: "wounded", target, sev });
-  watchBodies(g);
+  watchBodies(g, target);
   const vital = vitalAt(next, clock);
-  if (vital === "dead") patch(g, target, "body", { dead: true });
+  if (vital === "dead")
+    patch(g, target, "body", { dead: true, cause: causeOf(next, clock) });
   return vital;
 }
 
@@ -146,11 +166,14 @@ export function treat(g: Game, target: Id): Wound | undefined {
   if (!open) return undefined;
   const wounds = body.wounds.map((w) => {
     if (w !== open) return w;
-    const bleed = w.sev === 4 ? w.bleed * 0.35 : w.sev === 3 ? 0.1 : 0;
+    const bleed = Math.min(
+      w.bleed,
+      w.sev === 4 ? w.bleed * 0.35 : w.sev === 3 ? 0.1 : 0,
+    );
     return { ...w, bleed, at: clock, treated: true };
   });
   patch(g, target, "body", { ...body, wounds });
-  watchBodies(g);
+  watchBodies(g, target);
   return open;
 }
 
@@ -169,7 +192,11 @@ function needsWatching(body: Body, clock: number): boolean {
   );
 }
 
-export function watchBodies(g: Game) {
+export function watchBodies(g: Game, id?: Id) {
+  if (id) {
+    g.st.watch ??= [];
+    if (!g.st.watch.includes(id)) g.st.watch.push(id);
+  }
   if (Number(g.st.flags.bodyCheckAt ?? -1) > g.st.clock) return;
   g.st.flags.bodyCheckAt = g.st.clock + CHECK_EVERY;
   schedule(g, { at: g.st.clock + CHECK_EVERY, type: "body.check" });
@@ -187,7 +214,12 @@ onScheduled("body.check", (ctx) => {
   const g = ctx.g;
   delete g.st.flags.bodyCheckAt;
   let again = false;
-  for (const id of Object.keys(g.st.ent)) {
+  // Only the bodies on watch: a world of thousands of people is not
+  // examined every five minutes. A save from before the watch list looks
+  // at everyone once.
+  const ids = g.st.watch ?? Object.keys(g.st.ent);
+  const still: Id[] = [];
+  for (const id of ids) {
     const before = comp(g, id, "body");
     if (!before || before.dead) continue;
     const body = settle(before, g.st.clock);
@@ -199,8 +231,12 @@ onScheduled("body.check", (ctx) => {
       noteVital(g, id, now);
       announce(ctx, id, was, now);
     }
-    if (needsWatching(body, g.st.clock)) again = true;
+    if (needsWatching(body, g.st.clock)) {
+      again = true;
+      still.push(id);
+    }
   }
+  g.st.watch = still;
   if (again) watchBodies(g);
 });
 
@@ -210,7 +246,13 @@ export function announce(ctx: Ctx, id: Id, was: Vital, now: Vital) {
   if (id === g.st.player) {
     if (now === "dead") {
       g.st.flags.dead = true;
-      say(ctx, "you.bledOut");
+      const body = comp(g, id, "body")!;
+      say(
+        ctx,
+        causeOf(body, g.st.clock) === "blood"
+          ? "you.bledOut"
+          : "you.killed.trauma",
+      );
     } else if (now === "down") say(ctx, "you.faint");
     else if (now === "weak" && was === "ok") {
       const body = comp(g, id, "body")!;

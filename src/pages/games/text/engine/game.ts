@@ -19,8 +19,19 @@ import {
 } from "./parser";
 import { startSystems } from "./systems";
 import { VERB_RUNNERS, describePlace, misfit, stores } from "./verbs";
-import { newState, ref, refs, vital, type Content, type Game } from "./world";
-import type { Intent, Lang, Turn } from "./types";
+import {
+  comp,
+  destroy,
+  newState,
+  ref,
+  refs,
+  setComp,
+  spawn,
+  vital,
+  type Content,
+  type Game,
+} from "./world";
+import type { Id, Intent, Lang, Turn } from "./types";
 
 /** How long a confirmation covers the same kind of risk, in minutes. */
 const CONFIRM_SPAN = 10;
@@ -60,9 +71,28 @@ function run(ctx: Ctx, intent: Intent, raw: string, confirmed: boolean) {
       return;
     }
   }
-  if (risk) g.st.confirmed[risk.kind] = g.st.clock;
+  // "Take a nail": one comes out of the crate's stock for the verb to use,
+  // and goes back if the verb did nothing with it.
+  let picked: { one: Id; source: Id } | undefined;
+  if (intent.stock && intent.obj?.[0]) {
+    const source = intent.obj[0];
+    const stock = comp(g, source, "stock");
+    if (!stock || stock.count <= 0)
+      return say(ctx, "stock.empty", { x: ref(g, source) });
+    picked = { one: spawn(g, stock.tpl, source), source };
+    intent = { ...intent, obj: [picked.one] };
+  }
   if (intent.obj && intent.obj.length > 0) g.st.it = [...intent.obj];
   verb.run(ctx, intent);
+  if (picked) {
+    const stock = comp(g, picked.source, "stock")!;
+    if (g.st.ent[picked.one]?.loc === picked.source) destroy(g, picked.one);
+    else
+      setComp(g, picked.source, "stock", { ...stock, count: stock.count - 1 });
+  }
+  // Counted from the end of the action: after a nap in the street, sleeping
+  // there again needs no new warning.
+  if (risk) g.st.confirmed[risk.kind] = g.st.clock;
   if (FREE.has(intent.verb)) return;
   afterAction(ctx);
 }
@@ -97,7 +127,8 @@ function mood(ctx: Ctx, name: string) {
   const g = ctx.g;
   say(ctx, `mood.${name}`);
   const witness = awakeHere(g)[0];
-  if (witness && name !== "ok" && name !== "never")
+  // A plain "ok" or "no" is not worth a look from anyone.
+  if (witness && !["ok", "no", "never", "despair"].includes(name))
     say(ctx, `mood.seen.${name}`, { x: ref(g, witness) });
   if (name === "never" && g.st.pending) delete g.st.pending;
 }
@@ -124,7 +155,11 @@ function handle(ctx: Ctx, parsed: Parsed, raw: string) {
     case "unknownWord":
       return misunderstood(ctx, "parse.unknownWord", { w: parsed.word });
     case "far":
-      return say(ctx, "go.far");
+      return say(ctx, parsed.place ? "go.farNamed" : "go.far", {
+        x: parsed.place ? ref(ctx.g, parsed.place) : "",
+      });
+    case "farWhich":
+      return say(ctx, "go.farWhich", { list: refs(ctx.g, parsed.places) });
     case "meta":
       return say(ctx, "meta");
     case "impossible":
@@ -138,6 +173,12 @@ function handle(ctx: Ctx, parsed: Parsed, raw: string) {
     case "what":
       g.st.pending = { kind: "what", intent: parsed.intent, slot: parsed.slot };
       return say(ctx, `ask.${parsed.intent.verb}`);
+    case "giveOrGet":
+      g.st.pending = { kind: "giveOrGet" };
+      return say(ctx, "give.which");
+    case "askFor":
+      g.st.pending = { kind: "prefix", text: ASK_PREFIX };
+      return say(ctx, "ask.request");
     case "which": {
       // "Put it in my pocket": any pocket where it fits will do.
       const intent = parsed.intent;
@@ -171,6 +212,9 @@ const same = (g: Game, lang: Lang, a: string, b: string) => {
 };
 
 /** Plays one command. Returns the turn and whether to autosave. */
+/** "Give me": both languages are read, so the English words always work. */
+const ASK_PREFIX = "give me";
+
 /**
  * "Take a strip, put it on the torch": each command in turn, as long as the
  * game does not stop to ask something. A piece that means nothing is
@@ -216,6 +260,21 @@ export function play(
     } else {
       handle(ctx, parsed, raw);
     }
+  } else if (pending?.kind === "giveOrGet") {
+    // "Give, or be given?": either answer asks what.
+    const tokens = tokenize(langsFor(g, lang), raw);
+    const L = langsFor(g, lang);
+    if (tokens.some((t) => L.some((l) => l.receiveWords.includes(t)))) {
+      g.st.pending = { kind: "prefix", text: ASK_PREFIX };
+      say(ctx, "ask.request");
+    } else if (tokens.some((t) => L.some((l) => l.giveWords.includes(t)))) {
+      g.st.pending = { kind: "what", intent: { verb: "give" }, slot: "obj" };
+      say(ctx, "ask.give");
+    } else handle(ctx, parse(g, lang, raw), raw);
+  } else if (pending?.kind === "prefix") {
+    // The answer finishes the command the question started.
+    const full = `${pending.text} ${raw}`;
+    handle(ctx, parse(g, lang, full), full);
   } else if (pending) {
     const answered = answer(g, lang, raw, pending);
     const failed =

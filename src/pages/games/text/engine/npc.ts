@@ -4,8 +4,10 @@
 // all of them and can turn one into another.
 
 import { announce, lastVital, noteVital, worstWound } from "./body";
+import { legsLeft } from "./health";
+import { has as hasText } from "./lang";
 import { setNeeds } from "./needs";
-import { playerAsleep } from "./systems";
+import { isDark, playerAsleep } from "./systems";
 import { advance, emit, on, onScheduled, say, type Ctx } from "./core";
 import { escapes, outruns, rating, strike, wielded } from "./combat";
 import { runInt, runRandom } from "./rng";
@@ -14,6 +16,7 @@ import {
   children,
   comp,
   conscious,
+  destroy,
   freeHands,
   has,
   move,
@@ -60,7 +63,7 @@ export function defaultPerson(g: Game): Id | undefined {
 
 /** Valuables a robber wants: coins, and the purse that holds them. */
 export function valuables(g: Game, owner: Id): Id[] {
-  const coins = subtree(g, owner).filter((id) => g.st.ent[id].tpl === "coins");
+  const coins = subtree(g, owner).filter((id) => has(g, id, "money"));
   const out = coins.map((id) => {
     const holder = g.st.ent[id].loc!;
     return comp(g, holder, "container")?.kind === "bag" ? holder : id;
@@ -74,6 +77,93 @@ function pocket(g: Game, person: Id, items: Id[]) {
     (id) => comp(g, id, "container")?.kind === "bag",
   );
   for (const item of items) move(g, item, bag ?? person);
+  // Remembered for "give it back", with the time it changed hands.
+  const last = items[items.length - 1];
+  if (last) {
+    g.st.flags.lastGiven = last;
+    g.st.flags.lastGivenTo = person;
+    g.st.flags.lastGivenAt = g.st.clock;
+  }
+}
+
+/** Something handed to the player: a free hand, a pocket, or the ground. */
+function handToPlayer(ctx: Ctx, item: Id) {
+  const g = ctx.g;
+  const player = g.st.player;
+  const hand = freeHands(g, player)[0];
+  if (hand) return void move(g, item, hand);
+  say(ctx, "request.dropped", { y: ref(g, item) });
+  move(g, item, placeOf(g, player));
+}
+
+/** In sight on a person: held in a hand or worn, not tucked in a pouch. */
+function inSight(g: Game, person: Id, item: Id): boolean {
+  const loc = g.st.ent[item].loc!;
+  return (
+    loc === person || (has(g, loc, "part") && g.st.ent[loc].loc === person)
+  );
+}
+
+/**
+ * "Give me the key". A person who has surrendered hands it over; a friend
+ * gives what is not money. Otherwise they refuse, or deny having it when it
+ * is out of sight.
+ */
+export function askFor(ctx: Ctx, person: Id, item?: Id) {
+  const g = ctx.g;
+  const v = vital(g, person);
+  if (v === "down" || v === "dead")
+    return say(ctx, "request.down", { x: ref(g, person) });
+  const mind = mindOf(g, person);
+  if (!mind) return say(ctx, "request.thing", { x: ref(g, person) });
+  if (mind.hostile && !mind.surrendered)
+    return say(ctx, "request.hostile", { x: ref(g, person) });
+  if (!item || !within(g, item, person))
+    return say(ctx, "request.notHave", { x: ref(g, person) });
+  const willing =
+    mind.surrendered || (mind.attitude >= 60 && !has(g, item, "money"));
+  if (!willing) {
+    setMind(g, person, { attitude: mind.attitude - 5 });
+    return say(
+      ctx,
+      inSight(g, person, item) ? "request.refuse" : "request.deny",
+      { x: ref(g, person), y: ref(g, item) },
+    );
+  }
+  say(ctx, "request.gives", { x: ref(g, person), y: ref(g, item) });
+  handToPlayer(ctx, item);
+}
+
+/**
+ * "Give it back", about the last thing the player gave. Right after, a
+ * person may well return it; an hour later, much less; the next day, they
+ * hardly know what you mean.
+ */
+export function askBack(ctx: Ctx) {
+  const g = ctx.g;
+  const item = g.st.flags.lastGiven as Id | undefined;
+  const person = g.st.flags.lastGivenTo as Id | undefined;
+  if (!item || !person) return say(ctx, "giveBack.nothing");
+  const elapsed = g.st.clock - Number(g.st.flags.lastGivenAt ?? 0);
+  if (placeOf(g, person) !== placeOf(g, g.st.player) || !g.st.ent[person])
+    return say(ctx, "giveBack.gone");
+  if (unable(ctx, person)) return;
+  if (elapsed > 180) return say(ctx, "giveBack.forgot", { x: ref(g, person) });
+  if (!g.st.ent[item] || !within(g, item, person))
+    return say(ctx, "giveBack.noLonger", { x: ref(g, person) });
+  const mind = mindOf(g, person)!;
+  let chance = elapsed <= 10 ? 0.75 : elapsed <= 60 ? 0.4 : 0.15;
+  chance += mind.attitude / 200;
+  if (mind.traits.includes("greedy")) chance -= 0.25;
+  if (has(g, item, "money")) chance -= 0.2;
+  if (mind.surrendered) chance = 1;
+  if (runRandom(g.st) >= chance) {
+    setMind(g, person, { attitude: mind.attitude - 5 });
+    return say(ctx, "giveBack.refuse", { x: ref(g, person), y: ref(g, item) });
+  }
+  say(ctx, "giveBack.done", { x: ref(g, person), y: ref(g, item) });
+  delete g.st.flags.lastGiven;
+  handToPlayer(ctx, item);
 }
 
 /** A person leaves by a random way out. */
@@ -221,6 +311,16 @@ const ROLES: Record<string, Role> = {
     act(ctx, person) {
       const g = ctx.g;
       const mind = mindOf(g, person)!;
+      // In the dark, some people give themselves away: a hiccup, a mutter.
+      // A robber keeps quiet: that is his trade.
+      const idle = `${g.st.ent[person].tpl}.idle.dark`;
+      if (
+        !mind.hostile &&
+        isDark(g, here(g)) &&
+        hasText(g.content.langs.en, idle) &&
+        runRandom(g.st) < 0.25
+      )
+        say(ctx, idle, { x: ref(g, person) });
       // Attacked, a civilian runs and calls for help.
       if (mind.hostile || g.st.enc[person]?.mode === "fight") {
         say(ctx, "civilian.cries", { x: ref(g, person) });
@@ -330,11 +430,18 @@ export function passOut(ctx: Ctx) {
   let robbed = false;
   for (const person of awakeHere(g)) {
     const mind = mindOf(g, person)!;
-    if (mind.role !== "robber" || mind.satisfied) continue;
-    const items = valuables(g, g.st.player);
-    if (items.length > 0) robbed = true;
-    rob(ctx, person, items);
-    move(g, person, comp(g, here(g), "place")!.exits[0].to);
+    if (mind.role === "robber" && !mind.satisfied) {
+      const items = valuables(g, g.st.player);
+      if (items.length > 0) robbed = true;
+      rob(ctx, person, items);
+      move(g, person, comp(g, here(g), "place")!.exits[0].to);
+    } else if (mind.hostile) {
+      // Beating a senseless body gets old: they spit and walk away,
+      // the grudge intact.
+      setMind(g, person, { hostile: false });
+      delete g.st.enc[person];
+      move(g, person, comp(g, here(g), "place")!.exits[0].to);
+    }
   }
   advance(ctx, {
     until: (game) => vital(game, game.st.player) !== "down",
@@ -351,6 +458,71 @@ export function passOut(ctx: Ctx) {
     announce(ctx, g.st.player, was, now);
   }
   if (robbed) say(ctx, "you.robbed");
+}
+
+/**
+ * Playing dead: a beaten man who goes limp may be left alone, robbed first.
+ * Better odds when badly hurt, in the dark, and the first time.
+ */
+export function playDead(ctx: Ctx) {
+  const g = ctx.g;
+  // Anyone fighting you, or a robber waiting for your purse.
+  const foes = awakeHere(g).filter(
+    (id) =>
+      mindOf(g, id)?.hostile ||
+      (mindOf(g, id)?.role === "robber" && g.st.enc[id]),
+  );
+  if (foes.length === 0) {
+    say(ctx, awakeHere(g).length ? "playDead.watched" : "playDead.alone");
+    return void advance(ctx, { minutes: 5 });
+  }
+  const hurt = worstWound(g, g.st.player) >= 3;
+  const tried = g.st.clock - Number(g.st.flags.playedDead ?? -999) < 15;
+  g.st.flags.playedDead = g.st.clock;
+  const chance =
+    0.2 +
+    (hurt ? 0.35 : 0) +
+    (isDark(g, here(g)) ? 0.15 : 0) -
+    (tried ? 0.35 : 0);
+  const foe = foes[0];
+  if (runRandom(g.st) >= chance) {
+    say(ctx, "playDead.fails", { x: ref(g, foe) });
+    return void advance(ctx, { minutes: 1 });
+  }
+  say(ctx, "playDead.works", { x: ref(g, foe) });
+  for (const person of foes) {
+    const mind = mindOf(g, person)!;
+    if (mind.role === "robber" && !mind.satisfied) {
+      const items = valuables(g, g.st.player);
+      if (items.length > 0) say(ctx, "playDead.robbed", { x: ref(g, person) });
+      rob(ctx, person, items);
+    }
+    setMind(g, person, { hostile: false });
+    leave(ctx, person, "npc.leaves");
+  }
+  advance(ctx, { minutes: 10 });
+}
+
+/** "Search the body": what the pockets hold, by touch in the dark. */
+export function searchPerson(ctx: Ctx, person: Id) {
+  const g = ctx.g;
+  const mind = mindOf(g, person);
+  if (conscious(g, person) && !mind?.surrendered) {
+    return say(ctx, "search.awake", { x: ref(g, person) });
+  }
+  if (isDark(g, here(g))) say(ctx, "search.dark", { x: ref(g, person) });
+  const things = subtree(g, person).filter(
+    (id) =>
+      id !== person &&
+      !has(g, id, "part") &&
+      !has(g, id, "wearable") &&
+      !comp(g, id, "container"),
+  );
+  say(ctx, things.length ? "npc.search" : "npc.searchEmpty", {
+    x: bare(g, person),
+    list: refs(g, things),
+  });
+  advance(ctx, { minutes: 2 });
 }
 
 // ---------------------------------------------------------------------------
@@ -465,6 +637,7 @@ export function talk(ctx: Ctx, person: Id, topic?: string) {
   const mind = mindOf(g, person);
   if (!mind) return say(ctx, "talk.thing", { x: ref(g, person) });
   if (mind.hostile) return say(ctx, "talk.fighting", { x: ref(g, person) });
+  g.st.flags[`talked.${person}`] = true;
   const tpl = g.st.ent[person].tpl;
   const known = (key: string) => g.content.langs.fr.messages[key] !== undefined;
   // Someone the player hurt or insulted does not chat.
@@ -665,7 +838,7 @@ export function give(ctx: Ctx, item: Id, person: Id) {
   if (!within(g, item, g.st.player))
     return say(ctx, "drop.notCarried", { x: ref(g, item) });
   const isMoney =
-    valuables(g, g.st.player).includes(item) || g.st.ent[item].tpl === "coins";
+    valuables(g, g.st.player).includes(item) || has(g, item, "money");
   if (mind.role === "robber" && !mind.satisfied && isMoney) {
     say(ctx, "robber.takes", { x: ref(g, person), list: [ref(g, item)] });
     rob(ctx, person, [item]);
@@ -680,6 +853,8 @@ export function give(ctx: Ctx, item: Id, person: Id) {
   if (has(g, item, "edible") && has_(mind, "hungry")) {
     say(ctx, "give.food", { x: ref(g, person), y: bare(g, item) });
     pocket(g, person, [item]);
+    // Eaten on the spot: there will be nothing to give back.
+    destroy(g, item);
     setMind(g, person, { attitude: mind.attitude + 15 });
     return;
   }
@@ -741,6 +916,11 @@ export function getAway(ctx: Ctx): boolean {
   const g = ctx.g;
   const chasers = hostilesHere(g);
   if (chasers.length === 0) return true;
+  const body = comp(g, g.st.player, "body");
+  if (body && legsLeft(body) === 0) {
+    say(ctx, "flee.legs", { x: ref(g, chasers[0]) });
+    return false;
+  }
   const result = escapes(g, chasers);
   if (result.ok) {
     say(ctx, "flee.ok");

@@ -130,6 +130,8 @@ export interface Body {
   outUntil?: number;
   /** Undead feel no shock and do not bleed. */
   profile: "living" | "undead";
+  /** What killed: told to the player at the end. */
+  cause?: "blood" | "trauma" | "head" | "neck";
 }
 
 /** Hidden needs, 0 (fine) to 1 (dire), at clock `at`. */
@@ -266,7 +268,17 @@ export interface Components {
   /** Clock until which a blade stays hot enough to sear a wound. */
   hot?: { until: number };
   /** Cloth that can be torn into bandages. */
-  cloth?: { strips: number };
+  /**
+   * Cloth that tears into strips: `makes` is the template of a strip. A
+   * strip itself has no `makes`.
+   */
+  cloth?: { strips: number; makes?: string };
+  /** Money: what a robber is after. */
+  money?: { yes: true };
+  /** Moved at least once: its first description no longer applies. */
+  moved?: { yes: true };
+  /** Holds a stock of small things taken one by one, like nails. */
+  stock?: { tpl: string; count: number };
   /** Message shown the first time the player enters this place. */
   story?: { enter: string };
 }
@@ -353,6 +365,10 @@ export interface Intent {
   amount?: "sip" | "lots";
   /** Words of the indirect object, kept while the direct one is asked. */
   indWords?: string[];
+  /** One taken from a stock (a nail from the crate), not the stock itself. */
+  stock?: boolean;
+  /** Words of something asked for that no one here has. */
+  words?: string;
 }
 
 export type Pending =
@@ -363,7 +379,11 @@ export type Pending =
       slot: "obj" | "ind";
       options: Id[];
     }
-  | { kind: "what"; intent: Intent; slot: "obj" | "ind" };
+  | { kind: "what"; intent: Intent; slot: "obj" | "ind" }
+  /** "Give, or be given?": each answer leads to its own question. */
+  | { kind: "giveOrGet" }
+  /** The answer completes a command: "What do you want?" "the key". */
+  | { kind: "prefix"; text: string };
 
 export interface State {
   /** Save format version. */
@@ -381,6 +401,10 @@ export interface State {
   /** Last objects referred to, for "it". */
   it: Id[];
   flags: Record<string, number | string | boolean>;
+  /** Bodies to look at in the next checks: wounded, bleeding, unconscious. */
+  watch?: Id[];
+  /** Places the player has been to, the only ones known by name from afar. */
+  visited?: Id[];
   journal: Turn[];
   player: Id;
   seq: number;
