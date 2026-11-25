@@ -716,6 +716,25 @@
       "cancel": "Cancel the search"
     }
   },
+  "textgame": {
+    "title": "Text adventure",
+    "lead": "An old-school adventure game where you type what you want to do. This first test of the engine takes place in a dark alley of the lower town. Your game is saved on this device.",
+    "logLabel": "Story of the game",
+    "inputLabel": "Your command",
+    "placeholder": "What do you do?",
+    "send": "Send",
+    "hint": "Type \"help\" for example commands. The up and down arrows bring back your previous commands.",
+    "newGame": "New game",
+    "newConfirm": "Confirm new game",
+    "started": "New game started.",
+    "autosaves": "Automatic saves",
+    "load": "Load",
+    "loaded": "Game loaded.",
+    "export": "Export the game",
+    "exported": "Game exported.",
+    "import": "Import a game",
+    "importError": "This file is not a valid save."
+  },
   "chatbot": {
     "title": "CamilleGPT",
     "main": "This page is an experiment with generative AI to let an agent learn about me and my projects so it can speak on my behalf. The first message takes some time.",
@@ -1541,7 +1560,7 @@
       "title": "Storage in your browser",
       "text": "This website sets no cookies and uses no third-party analytics (such as Google Analytics) or advertising tools. It only stores in your browser:",
       "items": {
-        "local": "your theme, your language, your choice to turn off visit measurement, if any, the drafts of the CV and QR code generators, the settings of the background remover and the Pong score (local storage), to keep them for your next visit",
+        "local": "your theme, your language, your choice to turn off visit measurement, if any, the drafts of the CV and QR code generators, the settings of the background remover, the Pong score and your text adventure game (local storage), to keep them for your next visit",
         "session": "the current chatbot conversation, the visit context and a random visit identifier (session storage), cleared when you close the tab",
         "models": "the AI models of the background remover, if you download one (browser cache). You can delete them from that page."
       }

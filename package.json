@@ -12,7 +12,8 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
     "media": "node scripts/optimize-media.mjs",
-    "check:a11y": "node scripts/check-contrast.mjs"
+    "check:a11y": "node scripts/check-contrast.mjs",
+    "play:text": "node scripts/play-text-adventure.mjs"
   },
   "dependencies": {
     "@fontsource-variable/atkinson-hyperlegible-next": "^5.3.0",

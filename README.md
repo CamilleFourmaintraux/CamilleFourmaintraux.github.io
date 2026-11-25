@@ -83,6 +83,23 @@ src/legacy/           Previous design
   model, add an entry there with its repository, commit, file per backend, input size and
   normalization. `mask.ts` holds the pixel work, including the plain background method, which needs
   no model. `onnxruntime-web` and its `.wasm` file load only when an AI model runs.
+- **Text adventure.** `#/text-adventure` lives in `src/pages/games/TextAdventure.tsx`, with the
+  engine in `src/pages/games/text/engine/` and the story in `text/content/`. The engine knows
+  nothing about React or about the story: places, objects and texts are data. Every entity has
+  components (physical, container, burn...) and one position, which together form a tree. Every
+  command goes through `game.ts` (parse, risk check, verb, events, journal), and time only moves
+  through `advance` in `core.ts`. Messages are stored as keys, so the journal can be shown again in
+  the other language. Saves keep only what differs from the starting world.
+  People and fights live in `body.ts` (wounds, bleeding, fainting), `combat.ts` (reach, aim,
+  protection, severity), `npc.ts` (minds, roles, encounters, social verbs) and `actions.ts` (the
+  verbs about bodies and people). Rask and the tanner are data in `content/scene.ts`: a new
+  character is a template with a `mind` (role, traits, topics) and an entry in `schedule` if they
+  arrive later. Hunger, thirst, sleep and breath are in `needs.ts`: they are computed from the time
+  elapsed, like bleeding, and only the moments worth a message are scheduled. Words the parser
+  does not take as commands (moods, questions, "quit", impossible feats) are lists in the language
+  files, and a question goes to the person present when there is one. To play in a terminal
+  without the browser, run `npm run play:text` (add `-- en` for English), or pipe commands into
+  it. The full design is in the "Jeu textuel médiéval fantastique" document.
 
 ## Accessibility
 

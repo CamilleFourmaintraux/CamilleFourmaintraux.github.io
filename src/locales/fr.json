@@ -716,6 +716,25 @@
       "cancel": "Annuler la recherche"
     }
   },
+  "textgame": {
+    "title": "Aventure textuelle",
+    "lead": "Un jeu d'aventure à l'ancienne, où l'on écrit ce que l'on veut faire. Ce premier essai du moteur se déroule dans une ruelle sombre de la basse ville. Votre partie est enregistrée sur cet appareil.",
+    "logLabel": "Récit de la partie",
+    "inputLabel": "Votre commande",
+    "placeholder": "Que faites-vous ?",
+    "send": "Envoyer",
+    "hint": "Tapez « aide » pour voir des exemples de commandes. Les flèches haut et bas rappellent vos commandes précédentes.",
+    "newGame": "Nouvelle partie",
+    "newConfirm": "Confirmer la nouvelle partie",
+    "started": "Nouvelle partie commencée.",
+    "autosaves": "Sauvegardes automatiques",
+    "load": "Charger",
+    "loaded": "Partie chargée.",
+    "export": "Exporter la partie",
+    "exported": "Partie exportée.",
+    "import": "Importer une partie",
+    "importError": "Ce fichier n'est pas une sauvegarde valide."
+  },
   "chatbot": {
     "title": "CamilleGPT",
     "main": "Cette page est une expérimentation avec l'IA générative afin d'entraîner un agent sur mon parcours et mes projets pour qu'il puisse répondre en mon nom. Le premier message prend du temps.",
@@ -1541,7 +1560,7 @@
       "title": "Stockage dans votre navigateur",
       "text": "Ce site ne dépose aucun cookie et n'utilise aucun service tiers de mesure d'audience (comme Google Analytics) ni de publicité. Il enregistre seulement dans votre navigateur :",
       "items": {
-        "local": "votre thème, votre langue, votre éventuel refus de la mesure des visites, les brouillons des générateurs de CV et de QR code, les réglages de l'outil pour retirer le fond et le score du Pong (stockage local), pour les retrouver à votre prochaine visite",
+        "local": "votre thème, votre langue, votre éventuel refus de la mesure des visites, les brouillons des générateurs de CV et de QR code, les réglages de l'outil pour retirer le fond et le score du Pong et votre partie de l'aventure textuelle (stockage local), pour les retrouver à votre prochaine visite",
         "session": "la conversation en cours avec le chatbot, le contexte de visite et un identifiant de visite aléatoire (stockage de session), effacés à la fermeture de l'onglet",
         "models": "les modèles d'IA de l'outil pour retirer le fond, si vous en téléchargez un (cache du navigateur). Vous pouvez les supprimer depuis cette page."
       }

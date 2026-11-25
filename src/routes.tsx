@@ -117,6 +117,10 @@ const NEW_PAGES: { paths: string[]; page: Page }[] = [
     paths: ["background-remover", "retirer-le-fond", "detourage"],
     page: lazy(() => import("./pages/bg/BackgroundRemover")),
   },
+  {
+    paths: ["text-adventure", "aventure-textuelle", "jeu-textuel"],
+    page: lazy(() => import("./pages/games/TextAdventure")),
+  },
 ];
 
 const NotFound = lazy(() => import("./pages/NotFound"));

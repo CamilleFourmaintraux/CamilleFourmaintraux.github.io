@@ -38,6 +38,9 @@ const WITHOUT_LEGACY = [
   "/retirer-le-fond",
   "/detourage",
   "/miku",
+  "/text-adventure",
+  "/aventure-textuelle",
+  "/jeu-textuel",
 ];
 
 export function hasLegacyVersion(pathname: string): boolean {
