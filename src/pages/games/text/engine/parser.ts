@@ -124,6 +124,7 @@ export type Parsed =
   | { kind: "impossible" }
   | { kind: "giveOrGet" }
   | { kind: "askFor" }
+  | { kind: "narrator"; key: string }
   | { kind: "far"; place?: Id }
   | { kind: "farWhich"; places: Id[] }
   | { kind: "which"; intent: Intent; slot: "obj" | "ind"; options: Id[] }
@@ -200,6 +201,22 @@ function normalize(L: LangData): LangData {
     moods: lists(L.moods),
     lots: words(L.lots),
     sip: words(L.sip),
+    questionLeads: words(L.questionLeads),
+    selfWords: words(L.selfWords),
+    giveWords: words(L.giveWords),
+    receiveWords: words(L.receiveWords),
+    bodyWords: words(L.bodyWords),
+    purpose: words(L.purpose),
+    goFillers: words(L.goFillers),
+    narrator: {
+      names: words(L.narrator.names),
+      self: words(L.narrator.self),
+      you: words(L.narrator.you),
+      past: words(L.narrator.past),
+      be: words(L.narrator.be),
+      qtypes: lists(L.narrator.qtypes) as LangData["narrator"]["qtypes"],
+      topics: lists(L.narrator.topics) as LangData["narrator"]["topics"],
+    },
     dirs: lists(L.dirs),
     numbers: keys(L.numbers),
     units: keys(L.units),
@@ -653,10 +670,14 @@ function parseGo(g: Game, w: Words, tokens: string[]): Parsed {
       : { kind: "noExit" };
   }
   const preps = new Set(w.L.flatMap((l) => Object.values(l.preps).flat()));
+  const fillers = new Set(w.L.flatMap((l) => l.goFillers));
   const wanted = tokens
     .filter(
       (t) =>
-        !w.stop.has(t) && !preps.has(t) && !w.L.some((l) => l.back.includes(t)),
+        !w.stop.has(t) &&
+        !preps.has(t) &&
+        !fillers.has(t) &&
+        !w.L.some((l) => l.back.includes(t)),
     )
     .map(stem);
   const goingBack = tokens.some((t) => w.L.some((l) => l.back.includes(t)));
@@ -772,6 +793,9 @@ export function parse(g: Game, lang: Lang, text: string): Parsed {
   ) {
     return parse(g, lang, [...tokens.slice(1), tokens[0]].join(" "));
   }
+  // The narrator answers when named, and to a few questions about oneself.
+  const told = narrator(g, w, tokens, text.includes("?"));
+  if (told) return told;
   // "Bandit, give me the key": a command addressed to someone.
   const addressed = addressee(g, w, tokens);
   if (addressed) {
@@ -1112,6 +1136,15 @@ function parseSteal(g: Game, w: Words, rest: string[]): Parsed {
         intent: { verb: "steal", obj: [found.ok[0]], ind: owner },
       };
   }
+  // Nobody's: lying about, it is simply taken.
+  if (!person) {
+    const loose = resolve(g, w, thing, scope(g));
+    if ("ok" in loose && !here.some((p) => within(g, loose.ok[0], p)))
+      return {
+        kind: "intent",
+        intent: { verb: "take", obj: loose.ok, stealing: true },
+      };
+  }
   return {
     kind: "intent",
     intent: { verb: "steal", ind: person ?? here[0], words: thing.join(" ") },
@@ -1349,6 +1382,55 @@ function startsWithVerb(L: LangData[], tokens: string[]): boolean {
   const found = findVerb(L, tokens);
   if (!found) return false;
   return found.rest.length < tokens.length;
+}
+
+/**
+ * The voice telling the story. Named ("narrator", "voice in my head"), it
+ * answers what it is asked about itself. Unnamed, it answers a few
+ * questions the player asks about themselves ("who am I", "who was I"),
+ * and wonders aloud when a question to "you" falls on an empty street.
+ */
+function narrator(
+  g: Game,
+  w: Words,
+  tokens: string[],
+  marked: boolean,
+): Parsed | undefined {
+  const L = w.L;
+  const any = (pick: (n: LangData["narrator"]) => string[]) =>
+    tokens.some((t) => L.some((l) => pick(l.narrator).includes(t)));
+  const qtypes = Object.keys(L[0].narrator.qtypes) as Array<
+    keyof LangData["narrator"]["qtypes"]
+  >;
+  const qtype = qtypes.find((q) => any((n) => n.qtypes[q]));
+  const lead = L.some(
+    (l) =>
+      l.questionLeads.includes(tokens[0] ?? "") ||
+      l.narrator.past.includes(tokens[0] ?? ""),
+  );
+  const asking = !!qtype || lead || marked;
+  const being = any((n) => n.be);
+  const about = (topic: keyof LangData["narrator"]["topics"]) =>
+    any((n) => n.topics[topic]);
+  const said = (key: string): Parsed => ({ kind: "narrator", key });
+  if (any((n) => n.names)) {
+    if (about("ghost")) return said("narrator.ghost");
+    // "Do you exist?", "can you think?": not "what do you think?".
+    if (!qtype && about("exist")) return said("narrator.exist");
+    if (!qtype && about("think")) return said("narrator.think");
+    return said(qtype ? `narrator.${qtype}` : "narrator.other");
+  }
+  if (!asking || !being) return undefined;
+  if (any((n) => n.self)) {
+    if (about("beggar")) return said("narrator.beggar");
+    if (qtype === "who")
+      return said(any((n) => n.past) ? "narrator.wasWho" : "narrator.whoAmI");
+    if (qtype === "when") return said("narrator.whenAmI");
+    return undefined;
+  }
+  if (qtype && any((n) => n.you) && awakePeople(g).length === 0)
+    return said("question.unless");
+  return undefined;
 }
 
 /** Words that are not verbs but still mean something. */

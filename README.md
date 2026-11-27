@@ -106,7 +106,11 @@ src/legacy/           Previous design
   a save cost the same in a world of a hundred things or of half a million. An item has a
   description (`<name>.desc`) that never depends on where it is, an optional `<name>.found` for
   how it sits before anyone touches it, and the engine adds where it is now. The hints of "think"
-  live with the story (`hints` in `content/scene.ts`). To play in a terminal
+  live with the story (`hints` in `content/scene.ts`), and so do the opening lines (`intro`) and
+  what "status" adds about the character (`status`). The narrator is a voice of its own: named
+  ("narrator", "voice"), it answers what it is asked, and it answers a few questions the player
+  asks about themselves (`narrator` in `parser.ts`, words in the language files). Story background
+  that the player must not read yet stays out of the game texts. To play in a terminal
   without the browser, run `npm run play:text` (add `-- en` for English), or pipe commands into
   it. The full design is in the "Jeu textuel médiéval fantastique" document.
 

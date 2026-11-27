@@ -7,8 +7,6 @@ export const en: LangData = {
   and: " and ",
   or: " or ",
   messages: {
-    intro:
-      "You come to your senses in an alley of the lower town, a torch in your hand. Someone asked you to meet them here at nightfall, but nobody comes.",
     "place.title": "{x:Name}",
     "slot.label": "{day}, {when}, {place:name}",
 
@@ -212,7 +210,7 @@ export const en: LangData = {
     "barrel.desc":
       "An old open barrel with rusty hoops. It must have held brine.",
     "letter.desc":
-      'A crumpled letter in faded ink. It reads "Tonight, at the One-Eyed Boar, after curfew. Come alone." It is not signed.',
+      'A crumpled letter in faded ink. It reads "Tonight, at the One-Eyed Boar, after curfew. Come alone." It is not signed, and it does not say who it was meant for.',
     "apple.desc": "A slightly wrinkled apple, still good to eat.",
     "crate.desc": "A crate of nails, bound with iron.",
     "wall.desc": "Stone walls blackened by soot and damp.",
@@ -227,9 +225,11 @@ export const en: LangData = {
     "mushroom.desc": "A mushroom with a purplish cap and a damp, earthy smell.",
     "sword.desc": "A long sword, plain and well balanced.",
     "torch.desc": "A wooden torch coated with pitch.",
-    "trousers.desc": "Canvas trousers with two pockets.",
-    "shirt.desc": "A worn linen shirt.",
-    "purse.desc": "A small leather purse.",
+    "trousers.desc":
+      "Canvas trousers in tatters, patched and patched again. The two pockets still hold, more or less.",
+    "shirt.desc":
+      "A linen shirt worn down to the thread, torn in places and stiff with grime.",
+    "purse.desc": "A small leather purse, cracked with age.",
     "coins.desc": "A few copper coins. Enough for a bowl of soup, hardly more.",
     "parse.question":
       'You ponder the question, but nobody is here to answer it. Type "help" for example commands.',
@@ -405,7 +405,7 @@ export const en: LangData = {
     "persuade.fails": "{x:The} does not look convinced.",
     "lie.thing": "You lie to {x:the}. Nothing contradicts you.",
     "lie.robber.works":
-      '"I\'ve got nothing, I swear, I\'ve already been robbed." {x:The} stares at you for a long moment. "Pah. What a lousy night."',
+      '"I\'ve got nothing, I swear, I\'ve already been robbed." {x:The} stares at you for a long moment. "Pah. Waste of my time."',
     "lie.robber.fails": '"Liar! I can hear your coins jingling from here."',
     "lie.works": "{x:The} nods, convinced, or pretending to be.",
     "lie.fails": "{x:The} narrows his eyes. Your lie does not work.",
@@ -473,21 +473,21 @@ export const en: LangData = {
     "tanner.desc":
       "An old man in a stained apron, smelling of drink and leather.",
     "tanner.tavern":
-      '"The One-Eyed Boar? Its back door opens onto the alley, there. Marrec, the landlord, locks it at curfew."',
+      '"The One-Eyed Boar? Its back door opens onto the alley, there. Marrec, the landlord, keeps it locked."',
     "tanner.bandit":
-      '"There\'s a fellow prowling round here at night. Rask, they call him. A cudgel as long as my arm. I keep out of his way."',
+      '"There\'s a fellow prowling round here. Rask, they call him. A cudgel as long as my arm. I keep out of his way."',
     "tanner.letter": '"A letter? I can\'t read, me."',
     "tanner.key":
       'The tanner lowers his voice. "Rask has a key to the Boar\'s storeroom. He does business with Marrec, if you know what I mean."',
     "tanner.self":
       '"Me? I tan hides by day and drink by night. A simple life."',
     "tanner.town":
-      '"The lower town\'s no place to hang about at night. You ought to know that."',
+      '"The lower town\'s no place to hang about. You ought to know that."',
     "bandit.greet": '"What now?"',
     "bandit.desc": "A wiry man with a scarred face.",
     "rask.self": '"Rask. That enough for you?"',
     "rask.letter":
-      "\"The letter? Marrec wrote it, the landlord of the One-Eyed Boar. He paid me to rob you. Don't ask me why, I don't know.\"",
+      '"That letter? Marrec\'s hand, the landlord of the One-Eyed Boar. He leaves those for the folk who run his errands. None of your business."',
     "rask.tavern":
       '"The One-Eyed Boar. Marrec does more smuggling there than soup. The back door is the one in the alley."',
     "rask.key":
@@ -673,7 +673,7 @@ export const en: LangData = {
     "roofs.desc":
       "Roofs of mossy tiles, bristling with chimneys. A cat crosses them now and then.",
     "stalls.desc":
-      "Tanners' stalls, shuttered for the night. A smell of leather and tannin seeps out.",
+      "Tanners' stalls, their shutters closed. A smell of leather and tannin seeps out.",
     "planks.desc":
       "Worm-eaten planks, piled here for ages. Some are wide enough to lie on.",
     "npc.surrenders.unarmed": '{x:The} raises his hands. "Mercy! I give up!"',
@@ -861,16 +861,16 @@ export const en: LangData = {
     "hint.torch":
       "Your torch is dead. Embers still glow in the back yard, but a bare stick will not catch. Cloth, though, burns well.",
     "hint.letter":
-      "Whoever asked you here may have left some trace in this alley.",
+      "The alley where you came to may hold more than rubbish. It is worth a closer look.",
     "hint.key": "The key you carry must open something close by.",
     "hint.robber":
       "The man who tried to rob you looked very much at home in these streets. He might carry more than a cudgel.",
     "hint.tanner":
-      "Someone in the neighbourhood might know more about this meeting.",
+      "Someone in the neighbourhood might tell you where you are, and what goes on here.",
     "hint.door":
       "That locked tavern door keeps coming back to mind. Someone around here must have its key.",
     "hint.inside":
-      "The tavern storeroom is open. Whatever this meeting was about, it lies beyond.",
+      "The tavern storeroom is open. Whatever goes on in this place, it lies beyond.",
     "tanner.idle.dark": "Somewhere in the dark, someone hiccups.",
     "status.allFine": "You feel fine.",
     "sleep.wake.ground.planks":
@@ -886,7 +886,8 @@ export const en: LangData = {
     "go.noExit.up": "There is no way up from here.",
     "go.noExit.down": "There is no way down from here.",
     "again.nothing": "There is nothing to try again yet.",
-    "steal.nobody": "There is nobody here to steal from.",
+    "steal.nobody":
+      "Nobody here to steal it from, so you simply help yourself.",
     "steal.nothing":
       "You feel around the belt {x:of}, but find nothing like that.",
     "steal.inHand":
@@ -926,6 +927,43 @@ export const en: LangData = {
     "glance.nobody": "You glance over your shoulder. Nobody.",
     "steal.empty":
       "You feel around the belt {x:of}, but find nothing worth taking.",
+    "intro.1": "You don't remember anything.",
+    "intro.2":
+      "You come to, slumped against a wall in a narrow alley. A grey morning light seeps down between the roofs, and the cold bites through your rags. Your mouth is parched, your stomach hollow.",
+    "intro.3": "You have nothing on you, or close to it.",
+    "intro.4": "You don't really know where you are or what to do.",
+    "intro.5": "You don't remember anything.",
+    "torch.found": "It hangs in an iron sconce on the wall, unlit.",
+    "sconce.desc": "An iron sconce, rusted, sealed into the wall.",
+    "coin.desc":
+      "A single copper coin, worn smooth. Not even enough for a bowl of soup.",
+    "status.rags": "Your clothes are little more than rags.",
+    "status.stink": "You stink of sweat, damp and the gutter.",
+    "tanner.help":
+      'The tanner looks you up and down. "Help? Friend, look at me. I can\'t even help myself." He takes a swig. "Try the Boar, if you\'ve got the coin. You don\'t look like you have."',
+    "tanner.stranger":
+      "The tanner squints at you. \"You? Can't say I know you, friend. Then again, can't say I don't. Everyone looks alike after a bottle.\"",
+    "topic.help": "what to do",
+    "topic.stranger": "yourself",
+    "question.unless":
+      "You ponder the question, but nobody is here to answer it. Unless... were you talking to me?",
+    "narrator.whoAmI": "It's up to you.",
+    "narrator.wasWho": "Just a beggar.",
+    "narrator.beggar": "Yes.",
+    "narrator.whenAmI": "Time doesn't matter much anymore.",
+    "narrator.who": "Well... I'm the narrator.",
+    "narrator.where": "It's complicated...",
+    "narrator.when": "What does that even mean?",
+    "narrator.what": "I'm a narrator.",
+    "narrator.why": "Kinda philosophical, don't you think?",
+    "narrator.how": "One word after another.",
+    "narrator.ghost": "I'm not a ghost.",
+    "narrator.exist": "I think, therefore I am.",
+    "narrator.think": "Yes. Do you?",
+    "narrator.other": "I'm listening. I'm always listening.",
+    "mood.laugh":
+      "You burst out laughing. It echoes strangely between the walls.",
+    "mood.seen.laugh": "{x:The} stares at you, unsure whether to laugh along.",
   },
   names: {
     alley: { n: "dark alley", w: ["alley", "lane"] },
@@ -940,8 +978,8 @@ export const en: LangData = {
     player: { n: "yourself", proper: true, w: ["me", "myself"] },
     "hand-right": { n: "right hand" },
     "hand-left": { n: "left hand" },
-    trousers: { n: "trousers", pl: true, w: ["pants"] },
-    shirt: { n: "shirt", adj: { torn: "torn" } },
+    trousers: { n: "trousers", pl: true, w: ["pants", "breeches"] },
+    shirt: { n: "shirt", adj: { torn: "torn" }, w: ["rags", "tatters"] },
     "pocket-left": { n: "left pocket" },
     "pocket-right": { n: "right pocket" },
     purse: { n: "purse", w: ["pouch"] },
@@ -955,6 +993,8 @@ export const en: LangData = {
     apple: { n: "apple", w: ["fruit"] },
     crate: { n: "crate of nails", w: ["crate", "box", "nails"] },
     wall: { n: "walls", pl: true, w: ["wall"] },
+    sconce: { n: "sconce", w: ["bracket", "holder"] },
+    coin: { n: "copper coin", w: ["coins", "money", "copper", "penny"] },
     cobbles: {
       n: "cobblestones",
       pl: true,
@@ -1044,7 +1084,21 @@ export const en: LangData = {
       "study",
       "look in",
     ],
-    go: ["lets go", "go", "walk", "head", "move", "enter", "leave", "go to"],
+    go: [
+      "lets go",
+      "go",
+      "walk",
+      "head",
+      "move",
+      "enter",
+      "leave",
+      "go to",
+      "look for",
+      "go see",
+      "go and see",
+      "visit",
+      "go find",
+    ],
     exits: [
       "exits",
       "ways out",
@@ -1199,7 +1253,7 @@ export const en: LangData = {
     bandage: ["bandage", "bind", "dress", "tourniquet", "treat", "patch up"],
     wear: ["wear", "put on", "equip", "dress in"],
     takeoff: ["take off", "remove", "doff", "unequip", "undress"],
-    give: ["give", "offer", "hand", "hand over", "pay"],
+    give: ["give", "offer", "hand", "hand over", "pay", "gift"],
     talk: [
       "talk",
       "talk to",
@@ -1511,9 +1565,11 @@ export const en: LangData = {
   topics: {
     tavern: ["tavern", "boar", "inn", "landlord", "marrec", "storeroom"],
     bandit: ["bandit", "prowler", "robber", "rask", "thief"],
-    letter: ["letter", "meeting", "note", "message"],
+    letter: ["letter", "note", "message"],
     key: ["key"],
-    self: ["himself", "name", "life", "job"],
+    stranger: ["myself", "know", "recognize", "recognise", "remember"],
+    self: ["himself", "name", "life", "job", "you", "yourself"],
+    help: ["help", "advice", "aid", "do"],
     town: ["town", "neighbourhood", "neighborhood", "tannery", "district"],
   },
   questions: ["why", "how", "where", "who", "what", "when", "which"],
@@ -1614,25 +1670,41 @@ export const en: LangData = {
   ],
   andWords: ["and", "plus"],
   moods: {
+    laugh: [
+      "laugh",
+      "laughs",
+      "laughing",
+      "chuckle",
+      "giggle",
+      "haha",
+      "hahaha",
+      "lol",
+      "lmao",
+      "hehe",
+    ],
     ok: ["fine", "alright", "okay", "good"],
     surprised: ["oulala", "ohlala", "whoa", "woah", "omg", "yikes"],
     sad: ["sad", "sigh", "depressed", "bored", "sadly"],
     happy: [
-      "lol",
-      "haha",
-      "hehe",
       "nice",
       "cool",
       "wow",
       "yay",
       "great",
       "awesome",
-      "lmao",
       "joy",
       "hooray",
       "hurray",
       "woohoo",
       "yippee",
+      "smile",
+      "smiles",
+      "smiling",
+      "grin",
+      "survived",
+      "survive",
+      "win",
+      "won",
     ],
     swear: ["damn", "dman", "fuck", "shit", "crap", "bloody", "hell"],
     confused: [
@@ -1687,4 +1759,26 @@ export const en: LangData = {
     "have",
     "to receive",
   ],
+  goFillers: ["see", "visit", "find", "meet", "fetch", "and"],
+  narrator: {
+    names: ["narrator", "voice"],
+    self: ["i", "me", "myself"],
+    you: ["you"],
+    past: ["was", "were"],
+    be: ["am", "was", "are", "were", "is", "exist", "think"],
+    qtypes: {
+      who: ["who"],
+      where: ["where"],
+      when: ["when"],
+      what: ["what"],
+      why: ["why"],
+      how: ["how"],
+    },
+    topics: {
+      ghost: ["ghost", "phantom", "spectre", "specter", "wraith"],
+      exist: ["exist", "exists", "real"],
+      think: ["think", "thinks"],
+      beggar: ["beggar", "beggars", "pauper", "tramp", "vagrant", "vagabond"],
+    },
+  },
 };

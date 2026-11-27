@@ -369,6 +369,8 @@ export interface Intent {
   stock?: boolean;
   /** Words of something asked for that no one here has. */
   words?: string;
+  /** "Steal" said of something nobody owns: taking, with a word on it. */
+  stealing?: boolean;
 }
 
 export type Pending =

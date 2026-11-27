@@ -441,6 +441,8 @@ const take: Verb = {
         )
       : intent.obj!;
     if (objects.length === 0) return say(ctx, "take.nothing");
+    // "Steal" said of what belongs to no one around.
+    if (intent.stealing) say(ctx, "steal.nobody");
     const wanted = isPlayersHand(g, intent.ind) ? intent.ind : undefined;
     let minutes = 0;
     for (const x of objects) minutes += grab(ctx, x, wanted);
@@ -726,6 +728,8 @@ const status: Verb = {
       if (hands < 2) say(ctx, `status.hands.${hands}`);
     }
     if (isNauseous(g)) say(ctx, "status.nauseous");
+    for (const line of g.content.status ?? [])
+      if (line.when(g)) say(ctx, line.key);
     const needs = needsOf(g, player);
     if (needs) {
       for (const key of ["thirst", "hunger", "sleep", "fatigue"] as const) {

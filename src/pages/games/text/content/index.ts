@@ -1,7 +1,15 @@
 import type { Content } from "../engine/world";
 import { en } from "./en";
 import { fr } from "./fr";
-import { SCENE, entities, hints, schedule, templates } from "./scene";
+import {
+  SCENE,
+  entities,
+  hints,
+  intro,
+  schedule,
+  status,
+  templates,
+} from "./scene";
 
 export const content: Content = {
   version: SCENE.version,
@@ -12,5 +20,7 @@ export const content: Content = {
   entities,
   schedule,
   hints,
+  intro,
+  status,
   langs: { fr, en },
 };

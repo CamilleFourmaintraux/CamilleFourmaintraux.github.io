@@ -123,6 +123,11 @@ onScheduled("needs.check", (ctx) => {
 });
 
 export function startNeeds(g: Game) {
+  // How the body feels at the start is known already: only changes are news.
+  const n = needsOf(g, g.st.player);
+  if (n)
+    for (const key of ["thirst", "hunger", "sleep", "fatigue"] as const)
+      g.st.flags[`need.${key}`] ??= tier(n[key], TIERS[key]);
   if (!g.st.queue.some((e) => e.type === "needs.check")) {
     schedule(g, { at: g.st.clock + CHECK_EVERY, type: "needs.check" });
   }

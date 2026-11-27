@@ -36,6 +36,10 @@ export interface Content {
    * Written with the story, so each region brings its own.
    */
   hints?: { key: string; when: (g: Game) => boolean }[];
+  /** Lines the status adds about the player, when they apply. */
+  status?: { key: string; when: (g: Game) => boolean }[];
+  /** The lines that open the game, in order. */
+  intro?: string[];
 }
 
 /** A running game: the content (never changes) and the state (saved). */

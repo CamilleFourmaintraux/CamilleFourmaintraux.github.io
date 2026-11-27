@@ -4,7 +4,7 @@
 import type { Components, Template } from "../engine/types";
 import { comp, fuelLeft, within, type Game } from "../engine/world";
 
-const START = 21 * 60; // Day 0 (Lundas), 9 pm.
+const START = 7 * 60 + 40; // Day 0 (Lundas), 7:40 am.
 
 const hand = (side: "left" | "right"): Template => ({
   c: {
@@ -107,10 +107,10 @@ export const templates: Record<string, Template> = {
       physical: { weight: 70, volume: 70, size: 175, grip: "none" },
       body: { blood: 5, at: START, wounds: [], profile: "living" },
       needs: {
-        hunger: 0.3,
-        thirst: 0.3,
+        hunger: 0.62,
+        thirst: 0.64,
         sleep: 0.35,
-        fatigue: 0.1,
+        fatigue: 0.3,
         stomach: 0.2,
         water: 0,
         at: START,
@@ -143,6 +143,7 @@ export const templates: Record<string, Template> = {
     container: { kind: "bag", maxWeight: 1, maxVolume: 0.3, opening: 8 },
   }),
   coins: thing(0.1, 0.02, 2, "one", { money: { yes: true } }),
+  coin: thing(0.01, 0.002, 2, "one", { money: { yes: true } }),
   torch: thing(0.6, 0.5, 50, "one", {
     burn: { lit: false, fuel: 1, rate: 0.25, since: 0, gen: 0 },
   }),
@@ -162,6 +163,7 @@ export const templates: Record<string, Template> = {
     weapon: { type: "pierce", power: 1, skill: "shortBlades" },
   }),
   wall: { c: scenery },
+  sconce: { c: scenery },
   sky: { c: { ...scenery, sky: { yes: true } } },
   roofs: { c: scenery },
   stalls: { c: scenery },
@@ -253,6 +255,8 @@ export const templates: Record<string, Template> = {
           key: { say: "tanner.key", min: 50 },
           self: { say: "tanner.self" },
           town: { say: "tanner.town" },
+          help: { say: "tanner.help" },
+          stranger: { say: "tanner.stranger" },
         },
       },
     },
@@ -283,20 +287,16 @@ export const entities: {
   { id: "player", tpl: "player", loc: "alley" },
   { id: "player-hand-right", tpl: "hand-right", loc: "player" },
   { id: "player-hand-left", tpl: "hand-left", loc: "player" },
-  {
-    id: "torch",
-    tpl: "torch",
-    loc: "player-hand-right",
-    c: { burn: { lit: true, fuel: 0.3, rate: 0.25, since: START, gen: 0 } },
-  },
   { id: "shirt", tpl: "shirt", loc: "player" },
   { id: "trousers", tpl: "trousers", loc: "player" },
   { id: "pocket-left", tpl: "pocket-left", loc: "trousers" },
   { id: "pocket-right", tpl: "pocket-right", loc: "trousers" },
   { id: "purse", tpl: "purse", loc: "pocket-left" },
-  { id: "coins", tpl: "coins", loc: "purse" },
+  { id: "coin", tpl: "coin", loc: "purse" },
 
   { id: "wall", tpl: "wall", loc: "alley" },
+  { id: "sconce", tpl: "sconce", loc: "alley" },
+  { id: "torch", tpl: "torch", loc: "alley" },
   { id: "alley-sky", tpl: "sky", loc: "alley" },
   { id: "alley-roofs", tpl: "roofs", loc: "alley" },
   { id: "tanners-sky", tpl: "sky", loc: "tanners" },
@@ -344,8 +344,21 @@ export const SCENE = {
   start: START,
   player: "player",
   worldSeed: 0x5eed1e55,
-  version: 3,
+  version: 4,
 };
+
+/** The opening lines. */
+export const intro = ["intro.1", "intro.2", "intro.3", "intro.4", "intro.5"];
+
+/** What "status" adds about the player in this scene. */
+export const status: { key: string; when: (g: Game) => boolean }[] = [
+  {
+    key: "status.rags",
+    when: (g) =>
+      within(g, "shirt", g.st.player) || within(g, "trousers", g.st.player),
+  },
+  { key: "status.stink", when: () => true },
+];
 
 /** "Think": what the character might do next in this scene, first match. */
 const doorLocked = (g: Game) => !!comp(g, "tavern-door", "door")?.locked;

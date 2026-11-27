@@ -52,7 +52,7 @@ export function newGame(content: Content, seed: number): Game {
   const g: Game = { content, st: newState(content, seed) };
   startSystems(g);
   const ctx = newCtx(g);
-  say(ctx, "intro");
+  for (const key of g.content.intro ?? []) say(ctx, key);
   describePlace(ctx);
   drain(ctx);
   g.st.journal.push({ in: "", out: ctx.out, t: g.st.clock });
@@ -161,6 +161,8 @@ function handle(ctx: Ctx, parsed: Parsed, raw: string) {
       return misunderstood(ctx, "parse.unknown", { w: quoted(raw) });
     case "unknownWord":
       return misunderstood(ctx, "parse.unknownWord", { w: parsed.word });
+    case "narrator":
+      return say(ctx, parsed.key);
     case "far":
       return say(ctx, parsed.place ? "go.farNamed" : "go.far", {
         x: parsed.place ? ref(ctx.g, parsed.place) : "",

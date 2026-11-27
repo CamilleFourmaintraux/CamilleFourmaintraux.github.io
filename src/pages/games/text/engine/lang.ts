@@ -81,6 +81,25 @@ export interface LangData {
   lots: string[];
   /** Words that open a question by their place: "are you…", "est-ce…". */
   questionLeads: string[];
+  /**
+   * The narrator, who can be spoken to when named ("narrator", "voice"),
+   * and who answers a few questions the player asks about themselves.
+   */
+  narrator: {
+    names: string[];
+    /** "I", "me": the player speaking of themselves. */
+    self: string[];
+    /** "You": someone spoken to. */
+    you: string[];
+    /** "Was": the past, for "who was I". */
+    past: string[];
+    /** "Am", "are", "was": the verb of a question about being. */
+    be: string[];
+    qtypes: Record<"who" | "where" | "when" | "what" | "why" | "how", string[]>;
+    topics: Record<"ghost" | "exist" | "think" | "beggar", string[]>;
+  };
+  /** Words between "go" and a place that add nothing: "go see the tanner". */
+  goFillers: string[];
   /** "Me" in "give me the key". */
   selfWords: string[];
   /** Answers to "give, or be given?". */
