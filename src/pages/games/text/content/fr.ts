@@ -932,6 +932,52 @@ export const fr: LangData = {
     "sleep.wake.ground.bed": "Vous vous réveillez avec un torticolis.",
     "request.down":
       "{x:The} n’est pas en état de vous donner quoi que ce soit. Vous pourriez toujours vous servir.",
+    "go.noExit.up": "Il n’y a pas moyen de monter d’ici.",
+    "go.noExit.down": "Il n’y a pas moyen de descendre d’ici.",
+    "again.nothing": "Il n’y a encore rien à refaire.",
+    "steal.nobody": "Il n’y a personne à voler ici.",
+    "steal.nothing": "Vous tâtez la ceinture {x:of}, sans rien trouver de tel.",
+    "steal.inHand":
+      "{x:The} tient {y:the} en main. Il faudrait vous battre pour l’avoir.",
+    "steal.easy": "Vous fouillez les poches {x:of} et prenez {y:the}.",
+    "steal.surrendered": "{x:The} vous laisse prendre {y:the} sans un mot.",
+    "steal.done":
+      "Vos doigts se glissent dans la bourse {x:of} et en ressortent avec {y:the}. Il n’a rien remarqué.",
+    "steal.caught": "{x:The} vous attrape le poignet. « Bas les pattes ! »",
+    "steal.self": "Se voler soi-même est rapide, mais pas très rentable.",
+    "ask.steal": "Que voulez-vous voler ?",
+    "climb.nothing": "Il n’y a rien ici qui vaille la peine d’être escaladé.",
+    "climb.cannot":
+      "Vous ne trouvez sur {x:the} aucune prise qui inspire confiance.",
+    "climb.onto":
+      "Vous grimpez sur {x:the}. La vue n’est guère meilleure, et vous redescendez.",
+    "climb.person": "{x:The} n’apprécierait pas.",
+    "climb.legs":
+      "Avec des jambes dans cet état, grimper est hors de question.",
+    "push.person":
+      "Vous bousculez {x:the}. Il chancelle et vous fusille du regard.",
+    "push.heavy":
+      "Vous pesez de tout votre poids sur {x:the}. Ça racle le sol sur quelques pouces.",
+    "push.done": "Vous poussez {x:the}. Il ne se passe pas grand-chose.",
+    "push.fixed": "Vous poussez {x:the} de toutes vos forces. Rien ne bouge.",
+    "ask.push": "Que voulez-vous pousser ?",
+    "ground.cobbles":
+      "Des pavés inégaux et glissants, noirs de crasse. S’y allonger serait froid et dur.",
+    "ground.planks":
+      "De vieilles planches sur de la terre battue. Pas tendre, mais plus sec que la rue.",
+    "ground.floor": "Un sol de terre battue, collant de bière renversée.",
+    "ground.dirt": "De la terre tassée, avec ici et là une flaque.",
+    "ground.bed": "Un lit. Enfin quelque chose de moelleux.",
+    "ground.dark": "Vous vous accroupissez et passez la main sur le sol.",
+    "ground.things": "Par terre, {list}.",
+    "ground.nothing": "Rien ne traîne à vos pieds.",
+    "glance.dark":
+      "Vous jetez un œil par-dessus votre épaule. Rien que le noir.",
+    "glance.someone":
+      "Vous jetez un œil par-dessus votre épaule. {x:The} est toujours là.",
+    "glance.nobody": "Vous jetez un œil par-dessus votre épaule. Personne.",
+    "steal.empty":
+      "Vous tâtez la ceinture {x:of}, sans rien trouver qui vaille la peine.",
   },
   names: {
     alley: { n: "ruelle sombre", g: "f", w: ["ruelle", "impasse"] },
@@ -1626,9 +1672,6 @@ export const fr: LangData = {
       "fouille",
       "fouillez",
       "dépouiller",
-      "détrousser",
-      "voler",
-      "vole",
       "piller",
       "chercher",
     ],
@@ -1659,7 +1702,7 @@ export const fr: LangData = {
       "siffler",
       "siffloter",
     ],
-    dance: ["danser", "danse", "dansez", "gigue"],
+    dance: ["danser", "danse", "dansez", "gigue", "on danse"],
     request: [
       "réclamer",
       "réclame",
@@ -1688,6 +1731,32 @@ export const fr: LangData = {
       "que faire",
       "quoi faire",
     ],
+    steal: [
+      "voler",
+      "vole",
+      "chiper",
+      "dérober",
+      "subtiliser",
+      "piquer",
+      "détrousser",
+    ],
+    climb: ["grimper", "grimpe", "escalader", "escalade", "monter sur"],
+    push: ["pousser", "pousse", "bousculer", "bouscule"],
+    lookDown: [
+      "regarder par terre",
+      "regarder le sol",
+      "regarder en bas",
+      "baisser les yeux",
+      "regarder mes pieds",
+    ],
+    glanceBack: [
+      "regarder derrière",
+      "regarder en arrière",
+      "se retourner",
+      "me retourner",
+      "jeter un oeil derrière",
+    ],
+    again: ["encore", "réessayer", "à nouveau", "de nouveau", "refaire"],
   },
   dirs: {
     n: ["nord", "n"],
@@ -1844,9 +1913,7 @@ export const fr: LangData = {
   later: [
     "nager",
     "nage",
-    "grimper",
     "grimpe",
-    "escalader",
     "crocheter",
     "crochète",
     "acheter",
@@ -1856,7 +1923,6 @@ export const fr: LangData = {
     "marchander",
     "sauter",
     "saute",
-    "pousser",
     "pousse",
     "tirer",
     "tire",
@@ -1866,7 +1932,16 @@ export const fr: LangData = {
     "entraîner",
     "cuisiner",
   ],
-  relative: ["gauche", "droite", "devant", "derrière", "avant"],
+  relative: [
+    "gauche",
+    "droite",
+    "devant",
+    "derrière",
+    "avant",
+    "droit",
+    "tout droit",
+    "en avant",
+  ],
   back: [
     "retour",
     "revenir",
@@ -1953,6 +2028,8 @@ export const fr: LangData = {
       "chouette",
       "youpi",
       "excellent",
+      "joie",
+      "hourra",
     ],
     swear: [
       "merde",

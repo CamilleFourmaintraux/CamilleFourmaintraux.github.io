@@ -14,6 +14,7 @@ import {
   parse,
   splitCommands,
   tokenize,
+  VERBS,
   langsFor,
   type Parsed,
 } from "./parser";
@@ -62,6 +63,12 @@ function run(ctx: Ctx, intent: Intent, raw: string, confirmed: boolean) {
   const g = ctx.g;
   const verb = VERB_RUNNERS[intent.verb];
   if (!verb) return say(ctx, "parse.unknownVerb", { w: raw });
+  // A verb that needs a thing never runs without one: it asks instead.
+  const spec = VERBS[intent.verb];
+  if (spec?.obj && !spec.optional && !intent.all && !intent.obj?.length) {
+    g.st.pending = { kind: "what", intent, slot: "obj" };
+    return say(ctx, `ask.${intent.verb}`);
+  }
   const risk = verb.risk?.(ctx, intent);
   if (risk && !confirmed) {
     const last = g.st.confirmed[risk.kind];
@@ -169,7 +176,13 @@ function handle(ctx: Ctx, parsed: Parsed, raw: string) {
     case "notHere":
       return say(ctx, parsed.dark ? "parse.notHereDark" : "parse.notHere");
     case "noExit":
-      return say(ctx, "go.noExit");
+      // No way up or down here: said as such, not as a few steps that way.
+      return say(
+        ctx,
+        parsed.dir === "up" || parsed.dir === "down"
+          ? `go.noExit.${parsed.dir}`
+          : "go.noExit",
+      );
     case "what":
       g.st.pending = { kind: "what", intent: parsed.intent, slot: parsed.slot };
       return say(ctx, `ask.${parsed.intent.verb}`);
@@ -290,8 +303,17 @@ export function play(
     }
   } else {
     const parts = splitCommands(g, lang, raw);
-    if (parts.length > 1) chain(ctx, lang, parts, raw);
-    else handle(ctx, parse(g, lang, raw), raw);
+    const first = parts.length === 1 ? parse(g, lang, raw) : undefined;
+    const last = g.st.flags.lastCommand as string | undefined;
+    if (first?.kind === "intent" && first.intent.verb === "again") {
+      // "Try again": the last command, once more.
+      if (last) handle(ctx, parse(g, lang, last), last);
+      else say(ctx, "again.nothing");
+    } else {
+      if (parts.length > 1) chain(ctx, lang, parts, raw);
+      else handle(ctx, first!, raw);
+      g.st.flags.lastCommand = raw;
+    }
   }
 
   drain(ctx);

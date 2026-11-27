@@ -85,6 +85,12 @@ export const VERBS: Record<
   swap: {},
   load: {},
   use: { obj: "one", ind: true },
+  steal: { obj: "one", ind: true, optional: true },
+  climb: { obj: "one", optional: true },
+  push: { obj: "one" },
+  lookDown: {},
+  glanceBack: {},
+  again: {},
   request: { obj: "one", ind: true, optional: true },
   giveBack: {},
   think: {},
@@ -109,7 +115,7 @@ export type Parsed =
   | { kind: "unknownVerb"; word: string }
   | { kind: "unknownWord"; word: string }
   | { kind: "notHere"; dark: boolean }
-  | { kind: "noExit" }
+  | { kind: "noExit"; dir?: string }
   | { kind: "question" }
   | { kind: "notYet"; word: string }
   | { kind: "relative" }
@@ -633,9 +639,12 @@ function parseGo(g: Game, w: Words, tokens: string[]): Parsed {
   if (dir) {
     const index = exits.findIndex((exit) => exit.dir === dir);
     return index < 0
-      ? { kind: "noExit" }
+      ? { kind: "noExit", dir }
       : { kind: "intent", intent: { verb: "go", dir, exit: index } };
   }
+  // "Go forward", "go left": no such thing as forward in a text.
+  if (tokens.some((t) => w.L.some((l) => l.relative.includes(t))))
+    return { kind: "relative" };
   const number = tokens.find((t) => /^\d+$/.test(t));
   if (number) {
     const index = Number(number) - 1;
@@ -677,6 +686,10 @@ export function fillSlot(
   candidates = scope(g),
 ): Parsed | undefined {
   if (slot === "obj" && isAll(w.L, tokens)) {
+    // "Burn everything" means nothing a single blow or flame can do: only
+    // verbs made for several things accept "all".
+    if (VERBS[intent.verb]?.obj !== "many")
+      return { kind: "unknownVerb", word: tokens[0] };
     intent.all = true;
     intent.obj = [];
     return undefined;
@@ -822,6 +835,7 @@ export function parse(g: Game, lang: Lang, text: string): Parsed {
     }
   }
   // "Give the key": mine to give, or someone's to ask for.
+  if (verb === "steal") return parseSteal(g, w, rest);
   if (verb === "give" || verb === "request") {
     const giving = parseGive(g, w, rest, verb === "request");
     if (giving) return giving;
@@ -1003,16 +1017,39 @@ function parseGive(
   if (words.length === 0) {
     return forMe ? { kind: "askFor" } : { kind: "giveOrGet" };
   }
-  const { obj } = splitPrep(w.L, words);
-  if (!forMe) {
-    const mine = resolve(g, w, obj, subtree(g, g.st.player));
-    if ("ok" in mine) return undefined;
-  }
-  // Whoever here carries it, in sight or not: they will answer for it.
+  let { obj } = splitPrep(w.L, words);
   const here = children(g, placeOf(g, g.st.player)).filter(
     (id) => id !== g.st.player && has(g, id, "actor"),
   );
-  for (const person of here) {
+  // "Give me key bandit": a name at either end says whom it is asked of.
+  let asked: Id | undefined;
+  for (const [take, keep] of [
+    [obj.slice(-1), obj.slice(0, -1)],
+    [obj.slice(0, 1), obj.slice(1)],
+  ]) {
+    if (keep.length === 0) continue;
+    const who = resolve(g, w, take, here);
+    if ("ok" in who && who.ok.length === 1) {
+      asked = who.ok[0];
+      obj = keep;
+      break;
+    }
+  }
+  if (!forMe && !asked) {
+    const mine = resolve(g, w, obj, subtree(g, g.st.player));
+    if ("ok" in mine) return undefined;
+  }
+  if (!forMe && asked) {
+    // "Give apple tanner": mine, to him.
+    const mine = resolve(g, w, obj, subtree(g, g.st.player));
+    if ("ok" in mine)
+      return {
+        kind: "intent",
+        intent: { verb: "give", obj: mine.ok, ind: asked },
+      };
+  }
+  // Whoever here carries it, in sight or not: they will answer for it.
+  for (const person of asked ? [asked] : here) {
     const theirs = subtree(g, person).filter((id) => !has(g, id, "part"));
     const found = resolve(g, w, obj, theirs);
     if ("ok" in found && found.ok[0] !== person)
@@ -1021,10 +1058,63 @@ function parseGive(
         intent: { verb: "request", obj: [found.ok[0]], ind: person },
       };
   }
-  if (!forMe) return undefined;
+  if (!forMe && !asked) return undefined;
   return {
     kind: "intent",
-    intent: { verb: "request", words: obj.join(" ") },
+    intent: { verb: "request", ind: asked, words: obj.join(" ") },
+  };
+}
+
+/**
+ * "Steal the key from the bandit", "rob the tanner": the thing, if named,
+ * is looked for on that person, in sight or not.
+ */
+function parseSteal(g: Game, w: Words, rest: string[]): Parsed {
+  const here = children(g, placeOf(g, g.st.player)).filter(
+    (id) => id !== g.st.player && has(g, id, "actor"),
+  );
+  const words = rest.filter((t) => !w.stop.has(t));
+  const { obj, ind } = splitPrep(w.L, words);
+  let person: Id | undefined;
+  let thing = obj;
+  if (ind.length > 0) {
+    const who = resolve(g, w, ind, here);
+    if ("ok" in who) person = who.ok[0];
+    else return { kind: "notHere", dark: isDark(g, placeOf(g, g.st.player)) };
+  } else if (obj.length > 0) {
+    const who = resolve(g, w, obj, here);
+    if ("ok" in who) {
+      person = who.ok[0];
+      thing = [];
+    } else {
+      // "La bouteille du tanneur": the owner named at the end.
+      for (let cut = 1; cut < obj.length && !person; cut++) {
+        const end = resolve(g, w, obj.slice(cut), here);
+        if ("ok" in end && end.ok.length === 1) {
+          person = end.ok[0];
+          thing = obj.slice(0, cut);
+        }
+      }
+    }
+  }
+  if (thing.length === 0)
+    return person
+      ? { kind: "intent", intent: { verb: "steal", ind: person } }
+      : { kind: "what", intent: { verb: "steal" }, slot: "obj" };
+  for (const owner of person ? [person] : here) {
+    const theirs = subtree(g, owner).filter(
+      (id) => id !== owner && !has(g, id, "part"),
+    );
+    const found = resolve(g, w, thing, theirs);
+    if ("ok" in found)
+      return {
+        kind: "intent",
+        intent: { verb: "steal", obj: [found.ok[0]], ind: owner },
+      };
+  }
+  return {
+    kind: "intent",
+    intent: { verb: "steal", ind: person ?? here[0], words: thing.join(" ") },
   };
 }
 

@@ -135,6 +135,57 @@ export function askFor(ctx: Ctx, person: Id, item?: Id) {
 }
 
 /**
+ * "Steal the key from the bandit". From someone senseless or beaten, it is
+ * only taking. From someone awake, the fingers must be quick, and the dark
+ * helps; caught, a robber fights and anyone else turns hostile. Nothing
+ * held in a hand can be stolen.
+ */
+export function stealFrom(ctx: Ctx, person: Id | undefined, item?: Id) {
+  const g = ctx.g;
+  if (!person) return say(ctx, "steal.nobody");
+  if (person === g.st.player) return say(ctx, "steal.self");
+  const v = vital(g, person);
+  const mind = mindOf(g, person);
+  const theirs = subtree(g, person).filter(
+    (id) =>
+      id !== person &&
+      !has(g, id, "part") &&
+      !has(g, id, "container") &&
+      !(g.st.ent[id].loc === person && has(g, id, "wearable")),
+  );
+  // Nothing named: the most tempting thing, money first.
+  const target =
+    item ??
+    theirs.find((id) => has(g, id, "money")) ??
+    theirs.find((id) => !inSight(g, person, id));
+  if (!target || !theirs.includes(target))
+    return say(ctx, item ? "steal.nothing" : "steal.empty", {
+      x: ref(g, person),
+    });
+  const helpless = v === "down" || v === "dead";
+  if (helpless) {
+    say(ctx, "steal.easy", { x: ref(g, person), y: ref(g, target) });
+    return handToPlayer(ctx, target);
+  }
+  if (mind?.surrendered) {
+    say(ctx, "steal.surrendered", { x: ref(g, person), y: ref(g, target) });
+    return handToPlayer(ctx, target);
+  }
+  if (inSight(g, person, target))
+    return say(ctx, "steal.inHand", { x: ref(g, person), y: ref(g, target) });
+  const fighting = mind?.hostile || g.st.enc[person]?.mode === "fight";
+  const chance = fighting ? 0 : 0.35 + (isDark(g, here(g)) ? 0.2 : 0);
+  if (runRandom(g.st) < chance) {
+    say(ctx, "steal.done", { x: ref(g, person), y: ref(g, target) });
+    return handToPlayer(ctx, target);
+  }
+  say(ctx, "steal.caught", { x: ref(g, person) });
+  if (!mind) return;
+  setMind(g, person, { attitude: mind.attitude - 30, hostile: true });
+  if (mind.role === "robber") startFight(ctx, person);
+}
+
+/**
  * "Give it back", about the last thing the player gave. Right after, a
  * person may well return it; an hour later, much less; the next day, they
  * hardly know what you mean.
@@ -529,20 +580,22 @@ export function searchPerson(ctx: Ctx, person: Id) {
 // Descriptions.
 
 /** One line per person in the place description. */
+/** A robber lying in wait: not seen before he jumps out. */
+export function lurking(g: Game, person: Id): boolean {
+  const mind = mindOf(g, person);
+  return (
+    mind?.role === "robber" &&
+    !mind.hostile &&
+    !mind.satisfied &&
+    !mind.surrendered &&
+    !mind.fled &&
+    !g.st.enc[person]
+  );
+}
+
 export function personLine(ctx: Ctx, person: Id) {
   const g = ctx.g;
-  // A robber lying in wait is not seen before he jumps out.
-  const lurking = mindOf(g, person);
-  if (
-    lurking?.role === "robber" &&
-    !lurking.hostile &&
-    !lurking.satisfied &&
-    !lurking.surrendered &&
-    !lurking.fled &&
-    !g.st.enc[person]
-  ) {
-    return;
-  }
+  if (lurking(g, person)) return;
   const x = bare(g, person);
   const v = vital(g, person);
   const mind = mindOf(g, person);

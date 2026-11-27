@@ -70,6 +70,7 @@ import {
   describePerson,
   getAway,
   hostilesHere,
+  lurking,
   mindOf,
   personLine,
   playDead,
@@ -975,6 +976,78 @@ const search: Verb = {
   },
 };
 
+/** "Climb": onto a barrel at best. Walls and roofs give no grip. */
+const climb: Verb = {
+  run(ctx, intent) {
+    const g = ctx.g;
+    const body = comp(g, g.st.player, "body");
+    if (body && legsLeft(body) < 2) return say(ctx, "climb.legs");
+    const x = intent.obj?.[0];
+    if (!x) return say(ctx, "climb.nothing");
+    if (has(g, x, "actor")) return say(ctx, "climb.person", { x: ref(g, x) });
+    const weight = comp(g, x, "physical")?.weight ?? 0;
+    if (!has(g, x, "scenery") && weight >= 20) {
+      say(ctx, "climb.onto", { x: ref(g, x) });
+      return void advance(ctx, { minutes: 1 });
+    }
+    say(ctx, "climb.cannot", { x: ref(g, x) });
+  },
+};
+
+/** "Push the door" opens it if it can; other things barely move. */
+const push: Verb = {
+  run(ctx, intent) {
+    const g = ctx.g;
+    const x = intent.obj![0];
+    if (has(g, x, "door")) return VERB_RUNNERS.open.run(ctx, intent);
+    if (has(g, x, "actor") && x !== g.st.player) {
+      say(ctx, "push.person", { x: ref(g, x) });
+      const mind = mindOf(g, x);
+      if (mind) patch(g, x, "mind", { attitude: mind.attitude - 10 });
+      return void advance(ctx, { minutes: 1 });
+    }
+    if (has(g, x, "scenery")) return say(ctx, "push.fixed", { x: ref(g, x) });
+    const weight = comp(g, x, "physical")?.weight ?? 0;
+    say(ctx, weight >= 20 ? "push.heavy" : "push.done", { x: ref(g, x) });
+    advance(ctx, { minutes: 1 });
+  },
+};
+
+/** "Look down": the ground, what it would be like to lie on, what lies there. */
+const lookDown: Verb = {
+  run(ctx) {
+    const g = ctx.g;
+    const place = playerPlace(g);
+    const dark = isDark(g, place);
+    const ground = comp(g, place, "place")?.ground;
+    if (dark) say(ctx, "ground.dark");
+    else if (ground) say(ctx, `ground.${ground}`);
+    const things = children(g, place).filter(
+      (id) =>
+        id !== g.st.player &&
+        !has(g, id, "actor") &&
+        !has(g, id, "scenery") &&
+        !has(g, id, "door"),
+    );
+    say(ctx, things.length ? "ground.things" : "ground.nothing", {
+      list: refs(g, things),
+    });
+  },
+};
+
+/** "Look behind you": who is there, as far as you can tell. */
+const glanceBack: Verb = {
+  run(ctx) {
+    const g = ctx.g;
+    if (isDark(g, playerPlace(g))) return say(ctx, "glance.dark");
+    // A robber lurking unseen stays unseen: that is the point of lurking.
+    const seen = awakeHere(g).filter((id) => !lurking(g, id));
+    say(ctx, seen.length ? "glance.someone" : "glance.nobody", {
+      x: seen.length ? ref(g, seen[0]) : "",
+    });
+  },
+};
+
 /** "Where am I?" */
 const where: Verb = {
   run(ctx) {
@@ -1062,6 +1135,10 @@ const use: Verb = {
 };
 
 export const VERB_RUNNERS: Record<string, Verb> = {
+  climb,
+  push,
+  lookDown,
+  glanceBack,
   listen,
   hide,
   search,

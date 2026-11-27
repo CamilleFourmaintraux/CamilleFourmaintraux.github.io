@@ -29,6 +29,7 @@ import {
   valuables,
   askBack,
   askFor,
+  stealFrom,
   awakeHere,
   defaultPerson,
   give,
@@ -777,6 +778,16 @@ const request: Verb = {
   },
 };
 
+/** "Steal the key from the bandit", "rob the tanner". */
+const steal: Verb = {
+  run(ctx, intent) {
+    const g = ctx.g;
+    const person = isPerson(g, intent.ind) ? intent.ind : undefined;
+    stealFrom(ctx, person, intent.obj?.[0]);
+    advance(ctx, { minutes: 1 });
+  },
+};
+
 const giveBack: Verb = {
   run(ctx) {
     askBack(ctx);
@@ -812,6 +823,7 @@ const think: Verb = {
 };
 
 export const PEOPLE_VERBS: Record<string, Verb> = {
+  steal,
   request,
   giveBack,
   think,
